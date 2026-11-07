@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>AI SMART SAVING 2026 VERSION 2.0</title>
+    <title>AI SMART SAVING 2026 VERSION 2.2</title>
     
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -32,7 +32,8 @@
                             cyan: '#00f0ff',
                             purple: '#a855f7',
                             red: '#ff3366',
-                            yellow: '#ffcc00'
+                            yellow: '#ffcc00',
+                            gold: '#ffd700'
                         }
                     },
                     fontFamily: {
@@ -66,7 +67,7 @@
         }
 
         .glass-nav {
-            background: rgba(11, 17, 32, 0.85);
+            background: rgba(11, 17, 32, 0.88);
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
             border-top: 1px solid rgba(0, 240, 255, 0.2);
@@ -86,14 +87,12 @@
         }
 
         /* NEON GLOW EFFECTS */
-        .neon-border-cyan {
-            box-shadow: 0 0 15px rgba(0, 240, 255, 0.25);
-            border-color: rgba(0, 240, 255, 0.5);
-        }
+        .neon-border-cyan { box-shadow: 0 0 15px rgba(0, 240, 255, 0.25); border-color: rgba(0, 240, 255, 0.5); }
         .neon-text-green { text-shadow: 0 0 8px rgba(0, 255, 136, 0.6); color: #00ff88; }
         .neon-text-cyan { text-shadow: 0 0 8px rgba(0, 240, 255, 0.6); color: #00f0ff; }
         .neon-text-purple { text-shadow: 0 0 8px rgba(168, 85, 247, 0.6); color: #a855f7; }
         .neon-text-red { text-shadow: 0 0 8px rgba(255, 51, 102, 0.6); color: #ff3366; }
+        .neon-text-gold { text-shadow: 0 0 8px rgba(255, 215, 0, 0.6); color: #ffd700; }
 
         .btn-neon-cyan {
             background: linear-gradient(135deg, rgba(0, 240, 255, 0.2), rgba(0, 150, 255, 0.4));
@@ -107,8 +106,14 @@
             box-shadow: 0 0 25px rgba(0, 240, 255, 0.6);
             transform: translateY(-1px);
         }
-        .btn-neon-cyan:active:not(:disabled) {
-            transform: translateY(1px);
+        .btn-neon-cyan:active:not(:disabled) { transform: translateY(1px); }
+
+        .btn-neon-purple {
+            background: linear-gradient(135deg, rgba(168, 85, 247, 0.2), rgba(126, 34, 206, 0.4));
+            border: 1px solid #a855f7;
+            color: #fff;
+            box-shadow: 0 0 15px rgba(168, 85, 247, 0.3);
+            transition: all 0.3s ease;
         }
 
         /* ANIMATIONS */
@@ -116,9 +121,7 @@
             0%, 100% { opacity: 0.4; transform: scale(1); }
             50% { opacity: 0.8; transform: scale(1.05); }
         }
-        .ai-pulse {
-            animation: pulseGlow 3s infinite ease-in-out;
-        }
+        .ai-pulse { animation: pulseGlow 3s infinite ease-in-out; }
 
         @keyframes scanline {
             0% { transform: translateY(-100%); }
@@ -141,14 +144,14 @@
 </head>
 <body class="min-h-screen flex flex-col md:flex-row antialiased">
 
-    <!-- GLOBAL LOADING & AI PROCESSING OVERLAY -->
+    <!-- GLOBAL LOADING OVERLAY -->
     <div id="ai-loading-overlay" class="fixed inset-0 bg-black/80 backdrop-blur-md z-50 hidden flex-col items-center justify-center p-4">
         <div class="relative flex items-center justify-center mb-6">
             <div class="w-24 h-24 rounded-full border-4 border-transparent border-t-neon-cyan border-b-neon-purple animate-spin"></div>
             <div class="w-16 h-16 rounded-full border-4 border-transparent border-l-neon-green border-r-neon-yellow animate-spin absolute" style="animation-direction: reverse; animation-duration: 1.5s;"></div>
             <i class="fa-solid fa-brain text-2xl text-neon-cyan ai-pulse absolute"></i>
         </div>
-        <h3 id="loading-title" class="text-xl font-bold text-white tracking-wider mb-2 text-center">AI ENGINE PROCESSING</h3>
+        <h3 id="loading-title" class="text-xl font-bold text-white tracking-wider mb-2 text-center uppercase">AI ENGINE PROCESSING</h3>
         <p id="loading-subtitle" class="text-xs text-neon-cyan/80 font-mono text-center max-w-xs animate-pulse">กำลังวิเคราะห์แบบจำลองการเงินอัตโนมัติ...</p>
     </div>
 
@@ -157,48 +160,60 @@
 
     <!-- SIDEBAR NAVIGATION FOR DESKTOP / LAPTOP -->
     <aside class="hidden md:flex flex-col w-64 glass-panel border-r border-white/10 p-4 sticky top-0 h-screen z-30">
-        <div class="flex items-center gap-3 px-2 py-4 mb-6 border-b border-white/10">
+        <div class="flex items-center gap-3 px-2 py-4 mb-4 border-b border-white/10">
             <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-cyan-500 to-purple-600 flex items-center justify-center shadow-lg shadow-cyan-500/30">
                 <i class="fa-solid fa-microchip text-white text-xl"></i>
             </div>
             <div>
                 <h1 class="font-bold text-sm tracking-wider text-white leading-tight">AI SMART SAVING</h1>
-                <span class="text-[10px] font-mono text-neon-cyan tracking-widest block">v2.0 2026 EDITION</span>
+                <span class="text-[10px] font-mono text-neon-cyan tracking-widest block">v2.2 2026 EDITION</span>
             </div>
         </div>
 
-        <nav class="flex-1 space-y-2">
-            <button onclick="switchTab('dashboard')" id="side-nav-dashboard" class="nav-item-btn w-full flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium transition-all text-white/70 hover:text-white hover:bg-white/5">
+        <nav class="flex-1 space-y-1.5 overflow-y-auto">
+            <button onclick="switchTab('dashboard')" id="side-nav-dashboard" class="nav-item-btn w-full flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-xs font-medium transition-all text-white/70 hover:text-white hover:bg-white/5">
                 <i class="fa-solid fa-chart-pie w-5 text-neon-cyan"></i>
                 <span>หน้าหลัก</span>
             </button>
-            <button onclick="switchTab('records')" id="side-nav-records" class="nav-item-btn w-full flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium transition-all text-white/70 hover:text-white hover:bg-white/5">
+            <button onclick="switchTab('records')" id="side-nav-records" class="nav-item-btn w-full flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-xs font-medium transition-all text-white/70 hover:text-white hover:bg-white/5">
                 <i class="fa-solid fa-list-check w-5 text-neon-green"></i>
                 <span>บันทึกข้อมูล</span>
             </button>
-            <button onclick="switchTab('ai-analytics')" id="side-nav-ai-analytics" class="nav-item-btn w-full flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium transition-all text-white/70 hover:text-white hover:bg-white/5">
+            <button onclick="switchTab('ai-analytics')" id="side-nav-ai-analytics" class="nav-item-btn w-full flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-xs font-medium transition-all text-white/70 hover:text-white hover:bg-white/5">
                 <i class="fa-solid fa-brain w-5 text-neon-purple"></i>
                 <span>AI วิเคราะห์</span>
             </button>
-            <button onclick="switchTab('goals')" id="side-nav-goals" class="nav-item-btn w-full flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium transition-all text-white/70 hover:text-white hover:bg-white/5">
+            <button onclick="switchTab('goals')" id="side-nav-goals" class="nav-item-btn w-full flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-xs font-medium transition-all text-white/70 hover:text-white hover:bg-white/5">
                 <i class="fa-solid fa-bullseye w-5 text-neon-yellow"></i>
-                <span>เป้าหมายการออม</span>
+                <span>เป้าหมาย</span>
             </button>
-            <button onclick="switchTab('settings')" id="side-nav-settings" class="nav-item-btn w-full flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium transition-all text-white/70 hover:text-white hover:bg-white/5">
+            <!-- NEW V2.2 MENU ITEM -->
+            <button onclick="switchTab('missions')" id="side-nav-missions" class="nav-item-btn w-full flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-xs font-medium transition-all text-white/70 hover:text-white hover:bg-white/5 relative">
+                <i class="fa-solid fa-trophy w-5 text-neon-gold"></i>
+                <span>ภารกิจประจำเดือน</span>
+                <span class="ml-auto w-2 h-2 rounded-full bg-neon-gold animate-pulse"></span>
+            </button>
+            <button onclick="switchTab('settings')" id="side-nav-settings" class="nav-item-btn w-full flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-xs font-medium transition-all text-white/70 hover:text-white hover:bg-white/5">
                 <i class="fa-solid fa-sliders w-5 text-gray-400"></i>
                 <span>ตั้งค่าระบบ</span>
             </button>
         </nav>
 
-        <!-- System Status Box -->
-        <div class="p-3 rounded-xl glass-panel text-xs space-y-2">
-            <div class="flex justify-between items-center text-gray-400">
+        <!-- System Status & Level Summary Box -->
+        <div class="p-3 rounded-xl glass-panel text-xs space-y-2 mt-auto">
+            <div class="flex items-center justify-between text-gray-300 border-b border-white/5 pb-2">
+                <span class="flex items-center gap-1.5 font-bold text-neon-gold">
+                    <i class="fa-solid fa-medal"></i> <span id="side-user-level">Beginner</span>
+                </span>
+                <span class="font-mono text-[11px] text-neon-cyan" id="side-user-xp">0 XP</span>
+            </div>
+            <div class="flex justify-between items-center text-gray-400 text-[11px]">
                 <span>ความปลอดภัย:</span>
                 <span class="text-neon-green flex items-center gap-1"><i class="fa-solid fa-shield-halved"></i> Local Only</span>
             </div>
-            <div class="flex justify-between items-center text-gray-400">
-                <span>สถานะระบบ:</span>
-                <span class="text-neon-cyan font-mono" id="db-status-text">IndexedDB Ready</span>
+            <div class="flex justify-between items-center text-gray-400 text-[11px]">
+                <span>สถานะฐานข้อมูล:</span>
+                <span class="text-neon-cyan font-mono" id="db-status-text">v3.0 Ready</span>
             </div>
         </div>
     </aside>
@@ -214,14 +229,19 @@
                 </div>
                 <div>
                     <h1 class="font-bold text-sm text-white">AI SMART SAVING</h1>
-                    <span class="text-[9px] font-mono text-neon-cyan">v2.0 GLASS EDITION</span>
+                    <span class="text-[9px] font-mono text-neon-cyan">v2.2 MISSIONS EDITION</span>
                 </div>
             </div>
             <div class="hidden md:block">
                 <h2 id="page-title-display" class="text-2xl font-bold text-white tracking-wide">ภาพรวมทางการเงิน (Dashboard)</h2>
-                <p class="text-xs text-gray-400">ระบบบริหารจัดการเงินออมและวิเคราะห์ด้วย AI ภายในเครื่อง</p>
+                <p class="text-xs text-gray-400">ระบบบริหารจัดการเงินออม ภารกิจวิเคราะห์ และเกมการออมด้วย AI</p>
             </div>
-            <div class="flex items-center gap-2">
+            <div class="flex items-center gap-3">
+                <div class="hidden sm:flex items-center gap-2 px-3 py-1.5 rounded-xl glass-panel text-xs border border-amber-500/30">
+                    <i class="fa-solid fa-fire text-amber-500"></i>
+                    <span class="text-gray-300">Streak:</span>
+                    <span id="header-streak-count" class="font-bold text-neon-gold font-mono">0 วัน</span>
+                </div>
                 <button onclick="triggerAiScan()" class="btn-neon-cyan text-xs px-3 py-2 rounded-xl flex items-center gap-2 font-medium">
                     <i class="fa-solid fa-rotate"></i>
                     <span class="hidden sm:inline">ประมวลผล AI</span>
@@ -276,14 +296,30 @@
                 </div>
             </div>
 
-            <!-- AI Insight Mini Widget -->
-            <div class="glass-panel p-4 rounded-2xl border-l-4 border-l-neon-cyan flex items-start gap-3">
-                <div class="p-2 rounded-xl bg-cyan-500/10 text-neon-cyan mt-1">
-                    <i class="fa-solid fa-robot text-lg"></i>
+            <!-- AI Smart Budget Alert & Quick Summary -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <div class="md:col-span-2 glass-panel p-4 rounded-2xl border-l-4 border-l-neon-cyan flex items-start gap-3">
+                    <div class="p-2 rounded-xl bg-cyan-500/10 text-neon-cyan mt-1">
+                        <i class="fa-solid fa-robot text-lg"></i>
+                    </div>
+                    <div class="flex-1">
+                        <h4 class="text-xs font-bold text-neon-cyan uppercase tracking-wider mb-1">AI Smart Financial Alert & Budget Plan</h4>
+                        <p id="dash-ai-quick-summary" class="text-xs text-gray-300 leading-relaxed">กำลังรวบรวมพฤติกรรมการใช้เงิน... บันทึกรายการเพิ่มเพื่อให้ AI ประมวลผลได้อย่างแม่นยำ</p>
+                    </div>
                 </div>
-                <div class="flex-1">
-                    <h4 class="text-xs font-bold text-neon-cyan uppercase tracking-wider mb-1">AI Smart Financial Alert</h4>
-                    <p id="dash-ai-quick-summary" class="text-xs text-gray-300 leading-relaxed">กำลังรวบรวมพฤติกรรมการใช้เงิน... บันทึกรายการเพิ่มเพื่อให้ AI ประมวลผลได้อย่างแม่นยำ</p>
+
+                <!-- Monthly Missions Widget -->
+                <div class="glass-panel p-4 rounded-2xl border-l-4 border-l-neon-gold flex flex-col justify-between">
+                    <div class="flex justify-between items-center mb-1">
+                        <span class="text-xs font-bold text-neon-gold uppercase flex items-center gap-1.5"><i class="fa-solid fa-trophy"></i> ภารกิจประจำเดือน</span>
+                        <button onclick="switchTab('missions')" class="text-[10px] text-neon-cyan hover:underline">ดูทั้งหมด</button>
+                    </div>
+                    <div id="dash-mission-widget-content" class="text-xs text-gray-300 py-1">
+                        กำลังโหลดความคืบหน้าภารกิจ...
+                    </div>
+                    <div class="w-full bg-navy-900 rounded-full h-1.5 mt-2 border border-white/5 overflow-hidden">
+                        <div id="dash-mission-progress-bar" class="bg-neon-gold h-1.5 rounded-full" style="width: 0%"></div>
+                    </div>
                 </div>
             </div>
 
@@ -317,74 +353,55 @@
             </div>
         </section>
 
-        <!-- SECTION 2: INCOME / EXPENSE / SAVING FORM & LIST -->
+        <!-- SECTION 2: RECORDS -->
         <section id="tab-records" class="tab-content hidden space-y-6">
             <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
-                <!-- Transaction Form -->
+                <!-- Form -->
                 <div class="glass-panel p-5 rounded-2xl lg:col-span-1 border border-white/10">
                     <h3 class="text-base font-bold text-white mb-4 flex items-center gap-2 border-b border-white/10 pb-3">
                         <i class="fa-solid fa-pen-to-square text-neon-cyan"></i> บันทึกรายการใหม่
                     </h3>
                     <form id="transaction-form" onsubmit="handleFormSubmit(event)" class="space-y-4">
                         <input type="hidden" id="tx-id" value="">
-                        
                         <div>
                             <label class="block text-xs text-gray-300 mb-1">วันที่รายการ</label>
                             <input type="date" id="tx-date" required class="w-full px-3 py-2 rounded-xl glass-input text-xs">
                         </div>
-
                         <div>
                             <label class="block text-xs text-gray-300 mb-1">ประเภทรายการ</label>
                             <div class="grid grid-cols-3 gap-2">
-                                <button type="button" onclick="selectType('income')" id="btn-type-income" class="type-select-btn py-2 text-xs font-semibold rounded-xl border border-white/10 text-gray-400 hover:text-white transition-all">
-                                    รายรับ
-                                </button>
-                                <button type="button" onclick="selectType('expense')" id="btn-type-expense" class="type-select-btn py-2 text-xs font-semibold rounded-xl border border-white/10 text-gray-400 hover:text-white transition-all">
-                                    รายจ่าย
-                                </button>
-                                <button type="button" onclick="selectType('saving')" id="btn-type-saving" class="type-select-btn py-2 text-xs font-semibold rounded-xl border border-white/10 text-gray-400 hover:text-white transition-all">
-                                    เงินออม
-                                </button>
+                                <button type="button" onclick="selectType('income')" id="btn-type-income" class="type-select-btn py-2 text-xs font-semibold rounded-xl border border-white/10 text-gray-400 hover:text-white transition-all">รายรับ</button>
+                                <button type="button" onclick="selectType('expense')" id="btn-type-expense" class="type-select-btn py-2 text-xs font-semibold rounded-xl border border-white/10 text-gray-400 hover:text-white transition-all">รายจ่าย</button>
+                                <button type="button" onclick="selectType('saving')" id="btn-type-saving" class="type-select-btn py-2 text-xs font-semibold rounded-xl border border-white/10 text-gray-400 hover:text-white transition-all">เงินออม</button>
                             </div>
                             <input type="hidden" id="tx-type" value="income" required>
                         </div>
-
                         <div>
                             <label class="block text-xs text-gray-300 mb-1">หมวดหมู่</label>
-                            <select id="tx-category" required class="w-full px-3 py-2 rounded-xl glass-input text-xs">
-                                <!-- Populated dynamically -->
-                            </select>
+                            <select id="tx-category" required class="w-full px-3 py-2 rounded-xl glass-input text-xs"></select>
                         </div>
-
                         <div>
                             <label class="block text-xs text-gray-300 mb-1">จำนวนเงิน (บาท)</label>
                             <input type="number" step="0.01" id="tx-amount" min="0.01" placeholder="0.00" required class="w-full px-3 py-2 rounded-xl glass-input font-mono text-sm">
                         </div>
-
                         <div>
                             <label class="block text-xs text-gray-300 mb-1">รายละเอียด / หมายเหตุ</label>
                             <input type="text" id="tx-note" placeholder="เช่น เงินเดือน, ค่าอาหาร, ออมเข้าเป้าหมาย" class="w-full px-3 py-2 rounded-xl glass-input text-xs">
                         </div>
-
                         <div class="flex gap-2 pt-2">
-                            <button type="submit" id="btn-save-tx" class="flex-1 py-2.5 rounded-xl btn-neon-cyan text-xs font-bold tracking-wider uppercase">
-                                บันทึกข้อมูล
-                            </button>
-                            <button type="button" onclick="resetTxForm()" id="btn-cancel-edit" class="hidden px-4 py-2.5 rounded-xl bg-gray-700/50 text-gray-300 text-xs hover:bg-gray-600 transition-all">
-                                ยกเลิก
-                            </button>
+                            <button type="submit" id="btn-save-tx" class="flex-1 py-2.5 rounded-xl btn-neon-cyan text-xs font-bold uppercase">บันทึกข้อมูล</button>
+                            <button type="button" onclick="resetTxForm()" id="btn-cancel-edit" class="hidden px-4 py-2.5 rounded-xl bg-gray-700/50 text-gray-300 text-xs">ยกเลิก</button>
                         </div>
                     </form>
                 </div>
 
-                <!-- Transaction List & Filter -->
+                <!-- Table -->
                 <div class="glass-panel p-5 rounded-2xl lg:col-span-2 border border-white/10 flex flex-col justify-between">
                     <div>
                         <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-4 pb-3 border-b border-white/10">
                             <h3 class="text-base font-bold text-white flex items-center gap-2">
                                 <i class="fa-solid fa-list-ul text-neon-green"></i> ประวัติรายการทั้งหมด
                             </h3>
-                            <!-- Filters -->
                             <div class="flex items-center gap-2 flex-wrap">
                                 <input type="text" id="filter-search" oninput="renderRecordsList()" placeholder="ค้นหา..." class="px-3 py-1.5 rounded-xl glass-input text-xs w-28 sm:w-36">
                                 <select id="filter-type" onchange="renderRecordsList()" class="px-2 py-1.5 rounded-xl glass-input text-xs">
@@ -396,7 +413,6 @@
                             </div>
                         </div>
 
-                        <!-- Records Scrollable Area -->
                         <div class="overflow-x-auto max-h-[450px] overflow-y-auto pr-1">
                             <table class="w-full text-left text-xs text-gray-300">
                                 <thead class="text-[11px] text-gray-400 uppercase bg-navy-900/60 sticky top-0 backdrop-blur-md">
@@ -408,27 +424,20 @@
                                         <th class="p-2.5 text-center rounded-r-lg">จัดการ</th>
                                     </tr>
                                 </thead>
-                                <tbody id="records-table-body" class="divide-y divide-white/5">
-                                    <!-- Rendered dynamically -->
-                                </tbody>
+                                <tbody id="records-table-body" class="divide-y divide-white/5"></tbody>
                             </table>
-                            <div id="no-records-msg" class="hidden text-center py-8 text-gray-500 text-xs">
-                                ไม่พบรายการทางการเงินตรงตามเงื่อนไข
-                            </div>
+                            <div id="no-records-msg" class="hidden text-center py-8 text-gray-500 text-xs">ไม่พบรายการทางการเงินตรงตามเงื่อนไข</div>
                         </div>
                     </div>
-
                     <div class="mt-4 pt-3 border-t border-white/10 flex justify-between items-center text-xs text-gray-400 font-mono">
                         <span>แสดงผลทั้งหมด: <span id="record-count-label" class="text-white">0</span> รายการ</span>
-                        <button onclick="exportDataJSON()" class="hover:text-neon-cyan transition-all text-[11px]">
-                            <i class="fa-solid fa-download"></i> ส่งออกข้อมูลเป็น JSON
-                        </button>
+                        <button onclick="exportDataJSON()" class="hover:text-neon-cyan text-[11px]"><i class="fa-solid fa-download"></i> ส่งออก JSON</button>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- SECTION 3: AI ENGINE ANALYTICS -->
+        <!-- SECTION 3: AI ANALYTICS -->
         <section id="tab-ai-analytics" class="tab-content hidden space-y-6">
             <div class="glass-panel p-6 rounded-2xl relative overflow-hidden ai-scanner border border-cyan-500/30">
                 <div class="flex flex-col md:flex-row justify-between md:items-center gap-4 border-b border-white/10 pb-4 mb-6">
@@ -441,49 +450,30 @@
                             <p class="text-xs text-neon-cyan">ระบบวิเคราะห์ข้อมูลการเงินแบบติดตั้งภายในเครื่อง (Zero-API Privacy Guaranteed)</p>
                         </div>
                     </div>
-                    <button onclick="runFullAIAnalysis()" class="btn-neon-cyan text-xs px-4 py-2.5 rounded-xl font-bold flex items-center justify-center gap-2">
+                    <button onclick="runFullAIAnalysis(true)" class="btn-neon-cyan text-xs px-4 py-2.5 rounded-xl font-bold flex items-center justify-center gap-2">
                         <i class="fa-solid fa-wand-magic-sparkles"></i> เริ่มวิเคราะห์ข้อมูลทันที
                     </button>
                 </div>
 
-                <!-- AI Analysis Grid -->
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                    <!-- Behavioral Analysis -->
                     <div class="glass-panel p-4 rounded-xl border border-white/5 space-y-3">
-                        <h4 class="text-xs font-bold text-neon-cyan uppercase flex items-center gap-2">
-                            <i class="fa-solid fa-magnifying-glass-chart"></i> วิเคราะห์พฤติกรรมการใช้เงิน
-                        </h4>
-                        <div id="ai-behavior-analysis" class="text-xs text-gray-300 leading-relaxed space-y-2">
-                            กดปุ่ม "เริ่มวิเคราะห์ข้อมูล" เพื่อเริ่มการคำนวณแบบจำลอง
-                        </div>
+                        <h4 class="text-xs font-bold text-neon-cyan uppercase flex items-center gap-2"><i class="fa-solid fa-magnifying-glass-chart"></i> วิเคราะห์พฤติกรรมการใช้เงิน</h4>
+                        <div id="ai-behavior-analysis" class="text-xs text-gray-300 leading-relaxed space-y-2">กดปุ่ม "เริ่มวิเคราะห์ข้อมูล" เพื่อเริ่มการคำนวณแบบจำลอง</div>
                     </div>
 
-                    <!-- Anomaly & Savings Optimization -->
                     <div class="glass-panel p-4 rounded-xl border border-white/5 space-y-3">
-                        <h4 class="text-xs font-bold text-neon-purple uppercase flex items-center gap-2">
-                            <i class="fa-solid fa-triangle-exclamation"></i> ตรวจจับสิ่งผิดปกติ & แนะนำ
-                        </h4>
-                        <div id="ai-anomaly-recommendation" class="text-xs text-gray-300 leading-relaxed space-y-2">
-                            ระบบจะตรวจสอบรายการจ่ายที่สูงผิดปกติและแนะนำวิธีประหยัด
-                        </div>
+                        <h4 class="text-xs font-bold text-neon-purple uppercase flex items-center gap-2"><i class="fa-solid fa-triangle-exclamation"></i> ตรวจจับสิ่งผิดปกติ & แนะนำ</h4>
+                        <div id="ai-anomaly-recommendation" class="text-xs text-gray-300 leading-relaxed space-y-2">ระบบจะตรวจสอบรายการจ่ายที่สูงผิดปกติและแนะนำวิธีประหยัด</div>
                     </div>
 
-                    <!-- Future Savings Forecast -->
                     <div class="glass-panel p-4 rounded-xl border border-white/5 space-y-3">
-                        <h4 class="text-xs font-bold text-neon-green uppercase flex items-center gap-2">
-                            <i class="fa-solid fa-crystal-ball"></i> คาดการณ์เงินออมในอนาคต (3 เดือน)
-                        </h4>
-                        <div id="ai-future-forecast" class="text-xs text-gray-300 leading-relaxed space-y-2">
-                            ประมาณการเติบโตของเงินออมอ้างอิงจากข้อมูลในอดีต
-                        </div>
+                        <h4 class="text-xs font-bold text-neon-green uppercase flex items-center gap-2"><i class="fa-solid fa-crystal-ball"></i> คาดการณ์เงินออมในอนาคต (3 เดือน)</h4>
+                        <div id="ai-future-forecast" class="text-xs text-gray-300 leading-relaxed space-y-2">ประมาณการเติบโตของเงินออมอ้างอิงจากข้อมูลในอดีต</div>
                     </div>
                 </div>
 
-                <!-- Generated Periodic Reports -->
                 <div class="mt-6 pt-6 border-t border-white/10 space-y-4">
-                    <h4 class="text-sm font-bold text-white flex items-center gap-2">
-                        <i class="fa-solid fa-file-invoice text-neon-yellow"></i> รายงานวิเคราะห์อัตโนมัติประจำงวด
-                    </h4>
+                    <h4 class="text-sm font-bold text-white flex items-center gap-2"><i class="fa-solid fa-file-invoice text-neon-yellow"></i> รายงานวิเคราะห์อัตโนมัติประจำงวด</h4>
                     <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
                         <div class="p-4 rounded-xl bg-navy-900/80 border border-white/5">
                             <span class="text-[10px] text-gray-400 uppercase font-mono">Daily Status</span>
@@ -516,20 +506,115 @@
                     <i class="fa-solid fa-plus"></i> สร้างเป้าหมายใหม่
                 </button>
             </div>
+            <div id="goals-list-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"></div>
+        </section>
 
-            <!-- Goals Container Grid -->
-            <div id="goals-list-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                <!-- Rendered dynamically -->
+        <!-- SECTION 5: NEW V2.2 MONTHLY SAVING MISSIONS & GAMIFICATION -->
+        <section id="tab-missions" class="tab-content hidden space-y-6">
+            <!-- Gamification Status Banner -->
+            <div class="glass-panel p-5 rounded-2xl border border-amber-500/30 flex flex-col md:flex-row justify-between items-center gap-4 bg-gradient-to-r from-amber-500/10 via-purple-500/10 to-cyan-500/10">
+                <div class="flex items-center gap-4 w-full md:w-auto">
+                    <div class="w-14 h-14 rounded-2xl bg-gradient-to-tr from-amber-400 to-amber-600 flex items-center justify-center shadow-lg shadow-amber-500/20 text-black font-bold text-2xl">
+                        <i class="fa-solid fa-award"></i>
+                    </div>
+                    <div>
+                        <div class="flex items-center gap-2">
+                            <h3 id="user-rank-level" class="text-lg font-bold text-neon-gold">ระดับผู้ใช้: Beginner Saver</h3>
+                            <span id="user-ranking-badge" class="px-2 py-0.5 rounded text-[10px] bg-amber-500/20 text-amber-300 font-mono">Rank #--</span>
+                        </div>
+                        <p class="text-xs text-gray-300">สะสม XP จากการออมเงินจริงและทำภารกิจเพื่อเลื่อนระดับ</p>
+                    </div>
+                </div>
+                
+                <div class="flex items-center gap-6 w-full md:w-auto justify-around border-t md:border-t-0 border-white/10 pt-3 md:pt-0">
+                    <div class="text-center">
+                        <span class="text-[10px] text-gray-400 block uppercase">คะแนนสะสม</span>
+                        <span id="user-total-xp" class="text-lg font-mono font-bold text-neon-cyan">0 XP</span>
+                    </div>
+                    <div class="text-center">
+                        <span class="text-[10px] text-gray-400 block uppercase">Streak ออมต่อเนื่อง</span>
+                        <span id="user-streak-days" class="text-lg font-mono font-bold text-neon-gold">0 วัน</span>
+                    </div>
+                    <div class="text-center">
+                        <span class="text-[10px] text-gray-400 block uppercase">เหรียญรางวัล</span>
+                        <span id="user-badges-count" class="text-lg font-mono font-bold text-neon-purple">0/6</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- AI Mission Controls & Custom Mission Creator -->
+            <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+                <div>
+                    <h3 class="text-lg font-bold text-white flex items-center gap-2">
+                        <i class="fa-solid fa-trophy text-neon-gold"></i> ภารกิจการออมประจำเดือน
+                    </h3>
+                    <p class="text-xs text-gray-400">ภารกิจจำลองการออมที่ AI คำนวณให้เหมาะกับรายรับ-รายจ่ายจริงของคุณ</p>
+                </div>
+                <div class="flex items-center gap-2 flex-wrap">
+                    <button onclick="generateAiMissionsInteractive()" class="btn-neon-cyan text-xs px-3.5 py-2 rounded-xl font-bold flex items-center gap-1.5">
+                        <i class="fa-solid fa-robot"></i> ให้ AI แนะนำภารกิจ
+                    </button>
+                    <button onclick="openCustomMissionModal()" class="btn-neon-purple text-xs px-3.5 py-2 rounded-xl font-bold flex items-center gap-1.5">
+                        <i class="fa-solid fa-plus"></i> สร้างภารกิจเอง
+                    </button>
+                </div>
+            </div>
+
+            <!-- Missions Grid List -->
+            <div id="missions-list-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"></div>
+
+            <!-- Achievement Badges Showcase -->
+            <div class="glass-panel p-5 rounded-2xl border border-white/10 space-y-4">
+                <h4 class="text-sm font-bold text-white flex items-center gap-2">
+                    <i class="fa-solid fa-shield-cat text-neon-purple"></i> เหรียญรางวัลความสำเร็จ (Achievement Badges)
+                </h4>
+                <div id="achievement-badges-grid" class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3"></div>
+            </div>
+
+            <!-- Mission Calendar & Monthly Automation Section -->
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                <!-- Calendar View -->
+                <div class="glass-panel p-5 rounded-2xl lg:col-span-2 border border-white/10 space-y-4">
+                    <div class="flex justify-between items-center">
+                        <h4 class="text-sm font-bold text-white flex items-center gap-2">
+                            <i class="fa-solid fa-calendar-days text-neon-cyan"></i> ปฏิทินติดตามการออม (Mission Calendar)
+                        </h4>
+                        <div class="flex items-center gap-2">
+                            <button onclick="changeCalendarMonth(-1)" class="px-2 py-1 glass-panel text-xs text-gray-300 hover:text-white rounded">&lt;</button>
+                            <span id="calendar-month-year" class="text-xs font-bold text-neon-cyan font-mono">-- 2026</span>
+                            <button onclick="changeCalendarMonth(1)" class="px-2 py-1 glass-panel text-xs text-gray-300 hover:text-white rounded">&gt;</button>
+                        </div>
+                    </div>
+                    <div id="mission-calendar-grid" class="grid grid-cols-7 gap-1 text-center text-xs"></div>
+                </div>
+
+                <!-- Monthly Automation Recap -->
+                <div class="glass-panel p-5 rounded-2xl border border-white/10 flex flex-col justify-between space-y-4">
+                    <div>
+                        <h4 class="text-sm font-bold text-white mb-2 flex items-center gap-2">
+                            <i class="fa-solid fa-clock-rotate-left text-neon-green"></i> สรุปผลประจำเดือน (Monthly Recap)
+                        </h4>
+                        <p class="text-xs text-gray-400 mb-4">ระบบจะทำการปิดยอดภารกิจและสรุปอัตโนมัติทุกต้นเดือนใหม่</p>
+                        
+                        <div id="monthly-recap-box" class="space-y-3 text-xs text-gray-300 bg-navy-900/60 p-3.5 rounded-xl border border-white/5">
+                            กำลังโหลดสรุปผลการออมเดือนนี้...
+                        </div>
+                    </div>
+
+                    <button onclick="triggerMonthlyAutomation()" class="w-full py-2.5 rounded-xl glass-panel border border-neon-cyan/40 hover:bg-neon-cyan/10 text-neon-cyan text-xs font-bold transition-all">
+                        <i class="fa-solid fa-arrows-rotate"></i> รันระบบประมวลผลต้นเดือนใหม่
+                    </button>
+                </div>
             </div>
         </section>
 
-        <!-- SECTION 5: SETTINGS & DATABASE MANAGEMENT -->
+        <!-- SECTION 6: SETTINGS -->
         <section id="tab-settings" class="tab-content hidden space-y-6">
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <!-- General App Settings -->
+                <!-- App Settings -->
                 <div class="glass-panel p-5 rounded-2xl border border-white/10 space-y-4">
                     <h3 class="text-base font-bold text-white pb-3 border-b border-white/10 flex items-center gap-2">
-                        <i class="fa-solid fa-gear text-neon-cyan"></i> ตั้งค่าทั่วไป & ระบบ
+                        <i class="fa-solid fa-gear text-neon-cyan"></i> ตั้งค่าทั่วไป & ระบบ v2.2
                     </h3>
                     
                     <div>
@@ -557,41 +642,39 @@
                             </select>
                             <button onclick="addNewCategory()" class="px-3 py-1.5 rounded-xl btn-neon-cyan text-xs">เพิ่ม</button>
                         </div>
-                        <div id="category-chips" class="flex flex-wrap gap-1.5 pt-2 max-h-32 overflow-y-auto">
-                            <!-- Category chips rendered dynamically -->
-                        </div>
+                        <div id="category-chips" class="flex flex-wrap gap-1.5 pt-2 max-h-32 overflow-y-auto"></div>
                     </div>
                 </div>
 
-                <!-- Database Migration, Backup & Security -->
+                <!-- Database Security, Backup & Migration Status -->
                 <div class="glass-panel p-5 rounded-2xl border border-white/10 space-y-4">
                     <h3 class="text-base font-bold text-white pb-3 border-b border-white/10 flex items-center gap-2">
-                        <i class="fa-solid fa-database text-neon-purple"></i> ความปลอดภัย & การจัดการฐานข้อมูล
+                        <i class="fa-solid fa-database text-neon-purple"></i> ฐานข้อมูล v3.0 Migration & Backup
                     </h3>
 
                     <div class="p-3 rounded-xl bg-navy-900/90 border border-white/5 space-y-1.5 text-xs">
                         <div class="flex justify-between text-gray-400">
-                            <span>ฐานข้อมูล:</span>
-                            <span class="text-white font-mono">IndexedDB (v2.0)</span>
+                            <span>เวอร์ชันแอปพลิเคชัน:</span>
+                            <span class="text-white font-mono">v2.2 (2026 Edition)</span>
+                        </div>
+                        <div class="flex justify-between text-gray-400">
+                            <span>เวอร์ชันฐานข้อมูล IndexedDB:</span>
+                            <span class="text-neon-gold font-mono">Version 3 (Missions Support)</span>
                         </div>
                         <div class="flex justify-between text-gray-400">
                             <span>การจัดเก็บข้อมูล:</span>
                             <span class="text-neon-green font-mono">อุปกรณ์เครื่องนี้เท่านั้น</span>
                         </div>
-                        <div class="flex justify-between text-gray-400">
-                            <span>การใช้งาน Offline:</span>
-                            <span class="text-neon-cyan font-mono">รองรับ 100%</span>
-                        </div>
                     </div>
 
                     <div class="space-y-2 pt-2">
-                        <label class="block text-xs text-gray-300">สำรองข้อมูล & กู้คืน (Backup / Restore)</label>
+                        <label class="block text-xs text-gray-300">สำรองข้อมูล & กู้คืน (Backup / Restore JSON)</label>
                         <div class="grid grid-cols-2 gap-3">
                             <button onclick="exportDataJSON()" class="py-2 px-3 rounded-xl glass-panel border border-neon-cyan/40 hover:bg-neon-cyan/10 text-neon-cyan text-xs font-bold transition-all flex items-center justify-center gap-2">
-                                <i class="fa-solid fa-file-export"></i> ส่งออก JSON (Backup)
+                                <i class="fa-solid fa-file-export"></i> ส่งออก JSON
                             </button>
                             <label class="py-2 px-3 rounded-xl glass-panel border border-neon-purple/40 hover:bg-neon-purple/10 text-neon-purple text-xs font-bold transition-all flex items-center justify-center gap-2 cursor-pointer text-center">
-                                <i class="fa-solid fa-file-import"></i> นำเข้า JSON (Restore)
+                                <i class="fa-solid fa-file-import"></i> นำเข้า JSON
                                 <input type="file" id="import-json-file" accept=".json" onchange="importDataJSON(event)" class="hidden">
                             </label>
                         </div>
@@ -608,14 +691,11 @@
         </section>
     </main>
 
-    <!-- GOAL MODAL (Create/Deposit Goal) -->
+    <!-- GOAL MODAL -->
     <div id="goal-modal" class="fixed inset-0 bg-black/75 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
         <div class="glass-panel border border-white/10 rounded-2xl w-full max-w-md p-6 relative">
-            <button onclick="closeGoalModal()" class="absolute top-4 right-4 text-gray-400 hover:text-white">
-                <i class="fa-solid fa-xmark text-lg"></i>
-            </button>
-            <h3 id="goal-modal-title" class="text-base font-bold text-white mb-4">สร้างเป้าหมายการออมใหม่</h3>
-            
+            <button onclick="closeGoalModal()" class="absolute top-4 right-4 text-gray-400 hover:text-white"><i class="fa-solid fa-xmark text-lg"></i></button>
+            <h3 class="text-base font-bold text-white mb-4">สร้างเป้าหมายการออมใหม่</h3>
             <form id="goal-form" onsubmit="handleGoalFormSubmit(event)" class="space-y-4">
                 <input type="hidden" id="goal-id" value="">
                 <div>
@@ -634,12 +714,7 @@
                     <label class="block text-xs text-gray-300 mb-1">วันที่ต้องการสำเร็จเป้าหมาย</label>
                     <input type="date" id="goal-target-date" required class="w-full px-3 py-2 rounded-xl glass-input text-xs">
                 </div>
-
-                <div class="flex gap-2 pt-2">
-                    <button type="submit" class="w-full py-2.5 rounded-xl btn-neon-cyan text-xs font-bold uppercase">
-                        บันทึกเป้าหมาย
-                    </button>
-                </div>
+                <button type="submit" class="w-full py-2.5 rounded-xl btn-neon-cyan text-xs font-bold uppercase">บันทึกเป้าหมาย</button>
             </form>
         </div>
     </div>
@@ -647,21 +722,54 @@
     <!-- DEPOSIT TO GOAL MODAL -->
     <div id="deposit-goal-modal" class="fixed inset-0 bg-black/75 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
         <div class="glass-panel border border-white/10 rounded-2xl w-full max-w-sm p-6 relative">
-            <button onclick="closeDepositGoalModal()" class="absolute top-4 right-4 text-gray-400 hover:text-white">
-                <i class="fa-solid fa-xmark text-lg"></i>
-            </button>
+            <button onclick="closeDepositGoalModal()" class="absolute top-4 right-4 text-gray-400 hover:text-white"><i class="fa-solid fa-xmark text-lg"></i></button>
             <h3 class="text-base font-bold text-white mb-2">เพิ่มเงินออมเข้าเป้าหมาย</h3>
             <p id="deposit-goal-name-text" class="text-xs text-neon-cyan mb-4">ชื่อเป้าหมาย</p>
-            
             <form onsubmit="handleDepositGoalSubmit(event)" class="space-y-4">
                 <input type="hidden" id="deposit-goal-id" value="">
                 <div>
                     <label class="block text-xs text-gray-300 mb-1">จำนวนเงินออมเพิ่มเติม (บาท)</label>
                     <input type="number" step="0.01" id="deposit-amount" min="0.01" placeholder="0.00" required class="w-full px-3 py-2 rounded-xl glass-input text-sm font-mono">
                 </div>
-                <button type="submit" class="w-full py-2.5 rounded-xl btn-neon-cyan text-xs font-bold uppercase">
-                    บันทึกการออมเพิ่ม
-                </button>
+                <button type="submit" class="w-full py-2.5 rounded-xl btn-neon-cyan text-xs font-bold uppercase">บันทึกการออมเพิ่ม</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- NEW V2.2: CUSTOM MISSION MODAL -->
+    <div id="custom-mission-modal" class="fixed inset-0 bg-black/75 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+        <div class="glass-panel border border-white/10 rounded-2xl w-full max-w-md p-6 relative">
+            <button onclick="closeCustomMissionModal()" class="absolute top-4 right-4 text-gray-400 hover:text-white"><i class="fa-solid fa-xmark text-lg"></i></button>
+            <h3 class="text-base font-bold text-white mb-4">สร้างภารกิจประจำเดือนแบบกำหนดเอง</h3>
+            <form id="custom-mission-form" onsubmit="handleCustomMissionSubmit(event)" class="space-y-4">
+                <div>
+                    <label class="block text-xs text-gray-300 mb-1">ชื่อภารกิจ</label>
+                    <input type="text" id="mission-title" placeholder="เช่น ออมเงินค่ากาแฟประจำวัน" required class="w-full px-3 py-2 rounded-xl glass-input text-xs">
+                </div>
+                <div>
+                    <label class="block text-xs text-gray-300 mb-1">ประเภทภารกิจ</label>
+                    <select id="mission-type" class="w-full px-3 py-2 rounded-xl glass-input text-xs">
+                        <option value="daily">ออมเงินทุกวัน</option>
+                        <option value="7days">ออมเงินต่อเนื่อง 7 วัน</option>
+                        <option value="15days">ออมเงินต่อเนื่อง 15 วัน</option>
+                        <option value="30days">ออมเงินต่อเนื่อง 30 วัน</option>
+                        <option value="reduce_expense">ลดรายจ่ายในหมวดฟุ่มเฟือย</option>
+                        <option value="special">ออมเงินก้อนพิเศษ</option>
+                    </select>
+                </div>
+                <div>
+                    <label class="block text-xs text-gray-300 mb-1">ยอดเงินออมเป้าหมาย (บาท)</label>
+                    <input type="number" step="0.01" id="mission-target-amount" min="1" placeholder="0.00" required class="w-full px-3 py-2 rounded-xl glass-input text-xs font-mono">
+                </div>
+                <div>
+                    <label class="block text-xs text-gray-300 mb-1">ระดับความยากภารกิจ</label>
+                    <select id="mission-difficulty" class="w-full px-3 py-2 rounded-xl glass-input text-xs">
+                        <option value="Easy">ง่าย (รับ 50 XP)</option>
+                        <option value="Medium" selected>ปานกลาง (รับ 100 XP)</option>
+                        <option value="Hard">ท้าทาย (รับ 200 XP)</option>
+                    </select>
+                </div>
+                <button type="submit" class="w-full py-2.5 rounded-xl btn-neon-purple text-xs font-bold uppercase">สร้างภารกิจใหม่</button>
             </form>
         </div>
     </div>
@@ -670,46 +778,58 @@
     <nav class="md:hidden fixed bottom-0 left-0 right-0 glass-nav z-40 px-2 py-2">
         <div class="flex justify-around items-center">
             <button onclick="switchTab('dashboard')" id="mobile-nav-dashboard" class="mobile-nav-btn flex flex-col items-center gap-1 p-2 rounded-xl text-neon-cyan transition-all">
-                <i class="fa-solid fa-chart-pie text-lg"></i>
-                <span class="text-[10px] font-medium">หน้าหลัก</span>
+                <i class="fa-solid fa-chart-pie text-base"></i>
+                <span class="text-[9px] font-medium">หน้าหลัก</span>
             </button>
-            <button onclick="switchTab('records')" id="mobile-nav-records" class="mobile-nav-btn flex flex-col items-center gap-1 p-2 rounded-xl text-gray-400 hover:text-white transition-all">
-                <i class="fa-solid fa-list-check text-lg"></i>
-                <span class="text-[10px] font-medium">บันทึก</span>
+            <button onclick="switchTab('records')" id="mobile-nav-records" class="mobile-nav-btn flex flex-col items-center gap-1 p-2 rounded-xl text-gray-400 transition-all">
+                <i class="fa-solid fa-list-check text-base"></i>
+                <span class="text-[9px] font-medium">บันทึก</span>
             </button>
-            <button onclick="switchTab('ai-analytics')" id="mobile-nav-ai-analytics" class="mobile-nav-btn flex flex-col items-center gap-1 p-2 rounded-xl text-gray-400 hover:text-white transition-all">
-                <div class="relative">
-                    <i class="fa-solid fa-brain text-lg text-neon-purple"></i>
-                    <span class="absolute -top-1 -right-1 w-2 h-2 bg-neon-cyan rounded-full animate-ping"></span>
-                </div>
-                <span class="text-[10px] font-medium">AI</span>
+            <button onclick="switchTab('ai-analytics')" id="mobile-nav-ai-analytics" class="mobile-nav-btn flex flex-col items-center gap-1 p-2 rounded-xl text-gray-400 transition-all">
+                <i class="fa-solid fa-brain text-base text-neon-purple"></i>
+                <span class="text-[9px] font-medium">AI</span>
             </button>
-            <button onclick="switchTab('goals')" id="mobile-nav-goals" class="mobile-nav-btn flex flex-col items-center gap-1 p-2 rounded-xl text-gray-400 hover:text-white transition-all">
-                <i class="fa-solid fa-bullseye text-lg"></i>
-                <span class="text-[10px] font-medium">เป้าหมาย</span>
+            <button onclick="switchTab('goals')" id="mobile-nav-goals" class="mobile-nav-btn flex flex-col items-center gap-1 p-2 rounded-xl text-gray-400 transition-all">
+                <i class="fa-solid fa-bullseye text-base"></i>
+                <span class="text-[9px] font-medium">เป้าหมาย</span>
             </button>
-            <button onclick="switchTab('settings')" id="mobile-nav-settings" class="mobile-nav-btn flex flex-col items-center gap-1 p-2 rounded-xl text-gray-400 hover:text-white transition-all">
-                <i class="fa-solid fa-sliders text-lg"></i>
-                <span class="text-[10px] font-medium">ตั้งค่า</span>
+            <!-- NEW V2.2 MOBILE ITEM -->
+            <button onclick="switchTab('missions')" id="mobile-nav-missions" class="mobile-nav-btn flex flex-col items-center gap-1 p-2 rounded-xl text-gray-400 transition-all relative">
+                <i class="fa-solid fa-trophy text-base text-neon-gold"></i>
+                <span class="text-[9px] font-medium">ภารกิจ</span>
+            </button>
+            <button onclick="switchTab('settings')" id="mobile-nav-settings" class="mobile-nav-btn flex flex-col items-center gap-1 p-2 rounded-xl text-gray-400 transition-all">
+                <i class="fa-solid fa-sliders text-base"></i>
+                <span class="text-[9px] font-medium">ตั้งค่า</span>
             </button>
         </div>
     </nav>
 
-    <!-- MAIN JAVASCRIPT LOGIC -->
+    <!-- MAIN SYSTEM CORE & LOGIC -->
     <script>
         /**
-         * AI SMART SAVING 2026 v2.0 SYSTEM CORE
-         * Pure JavaScript + IndexedDB Architectural Implementation
+         * AI SMART SAVING 2026 v2.2 CORE ARCHITECTURE
+         * Compatible with v2.0 database with Schema Migration to DB_VERSION 3
          */
 
-        // Global State & Database Declarations
         const DB_NAME = 'AISmartSavingDB_2026';
-        const DB_VERSION = 2; // Versioning for migrations
+        const DB_VERSION = 3; // Upgraded IndexedDB version for v2.2 missions
         let db = null;
+
+        let currentCalendarDate = new Date();
 
         let appData = {
             transactions: [],
             goals: [],
+            missions: [],
+            gamification: {
+                xp: 0,
+                streak: 0,
+                lastSavingDate: null,
+                completedMissionIds: [],
+                unlockedBadges: []
+            },
+            monthlyRecaps: [],
             categories: [
                 { id: 'c1', name: 'เงินเดือน / รายได้ประจำ', type: 'income' },
                 { id: 'c2', name: 'ธุรกิจส่วนตัว / ค้าขาย', type: 'income' },
@@ -720,42 +840,39 @@
                 { id: 'c7', name: 'เงินออมฉุกเฉิน', type: 'saving' },
                 { id: 'c8', name: 'เงินออมลงทุน', type: 'saving' }
             ],
-            settings: {
-                currency: 'THB',
-                theme: 'AI NEON GLASS 2026'
-            }
+            settings: { currency: 'THB', theme: 'AI NEON GLASS 2026' }
         };
+
+        const AVAILABLE_BADGES = [
+            { id: 'first_saving', name: 'ก้าวแรกแห่งการออม', desc: 'บันทึกเงินออมครั้งแรกในระบบ', icon: 'fa-seedling', color: 'text-neon-green' },
+            { id: 'streak_7', name: 'วินัยเหล็ก 7 วัน', desc: 'ออมเงินต่อเนื่องครบ 7 วัน', icon: 'fa-fire', color: 'text-amber-500' },
+            { id: 'mission_master', name: 'นักล่าภารกิจ', desc: 'ทำภารกิจสำเร็จครบ 3 ภารกิจ', icon: 'fa-trophy', color: 'text-neon-gold' },
+            { id: 'goal_achieved', name: 'ผู้พิชิตเป้าหมาย', desc: 'ออมเงินสำเร็จตามเป้าหมาย 100%', icon: 'fa-bullseye', color: 'text-neon-cyan' },
+            { id: 'xp_500', name: 'เซียนการเงิน', desc: 'สะสมคะแนน XP ครบ 500 คะแนน', icon: 'fa-award', color: 'text-neon-purple' },
+            { id: 'smart_budgeter', name: 'นักวางแผนอัจฉริยะ', desc: 'ให้ AI วิเคราะห์การเงินและปรับพฤติกรรม', icon: 'fa-brain', color: 'text-cyan-400' }
+        ];
 
         let chartIncomeExpense = null;
         let chartSavingsTrend = null;
 
-        // Initialize App on Window Load
         window.onload = async function() {
-            // Set default date picker to today
             document.getElementById('tx-date').valueAsDate = new Date();
             
-            // Initialize IndexedDB
             await initIndexedDB();
-
-            // Populate categories UI
             renderCategoryOptions();
             renderCategoryChips();
 
-            // Initial render
             await reloadDataFromDB();
-
-            // Setup Charts
             initCharts();
-
-            // Initial UI Setup
             switchTab('dashboard');
-
-            // Register Service Worker for PWA Offline Capability
             registerServiceWorker();
+
+            // Run automated monthly check
+            checkMonthlyAutomationCycle();
         };
 
         /* -------------------------------------------------------------
-         * 1. INDEXEDDB ENGINE & MIGRATION SYSTEM
+         * 1. INDEXEDDB ENGINE & MIGRATION (DB VERSION 3)
          * ------------------------------------------------------------- */
         function initIndexedDB() {
             return new Promise((resolve, reject) => {
@@ -765,38 +882,42 @@
                     const db = event.target.result;
                     const oldVersion = event.oldVersion;
 
-                    // Version Migration Handler
+                    // Preserve existing v1 & v2 stores
                     if (oldVersion < 1) {
-                        // Initial Stores
                         if (!db.objectStoreNames.contains('transactions')) {
                             const txStore = db.createObjectStore('transactions', { keyPath: 'id' });
                             txStore.createIndex('date', 'date', { unique: false });
                             txStore.createIndex('type', 'type', { unique: false });
                         }
-                        if (!db.objectStoreNames.contains('goals')) {
-                            db.createObjectStore('goals', { keyPath: 'id' });
-                        }
-                        if (!db.objectStoreNames.contains('categories')) {
-                            db.createObjectStore('categories', { keyPath: 'id' });
-                        }
+                        if (!db.objectStoreNames.contains('goals')) db.createObjectStore('goals', { keyPath: 'id' });
+                        if (!db.objectStoreNames.contains('categories')) db.createObjectStore('categories', { keyPath: 'id' });
                     }
-
                     if (oldVersion < 2) {
-                        // v2 Migration Enhancements
-                        if (!db.objectStoreNames.contains('settings')) {
-                            db.createObjectStore('settings', { keyPath: 'key' });
+                        if (!db.objectStoreNames.contains('settings')) db.createObjectStore('settings', { keyPath: 'key' });
+                    }
+                    
+                    // NEW v3 migration stores for Monthly Missions & Gamification
+                    if (oldVersion < 3) {
+                        if (!db.objectStoreNames.contains('missions')) {
+                            const mStore = db.createObjectStore('missions', { keyPath: 'id' });
+                            mStore.createIndex('monthKey', 'monthKey', { unique: false });
+                        }
+                        if (!db.objectStoreNames.contains('gamification')) {
+                            db.createObjectStore('gamification', { keyPath: 'id' });
+                        }
+                        if (!db.objectStoreNames.contains('monthlyRecaps')) {
+                            db.createObjectStore('monthlyRecaps', { keyPath: 'monthKey' });
                         }
                     }
                 };
 
                 request.onsuccess = function(event) {
                     db = event.target.result;
-                    document.getElementById('db-status-text').innerText = 'IndexedDB Connected';
+                    document.getElementById('db-status-text').innerText = 'v3.0 Ready';
                     resolve(db);
                 };
 
                 request.onerror = function(event) {
-                    console.error('IndexedDB error:', event.target.error);
                     showToast('เกิดข้อผิดพลาดในการเชื่อมต่อฐานข้อมูล', 'error');
                     reject(event.target.error);
                 };
@@ -805,29 +926,38 @@
 
         async function reloadDataFromDB() {
             if (!db) return;
-            
             try {
                 appData.transactions = await getAllFromStore('transactions');
                 appData.goals = await getAllFromStore('goals');
-                
+                appData.missions = await getAllFromStore('missions');
+                appData.monthlyRecaps = await getAllFromStore('monthlyRecaps');
+
                 const storedCats = await getAllFromStore('categories');
-                if (storedCats && storedCats.length > 0) {
-                    appData.categories = storedCats;
+                if (storedCats && storedCats.length > 0) appData.categories = storedCats;
+
+                const gData = await getAllFromStore('gamification');
+                if (gData && gData.length > 0) {
+                    appData.gamification = gData[0];
                 } else {
-                    // Seed initial categories
-                    for (let cat of appData.categories) {
-                        await saveToStore('categories', cat);
-                    }
+                    appData.gamification = { id: 'user_game_state', xp: 0, streak: 0, lastSavingDate: null, completedMissionIds: [], unlockedBadges: [] };
+                    await saveToStore('gamification', appData.gamification);
                 }
 
-                // Refresh UI
+                // Check and update streaks
+                evaluateStreakAndGamification();
+
+                // UI updates
                 updateDashboardUI();
                 renderRecordsList();
                 renderGoalsUI();
+                renderMissionsUI();
+                renderAchievementBadges();
+                renderMissionCalendar();
+                renderMonthlyRecapUI();
                 renderCategoryOptions();
                 renderCategoryChips();
                 updateCharts();
-                runFullAIAnalysis(false); // Silent run
+                runFullAIAnalysis(false);
             } catch (err) {
                 console.error('Error reloading data:', err);
             }
@@ -864,17 +994,13 @@
         }
 
         /* -------------------------------------------------------------
-         * 2. UI NAVIGATION & TAB SYSTEM
+         * 2. UI NAVIGATION SYSTEM
          * ------------------------------------------------------------- */
         function switchTab(tabId) {
-            // Hide all tabs
             document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
-            
-            // Show selected tab
             const target = document.getElementById(`tab-${tabId}`);
             if (target) target.classList.remove('hidden');
 
-            // Update Desktop Nav styles
             document.querySelectorAll('.nav-item-btn').forEach(btn => {
                 btn.classList.remove('bg-white/10', 'text-neon-cyan', 'border-l-2', 'border-neon-cyan');
                 btn.classList.add('text-white/70');
@@ -885,7 +1011,6 @@
                 sideBtn.classList.remove('text-white/70');
             }
 
-            // Update Mobile Bottom Nav styles
             document.querySelectorAll('.mobile-nav-btn').forEach(btn => {
                 btn.classList.remove('text-neon-cyan');
                 btn.classList.add('text-gray-400');
@@ -896,19 +1021,489 @@
                 mobBtn.classList.remove('text-gray-400');
             }
 
-            // Update Title Header
             const titles = {
                 'dashboard': 'ภาพรวมทางการเงิน (Dashboard)',
                 'records': 'บันทึกและประวัติรายการการเงิน',
                 'ai-analytics': 'วิเคราะห์พฤติกรรมการเงินด้วย AI 2026',
                 'goals': 'การจัดการเป้าหมายการออม',
+                'missions': 'ภารกิจออมเงินประจำเดือน & ระบบเกม',
                 'settings': 'ตั้งค่าระบบและการจัดการข้อมูล'
             };
-            document.getElementById('page-title-display').innerText = titles[tabId] || 'AI Smart Saving';
+            document.getElementById('page-title-display').innerText = titles[tabId] || 'AI Smart Saving v2.2';
         }
 
         /* -------------------------------------------------------------
-         * 3. TRANSACTION FORM & RECORD MANAGEMENT
+         * 3. GAMIFICATION & XP & STREAK ENGINE
+         * ------------------------------------------------------------- */
+        function evaluateStreakAndGamification() {
+            const txs = appData.transactions.filter(t => t.type === 'saving');
+            if (txs.length === 0) return;
+
+            // Sort savings dates ascending
+            const dates = [...new Set(txs.map(t => t.date))].sort();
+            
+            // Unlock first saving badge
+            unlockBadge('first_saving');
+
+            // Calculate streak
+            let streak = 0;
+            const todayStr = new Date().toISOString().split('T')[0];
+            const yesterday = new Date();
+            yesterday.setDate(yesterday.getDate() - 1);
+            const yesterdayStr = yesterday.toISOString().split('T')[0];
+
+            let checkDate = new Date();
+            while (true) {
+                const dateStr = checkDate.toISOString().split('T')[0];
+                if (dates.includes(dateStr)) {
+                    streak++;
+                    checkDate.setDate(checkDate.getDate() - 1);
+                } else if (dateStr === todayStr) {
+                    // Allow today to not be saved yet if yesterday was saved
+                    checkDate.setDate(checkDate.getDate() - 1);
+                } else {
+                    break;
+                }
+            }
+
+            appData.gamification.streak = streak;
+            if (streak >= 7) unlockBadge('streak_7');
+
+            // Calculate Level
+            const xp = appData.gamification.xp || 0;
+            let level = 'Beginner Saver';
+            let rank = 'Rank #4';
+            if (xp >= 150) { level = 'Intermediate Saver'; rank = 'Rank #3'; }
+            if (xp >= 350) { level = 'Advanced Saver'; rank = 'Rank #2'; }
+            if (xp >= 600) { level = 'Expert Saver'; rank = 'Rank #1'; unlockBadge('xp_500'); }
+
+            document.getElementById('side-user-level').innerText = level.split(' ')[0];
+            document.getElementById('side-user-xp').innerText = `${xp} XP`;
+            document.getElementById('user-rank-level').innerText = `ระดับผู้ใช้: ${level}`;
+            document.getElementById('user-ranking-badge').innerText = rank;
+            document.getElementById('user-total-xp').innerText = `${xp} XP`;
+            document.getElementById('user-streak-days').innerText = `${streak} วัน`;
+            document.getElementById('header-streak-count').innerText = `${streak} วัน`;
+        }
+
+        async function addXP(points, reason) {
+            appData.gamification.xp = (appData.gamification.xp || 0) + points;
+            await saveToStore('gamification', appData.gamification);
+            evaluateStreakAndGamification();
+            showToast(`+${points} XP: ${reason}`, 'success');
+        }
+
+        async function unlockBadge(badgeId) {
+            if (!appData.gamification.unlockedBadges.includes(badgeId)) {
+                appData.gamification.unlockedBadges.push(badgeId);
+                await saveToStore('gamification', appData.gamification);
+                const badge = AVAILABLE_BADGES.find(b => b.id === badgeId);
+                if (badge) showToast(`ปลดล็อกเหรียญรางวัล: ${badge.name}!`, 'success');
+                renderAchievementBadges();
+            }
+        }
+
+        function renderAchievementBadges() {
+            const grid = document.getElementById('achievement-badges-grid');
+            if (!grid) return;
+            grid.innerHTML = '';
+
+            const unlocked = appData.gamification.unlockedBadges || [];
+            document.getElementById('user-badges-count').innerText = `${unlocked.length}/${AVAILABLE_BADGES.length}`;
+
+            AVAILABLE_BADGES.forEach(badge => {
+                const isUnlocked = unlocked.includes(badge.id);
+                const card = document.createElement('div');
+                card.className = `p-3 rounded-xl border text-center flex flex-col items-center justify-center transition-all ${isUnlocked ? 'glass-panel border-amber-500/40 bg-amber-500/10' : 'bg-navy-900/40 border-white/5 opacity-40'}`;
+                card.innerHTML = `
+                    <div class="w-10 h-10 rounded-full flex items-center justify-center mb-1 text-lg ${badge.color}">
+                        <i class="fa-solid ${badge.icon}"></i>
+                    </div>
+                    <span class="text-xs font-bold text-white block truncate w-full">${badge.name}</span>
+                    <span class="text-[9px] text-gray-400 block line-clamp-2">${badge.desc}</span>
+                `;
+                grid.appendChild(card);
+            });
+        }
+
+        /* -------------------------------------------------------------
+         * 4. MONTHLY SAVING MISSIONS ENGINE
+         * ------------------------------------------------------------- */
+        function renderMissionsUI() {
+            const grid = document.getElementById('missions-list-grid');
+            const widgetContent = document.getElementById('dash-mission-widget-content');
+            const widgetProgress = document.getElementById('dash-mission-progress-bar');
+            grid.innerHTML = '';
+
+            const currentMonthKey = new Date().toISOString().slice(0, 7);
+            const activeMissions = appData.missions.filter(m => m.monthKey === currentMonthKey);
+
+            if (activeMissions.length === 0) {
+                grid.innerHTML = `
+                    <div class="col-span-full text-center py-10 glass-panel rounded-2xl border border-white/5">
+                        <i class="fa-solid fa-trophy text-4xl text-gray-600 mb-3"></i>
+                        <p class="text-xs text-gray-400">ยังไม่มีภารกิจสำหรับเดือนนี้</p>
+                        <button onclick="generateAiMissionsInteractive()" class="mt-3 btn-neon-cyan text-xs px-4 py-2 rounded-xl">ให้ AI ช่วยสร้างภารกิจประจำเดือน</button>
+                    </div>
+                `;
+                if (widgetContent) widgetContent.innerText = 'ยังไม่ได้เริ่มภารกิจประจำเดือนนี้';
+                if (widgetProgress) widgetProgress.style.width = '0%';
+                return;
+            }
+
+            let completedCount = 0;
+            let totalSavedInMissions = 0;
+
+            activeMissions.forEach(mission => {
+                const isDone = mission.status === 'completed';
+                if (isDone) completedCount++;
+
+                // Calculate progress
+                const savedAmt = mission.currentSaved || 0;
+                totalSavedInMissions += savedAmt;
+                const percent = Math.min(100, Math.round((savedAmt / mission.targetAmount) * 100));
+
+                const card = document.createElement('div');
+                card.className = `glass-panel p-5 rounded-2xl border transition-all flex flex-col justify-between ${isDone ? 'border-green-500/40 bg-green-500/5' : 'border-white/10 hover:border-neon-gold/50'}`;
+
+                card.innerHTML = `
+                    <div>
+                        <div class="flex justify-between items-start mb-2">
+                            <span class="px-2 py-0.5 rounded text-[10px] uppercase font-mono font-bold ${mission.difficulty === 'Hard' ? 'bg-red-500/20 text-neon-red border border-red-500/30' : mission.difficulty === 'Medium' ? 'bg-amber-500/20 text-neon-gold border border-amber-500/30' : 'bg-cyan-500/20 text-neon-cyan border border-cyan-500/30'}">
+                                ${mission.difficulty} (+${mission.xpReward} XP)
+                            </span>
+                            <span class="text-xs ${isDone ? 'text-neon-green font-bold' : 'text-gray-400'}">
+                                ${isDone ? '<i class="fa-solid fa-circle-check"></i> สำเร็จแล้ว' : 'กำลังดำเนินการ'}
+                            </span>
+                        </div>
+
+                        <h4 class="font-bold text-white text-sm mb-1">${mission.title}</h4>
+                        <p class="text-[11px] text-gray-300 mb-3">${mission.description || ''}</p>
+
+                        <div class="flex justify-between items-baseline text-xs mb-1">
+                            <span class="text-gray-400">ออมได้จริง:</span>
+                            <span class="font-mono font-bold text-neon-gold">฿${savedAmt.toLocaleString()} / ฿${mission.targetAmount.toLocaleString()}</span>
+                        </div>
+
+                        <div class="w-full bg-navy-900 rounded-full h-2 mb-3 border border-white/5 overflow-hidden">
+                            <div class="bg-gradient-to-r from-amber-400 to-green-400 h-2 rounded-full transition-all" style="width: ${percent}%"></div>
+                        </div>
+                    </div>
+
+                    <div class="flex gap-2 border-t border-white/5 pt-3">
+                        ${!isDone ? `
+                            <button onclick="updateMissionProgress('${mission.id}')" class="flex-1 py-2 rounded-xl btn-neon-cyan text-xs font-bold">
+                                อัปเดตยอดออมภารกิจ
+                            </button>
+                            <button onclick="cancelMission('${mission.id}')" class="px-2.5 py-2 rounded-xl bg-gray-800 text-gray-400 hover:text-white text-xs">
+                                ยกเลิก
+                            </button>
+                        ` : `
+                            <button disabled class="w-full py-2 rounded-xl bg-green-500/20 text-neon-green border border-green-500/40 text-xs font-bold">
+                                ภารกิจเสร็จสิ้นแล้ว
+                            </button>
+                        `}
+                    </div>
+                `;
+                grid.appendChild(card);
+            });
+
+            // Update Dashboard Widget
+            const totalPercent = Math.round((completedCount / activeMissions.length) * 100);
+            if (widgetContent) widgetContent.innerHTML = `สำเร็จแล้ว <b>${completedCount}/${activeMissions.length}</b> ภารกิจ (สะสม ฿${totalSavedInMissions.toLocaleString()})`;
+            if (widgetProgress) widgetProgress.style.width = `${totalPercent}%`;
+
+            if (completedCount >= 3) unlockBadge('mission_master');
+        }
+
+        async function generateAiMissionsInteractive() {
+            showLoading('AI MISSION ENGINE', 'กำลังวิเคราะห์พฤติกรรมทางการเงินเพื่อออกแบบภารกิจ...');
+            setTimeout(async () => {
+                await generateAiMissionsForCurrentMonth();
+                hideLoading();
+                showToast('AI สร้างภารกิจประจำเดือนใหม่สำเร็จแล้ว', 'success');
+                renderMissionsUI();
+            }, 1000);
+        }
+
+        async function generateAiMissionsForCurrentMonth() {
+            const currentMonthKey = new Date().toISOString().slice(0, 7);
+            
+            // Prevent duplicate mission generation in same month
+            const existing = appData.missions.filter(m => m.monthKey === currentMonthKey);
+            if (existing.length > 0) return;
+
+            // Analyze Income/Expense
+            let incTotal = 0;
+            let expTotal = 0;
+            appData.transactions.forEach(t => {
+                if (t.type === 'income') incTotal += t.amount;
+                if (t.type === 'expense') expTotal += t.amount;
+            });
+
+            const netPotential = Math.max(1000, incTotal - expTotal);
+            const dailySavingTarget = Math.round((netPotential * 0.15) / 30);
+            const weeklySavingTarget = dailySavingTarget * 7;
+
+            const aiMissions = [
+                {
+                    id: 'm_ai_1_' + Date.now(),
+                    monthKey: currentMonthKey,
+                    title: 'ภารกิจออมเงินสม่ำเสมอ 7 วัน',
+                    description: `ออมเงินสะสมให้ได้ขั้นต่ำ ฿${weeklySavingTarget.toLocaleString()} ภายในสัปดาห์นี้`,
+                    targetAmount: Math.max(300, weeklySavingTarget),
+                    currentSaved: 0,
+                    xpReward: 100,
+                    difficulty: 'Medium',
+                    status: 'active'
+                },
+                {
+                    id: 'm_ai_2_' + Date.now(),
+                    monthKey: currentMonthKey,
+                    title: 'ภารกิจงดซื้อของฟุ่มเฟือย',
+                    description: 'ลดรายจ่ายหมวดความบันเทิงและนำเงิน ฿500 มาเป็นเงินออมพิเศษ',
+                    targetAmount: 500,
+                    currentSaved: 0,
+                    xpReward: 75,
+                    difficulty: 'Easy',
+                    status: 'active'
+                },
+                {
+                    id: 'm_ai_3_' + Date.now(),
+                    monthKey: currentMonthKey,
+                    title: 'ภารกิจสร้างกองทุนเงินออมประจำเดือน',
+                    description: `ออมเงินสะสมรวมเป้าหมายใหญ่ ฿${Math.round(netPotential * 0.25).toLocaleString()} สิ้นเดือนนี้`,
+                    targetAmount: Math.round(netPotential * 0.25),
+                    currentSaved: 0,
+                    xpReward: 200,
+                    difficulty: 'Hard',
+                    status: 'active'
+                }
+            ];
+
+            for (let m of aiMissions) {
+                appData.missions.push(m);
+                await saveToStore('missions', m);
+            }
+        }
+
+        function openCustomMissionModal() {
+            document.getElementById('custom-mission-form').reset();
+            document.getElementById('custom-mission-modal').classList.remove('hidden');
+        }
+        function closeCustomMissionModal() {
+            document.getElementById('custom-mission-modal').classList.add('hidden');
+        }
+
+        async function handleCustomMissionSubmit(event) {
+            event.preventDefault();
+            const currentMonthKey = new Date().toISOString().slice(0, 7);
+            const title = document.getElementById('mission-title').value;
+            const targetAmount = parseFloat(document.getElementById('mission-target-amount').value);
+            const difficulty = document.getElementById('mission-difficulty').value;
+
+            let xp = 100;
+            if (difficulty === 'Easy') xp = 50;
+            if (difficulty === 'Hard') xp = 200;
+
+            const mission = {
+                id: 'm_custom_' + Date.now(),
+                monthKey: currentMonthKey,
+                title: title,
+                description: 'ภารกิจแบบกำหนดเองโดยผู้ใช้',
+                targetAmount: targetAmount,
+                currentSaved: 0,
+                xpReward: xp,
+                difficulty: difficulty,
+                status: 'active'
+            };
+
+            appData.missions.push(mission);
+            await saveToStore('missions', mission);
+
+            showToast('สร้างภารกิจใหม่สำเร็จ', 'success');
+            closeCustomMissionModal();
+            renderMissionsUI();
+        }
+
+        async function updateMissionProgress(missionId) {
+            const m = appData.missions.find(x => x.id === missionId);
+            if (!m) return;
+
+            const amtStr = prompt(`กรอกยอดเงินที่ต้องการออมสมทบภารกิจ "${m.title}" (บาท):`, "100");
+            const amt = parseFloat(amtStr);
+
+            if (!isNaN(amt) && amt > 0) {
+                m.currentSaved = (m.currentSaved || 0) + amt;
+
+                // Auto-record saving transaction
+                const savingTx = {
+                    id: 'tx_' + Date.now(),
+                    date: new Date().toISOString().split('T')[0],
+                    type: 'saving',
+                    category: 'เงินออมเข้าภารกิจประจำเดือน',
+                    amount: amt,
+                    note: `สมทบภารกิจ: ${m.title}`
+                };
+                await saveToStore('transactions', savingTx);
+                appData.transactions.push(savingTx);
+
+                if (m.currentSaved >= m.targetAmount && m.status !== 'completed') {
+                    m.status = 'completed';
+                    await addXP(m.xpReward, `ทำภารกิจ "${m.title}" สำเร็จ!`);
+                }
+
+                await saveToStore('missions', m);
+                showToast('อัปเดตความคืบหน้าภารกิจสำเร็จ', 'success');
+                await reloadDataFromDB();
+            }
+        }
+
+        async function cancelMission(id) {
+            if (confirm('คุณต้องการยกเลิกภารกิจนี้ใช่หรือไม่?')) {
+                appData.missions = appData.missions.filter(m => m.id !== id);
+                await removeFromStore('missions', id);
+                showToast('ยกเลิกภารกิจเรียบร้อยแล้ว', 'info');
+                renderMissionsUI();
+            }
+        }
+
+        /* -------------------------------------------------------------
+         * 5. MISSION CALENDAR & MONTHLY RECAP AUTOMATION
+         * ------------------------------------------------------------- */
+        function renderMissionCalendar() {
+            const grid = document.getElementById('mission-calendar-grid');
+            if (!grid) return;
+            grid.innerHTML = '';
+
+            const year = currentCalendarDate.getFullYear();
+            const month = currentCalendarDate.getMonth();
+
+            const monthNames = ["มกราคม", "กุมภาพันธ์", "มีนาคม", "เมษายน", "พฤษภาคม", "มิถุนายน", "กรกฎาคม", "สิงหาคม", "กันยายน", "ตุลาคม", "พฤศจิกายน", "ธันวาคม"];
+            document.getElementById('calendar-month-year').innerText = `${monthNames[month]} ${year + 543}`;
+
+            // Weekday Headers
+            const days = ['อา', 'จ', 'อ', 'พ', 'พฤ', 'ศ', 'ส'];
+            days.forEach(d => {
+                const h = document.createElement('div');
+                h.className = "text-gray-400 font-bold py-1 text-[11px]";
+                h.innerText = d;
+                grid.appendChild(h);
+            });
+
+            const firstDay = new Date(year, month, 1).getDay();
+            const totalDays = new Date(year, month + 1, 0).getDate();
+
+            // Blank slots
+            for (let i = 0; i < firstDay; i++) {
+                grid.appendChild(document.createElement('div'));
+            }
+
+            // Savings dates map
+            const savingsDates = new Set(appData.transactions.filter(t => t.type === 'saving').map(t => t.date));
+
+            for (let d = 1; d <= totalDays; d++) {
+                const dateStr = `${year}-${String(month + 1).padStart(2, '0')}-${String(d).padStart(2, '0')}`;
+                const hasSaved = savingsDates.has(dateStr);
+
+                const cell = document.createElement('div');
+                cell.className = `py-2 rounded-lg text-xs font-mono flex flex-col items-center justify-center transition-all ${hasSaved ? 'bg-green-500/20 text-neon-green border border-green-500/40 font-bold' : 'bg-navy-900/40 text-gray-400 border border-white/5'}`;
+                cell.innerHTML = `
+                    <span>${d}</span>
+                    ${hasSaved ? '<i class="fa-solid fa-check text-[9px] mt-0.5"></i>' : ''}
+                `;
+                grid.appendChild(cell);
+            }
+        }
+
+        function changeCalendarMonth(delta) {
+            currentCalendarDate.setMonth(currentCalendarDate.getMonth() + delta);
+            renderMissionCalendar();
+        }
+
+        function renderMonthlyRecapUI() {
+            const container = document.getElementById('monthly-recap-box');
+            if (!container) return;
+
+            const currentMonthKey = new Date().toISOString().slice(0, 7);
+            const currentRecap = appData.monthlyRecaps.find(r => r.monthKey === currentMonthKey);
+
+            if (currentRecap) {
+                container.innerHTML = `
+                    <div class="flex justify-between border-b border-white/10 pb-1.5">
+                        <span class="text-gray-400">รอบเดือน:</span>
+                        <span class="font-bold text-white">${currentRecap.monthKey}</span>
+                    </div>
+                    <div class="flex justify-between">
+                        <span class="text-gray-400">ภารกิจสำเร็จ:</span>
+                        <span class="font-bold text-neon-green">${currentRecap.completedMissions}/${currentRecap.totalMissions} ภารกิจ</span>
+                    </div>
+                    <div class="flex justify-between">
+                        <span class="text-gray-400">ยอดเงินออมรวมประจำเดือน:</span>
+                        <span class="font-bold text-neon-gold font-mono">฿${currentRecap.totalSaved.toLocaleString()}</span>
+                    </div>
+                `;
+            } else {
+                container.innerHTML = `
+                    <p class="text-gray-400 text-center py-2">ยังไม่มีการปิดยอดสรุปประจำเดือน ระบบจะสรุปอัตโนมัติเมื่อขึ้นเดือนใหม่</p>
+                `;
+            }
+        }
+
+        async function checkMonthlyAutomationCycle() {
+            const currentMonthKey = new Date().toISOString().slice(0, 7);
+            const hasCurrentMissions = appData.missions.some(m => m.monthKey === currentMonthKey);
+
+            if (!hasCurrentMissions) {
+                // Auto generate AI missions for new month
+                await generateAiMissionsForCurrentMonth();
+                await runMonthlyRecapCalculations();
+                renderMissionsUI();
+                renderMonthlyRecapUI();
+            }
+        }
+
+        async function triggerMonthlyAutomation() {
+            showLoading('MONTHLY AUTOMATION', 'กำลังรันระบบประมวลผลสรุปยอดและสร้างภารกิจรอบเดือนใหม่...');
+            setTimeout(async () => {
+                await runMonthlyRecapCalculations();
+                await generateAiMissionsForCurrentMonth();
+                hideLoading();
+                showToast('รันระบบสรุปประจำเดือนสำเร็จแล้ว', 'success');
+                renderMissionsUI();
+                renderMonthlyRecapUI();
+            }, 1000);
+        }
+
+        async function runMonthlyRecapCalculations() {
+            const currentMonthKey = new Date().toISOString().slice(0, 7);
+            const missions = appData.missions.filter(m => m.monthKey === currentMonthKey);
+            
+            let totalSaved = 0;
+            let completed = 0;
+
+            missions.forEach(m => {
+                totalSaved += (m.currentSaved || 0);
+                if (m.status === 'completed') completed++;
+            });
+
+            const recap = {
+                monthKey: currentMonthKey,
+                totalMissions: missions.length,
+                completedMissions: completed,
+                totalSaved: totalSaved,
+                updatedAt: new Date().toISOString()
+            };
+
+            const idx = appData.monthlyRecaps.findIndex(r => r.monthKey === currentMonthKey);
+            if (idx >= 0) appData.monthlyRecaps[idx] = recap;
+            else appData.monthlyRecaps.push(recap);
+
+            await saveToStore('monthlyRecaps', recap);
+        }
+
+        /* -------------------------------------------------------------
+         * 6. TRANSACTION & FORM LOGIC
          * ------------------------------------------------------------- */
         let currentSelectedType = 'income';
 
@@ -931,6 +1526,7 @@
 
         function renderCategoryOptions() {
             const catSelect = document.getElementById('tx-category');
+            if (!catSelect) return;
             catSelect.innerHTML = '';
             
             const filteredCats = appData.categories.filter(c => c.type === currentSelectedType);
@@ -958,10 +1554,14 @@
             }
 
             const record = { id, date, type, category, amount, note, updatedAt: new Date().toISOString() };
-
             await saveToStore('transactions', record);
+
+            // Award XP for saving record
+            if (type === 'saving') {
+                await addXP(15, 'บันทึกรายการเงินออมใหม่');
+            }
+
             showToast('บันทึกข้อมูลการเงินสำเร็จแล้ว', 'success');
-            
             resetTxForm();
             await reloadDataFromDB();
         }
@@ -979,7 +1579,6 @@
 
             document.getElementById('btn-save-tx').innerText = 'อัปเดตรายการ';
             document.getElementById('btn-cancel-edit').classList.remove('hidden');
-            
             switchTab('records');
         }
 
@@ -1004,18 +1603,16 @@
             const tbody = document.getElementById('records-table-body');
             const search = document.getElementById('filter-search').value.toLowerCase();
             const filterType = document.getElementById('filter-type').value;
+            if (!tbody) return;
 
             tbody.innerHTML = '';
-
             let filtered = appData.transactions.filter(t => {
                 const matchType = (filterType === 'all' || t.type === filterType);
                 const matchSearch = t.category.toLowerCase().includes(search) || (t.note && t.note.toLowerCase().includes(search));
                 return matchType && matchSearch;
             });
 
-            // Sort by date descending
             filtered.sort((a, b) => new Date(b.date) - new Date(a.date));
-
             document.getElementById('record-count-label').innerText = filtered.length;
 
             if (filtered.length === 0) {
@@ -1062,7 +1659,7 @@
         }
 
         /* -------------------------------------------------------------
-         * 4. DASHBOARD & CHARTS SYSTEM
+         * 7. DASHBOARD & CHARTS
          * ------------------------------------------------------------- */
         function updateDashboardUI() {
             let totalIncome = 0;
@@ -1072,20 +1669,14 @@
             let incomeCount = 0;
             let expenseCount = 0;
 
-            const currentMonthStr = new Date().toISOString().slice(0, 7); // YYYY-MM
+            const currentMonthStr = new Date().toISOString().slice(0, 7);
 
             appData.transactions.forEach(t => {
-                if (t.type === 'income') {
-                    totalIncome += t.amount;
-                    incomeCount++;
-                } else if (t.type === 'expense') {
-                    totalExpense += t.amount;
-                    expenseCount++;
-                } else if (t.type === 'saving') {
+                if (t.type === 'income') { totalIncome += t.amount; incomeCount++; }
+                else if (t.type === 'expense') { totalExpense += t.amount; expenseCount++; }
+                else if (t.type === 'saving') {
                     totalSavings += t.amount;
-                    if (t.date.startsWith(currentMonthStr)) {
-                        monthSavings += t.amount;
-                    }
+                    if (t.date.startsWith(currentMonthStr)) monthSavings += t.amount;
                 }
             });
 
@@ -1111,7 +1702,6 @@
         }
 
         function initCharts() {
-            // Chart 1: Income vs Expense
             const ctx1 = document.getElementById('chartIncomeExpense').getContext('2d');
             chartIncomeExpense = new Chart(ctx1, {
                 type: 'bar',
@@ -1119,11 +1709,7 @@
                     labels: ['รายรับรวม', 'รายจ่ายรวม', 'เงินออมสะสม'],
                     datasets: [{
                         data: [0, 0, 0],
-                        backgroundColor: [
-                            'rgba(0, 255, 136, 0.6)',
-                            'rgba(255, 51, 102, 0.6)',
-                            'rgba(168, 85, 247, 0.6)'
-                        ],
+                        backgroundColor: ['rgba(0, 255, 136, 0.6)', 'rgba(255, 51, 102, 0.6)', 'rgba(168, 85, 247, 0.6)'],
                         borderColor: ['#00ff88', '#ff3366', '#a855f7'],
                         borderWidth: 1.5,
                         borderRadius: 8
@@ -1140,7 +1726,6 @@
                 }
             });
 
-            // Chart 2: Savings Trend
             const ctx2 = document.getElementById('chartSavingsTrend').getContext('2d');
             chartSavingsTrend = new Chart(ctx2, {
                 type: 'line',
@@ -1181,11 +1766,9 @@
                 if (t.type === 'saving') totalSavings += t.amount;
             });
 
-            // Update Bar Chart
             chartIncomeExpense.data.datasets[0].data = [totalIncome, totalExpense, totalSavings];
             chartIncomeExpense.update();
 
-            // Calculate monthly savings trend (last 6 months)
             const months = [];
             const monthData = [];
             for (let i = 5; i >= 0; i--) {
@@ -1196,9 +1779,7 @@
                 
                 let sum = 0;
                 appData.transactions.forEach(t => {
-                    if (t.type === 'saving' && t.date.startsWith(monthKey)) {
-                        sum += t.amount;
-                    }
+                    if (t.type === 'saving' && t.date.startsWith(monthKey)) sum += t.amount;
                 });
 
                 months.push(monthLabel);
@@ -1211,7 +1792,7 @@
         }
 
         /* -------------------------------------------------------------
-         * 5. CLIENT-SIDE AI ENGINE (ANALYSIS & FORECASTING)
+         * 8. AI ENGINE ANALYTICS
          * ------------------------------------------------------------- */
         function triggerAiScan() {
             showLoading('AI ENGINE PROCESSING', 'กำลังประมวลผลข้อมูลการเงินเชิงลึก...');
@@ -1238,7 +1819,6 @@
                 return;
             }
 
-            // Calculations
             let incomeTotal = 0;
             let expenseTotal = 0;
             let savingTotal = 0;
@@ -1256,7 +1836,6 @@
             const savingRatio = incomeTotal > 0 ? (savingTotal / incomeTotal) * 100 : 0;
             const expenseRatio = incomeTotal > 0 ? (expenseTotal / incomeTotal) * 100 : 0;
 
-            // 1. Behavior Analysis
             let behaviorHTML = `<p>อัตราส่วนการออมของคุณคือ <span class="font-bold text-neon-green">${savingRatio.toFixed(1)}%</span> ของรายได้รวม</p>`;
             if (savingRatio >= 20) {
                 behaviorHTML += `<p class="text-neon-green"><i class="fa-solid fa-circle-check"></i> ยอดเยี่ยม! พฤติกรรมการออมของคุณอยู่ในเกณฑ์มาตรฐานความมั่งคั่งสูง (>20%)</p>`;
@@ -1264,7 +1843,6 @@
                 behaviorHTML += `<p class="text-neon-yellow"><i class="fa-solid fa-triangle-exclamation"></i> ข้อแนะนำ: ควรออมเงินเพิ่มอย่างน้อย 20% ของรายได้ (ปัจจุบันอยู่ที่ ${savingRatio.toFixed(1)}%)</p>`;
             }
 
-            // Find highest expense category
             let topCat = '-';
             let maxCatAmount = 0;
             for (let c in catExpenseMap) {
@@ -1275,7 +1853,6 @@
             }
             behaviorHTML += `<p>หมวดหมู่ที่จ่ายมากที่สุดคือ: <span class="font-bold text-neon-red">${topCat}</span> (฿${maxCatAmount.toLocaleString()})</p>`;
 
-            // 2. Anomaly & Recommendations
             let anomalyHTML = '';
             if (expenseRatio > 70) {
                 anomalyHTML += `<p class="text-neon-red"><i class="fa-solid fa-triangle-exclamation"></i> แจ้งเตือน: สัดส่วนค่าใช้จ่ายสูงถึง ${expenseRatio.toFixed(1)}% ของรายได้ ซึ่งเสี่ยงต่อการขาดสภาพคล่อง</p>`;
@@ -1285,33 +1862,32 @@
                 anomalyHTML += `<p>คำแนะนำ AI: สามารถนำเงินคงเหลือไปสมทบในเป้าหมายการออมเพื่อรับผลตอบแทนเพิ่มเติม</p>`;
             }
 
-            // 3. Forecast
-            const avgMonthlySaving = savingTotal / 1; // Assuming data pool
+            const avgMonthlySaving = savingTotal / 1;
             const forecast3Months = avgMonthlySaving * 3;
             let forecastHTML = `<p>หากรักษาอัตราการออมปัจจุบัน คาดการณ์ว่าในอีก 3 เดือนข้างหน้าคุณจะมีเงินออมสะสมเพิ่มขึ้น:</p>`;
             forecastHTML += `<p class="text-xl font-mono font-bold text-neon-green mt-1">+ ฿${forecast3Months.toLocaleString('th-TH', { minimumFractionDigits: 2 })}</p>`;
 
-            // Update UI Analytics
             if (behaviorEl) behaviorEl.innerHTML = behaviorHTML;
             if (anomalyEl) anomalyEl.innerHTML = anomalyHTML;
             if (forecastEl) forecastEl.innerHTML = forecastHTML;
 
-            // Dashboard AI Quick Summary Text
             if (quickSummaryEl) {
-                quickSummaryEl.innerText = `AI Summary: สัดส่วนการออมอยู่ที่ ${savingRatio.toFixed(1)}% | รายจ่ายหลักคือ "${topCat}" | สภาพคล่องโดยรวม: ${expenseRatio > 80 ? 'ควรระวัง' : 'แข็งแกร่ง'}`;
+                quickSummaryEl.innerText = `AI Budget Plan: แนะนำวงเงินใช้จ่ายไม่เกิน ฿${(incomeTotal * 0.7).toLocaleString()} | ออมขั้นต่ำ ฿${(incomeTotal * 0.2).toLocaleString()} | หมวดหมู่ควรคุม: "${topCat}"`;
             }
 
-            // Reports Update
             document.getElementById('report-daily-text').innerText = `รายรับวันนี้: ฿${incomeTotal.toLocaleString()} | รายจ่ายวันนี้: ฿${expenseTotal.toLocaleString()}`;
             document.getElementById('report-weekly-text').innerText = `แนวโน้มสัปดาห์นี้: ออมแล้ว ฿${savingTotal.toLocaleString()} คิดเป็น ${savingRatio.toFixed(1)}% ของเป้าหมาย`;
             document.getElementById('report-monthly-text').innerText = `คาดการณ์สิ้นเดือนจะมีเงินออมสุทธิประมาณ ฿${(incomeTotal - expenseTotal).toLocaleString()}`;
+
+            if (interactive) unlockBadge('smart_budgeter');
         }
 
         /* -------------------------------------------------------------
-         * 6. SAVING GOALS SYSTEM
+         * 9. SAVING GOALS
          * ------------------------------------------------------------- */
         function renderGoalsUI() {
             const grid = document.getElementById('goals-list-grid');
+            if (!grid) return;
             grid.innerHTML = '';
 
             if (appData.goals.length === 0) {
@@ -1326,7 +1902,6 @@
             }
 
             const today = new Date();
-
             appData.goals.forEach(goal => {
                 const targetDate = new Date(goal.targetDate);
                 const diffTime = targetDate - today;
@@ -1339,26 +1914,23 @@
                 const remainingAmount = Math.max(0, target - current);
                 const dailyRequired = diffDays > 0 ? (remainingAmount / diffDays) : remainingAmount;
 
+                if (percent >= 100) unlockBadge('goal_achieved');
+
                 const card = document.createElement('div');
                 card.className = "glass-panel p-5 rounded-2xl border border-white/10 flex flex-col justify-between relative overflow-hidden group hover:border-cyan-500/50 transition-all";
-
                 card.innerHTML = `
                     <div>
                         <div class="flex justify-between items-start mb-2">
                             <h4 class="font-bold text-white text-sm">${goal.name}</h4>
                             <button onclick="deleteGoal('${goal.id}')" class="text-gray-500 hover:text-red-400 text-xs"><i class="fa-solid fa-trash-can"></i></button>
                         </div>
-
                         <div class="flex justify-between items-baseline mb-1">
                             <span class="text-xs text-gray-400">สะสมแล้ว</span>
                             <span class="text-xs font-mono font-bold text-neon-green">฿${current.toLocaleString()} / ฿${target.toLocaleString()}</span>
                         </div>
-
-                        <!-- Progress Bar -->
                         <div class="w-full bg-navy-900 rounded-full h-2.5 mb-3 overflow-hidden border border-white/5">
                             <div class="bg-gradient-to-r from-cyan-400 to-green-400 h-2.5 rounded-full transition-all duration-500" style="width: ${percent}%"></div>
                         </div>
-
                         <div class="grid grid-cols-2 gap-2 text-[11px] bg-navy-900/60 p-2.5 rounded-xl border border-white/5 mb-4">
                             <div>
                                 <span class="text-gray-400 block">ต้องออมวันละ:</span>
@@ -1370,12 +1942,9 @@
                             </div>
                         </div>
                     </div>
-
-                    <div class="flex gap-2">
-                        <button onclick="openDepositModal('${goal.id}')" class="w-full py-2 rounded-xl btn-neon-cyan text-xs font-bold flex items-center justify-center gap-1">
-                            <i class="fa-solid fa-piggy-bank"></i> ออมเงินเพิ่ม
-                        </button>
-                    </div>
+                    <button onclick="openDepositModal('${goal.id}')" class="w-full py-2 rounded-xl btn-neon-cyan text-xs font-bold flex items-center justify-center gap-1">
+                        <i class="fa-solid fa-piggy-bank"></i> ออมเงินเพิ่ม
+                    </button>
                 `;
                 grid.appendChild(card);
             });
@@ -1386,9 +1955,7 @@
             document.getElementById('goal-id').value = '';
             document.getElementById('goal-modal').classList.remove('hidden');
         }
-        function closeGoalModal() {
-            document.getElementById('goal-modal').classList.add('hidden');
-        }
+        function closeGoalModal() { document.getElementById('goal-modal').classList.add('hidden'); }
 
         async function handleGoalFormSubmit(event) {
             event.preventDefault();
@@ -1400,7 +1967,6 @@
 
             const goal = { id, name, targetAmount, currentAmount, targetDate, createdAt: new Date().toISOString() };
             await saveToStore('goals', goal);
-
             showToast('สร้างเป้าหมายการออมสำเร็จ', 'success');
             closeGoalModal();
             await reloadDataFromDB();
@@ -1417,15 +1983,12 @@
         function openDepositModal(goalId) {
             const goal = appData.goals.find(g => g.id === goalId);
             if (!goal) return;
-
             document.getElementById('deposit-goal-id').value = goal.id;
             document.getElementById('deposit-goal-name-text').innerText = goal.name;
             document.getElementById('deposit-amount').value = '';
             document.getElementById('deposit-goal-modal').classList.remove('hidden');
         }
-        function closeDepositGoalModal() {
-            document.getElementById('deposit-goal-modal').classList.add('hidden');
-        }
+        function closeDepositGoalModal() { document.getElementById('deposit-goal-modal').classList.add('hidden'); }
 
         async function handleDepositGoalSubmit(event) {
             event.preventDefault();
@@ -1437,7 +2000,6 @@
                 goal.currentAmount = (goal.currentAmount || 0) + depositAmt;
                 await saveToStore('goals', goal);
 
-                // Also auto-add a saving transaction record
                 const savingTx = {
                     id: 'tx_' + Date.now(),
                     date: new Date().toISOString().split('T')[0],
@@ -1447,6 +2009,7 @@
                     note: `ออมสมทบเป้าหมาย: ${goal.name}`
                 };
                 await saveToStore('transactions', savingTx);
+                await addXP(20, 'ออมเงินสมทบเป้าหมายสำเร็จ');
 
                 showToast(`ออมเงินเพิ่ม ฿${depositAmt.toLocaleString()} สำเร็จแล้ว!`, 'success');
                 closeDepositGoalModal();
@@ -1455,10 +2018,11 @@
         }
 
         /* -------------------------------------------------------------
-         * 7. SETTINGS, CATEGORIES & DATA MANAGEMENT
+         * 10. SETTINGS & BACKUP/RESTORE
          * ------------------------------------------------------------- */
         function renderCategoryChips() {
             const container = document.getElementById('category-chips');
+            if (!container) return;
             container.innerHTML = '';
             appData.categories.forEach(cat => {
                 const chip = document.createElement('span');
@@ -1472,7 +2036,6 @@
         async function addNewCategory() {
             const name = document.getElementById('new-cat-name').value.trim();
             const type = document.getElementById('new-cat-type').value;
-
             if (!name) return;
 
             const newCat = { id: 'cat_' + Date.now(), name, type };
@@ -1492,12 +2055,11 @@
             renderCategoryOptions();
         }
 
-        /* Data Export / Import (Backup & Restore) */
         function exportDataJSON() {
             const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(appData, null, 2));
             const downloadAnchor = document.createElement('a');
             downloadAnchor.setAttribute("href", dataStr);
-            downloadAnchor.setAttribute("download", `AI_Smart_Saving_Backup_${new Date().toISOString().split('T')[0]}.json`);
+            downloadAnchor.setAttribute("download", `AI_Smart_Saving_v2.2_Backup_${new Date().toISOString().split('T')[0]}.json`);
             document.body.appendChild(downloadAnchor);
             downloadAnchor.click();
             downloadAnchor.remove();
@@ -1515,20 +2077,21 @@
                     if (imported.transactions && imported.goals) {
                         showLoading('RESTORING DATA', 'กำลังตรวจสอบความถูกต้องและนำเข้าข้อมูล...');
                         
-                        // Clear existing
-                        const txClear = db.transaction(['transactions', 'goals'], 'readwrite');
+                        const txClear = db.transaction(['transactions', 'goals', 'missions', 'gamification', 'monthlyRecaps'], 'readwrite');
                         await txClear.objectStore('transactions').clear();
                         await txClear.objectStore('goals').clear();
+                        await txClear.objectStore('missions').clear();
+                        await txClear.objectStore('gamification').clear();
+                        await txClear.objectStore('monthlyRecaps').clear();
 
-                        // Write imported
                         for (let t of imported.transactions) await saveToStore('transactions', t);
                         for (let g of imported.goals) await saveToStore('goals', g);
-                        if (imported.categories) {
-                            for (let c of imported.categories) await saveToStore('categories', c);
-                        }
+                        if (imported.missions) for (let m of imported.missions) await saveToStore('missions', m);
+                        if (imported.gamification) await saveToStore('gamification', imported.gamification);
+                        if (imported.monthlyRecaps) for (let r of imported.monthlyRecaps) await saveToStore('monthlyRecaps', r);
 
                         hideLoading();
-                        showToast('กู้คืนข้อมูลทางการเงินสำเร็จแล้ว', 'success');
+                        showToast('กู้คืนข้อมูล v2.2 สำเร็จแล้ว', 'success');
                         await reloadDataFromDB();
                     } else {
                         showToast('รูปแบบไฟล์สำรองข้อมูลไม่ถูกต้อง', 'error');
@@ -1541,11 +2104,14 @@
         }
 
         async function confirmResetAllData() {
-            if (confirm('คำเตือน: คุณต้องการลบข้อมูลทั้งหมดในระบบใช่หรือไม่? การกระทำนี้ไม่สามารถย้อนกลับได้!')) {
+            if (confirm('คำเตือน: คุณต้องการลบข้อมูลทั้งหมดรวมถึงภารกิจและคะแนนใช่หรือไม่? การกระทำนี้ไม่สามารถย้อนกลับได้!')) {
                 showLoading('RESETTING SYSTEM', 'กำลังล้างข้อมูลฐานข้อมูล...');
-                const txClear = db.transaction(['transactions', 'goals'], 'readwrite');
+                const txClear = db.transaction(['transactions', 'goals', 'missions', 'gamification', 'monthlyRecaps'], 'readwrite');
                 await txClear.objectStore('transactions').clear();
                 await txClear.objectStore('goals').clear();
+                await txClear.objectStore('missions').clear();
+                await txClear.objectStore('gamification').clear();
+                await txClear.objectStore('monthlyRecaps').clear();
 
                 setTimeout(async () => {
                     hideLoading();
@@ -1556,7 +2122,7 @@
         }
 
         /* -------------------------------------------------------------
-         * 8. UI HELPERS (LOADING OVERLAY & TOAST NOTIFICATIONS)
+         * 11. UI OVERLAYS & TOASTS
          * ------------------------------------------------------------- */
         function showLoading(title, subtitle) {
             document.getElementById('loading-title').innerText = title;
@@ -1592,12 +2158,12 @@
         }
 
         /* -------------------------------------------------------------
-         * 9. SERVICE WORKER REGISTRATION (OFFLINE PWA)
+         * 12. PWA SERVICE WORKER
          * ------------------------------------------------------------- */
         function registerServiceWorker() {
             if ('serviceWorker' in navigator) {
                 const swCode = `
-                    const CACHE_NAME = 'ai-saving-v2-cache';
+                    const CACHE_NAME = 'ai-saving-v2-2-cache';
                     self.addEventListener('install', e => e.waitUntil(self.skipWaiting()));
                     self.addEventListener('activate', e => e.waitUntil(self.clients.claim()));
                     self.addEventListener('fetch', e => {
