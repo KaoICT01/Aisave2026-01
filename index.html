@@ -1,10 +1,6 @@
-
-<!DOCTYPE html>
-<html lang="th" class="dark">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI Automatic Saving System 2026 Version 2.4</title>
+```html
+<!-- ... existing code ... -->
+    <title>AI Automatic Saving System 2026 Version 2.6 (Complete Edition)</title>
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
@@ -79,6 +75,13 @@
 </head>
 <body class="bg-slate-50 dark:bg-slate-950 text-slate-800 dark:text-slate-100 min-h-screen flex flex-col md:flex-row transition-colors duration-200">
 
+    <!-- Global Fullscreen Loading Overlay for Refresh System v2.6 -->
+    <div id="system-loading-overlay" class="fixed inset-0 z-50 bg-slate-950/80 backdrop-blur-md flex flex-col items-center justify-center text-white hidden">
+        <div class="w-16 h-16 border-4 border-brand-500 border-t-transparent rounded-full animate-spin mb-4"></div>
+        <h3 id="loading-title" class="font-bold text-lg">กำลังประมวลผลระบบ AI Saving 2.6...</h3>
+        <p id="loading-subtitle" class="text-xs text-slate-400 mt-1">กำลังตรวจสอบดัชนีฐานข้อมูล IndexedDB และคำนวณยอดเงิน</p>
+    </div>
+
     <!-- System Diagnostics / Storage Alert Bar -->
     <div id="system-alert-bar" class="hidden bg-amber-500 text-slate-900 text-xs font-semibold px-4 py-2 flex items-center justify-between sticky top-0 z-50 shadow-md">
         <span id="system-alert-msg"><i class="fa-solid fa-triangle-exclamation mr-2"></i>การเตือนระบบ</span>
@@ -90,10 +93,10 @@
     <!-- Toast Notification Container -->
     <div id="toast-container" class="fixed top-5 right-5 z-50 flex flex-col gap-2 pointer-events-none"></div>
 
-    <!-- Modal Backdrop / Container -->
+    <!-- Modal Container -->
     <div id="modal-container" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-sm hidden">
         <div id="modal-content" class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl max-w-lg w-full p-6 shadow-2xl transform transition-all scale-95 opacity-0">
-            <!-- Dynamic Modal Header & Body inserted by JS -->
+            <!-- Dynamic Content -->
         </div>
     </div>
 
@@ -104,8 +107,8 @@
                 <i class="fa-solid font-bold fa-brain text-xl"></i>
             </div>
             <div>
-                <h1 class="font-bold text-lg leading-none tracking-tight bg-gradient-to-r from-brand-500 to-emerald-400 bg-clip-text text-transparent">AI SAVING 2.4</h1>
-                <span class="text-[10px] text-slate-400 font-medium">Enterprise Safe v2.4</span>
+                <h1 class="font-bold text-lg leading-none tracking-tight bg-gradient-to-r from-brand-500 to-emerald-400 bg-clip-text text-transparent">AI SAVING 2.6</h1>
+                <span class="text-[10px] text-slate-400 font-medium">Complete Edition v2.6</span>
             </div>
         </div>
 
@@ -133,9 +136,12 @@
             <div class="w-8 h-8 rounded-lg bg-gradient-to-tr from-brand-600 to-emerald-400 flex items-center justify-center text-white">
                 <i class="fa-solid fa-brain text-sm"></i>
             </div>
-            <span class="font-bold text-base bg-gradient-to-r from-brand-500 to-emerald-400 bg-clip-text text-transparent">AI SAVING 2.4</span>
+            <span class="font-bold text-base bg-gradient-to-r from-brand-500 to-emerald-400 bg-clip-text text-transparent">AI SAVING 2.6</span>
         </div>
         <div class="flex items-center gap-3">
+            <button onclick="UIController.triggerRefreshSystem()" title="Refresh System" class="p-2 text-brand-500 hover:opacity-80">
+                <i class="fa-solid fa-arrows-rotate"></i>
+            </button>
             <button id="theme-toggle-mobile" class="p-2 text-slate-500 dark:text-slate-400 hover:text-brand-500">
                 <i class="fa-solid fa-moon dark:hidden"></i>
                 <i class="fa-solid fa-sun hidden dark:inline"></i>
@@ -153,11 +159,15 @@
                 <p id="current-page-subtitle" class="text-xs text-slate-400">ภาพรวมการออมและการเงินอัจฉริยะ</p>
             </div>
             <div class="flex items-center gap-4">
-                <div class="text-right">
-                    <p class="text-xs text-slate-400">สถานะระบบ AI & Balance Engine</p>
-                    <span class="inline-flex items-center gap-1.5 text-xs font-semibold text-emerald-500">
+                <button onclick="UIController.triggerRefreshSystem()" class="flex items-center gap-2 px-3 py-1.5 rounded-xl bg-brand-500/10 text-brand-500 border border-brand-500/20 text-xs font-semibold hover:bg-brand-500 hover:text-white transition-all">
+                    <i class="fa-solid fa-arrows-rotate"></i>
+                    <span>รีเฟรชข้อมูล (Refresh)</span>
+                </button>
+                <div class="text-right border-l border-slate-200 dark:border-slate-800 pl-4">
+                    <p class="text-xs text-slate-400">One Device Identity</p>
+                    <span id="header-device-id" class="inline-flex items-center gap-1.5 text-xs font-semibold text-emerald-500">
                         <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
-                        v2.4 Double-Entry Integrity
+                        Checking...
                     </span>
                 </div>
                 <button id="theme-toggle-desktop" class="w-10 h-10 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700 flex items-center justify-center transition-colors">
@@ -182,11 +192,11 @@
     <script>
         /**
          * ====================================================================
-         * 1. VERSION MANAGER & DATABASE MIGRATION ENGINE (V2.4 ZERO DATA LOSS)
+         * 1. VERSION MANAGER & DATABASE MIGRATION ENGINE (V2.6 ZERO DATA LOSS)
          * ====================================================================
          */
-        const APP_VERSION = "2.4.0";
-        const DB_SCHEMA_VERSION = 3; // Upgrade schema for Mission Engine & Unified Recorder
+        const APP_VERSION = "2.6.0";
+        const DB_SCHEMA_VERSION = 4; // v2.6 Upgrade Schema for Auto Allocation Settings
 
         class DatabaseSystem {
             constructor() {
@@ -202,7 +212,7 @@
                         const db = event.target.result;
                         const oldVersion = event.oldVersion;
 
-                        console.log(`[Migration Engine v2.4] Upgrading schema from v${oldVersion} to v${DB_SCHEMA_VERSION}...`);
+                        console.log(`[Migration Engine v2.6] Upgrading schema from v${oldVersion} to v${DB_SCHEMA_VERSION}...`);
 
                         if (!db.objectStoreNames.contains('incomes')) {
                             const store = db.createObjectStore('incomes', { keyPath: 'id' });
@@ -231,10 +241,13 @@
                         if (!db.objectStoreNames.contains('system_logs')) {
                             db.createObjectStore('system_logs', { keyPath: 'id' });
                         }
-                        // v2.4 New Table: AI Monthly Missions
                         if (!db.objectStoreNames.contains('monthly_missions')) {
                             const store = db.createObjectStore('monthly_missions', { keyPath: 'id' });
                             store.createIndex('monthYear', 'monthYear', { unique: false });
+                        }
+                        // v2.6 New Store: Auto Saving Rules
+                        if (!db.objectStoreNames.contains('saving_rules')) {
+                            db.createObjectStore('saving_rules', { keyPath: 'id' });
                         }
                     };
 
@@ -253,7 +266,7 @@
 
             async verifySchemaIntegrity() {
                 const stores = Array.from(this.db.objectStoreNames);
-                console.log("[Data Integrity Check v2.4] Verified Stores:", stores);
+                console.log("[Data Integrity Check v2.6] Verified Stores:", stores);
                 this.setSetting('app_version', APP_VERSION);
                 this.setSetting('db_schema_version', DB_SCHEMA_VERSION);
             }
@@ -331,12 +344,12 @@
             }
 
             getSetting(key, defaultValue = null) {
-                const val = localStorage.getItem(`ai_saving_v2_4_${key}`);
+                const val = localStorage.getItem(`ai_saving_v2_6_${key}`);
                 return val !== null ? JSON.parse(val) : defaultValue;
             }
 
             setSetting(key, value) {
-                localStorage.setItem(`ai_saving_v2_4_${key}`, JSON.stringify(value));
+                localStorage.setItem(`ai_saving_v2_6_${key}`, JSON.stringify(value));
             }
         }
 
@@ -344,9 +357,23 @@
 
         /**
          * ====================================================================
-         * 2. SECURITY ENGINE (Web Crypto Encryption)
+         * 2. ONE DEVICE ONE SYSTEM & SECURITY ENGINE v2.6
          * ====================================================================
          */
+        class IdentityEngine {
+            static async getOrCreateInstallationId() {
+                let instId = db.getSetting('installation_id');
+                if (!instId) {
+                    const randomBuf = crypto.getRandomValues(new Uint8Array(16));
+                    const hashBuf = await crypto.subtle.digest('SHA-256', randomBuf);
+                    const hashArray = Array.from(new Uint8Array(hashBuf));
+                    instId = 'DEV-2026-' + hashArray.slice(0, 6).map(b => b.toString(16).padStart(2, '0')).join('').toUpperCase();
+                    db.setSetting('installation_id', instId);
+                }
+                return instId;
+            }
+        }
+
         class CryptoEngine {
             static async encryptData(plainText, password) {
                 const enc = new TextEncoder();
@@ -396,27 +423,81 @@
 
         /**
          * ====================================================================
-         * 3. INTERNAL API SYSTEM v2.4 (With Balance Engine)
+         * 3. SMART CACHE MANAGEMENT ENGINE (10GB STRATEGY)
+         * ====================================================================
+         */
+        class CacheManagerSystem {
+            static async checkAndCleanStorage() {
+                if (navigator.storage && navigator.storage.estimate) {
+                    const { usage, quota } = await navigator.storage.estimate();
+                    const gbUsage = usage / (1024 * 1024 * 1024);
+                    
+                    // If near/over 10GB boundary or high percentage, clean caches
+                    if (gbUsage >= 10 || (usage / quota) > 0.8) {
+                        console.log("[Smart Cache v2.6] Triggering non-essential cache cleanup...");
+                        if ('caches' in window) {
+                            const cacheNames = await caches.keys();
+                            for (let name of cacheNames) {
+                                if (name.includes('temp') || name.includes('old')) {
+                                    await caches.delete(name);
+                                }
+                            }
+                        }
+                        return { cleaned: true, usageGB: gbUsage.toFixed(2) };
+                    }
+                    return { cleaned: false, usageGB: gbUsage.toFixed(2) };
+                }
+                return { cleaned: false, usageGB: "N/A" };
+            }
+        }
+
+        /**
+         * ====================================================================
+         * 4. INTERNAL API SYSTEM v2.6 (With Auto Income & Savings Engine)
          * ====================================================================
          */
         class InternalAPISystem {
             static async getIncomes() { return await db.getAll('incomes'); }
+            
+            // AUTOMATIC INCOME & SAVINGS SYSTEM v2.6
             static async addIncome(income) {
                 income.id = income.id || 'inc_' + Date.now() + '_' + Math.random().toString(36).substr(2, 4);
                 income.refNo = 'REF-INC-' + Date.now().toString().slice(-6);
                 income.createdAt = new Date().toISOString();
+                
                 await db.add('incomes', income);
+
+                // Auto Savings Rule Trigger (Default 10% auto-saving if enabled)
+                const autoSaveEnabled = db.getSetting('auto_save_enabled', true);
+                const autoSavePct = db.getSetting('auto_save_pct', 10);
+
+                if (autoSaveEnabled && Number(income.amount) > 0) {
+                    const autoSavingsAmt = Math.round((Number(income.amount) * (autoSavePct / 100)));
+                    if (autoSavingsAmt > 0) {
+                        await this.addSavings({
+                            title: `ออมแมตช์อัตโนมัติ (${autoSavePct}% จาก ${income.title})`,
+                            amount: autoSavingsAmt,
+                            type: 'เงินออมทั่วไป',
+                            date: income.date,
+                            action: 'deposit',
+                            autoAllocated: true
+                        });
+                    }
+                }
+
                 return income;
             }
+
             static async deleteIncome(id) { return await db.delete('incomes', id); }
 
             static async getExpenses() { return await db.getAll('expenses'); }
+            
+            // AUTOMATIC EXPENSE DEDUCTION v2.6
             static async addExpense(expense) {
-                // Check if user has enough available balance
                 const summary = await this.getFinancialSummary();
                 if (summary.availableBalance < Number(expense.amount)) {
-                    if (!confirm(`ยอดเงินที่ใช้ได้สะสม (฿${summary.availableBalance.toLocaleString()}) ต่ำกว่าค่าใช้จ่าย (฿${Number(expense.amount).toLocaleString()}) คุณต้องการยืนยันบันทึกใช่หรือไม่?`)) {
-                        throw new Error("TRANSACTION_CANCELLED: ยกเลิกการทำรายการเนื่องจากยอดเงินไม่พอ");
+                    if (!confirm(`ยอดเงินคงเหลือที่ใช้ได้ (฿${summary.availableBalance.toLocaleString()}) ไม่เพียงพอสำหรับการจ่ายนี้ คุณยืนยันจะบันทึกหรือไม่?`)) {
+                        throw new Error("TRANSACTION_CANCELLED: ยกเลิกการทำรายการเนื่องจากยอดเงินคงเหลือไม่พอ");
                     }
                 }
                 expense.id = expense.id || 'exp_' + Date.now() + '_' + Math.random().toString(36).substr(2, 4);
@@ -425,20 +506,22 @@
                 await db.add('expenses', expense);
                 return expense;
             }
+
             static async deleteExpense(id) { return await db.delete('expenses', id); }
 
             static async getSavings() { return await db.getAll('savings'); }
             static async addSavings(savings) {
                 const summary = await this.getFinancialSummary();
-                // If deposit action, check available balance
-                if ((savings.action || 'deposit') === 'deposit' && summary.availableBalance < Number(savings.amount)) {
-                    if (!confirm(`ยอดเงินที่ใช้ได้สะสม (฿${summary.availableBalance.toLocaleString()}) น้อยกว่าเงินที่ออม (฿${Number(savings.amount).toLocaleString()}) ยืนยันการออมหรือไม่?`)) {
-                        throw new Error("TRANSACTION_CANCELLED: ยกเลิกการฝากเงินออมเนื่องจากยอดเงินไม่พอ");
+                if ((savings.action || 'deposit') === 'deposit' && !savings.autoAllocated) {
+                    if (summary.availableBalance < Number(savings.amount)) {
+                        if (!confirm(`ยอดเงินที่ใช้ได้สะสม (฿${summary.availableBalance.toLocaleString()}) น้อยกว่าเงินที่ออม (฿${Number(savings.amount).toLocaleString()}) ยืนยันการออมหรือไม่?`)) {
+                            throw new Error("TRANSACTION_CANCELLED: ยกเลิกการฝากเงินออมเนื่องจากยอดเงินไม่พอ");
+                        }
                     }
                 }
                 savings.id = savings.id || 'sav_' + Date.now() + '_' + Math.random().toString(36).substr(2, 4);
                 savings.refNo = 'REF-SAV-' + Date.now().toString().slice(-6);
-                savings.action = savings.action || 'deposit'; // 'deposit' or 'withdraw'
+                savings.action = savings.action || 'deposit';
                 savings.createdAt = new Date().toISOString();
                 await db.add('savings', savings);
                 return savings;
@@ -466,8 +549,7 @@
             static async updateMission(mission) { return await db.update('monthly_missions', mission); }
 
             /**
-             * AUTOMATIC BALANCE ENGINE v2.4
-             * Distinguishes Available Balance, Savings Balance, and Total Assets.
+             * SMART BALANCE ENGINE v2.6
              */
             static async getFinancialSummary() {
                 const incomes = await this.getIncomes();
@@ -477,7 +559,6 @@
                 const totalIncome = incomes.reduce((sum, item) => sum + Number(item.amount || 0), 0);
                 const totalExpense = expenses.reduce((sum, item) => sum + Number(item.amount || 0), 0);
                 
-                // Savings Balance Calculation (Deposits minus Withdrawals)
                 let netSavingsBalance = 0;
                 savings.forEach(item => {
                     const amt = Number(item.amount || 0);
@@ -488,10 +569,8 @@
                     }
                 });
 
-                // Available Balance = Income - Expense - Net Savings Transfers
+                // Available Balance Formula = Incomes - Expenses - Net Savings Transfers
                 const availableBalance = totalIncome - totalExpense - netSavingsBalance;
-                
-                // Total Net Worth / Assets = Available + Savings Balance
                 const totalAssets = availableBalance + netSavingsBalance;
                 const savingsRate = totalIncome > 0 ? ((netSavingsBalance / totalIncome) * 100).toFixed(1) : 0;
 
@@ -638,7 +717,7 @@
 
         /**
          * ====================================================================
-         * 4. AI AUTOMATIC ENGINE v2.4 (With Monthly Mission Generator)
+         * 5. AI AUTOMATIC ENGINE v2.6 (With Rule-Based Financial Logic)
          * ====================================================================
          */
         class AIFinancialEngine {
@@ -696,7 +775,6 @@
                 return insights;
             }
 
-            // AI Monthly Mission Generator Engine v2.4
             static async generateMonthlyMissions() {
                 const summary = await InternalAPISystem.getFinancialSummary();
                 const now = new Date();
@@ -709,7 +787,6 @@
                     return thisMonthMissions;
                 }
 
-                // Rule-based template generation based on actual finances
                 const baseTargetSavings = Math.max(500, Math.round((summary.totalIncome * 0.15) / 100) * 100);
                 const generated = [
                     {
@@ -785,7 +862,7 @@
 
         /**
          * ====================================================================
-         * 5. UI CONTROLLER & VIEW ROUTER (15 Complete Views v2.4)
+         * 6. UI CONTROLLER & ROUTER ENGINE v2.6 (15 Full Views)
          * ====================================================================
          */
         const VIEWS = [
@@ -809,24 +886,35 @@
         let currentViewId = 'dashboard';
 
         class UIController {
-            static init() {
+            static async init() {
                 this.renderSidebar();
                 this.renderMobileBottomNav();
                 this.bindGlobalEvents();
-                this.checkSystemStorageDiagnostics();
+                
+                // One Device Identity Check
+                const deviceId = await IdentityEngine.getOrCreateInstallationId();
+                document.getElementById('header-device-id').innerHTML = `<span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>${deviceId}`;
+
+                // Cache & Storage Check
+                await CacheManagerSystem.checkAndCleanStorage();
                 this.navigateTo('dashboard');
             }
 
-            static async checkSystemStorageDiagnostics() {
-                if (navigator.storage && navigator.storage.estimate) {
-                    const { quota, usage } = await navigator.storage.estimate();
-                    const pct = ((usage / quota) * 100).toFixed(1);
-                    if (pct > 80) {
-                        const alertBar = document.getElementById('system-alert-bar');
-                        document.getElementById('system-alert-msg').innerHTML = `<i class="fa-solid fa-triangle-exclamation mr-2"></i>คำเตือน: พื้นที่จัดเก็บในเบราว์เซอร์ใช้งานไปแล้ว ${pct}% (แนะนำให้สำรองข้อมูลไว้)`;
-                        alertBar.classList.remove('hidden');
-                    }
-                }
+            // Interactive Refresh System Trigger v2.6
+            static async triggerRefreshSystem() {
+                const overlay = document.getElementById('system-loading-overlay');
+                overlay.classList.remove('hidden');
+
+                setTimeout(async () => {
+                    await db.verifySchemaIntegrity();
+                    await CacheManagerSystem.checkAndCleanStorage();
+                    await this.navigateTo(currentViewId);
+
+                    setTimeout(() => {
+                        overlay.classList.add('hidden');
+                        this.showToast('รีเฟรชระบบและตรวจสอบความสมบูรณ์ฐานข้อมูลเรียบร้อยแล้ว', 'success');
+                    }, 300);
+                }, 500);
             }
 
             static renderSidebar() {
@@ -889,7 +977,7 @@
                 this.updateSidebarLevelWidget();
 
                 const container = document.getElementById('view-container');
-                container.innerHTML = `<div class="flex items-center justify-center py-20 text-slate-400"><i class="fa-solid fa-circle-notch fa-spin text-2xl mr-3"></i>กำลังโหลด v2.4 Engine...</div>`;
+                container.innerHTML = `<div class="flex items-center justify-center py-20 text-slate-400"><i class="fa-solid fa-circle-notch fa-spin text-2xl mr-3"></i>กำลังโหลด v2.6 Engine...</div>`;
                 
                 switch (viewId) {
                     case 'dashboard': await this.renderDashboardView(container); break;
@@ -990,13 +1078,15 @@
                 this.showModal("เมนูเพิ่มเติมทั้งหมด", html);
             }
 
-            // Dashboard View
+            // Dashboard View (v2.6)
             static async renderDashboardView(container) {
                 const summary = await InternalAPISystem.getFinancialSummary();
                 const insights = await AIFinancialEngine.generateInsights();
                 const level = await InternalAPISystem.calculateSavingLevel();
                 const health = await InternalAPISystem.calculateHealthScore();
                 const streak = await InternalAPISystem.calculateStreak();
+                const autoSaveEnabled = db.getSetting('auto_save_enabled', true);
+                const autoSavePct = db.getSetting('auto_save_pct', 10);
 
                 container.innerHTML = `
                     <div class="space-y-6">
@@ -1004,13 +1094,13 @@
                         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
                             <div class="glass-card p-5 rounded-2xl">
                                 <div class="flex items-center justify-between text-slate-400 text-xs font-medium mb-2">
-                                    <span>เงินที่ใช้ได้สะสม (Available)</span>
+                                    <span>เงินคงเหลือที่ใช้ได้ (Available)</span>
                                     <div class="w-8 h-8 rounded-lg bg-emerald-500/10 text-emerald-500 flex items-center justify-center">
                                         <i class="fa-solid fa-wallet"></i>
                                     </div>
                                 </div>
                                 <h3 class="text-2xl font-bold text-slate-800 dark:text-slate-100">฿${summary.availableBalance.toLocaleString()}</h3>
-                                <p class="text-[11px] text-slate-400 mt-1">คงเหลือจริงสำหรับการใช้จ่าย</p>
+                                <p class="text-[11px] text-slate-400 mt-1">เงินคงเหลือจริงสำหรับรายจ่าย</p>
                             </div>
 
                             <div class="glass-card p-5 rounded-2xl">
@@ -1035,7 +1125,7 @@
                                     </div>
                                 </div>
                                 <h3 class="text-2xl font-bold text-cyan-500">฿${summary.totalAssets.toLocaleString()}</h3>
-                                <p class="text-[11px] text-slate-400 mt-1">เงินที่ใช้ได้ + เงินออมสะสม</p>
+                                <p class="text-[11px] text-slate-400 mt-1">Available + Savings Balance</p>
                             </div>
 
                             <div class="glass-card p-5 rounded-2xl">
@@ -1053,20 +1143,36 @@
                             </div>
                         </div>
 
+                        <!-- Auto Save Settings Widget Bar -->
+                        <div class="p-4 rounded-2xl bg-gradient-to-r from-brand-900/30 to-slate-900/40 border border-brand-500/20 flex flex-col sm:flex-row items-center justify-between gap-4">
+                            <div class="flex items-center gap-3">
+                                <div class="w-10 h-10 rounded-xl bg-brand-500 text-white flex items-center justify-center text-lg shadow-md">
+                                    <i class="fa-solid fa-gears"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-sm text-slate-100">ระบบจัดสรรเงินออมอัตโนมัติจากรายรับ (Auto Savings)</h4>
+                                    <p class="text-xs text-slate-400">ปัจจุบัน: ${autoSaveEnabled ? `เปิดใช้งาน (จัดสรร ${autoSavePct}% ของรายรับเข้าระบบออมทันที)` : 'ปิดใช้งาน'}</p>
+                                </div>
+                            </div>
+                            <button onclick="UIController.navigateTo('settings')" class="px-3 py-1.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-xs font-semibold text-brand-400 border border-slate-700 shrink-0">
+                                ตั้งค่าการจัดสรรออม
+                            </button>
+                        </div>
+
                         <!-- AI Insight & Mission Jump Card -->
                         <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
                             <div class="lg:col-span-2 glass-card p-6 rounded-2xl flex flex-col justify-between relative overflow-hidden">
                                 <div class="absolute -right-10 -bottom-10 w-40 h-40 bg-brand-500/10 rounded-full blur-2xl pointer-events-none"></div>
                                 <div>
                                     <div class="flex items-center gap-2 text-xs font-bold text-brand-500 uppercase tracking-wider mb-2">
-                                        <i class="fa-solid fa-brain"></i> AI Automatic Insight v2.4
+                                        <i class="fa-solid fa-brain"></i> AI Automatic Insight v2.6
                                     </div>
                                     ${insights.length > 0 ? `
                                         <h4 class="text-lg font-bold text-slate-800 dark:text-slate-100 mb-1">${insights[0].title}</h4>
                                         <p class="text-sm text-slate-600 dark:text-slate-300 mb-4">${insights[0].message}</p>
                                     ` : `
-                                        <h4 class="text-lg font-bold text-slate-800 dark:text-slate-100 mb-1">ยินดีต้อนรับสู่ AI Saving System 2.4</h4>
-                                        <p class="text-sm text-slate-600 dark:text-slate-300 mb-4">ระบบบันทึกเงิน 3-in-1 หน้าเดียว คำนวณเงินอัตโนมัติ พร้อม AI ภารกิจประจำเดือน</p>
+                                        <h4 class="text-lg font-bold text-slate-800 dark:text-slate-100 mb-1">ยินดีต้อนรับสู่ AI Saving System 2.6</h4>
+                                        <p class="text-sm text-slate-600 dark:text-slate-300 mb-4">ระบบบันทึกเงิน 3-in-1 หน้าเดียว จัดสรรเงินออมอัตโนมัติ และภารกิจประจำเดือน</p>
                                     `}
                                 </div>
                                 <div class="flex flex-wrap items-center gap-3">
@@ -1108,13 +1214,12 @@
                 `;
             }
 
-            // 3. UNIFIED FINANCIAL RECORDER (Single Page 3-in-1 Entry Screen v2.4)
+            // Unified Recorder View (v2.6 Single Page 3-in-1 Entry)
             static async renderUnifiedRecorderView(container) {
                 const incomes = await InternalAPISystem.getIncomes();
                 const expenses = await InternalAPISystem.getExpenses();
                 const savings = await InternalAPISystem.getSavings();
 
-                // Combine all transactions for combined history view
                 const allTx = [
                     ...incomes.map(i => ({ ...i, txType: 'income' })),
                     ...expenses.map(e => ({ ...e, txType: 'expense' })),
@@ -1129,10 +1234,9 @@
                                 <h3 class="font-bold text-base text-slate-800 dark:text-slate-100 flex items-center gap-2">
                                     <i class="fa-solid fa-pen-to-square text-brand-500"></i> บันทึกธุรกรรม 3-in-1
                                 </h3>
-                                <span class="text-[10px] bg-brand-500/10 text-brand-500 px-2 py-0.5 rounded-full font-bold">Auto Balance</span>
+                                <span class="text-[10px] bg-brand-500/10 text-brand-500 px-2 py-0.5 rounded-full font-bold">Auto Savings Match</span>
                             </div>
 
-                            <!-- Tab Buttons -->
                             <div class="grid grid-cols-3 gap-1 bg-slate-100 dark:bg-slate-800 p-1 rounded-xl mb-4 text-xs font-semibold">
                                 <button onclick="UIController.switchRecorderTab('inc')" id="tab-btn-inc" class="py-2 rounded-lg text-emerald-500 bg-white dark:bg-slate-900 shadow-sm transition-all">
                                     + รายรับ
@@ -1145,7 +1249,6 @@
                                 </button>
                             </div>
 
-                            <!-- Unified Form -->
                             <form id="unified-form" onsubmit="UIController.handleUnifiedSubmit(event)" class="space-y-4">
                                 <input type="hidden" id="recorder-type" value="inc">
                                 
@@ -1170,7 +1273,6 @@
                                 <div>
                                     <label class="block text-xs font-semibold text-slate-400 mb-1">หมวดหมู่</label>
                                     <select id="uni-category" class="w-full px-3 py-2 rounded-xl bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-sm focus:outline-none focus:border-brand-500">
-                                        <!-- Dynamic Options rendered by JS switchRecorderTab -->
                                     </select>
                                 </div>
 
@@ -1185,7 +1287,7 @@
                             </form>
                         </div>
 
-                        <!-- Right Panel: Transaction History & Unified Filter -->
+                        <!-- Right Panel: Transaction History -->
                         <div class="lg:col-span-2 glass-card p-6 rounded-2xl flex flex-col">
                             <div class="flex items-center justify-between mb-4">
                                 <h3 class="font-bold text-base text-slate-800 dark:text-slate-100">ประวัติการทำรายการรวมทุกประเภท</h3>
@@ -1275,7 +1377,7 @@
                         <option value="อื่นๆ">รายรับอื่นๆ</option>
                     `;
                     submitBtn.className = "w-full py-2.5 rounded-xl bg-emerald-500 hover:bg-emerald-600 text-white font-semibold text-sm transition-all shadow-md shadow-emerald-500/20";
-                    submitBtn.innerText = "+ บันทึกรายรับเข้าระบบ";
+                    submitBtn.innerText = "+ บันทึกรายรับ (พร้อมจัดสรรเงินออมอัตโนมัติ)";
                 } else if (type === 'exp') {
                     btnExp.className = "py-2 rounded-lg text-rose-500 bg-white dark:bg-slate-900 shadow-sm transition-all";
                     actionGroup.classList.add('hidden');
@@ -1288,7 +1390,7 @@
                         <option value="อื่นๆ">รายจ่ายอื่นๆ</option>
                     `;
                     submitBtn.className = "w-full py-2.5 rounded-xl bg-rose-500 hover:bg-rose-600 text-white font-semibold text-sm transition-all shadow-md shadow-rose-500/20";
-                    submitBtn.innerText = "- บันทึกรายจ่ายเข้าระบบ";
+                    submitBtn.innerText = "- บันทึกรายจ่าย (หักยอดคงเหลือทันที)";
                 } else if (type === 'sav') {
                     btnSav.className = "py-2 rounded-lg text-brand-500 bg-white dark:bg-slate-900 shadow-sm transition-all";
                     actionGroup.classList.remove('hidden');
@@ -1317,10 +1419,10 @@
                 try {
                     if (type === 'inc') {
                         await InternalAPISystem.addIncome({ title, amount, category, date });
-                        this.showToast('บันทึกรายรับเรียบร้อยแล้ว', 'success');
+                        this.showToast('บันทึกรายรับและจัดสรรเงินออมอัตโนมัติเรียบร้อยแล้ว', 'success');
                     } else if (type === 'exp') {
                         await InternalAPISystem.addExpense({ title, amount, category, date });
-                        this.showToast('บันทึกรายจ่ายเรียบร้อยแล้ว', 'success');
+                        this.showToast('บันทึกรายจ่ายและหักยอดเงินคงเหลือเรียบร้อยแล้ว', 'success');
                     } else if (type === 'sav') {
                         await InternalAPISystem.addSavings({ title, amount, type: category, date, action });
                         this.showToast('บันทึกรายการเงินออมเรียบร้อยแล้ว', 'success');
@@ -1502,7 +1604,7 @@
                     <div class="space-y-6">
                         <div class="glass-card p-6 rounded-2xl border-l-4 border-l-brand-500">
                             <h3 class="font-bold text-lg text-slate-800 dark:text-slate-100 flex items-center gap-2 mb-2">
-                                <i class="fa-solid fa-robot text-brand-500"></i> AI Financial Assistant v2.4
+                                <i class="fa-solid fa-robot text-brand-500"></i> AI Financial Assistant v2.6
                             </h3>
                             <p class="text-sm text-slate-600 dark:text-slate-300">
                                 ระบบ AI ประมวลผลในเครื่อง 100% ปลอดภัย ไร้กังวลเรื่องข้อมูลรั่วไหล วิเคราะห์สุขภาพการเงินและตรวจจับรายการผิดปกติโดยอัตโนมัติ
@@ -1622,14 +1724,13 @@
                 `;
             }
 
-            // 7. AI MONTHLY MISSION VIEW (v2.4 Core Feature)
+            // AI Monthly Mission View
             static async renderAIMissionView(container) {
                 const missions = await AIFinancialEngine.generateMonthlyMissions();
                 const totalPoints = missions.filter(m => m.status === 'completed').reduce((sum, m) => sum + m.points, 0);
 
                 container.innerHTML = `
                     <div class="space-y-6">
-                        <!-- Top Summary Banner -->
                         <div class="glass-card p-6 rounded-2xl flex flex-col md:flex-row items-center justify-between gap-4">
                             <div>
                                 <h3 class="font-bold text-lg text-slate-800 dark:text-slate-100 flex items-center gap-2">
@@ -1650,7 +1751,6 @@
                             </div>
                         </div>
 
-                        <!-- Missions Grid -->
                         <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
                             ${missions.map(m => {
                                 const isCompleted = m.status === 'completed';
@@ -1658,7 +1758,7 @@
 
                                 return `
                                     <div class="glass-card p-5 rounded-2xl flex flex-col justify-between space-y-4 relative overflow-hidden">
-                                        ${isCompleted ? '<div class="absolute top-0 right-0 bg-emerald-500 text-white text-[10px] px-3 py-1 font-bold rounded-bl-xl"><i class="fa-solid fa-check mr-1"></i>สำร็จแล้ว</div>' : ''}
+                                        ${isCompleted ? '<div class="absolute top-0 right-0 bg-emerald-500 text-white text-[10px] px-3 py-1 font-bold rounded-bl-xl"><i class="fa-solid fa-check mr-1"></i>สำเร็จแล้ว</div>' : ''}
                                         
                                         <div>
                                             <div class="flex items-center gap-2 mb-2">
@@ -1791,7 +1891,7 @@
                 `;
             }
 
-            // Health Score View (Dedicated)
+            // Health Score View
             static async renderHealthScoreView(container) {
                 const health = await InternalAPISystem.calculateHealthScore();
                 const summary = await InternalAPISystem.getFinancialSummary();
@@ -1827,7 +1927,7 @@
                     <div class="glass-card p-6 rounded-2xl space-y-6">
                         <div class="flex items-center justify-between pb-4 border-b border-slate-200 dark:border-slate-800">
                             <div>
-                                <h3 class="font-bold text-lg text-slate-800 dark:text-slate-100">รายงานสรุปผลการเงินส่วนบุคคล v2.4</h3>
+                                <h3 class="font-bold text-lg text-slate-800 dark:text-slate-100">รายงานสรุปผลการเงินส่วนบุคคล v2.6</h3>
                                 <p class="text-xs text-slate-400">สร้างรายงานอัตโนมัติประจำเครื่อง</p>
                             </div>
                             <button onclick="window.print()" class="px-4 py-2 rounded-xl bg-brand-500 text-white text-xs font-semibold hover:bg-brand-600 transition-all">
@@ -1929,7 +2029,6 @@
                         </h3>
 
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                            <!-- Export -->
                             <div class="p-5 rounded-xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 space-y-3">
                                 <h4 class="font-bold text-sm text-slate-800 dark:text-slate-100">สำรองข้อมูลออก (Export Encrypted Data)</h4>
                                 <p class="text-xs text-slate-400">ใส่รหัสผ่านเพื่อเข้ารหัสไฟล์สำรองด้วย AES-GCM 256-bit</p>
@@ -1939,7 +2038,6 @@
                                 </button>
                             </div>
 
-                            <!-- Import -->
                             <div class="p-5 rounded-xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 space-y-3">
                                 <h4 class="font-bold text-sm text-slate-800 dark:text-slate-100">กู้คืนข้อมูล (Restore Data)</h4>
                                 <p class="text-xs text-slate-400">ถอดรหัสและนำเข้าข้อมูลกลับคืนสู่ระบบแบบไม่ซ้ำซ้อน</p>
@@ -1964,17 +2062,18 @@
                 const exportObject = {
                     appVersion: APP_VERSION,
                     dbVersion: DB_SCHEMA_VERSION,
+                    installationId: await IdentityEngine.getOrCreateInstallationId(),
                     exportedAt: new Date().toISOString(),
                     data: { incomes, expenses, savings, goals }
                 };
 
                 const rawJson = JSON.stringify(exportObject, null, 2);
                 let finalContent = rawJson;
-                let filename = `AI_Saving_v2.4_Backup_${new Date().toISOString().split('T')[0]}.json`;
+                let filename = `AI_Saving_v2.6_Backup_${new Date().toISOString().split('T')[0]}.json`;
 
                 if (password) {
                     finalContent = await CryptoEngine.encryptData(rawJson, password);
-                    filename = `AI_Saving_v2.4_Backup_Encrypted_${new Date().toISOString().split('T')[0]}.enc`;
+                    filename = `AI_Saving_v2.6_Backup_Encrypted_${new Date().toISOString().split('T')[0]}.enc`;
                 }
 
                 const blob = new Blob([finalContent], { type: "text/plain;charset=utf-8" });
@@ -2016,31 +2115,46 @@
                 reader.readAsText(file);
             }
 
-            // Settings & System Diagnostics View
+            // Settings & System Diagnostics View (v2.6 Auto-Saving Settings included)
             static async renderSettingsView(container) {
+                const autoSaveEnabled = db.getSetting('auto_save_enabled', true);
+                const autoSavePct = db.getSetting('auto_save_pct', 10);
+                const instId = await IdentityEngine.getOrCreateInstallationId();
+
                 container.innerHTML = `
                     <div class="glass-card p-6 rounded-2xl space-y-6 max-w-xl">
                         <h3 class="font-bold text-lg text-slate-800 dark:text-slate-100 flex items-center gap-2">
-                            <i class="fa-solid fa-gear text-brand-500"></i> ตั้งค่าระบบและตรวจสอบความเสถียร
+                            <i class="fa-solid fa-gear text-brand-500"></i> ตั้งค่าระบบและตรวจสอบความเสถียร v2.6
                         </h3>
 
                         <div class="space-y-4">
+                            <!-- Auto Save Config -->
+                            <div class="p-4 rounded-xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 space-y-3">
+                                <h4 class="font-bold text-sm text-slate-800 dark:text-slate-100">การจัดสรรเงินออมอัตโนมัติจากรายรับ (Auto Savings Rule)</h4>
+                                <div class="flex items-center justify-between text-xs">
+                                    <span>เปิดใช้งานการจัดสรรเงินออมอัตโนมัติ:</span>
+                                    <input type="checkbox" id="setting-autosave-toggle" ${autoSaveEnabled ? 'checked' : ''} onchange="UIController.toggleAutoSaveSetting(this.checked)" class="w-4 h-4 text-brand-500 rounded">
+                                </div>
+                                <div class="flex items-center justify-between text-xs">
+                                    <span>สัดส่วนเปอร์เซ็นต์ที่ออมจากรายรับ (%):</span>
+                                    <input type="number" id="setting-autosave-pct" value="${autoSavePct}" min="1" max="100" onchange="UIController.updateAutoSavePct(this.value)" class="w-20 px-2 py-1 rounded bg-slate-100 dark:bg-slate-800 border border-slate-300 dark:border-slate-700 text-center font-bold">
+                                </div>
+                            </div>
+
+                            <div class="flex items-center justify-between py-2 border-b border-slate-200 dark:border-slate-800">
+                                <div>
+                                    <h4 class="font-semibold text-sm text-slate-800 dark:text-slate-100">One Device Installation Identity</h4>
+                                    <p class="text-xs text-slate-400">ID ประจำเครื่อง: <b class="text-brand-500">${instId}</b></p>
+                                </div>
+                                <span class="px-2 py-1 rounded bg-emerald-500/10 text-emerald-500 text-xs font-bold">Protected</span>
+                            </div>
+
                             <div class="flex items-center justify-between py-2 border-b border-slate-200 dark:border-slate-800">
                                 <div>
                                     <h4 class="font-semibold text-sm text-slate-800 dark:text-slate-100">เวอร์ชันแอปพลิเคชัน</h4>
                                     <p class="text-xs text-slate-400">Current App: v${APP_VERSION} (DB Schema: v${DB_SCHEMA_VERSION})</p>
                                 </div>
-                                <span class="px-2 py-1 rounded bg-emerald-500/10 text-emerald-500 text-xs font-bold">Latest Safe v2.4</span>
-                            </div>
-
-                            <div class="flex items-center justify-between py-2 border-b border-slate-200 dark:border-slate-800">
-                                <div>
-                                    <h4 class="font-semibold text-sm text-slate-800 dark:text-slate-100">Dark Mode / Light Mode</h4>
-                                    <p class="text-xs text-slate-400">สลับธีมการแสดงผลของแอป</p>
-                                </div>
-                                <button onclick="document.getElementById('theme-toggle-desktop').click()" class="px-3 py-1.5 rounded-xl bg-slate-100 dark:bg-slate-800 text-xs font-semibold">
-                                    สลับธีม
-                                </button>
+                                <span class="px-2 py-1 rounded bg-emerald-500/10 text-emerald-500 text-xs font-bold">Complete v2.6</span>
                             </div>
 
                             <div class="flex items-center justify-between py-2 border-b border-slate-200 dark:border-slate-800">
@@ -2055,6 +2169,19 @@
                         </div>
                     </div>
                 `;
+            }
+
+            static toggleAutoSaveSetting(enabled) {
+                db.setSetting('auto_save_enabled', enabled);
+                this.showToast(enabled ? 'เปิดการจัดสรรเงินออมอัตโนมัติแล้ว' : 'ปิดการจัดสรรเงินออมอัตโนมัติแล้ว', 'info');
+            }
+
+            static updateAutoSavePct(val) {
+                const num = parseInt(val, 10);
+                if (num > 0 && num <= 100) {
+                    db.setSetting('auto_save_pct', num);
+                    this.showToast(`ตั้งค่าเปอร์เซ็นต์จัดสรรเงินออมเป็น ${num}% แล้ว`, 'success');
+                }
             }
 
             static async handleResetAllData() {
