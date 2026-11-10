@@ -1,1652 +1,1587 @@
 
 <!DOCTYPE html>
-<html lang="th" class="light">
+<html lang="th" class="dark">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-  <title>AI Automatic Savings 2026 v2.1.6 Premium & Luxury Pro</title>
-  
-  <!-- Tailwind CSS CDN -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  
-  <!-- FontAwesome Icons -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  
-  <!-- Chart.js for Luxury Analytics -->
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-  
-  <!-- Canvas Confetti for Milestone Celebrations -->
-  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
-
-  <!-- Google Fonts: Plus Jakarta Sans & Prompt -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Prompt:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-
-  <script>
-    tailwind.config = {
-      darkMode: 'class',
-      theme: {
-        extend: {
-          colors: {
-            ivory: {
-              DEFAULT: '#FDFBF7',
-              paper: '#F8F5EE',
-              card: '#FFFFFF'
-            },
-            navy: {
-              DEFAULT: '#0F172A',
-              light: '#1E293B',
-              dark: '#0B1120',
-              accent: '#182238'
-            },
-            gold: {
-              50: '#FFFDF0',
-              100: '#FDF8D8',
-              200: '#FAF0AA',
-              300: '#F5E472',
-              400: '#E6C83B',
-              500: '#C5A028',
-              600: '#A3821D',
-              700: '#7E6314',
-              800: '#5A4312',
-              900: '#382709'
-            },
-            charcoal: '#1A202C'
-          },
-          fontFamily: {
-            sans: ['"Plus Jakarta Sans"', '"Prompt"', 'sans-serif'],
-          },
-          boxShadow: {
-            'gold-glow': '0 4px 20px -2px rgba(197, 160, 40, 0.25)',
-            'pro-card': '0 10px 30px -5px rgba(15, 23, 42, 0.08)',
-            'luxury-float': '0 15px 35px -5px rgba(15, 23, 42, 0.12)'
-          }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>AI SAVINGS SYSTEM 2026 v2.3 — SMART SAVINGS & EXPENSE EDITION</title>
+    <!-- Tailwind CSS via CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        gold: {
+                            50: '#fffbeb',
+                            100: '#fef3c7',
+                            400: '#fbbf24',
+                            500: '#f59e0b',
+                            600: '#d97706',
+                            700: '#b45309',
+                        },
+                        darkslate: {
+                            800: '#1e293b',
+                            900: '#0f172a',
+                            950: '#090d16',
+                        }
+                    }
+                }
+            }
         }
-      }
-    }
-  </script>
-
-  <style>
-    ::-webkit-scrollbar {
-      width: 5px;
-      height: 5px;
-    }
-    ::-webkit-scrollbar-track {
-      background: rgba(248, 245, 238, 0.8);
-    }
-    ::-webkit-scrollbar-thumb {
-      background: #C5A028;
-      border-radius: 4px;
-    }
-    .glass-card {
-      background: rgba(255, 255, 255, 0.95);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
-      border: 1px solid rgba(197, 160, 40, 0.28);
-      box-shadow: 0 10px 30px -5px rgba(15, 23, 42, 0.06);
-    }
-    .gold-gradient-text {
-      background: linear-gradient(135deg, #1A202C 0%, #C5A028 60%, #8A6D17 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-    .gold-gradient-bg {
-      background: linear-gradient(135deg, #F5E472 0%, #C5A028 50%, #A3821D 100%);
-    }
-    .navy-gradient-bg {
-      background: linear-gradient(135deg, #1E293B 0%, #0F172A 100%);
-    }
-    .touch-target {
-      min-width: 48px;
-      min-height: 48px;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-    }
-    .safe-bottom {
-      padding-bottom: max(0.75rem, env(safe-area-inset-bottom));
-    }
-    .typing-dot {
-      animation: typingAnimation 1.4s infinite ease-in-out both;
-    }
-    .typing-dot:nth-child(1) { animation-delay: 0s; }
-    .typing-dot:nth-child(2) { animation-delay: 0.2s; }
-    .typing-dot:nth-child(3) { animation-delay: 0.4s; }
-    @keyframes typingAnimation {
-      0%, 80%, 100% { transform: scale(0); }
-      40% { transform: scale(1); }
-    }
-    .progress-ring-circle {
-      transition: stroke-dashoffset 0.5s ease-in-out;
-      transform: rotate(-90deg);
-      transform-origin: 50% 50%;
-    }
-  </style>
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;500;600;700&display=swap');
+        * { font-family: 'Prompt', sans-serif; }
+        .glass-card {
+            background: rgba(30, 41, 59, 0.7);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+        .light .glass-card {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(0, 0, 0, 0.06);
+        }
+        .gold-gradient-text {
+            background: linear-gradient(135deg, #FDE68A 0%, #F59E0B 50%, #D97706 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .gold-bg-gradient {
+            background: linear-gradient(135deg, #f59e0b 0%, #b45309 100%);
+        }
+        /* Custom scrollbar */
+        ::-webkit-scrollbar { width: 6px; height: 6px; }
+        ::-webkit-scrollbar-track { background: rgba(0,0,0,0.1); }
+        ::-webkit-scrollbar-thumb { background: rgba(245, 158, 11, 0.4); border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: rgba(245, 158, 11, 0.8); }
+    </style>
 </head>
-
-<body class="bg-ivory text-charcoal font-sans antialiased selection:bg-gold-500 selection:text-white min-h-screen flex flex-col justify-between overflow-x-hidden transition-colors duration-300">
-
-  <!-- ==================== SECURITY LOCK SCREEN ==================== -->
-  <div id="pinLockScreen" class="fixed inset-0 z-50 bg-ivory/98 backdrop-blur-2xl flex flex-col items-center justify-center p-6 hidden">
-    <div class="text-center max-w-sm w-full">
-      <div class="w-20 h-20 mx-auto mb-6 rounded-full gold-gradient-bg flex items-center justify-center shadow-gold-glow">
-        <i class="fa-solid fa-shield-halved text-white text-3xl"></i>
-      </div>
-      <h2 class="text-2xl font-bold tracking-tight text-navy mb-1">AI AUTOMATIC SAVINGS</h2>
-      <p class="text-xs text-gold-600 font-semibold tracking-widest uppercase mb-6">v2.1.6 Premium & Luxury Pro</p>
-      
-      <p id="pinInstructions" class="text-sm text-gray-600 mb-6">กรุณายืนยัน PIN Code เพื่อเข้าใช้งานระบบ</p>
-      
-      <div class="flex justify-center gap-4 mb-8" id="pinDots">
-        <div class="w-4 h-4 rounded-full border-2 border-gold-500 transition-all duration-300"></div>
-        <div class="w-4 h-4 rounded-full border-2 border-gold-500 transition-all duration-300"></div>
-        <div class="w-4 h-4 rounded-full border-2 border-gold-500 transition-all duration-300"></div>
-        <div class="w-4 h-4 rounded-full border-2 border-gold-500 transition-all duration-300"></div>
-      </div>
-
-      <div class="grid grid-cols-3 gap-4 max-w-xs mx-auto mb-6">
-        <button onclick="app.enterPin('1')" class="touch-target rounded-2xl bg-white border border-gold-500/30 text-xl font-bold text-navy shadow-sm hover:bg-gold-500 hover:text-white transition-all">1</button>
-        <button onclick="app.enterPin('2')" class="touch-target rounded-2xl bg-white border border-gold-500/30 text-xl font-bold text-navy shadow-sm hover:bg-gold-500 hover:text-white transition-all">2</button>
-        <button onclick="app.enterPin('3')" class="touch-target rounded-2xl bg-white border border-gold-500/30 text-xl font-bold text-navy shadow-sm hover:bg-gold-500 hover:text-white transition-all">3</button>
-        <button onclick="app.enterPin('4')" class="touch-target rounded-2xl bg-white border border-gold-500/30 text-xl font-bold text-navy shadow-sm hover:bg-gold-500 hover:text-white transition-all">4</button>
-        <button onclick="app.enterPin('5')" class="touch-target rounded-2xl bg-white border border-gold-500/30 text-xl font-bold text-navy shadow-sm hover:bg-gold-500 hover:text-white transition-all">5</button>
-        <button onclick="app.enterPin('6')" class="touch-target rounded-2xl bg-white border border-gold-500/30 text-xl font-bold text-navy shadow-sm hover:bg-gold-500 hover:text-white transition-all">6</button>
-        <button onclick="app.enterPin('7')" class="touch-target rounded-2xl bg-white border border-gold-500/30 text-xl font-bold text-navy shadow-sm hover:bg-gold-500 hover:text-white transition-all">7</button>
-        <button onclick="app.enterPin('8')" class="touch-target rounded-2xl bg-white border border-gold-500/30 text-xl font-bold text-navy shadow-sm hover:bg-gold-500 hover:text-white transition-all">8</button>
-        <button onclick="app.enterPin('9')" class="touch-target rounded-2xl bg-white border border-gold-500/30 text-xl font-bold text-navy shadow-sm hover:bg-gold-500 hover:text-white transition-all">9</button>
-        <button onclick="app.triggerBiometric()" class="touch-target rounded-2xl bg-ivory-paper border border-gold-500/20 text-gold-600 hover:text-navy transition-all"><i class="fa-solid fa-fingerprint text-2xl"></i></button>
-        <button onclick="app.enterPin('0')" class="touch-target rounded-2xl bg-white border border-gold-500/30 text-xl font-bold text-navy shadow-sm hover:bg-gold-500 hover:text-white transition-all">0</button>
-        <button onclick="app.clearPin()" class="touch-target rounded-2xl bg-ivory-paper border border-gold-500/20 text-rose-500 hover:text-rose-700 transition-all"><i class="fa-solid fa-backspace text-xl"></i></button>
-      </div>
-
-      <button onclick="app.bypassPinForDemo()" class="text-xs text-gray-500 underline hover:text-gold-600">ข้ามระบบความปลอดภัย (Demo Mode)</button>
-    </div>
-  </div>
-
-  <!-- ==================== TOP BAR (56dp) ==================== -->
-  <header class="h-14 bg-white/95 backdrop-blur-md border-b border-gold-500/20 sticky top-0 z-40 px-4 flex items-center justify-between shadow-sm">
-    <div class="flex items-center gap-3">
-      <div class="w-9 h-9 rounded-xl gold-gradient-bg flex items-center justify-center shadow-gold-glow">
-        <i class="fa-solid fa-brain text-white text-sm"></i>
-      </div>
-      <div>
-        <h1 class="text-sm font-bold tracking-wide text-navy leading-tight">AI SAVINGS PRO 2026</h1>
-        <div class="flex items-center gap-1.5">
-          <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
-          <span id="headerUserLevel" class="text-[10px] text-gold-600 font-bold uppercase tracking-wider">v2.1.6 • AI Auto Allocator</span>
-        </div>
-      </div>
-    </div>
-
-    <div class="flex items-center gap-2 sm:gap-3">
-      <div class="hidden sm:flex items-center gap-1.5 px-3 py-1 rounded-full bg-gold-50 border border-gold-500/30 text-gold-700 text-xs font-semibold">
-        <i class="fa-solid fa-bolt text-yellow-500"></i>
-        <span id="headerXP">0 XP</span>
-      </div>
-
-      <button onclick="app.openAiChat()" class="w-9 h-9 rounded-xl bg-navy text-gold-400 hover:text-white flex items-center justify-center transition-all touch-target relative shadow-sm" title="AI Live Chat">
-        <i class="fa-solid fa-comments text-sm"></i>
-        <span class="absolute -top-1 -right-1 w-2.5 h-2.5 rounded-full bg-gold-500 border border-white"></span>
-      </button>
-
-      <button onclick="app.switchTab('profile')" class="w-9 h-9 rounded-xl bg-gold-50 border border-gold-500/40 text-gold-700 flex items-center justify-center transition-all touch-target" title="ศูนย์คุ้มครองข้อมูล v2.1.6">
-        <i class="fa-solid fa-shield-check text-xs"></i>
-      </button>
-    </div>
-  </header>
-
-  <!-- ==================== MAIN CONTENT AREA ==================== -->
-  <main class="flex-1 max-w-5xl w-full mx-auto p-4 sm:p-6 mb-20">
-
-    <!-- MISSION SYSTEM LOCKOUT ALERT BANNER -->
-    <div id="missionLockoutAlert" class="mb-4 p-3.5 rounded-2xl bg-amber-50 border border-amber-300 flex items-center justify-between text-xs text-amber-900 shadow-sm hidden">
-      <div class="flex items-center gap-2.5">
-        <i class="fa-solid fa-clock-rotate-left text-amber-600 text-lg"></i>
-        <div>
-          <span class="font-bold">ระบบปิดปรับปรุงภารกิจประจำวัน (23:00 - 23:15 น.):</span>
-          <span>AI กำลังประมวลผลคำนวณสรุปภารกิจ สามารถกลับมาทำภารกิจใหม่ได้ในเวลา 23:15 น.</span>
-        </div>
-      </div>
-    </div>
-
-    <!-- MIGRATION BANNER -->
-    <div id="migrationBanner" class="mb-6 p-4 rounded-2xl bg-gold-50 border border-gold-500/30 flex items-center justify-between text-xs sm:text-sm text-gold-800 shadow-sm hidden">
-      <div class="flex items-center gap-3">
-        <i class="fa-solid fa-database text-gold-600 text-xl"></i>
-        <div>
-          <span class="font-bold">Migration Center v2.1.6:</span>
-          <span id="migrationStatusText">ย้ายข้อมูลสำเร็จ 100% พร้อมเปิดใช้ระบบ AI Auto Savings Direct Balance System</span>
-        </div>
-      </div>
-      <button onclick="document.getElementById('migrationBanner').classList.add('hidden')" class="text-gold-700 hover:text-navy"><i class="fa-solid fa-xmark text-base"></i></button>
-    </div>
-
-    <!-- TAB 1: PRO WEALTH DASHBOARD (HOME) -->
-    <section id="tab-home" class="tab-content space-y-6">
-      
-      <!-- HERO WEALTH CARD WITH WEALTH PROGRESS RING -->
-      <div class="relative overflow-hidden rounded-3xl p-6 sm:p-8 navy-gradient-bg border border-gold-500/30 text-white shadow-luxury-float">
-        <div class="absolute -right-10 -bottom-10 w-56 h-56 bg-gold-500/15 rounded-full blur-3xl pointer-events-none"></div>
-        
-        <div class="flex justify-between items-start mb-4">
-          <div>
-            <div class="flex items-center gap-2 mb-1">
-              <span class="text-xs uppercase tracking-widest text-gold-400 font-bold">เงินออมสะสมสุทธิ (AI Auto-Allocated)</span>
-              <span class="text-[10px] px-2 py-0.5 rounded-md bg-gold-500/20 text-gold-300 border border-gold-500/30 font-semibold">
-                <i class="fa-solid fa-wand-magic-sparkles"></i> Auto Income Savings
-              </span>
-            </div>
-            <h2 id="monthlySavings" class="text-3xl sm:text-4xl font-extrabold tracking-tight text-white">฿0.00</h2>
-            <p class="text-[11px] text-gray-300 mt-1">*เมื่อบันทึกรายรับ AI นำเข้าเงินออมสะสมทันที / บันทึกรายจ่าย AI จะหักออกทันที</p>
-          </div>
-
-          <!-- Progress Ring Component -->
-          <div class="relative w-16 h-16 flex items-center justify-center">
-            <svg class="w-16 h-16">
-              <circle class="text-white/10" stroke-width="4" stroke="currentColor" fill="transparent" r="26" cx="32" cy="32"/>
-              <circle id="savingRateCircle" class="text-gold-400 progress-ring-circle" stroke-width="4" stroke-dasharray="163.36" stroke-dashoffset="163.36" stroke-linecap="round" stroke="currentColor" fill="transparent" r="26" cx="32" cy="32"/>
-            </svg>
-            <span id="savingRateText" class="absolute text-[10px] font-bold text-gold-300">0%</span>
-          </div>
-        </div>
-
-        <div class="grid grid-cols-2 gap-3 pt-4 border-t border-white/10">
-          <div class="p-3 rounded-2xl bg-white/5 border border-white/10">
-            <p class="text-[11px] text-gray-300 mb-0.5">รายรับรวม (สะสมเข้าเงินออมแล้ว)</p>
-            <p id="monthlyIncome" class="text-sm sm:text-base font-bold text-emerald-400">฿0.00</p>
-          </div>
-          <div class="p-3 rounded-2xl bg-white/5 border border-white/10">
-            <p class="text-[11px] text-gray-300 mb-0.5">รายจ่ายรวม (หักจากเงินออมแล้ว)</p>
-            <p id="monthlyExpense" class="text-sm sm:text-base font-bold text-rose-300">฿0.00</p>
-          </div>
-        </div>
-      </div>
-
-      <!-- AI SMART INSIGHT BUBBLE & CHAT LAUNCHER -->
-      <div class="glass-card rounded-3xl p-5 border border-gold-500/30 relative shadow-sm">
-        <div class="flex items-center justify-between mb-3">
-          <div class="flex items-center gap-2.5">
-            <div class="w-9 h-9 rounded-xl bg-navy text-gold-400 flex items-center justify-center font-bold">
-              <i class="fa-solid fa-microchip text-base"></i>
-            </div>
-            <div>
-              <h3 class="text-sm font-bold text-navy uppercase tracking-wider">AI Live Savings Chat & Smart Insights Pro</h3>
-              <p class="text-[11px] text-gray-500">Local Rule-Based & On-Device Engine • วิเคราะห์ข้อมูลเรียลไทม์หลังการบันทึกทุกรายการ</p>
-            </div>
-          </div>
-          <button onclick="app.openAiChat()" class="text-xs px-3.5 py-2 rounded-xl gold-gradient-bg text-white font-bold hover:opacity-95 transition-all flex items-center gap-1.5 shadow-gold-glow touch-target">
-            <i class="fa-solid fa-comments"></i> สนทนา AI Pro
-          </button>
-        </div>
-
-        <div id="aiSmartInsightBubble" class="text-xs sm:text-sm text-charcoal leading-relaxed bg-ivory-paper p-4 rounded-2xl border border-gold-500/20 min-h-[60px] flex items-center justify-between">
-          <span>กำลังโหลดการวิเคราะห์ AI Smart Insights Pro...</span>
-          <i class="fa-solid fa-sparkles text-gold-600 text-lg ml-2"></i>
-        </div>
-      </div>
-
-      <!-- QUICK ACTION PANEL -->
-      <div class="grid grid-cols-4 gap-3">
-        <button onclick="app.openModal('modal-transaction', 'income')" class="p-3 rounded-2xl glass-card hover:border-gold-500 transition-all flex flex-col items-center gap-2 group">
-          <div class="w-10 h-10 rounded-xl bg-emerald-100 text-emerald-700 flex items-center justify-center group-hover:scale-105 transition-transform">
-            <i class="fa-solid fa-plus-circle text-lg"></i>
-          </div>
-          <span class="text-xs text-navy font-medium">+ รายรับ (นำเข้าออม)</span>
-        </button>
-        <button onclick="app.openModal('modal-transaction', 'expense')" class="p-3 rounded-2xl glass-card hover:border-gold-500 transition-all flex flex-col items-center gap-2 group">
-          <div class="w-10 h-10 rounded-xl bg-rose-100 text-rose-700 flex items-center justify-center group-hover:scale-105 transition-transform">
-            <i class="fa-solid fa-minus-circle text-lg"></i>
-          </div>
-          <span class="text-xs text-navy font-medium">+ รายจ่าย (หักออม)</span>
-        </button>
-        <button onclick="app.switchTab('goals')" class="p-3 rounded-2xl glass-card hover:border-gold-500 transition-all flex flex-col items-center gap-2 group">
-          <div class="w-10 h-10 rounded-xl bg-gold-100 text-gold-700 flex items-center justify-center group-hover:scale-105 transition-transform">
-            <i class="fa-solid fa-calculator text-lg"></i>
-          </div>
-          <span class="text-xs text-navy font-medium">Simulator</span>
-        </button>
-        <button onclick="app.switchTab('goals')" class="p-3 rounded-2xl glass-card hover:border-gold-500 transition-all flex flex-col items-center gap-2 group">
-          <div class="w-10 h-10 rounded-xl bg-purple-100 text-purple-700 flex items-center justify-center group-hover:scale-105 transition-transform">
-            <i class="fa-solid fa-bullseye text-lg"></i>
-          </div>
-          <span class="text-xs text-navy font-medium">เป้าหมาย</span>
-        </button>
-      </div>
-
-      <!-- RECENT TRANSACTIONS & MONTHLY MISSIONS PRO -->
-      <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
-        
-        <!-- Transactions List -->
-        <div class="glass-card rounded-3xl p-5 border border-gold-500/20">
-          <div class="flex justify-between items-center mb-4">
-            <h3 class="text-sm font-bold text-navy flex items-center gap-2">
-              <i class="fa-solid fa-list-check text-gold-600"></i> ประวัติรายการย้อนหลัง (AI Auto Sync)
-            </h3>
-            <span class="text-xs text-gray-500" id="txCountLabel">0 รายการ</span>
-          </div>
-          <div id="recentTransactionsList" class="space-y-3 max-h-72 overflow-y-auto pr-1">
-            <p class="text-xs text-gray-400 text-center py-6">ยังไม่มีข้อมูลรายการย้อนหลัง</p>
-          </div>
-        </div>
-
-        <!-- Monthly Saving Mission Pro & Streaks -->
-        <div class="glass-card rounded-3xl p-5 border border-gold-500/20">
-          <div class="flex justify-between items-center mb-4">
-            <div>
-              <h3 class="text-sm font-bold text-navy flex items-center gap-2">
-                <i class="fa-solid fa-trophy text-gold-600"></i> Monthly Saving Mission Pro 2.1.6
-              </h3>
-              <p class="text-[10px] text-gold-700 font-semibold" id="monthlyMissionThemeTitle">ธีมประจำเดือน พฤศจิกายน 2026</p>
-            </div>
-            <span id="streakBadge" class="text-xs font-bold px-2.5 py-1 rounded-full bg-gold-100 text-gold-800 border border-gold-500/30">
-              🔥 Streak 0 วัน
-            </span>
-          </div>
-          
-          <div id="missionsList" class="space-y-3 max-h-72 overflow-y-auto pr-1">
-            <!-- Dynamic Missions -->
-          </div>
-        </div>
-
-      </div>
-
-    </section>
-
-    <!-- TAB 2: WEALTH ANALYTICS & GOAL SIMULATOR PRO -->
-    <section id="tab-stats" class="tab-content space-y-6 hidden">
-      <div class="glass-card rounded-3xl p-6 border border-gold-500/20">
-        <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-6">
-          <div>
-            <h2 class="text-xl font-bold text-navy gold-gradient-text">Wealth Analytics & Category Breakdown</h2>
-            <p class="text-xs text-gray-500">วิเคราะห์สัดส่วนรายจ่าย เปรียบเทียบรายรับและเงินออมอย่างสมบูรณ์แบบ</p>
-          </div>
-        </div>
-
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-          <div class="bg-ivory-paper p-4 rounded-2xl border border-gold-500/20">
-            <h3 class="text-xs font-bold text-navy mb-4">สัดส่วนรายจ่ายแยกตามหมวดหมู่</h3>
-            <div class="h-56 relative flex items-center justify-center">
-              <canvas id="expenseChart"></canvas>
-            </div>
-          </div>
-          <div class="bg-ivory-paper p-4 rounded-2xl border border-gold-500/20">
-            <h3 class="text-xs font-bold text-navy mb-4">สัดส่วน รายรับ vs รายจ่าย vs เงินออม</h3>
-            <div class="h-56 relative">
-              <canvas id="overviewChart"></canvas>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- SMART GOAL SIMULATOR PRO -->
-      <div class="glass-card rounded-3xl p-6 border border-gold-500/20">
-        <h3 class="text-sm font-bold text-navy mb-2 flex items-center gap-2">
-          <i class="fa-solid fa-calculator text-gold-600"></i> Smart Goal Simulator Pro 2.1.6
-        </h3>
-        <p class="text-xs text-gray-500 mb-4">จำลองระยะเวลาที่จะบรรลุเป้าหมายตามยอดออมรายเดือนที่คุณกำหนด</p>
-        
-        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-4">
-          <div>
-            <label class="block text-[11px] font-bold text-navy mb-1">จำนวนเงินเป้าหมายที่ต้องการ (บาท)</label>
-            <input type="number" id="simTarget" value="50000" oninput="app.runGoalSimulator()" class="w-full bg-ivory-paper border border-gold-500/30 rounded-xl px-3 py-2 text-xs font-bold text-navy">
-          </div>
-          <div>
-            <label class="block text-[11px] font-bold text-navy mb-1">ยอดออมต่อเดือน (บาท)</label>
-            <input type="number" id="simMonthly" value="3000" oninput="app.runGoalSimulator()" class="w-full bg-ivory-paper border border-gold-500/30 rounded-xl px-3 py-2 text-xs font-bold text-navy">
-          </div>
-          <div>
-            <label class="block text-[11px] font-bold text-navy mb-1">เงินต้นที่มีอยู่แล้ว (บาท)</label>
-            <input type="number" id="simInitial" value="5000" oninput="app.runGoalSimulator()" class="w-full bg-ivory-paper border border-gold-500/30 rounded-xl px-3 py-2 text-xs font-bold text-navy">
-          </div>
-        </div>
-
-        <div id="simResult" class="p-4 rounded-2xl bg-gold-50 border border-gold-500/30 text-xs text-gold-900 leading-relaxed font-medium">
-          คำนวณจำลองผลลัพธ์การออม...
-        </div>
-      </div>
-    </section>
-
-    <!-- TAB 3: WEALTH GOAL MASTER PRO -->
-    <section id="tab-goals" class="tab-content space-y-6 hidden">
-      <div class="flex justify-between items-center">
-        <div>
-          <h2 class="text-xl font-bold text-navy gold-gradient-text">Wealth Goal Master Pro</h2>
-          <p class="text-xs text-gray-500">วางแผนและจัดการเป้าหมายการเงิน ติดตามความคืบหน้าอย่างเป็นระบบ</p>
-        </div>
-        <button onclick="app.openModal('modal-goal')" class="px-4 py-2 rounded-xl gold-gradient-bg text-white font-bold text-xs shadow-gold-glow hover:opacity-95 transition-all flex items-center gap-2 touch-target">
-          <i class="fa-solid fa-plus"></i> เพิ่มเป้าหมาย
-        </button>
-      </div>
-
-      <div id="goalsContainer" class="grid grid-cols-1 md:grid-cols-2 gap-4">
-        <!-- Dynamic Goals -->
-      </div>
-    </section>
-
-    <!-- TAB 4: PROFILE, INTEGRITY & SECURITY CENTER -->
-    <section id="tab-profile" class="tab-content space-y-6 hidden">
-      
-      <div class="glass-card rounded-3xl p-6 border border-gold-500/20">
-        <div class="flex items-center gap-4 mb-6">
-          <div class="w-16 h-16 rounded-2xl gold-gradient-bg flex items-center justify-center text-white text-2xl font-black shadow-gold-glow">
-            <i class="fa-solid fa-crown"></i>
-          </div>
-          <div>
-            <h2 id="profileName" class="text-lg font-bold text-navy">VIP Elite Member Pro</h2>
-            <p id="profileLevelText" class="text-xs text-gold-700 font-semibold uppercase">Level 1 • Bronze Saver</p>
-            <div class="w-48 bg-ivory-paper rounded-full h-2.5 mt-2 border border-gold-500/30 overflow-hidden">
-              <div id="profileXpBar" class="gold-gradient-bg h-full rounded-full" style="width: 10%"></div>
-            </div>
-          </div>
-        </div>
-
-        <h3 class="text-xs font-bold text-navy uppercase tracking-wider mb-3">Elite Achievement Center 2.1.6</h3>
-        <div id="achievementsGrid" class="grid grid-cols-2 sm:grid-cols-4 gap-3">
-          <!-- Dynamic Achievements -->
-        </div>
-      </div>
-
-      <!-- PERMANENT DATA PROTECTION & MIGRATION CENTER PRO -->
-      <div class="glass-card rounded-3xl p-6 border border-gold-500/30 relative">
-        <div class="flex items-center justify-between mb-4">
-          <h3 class="text-sm font-bold text-navy flex items-center gap-2">
-            <i class="fa-solid fa-shield-halved text-gold-600"></i> Permanent Data Protection Engine v2.1.6
-          </h3>
-          <span class="px-2.5 py-0.5 rounded-full text-[10px] bg-emerald-100 text-emerald-800 border border-emerald-300 font-mono">Protected v2.1.6</span>
-        </div>
-        <p class="text-xs text-gray-500 mb-6">
-          คุ้มครองข้อมูลถาวร: ย้ายข้อมูลสมบูรณ์จาก v2.0.4 - v2.1.4 สู่ v2.1.6 พร้อมบันทึกคำตอบสำคัญและระบบ Rollback Protection
-        </p>
-
-        <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
-          <button onclick="app.exportData()" class="p-3 rounded-2xl bg-ivory-paper hover:bg-gold-50 border border-gold-500/30 text-xs text-navy font-bold transition-all flex items-center justify-center gap-2">
-            <i class="fa-solid fa-file-export text-gold-600"></i> Backup Export (JSON)
-          </button>
-          
-          <label class="p-3 rounded-2xl bg-ivory-paper hover:bg-gold-50 border border-gold-500/30 text-xs text-navy font-bold transition-all flex items-center justify-center gap-2 cursor-pointer text-center">
-            <i class="fa-solid fa-file-import text-gold-600"></i> Restore Import
-            <input type="file" id="importFileInput" accept=".json" onchange="app.importData(event)" class="hidden">
-          </label>
-
-          <button onclick="app.verifyDataIntegrity()" class="p-3 rounded-2xl bg-ivory-paper hover:bg-gold-50 border border-gold-500/30 text-xs text-emerald-700 font-bold transition-all flex items-center justify-center gap-2">
-            <i class="fa-solid fa-square-check"></i> Verify Integrity
-          </button>
-        </div>
-      </div>
-
-      <!-- SECURITY & PREFERENCES -->
-      <div class="glass-card rounded-3xl p-6 border border-gold-500/20 space-y-4">
-        <h3 class="text-sm font-bold text-navy flex items-center gap-2">
-          <i class="fa-solid fa-lock text-gold-600"></i> Pro Security & Preferences
-        </h3>
-
-        <div class="flex items-center justify-between py-2 border-b border-gray-100">
-          <div>
-            <p class="text-xs font-semibold text-navy">เปิดใช้งาน PIN Lock Protection</p>
-            <p class="text-[11px] text-gray-500">ร้องขอ PIN 4 หลักเมื่อเข้าสู่แอป</p>
-          </div>
-          <input type="checkbox" id="pinToggle" onchange="app.togglePinProtection(this.checked)" class="w-5 h-5 accent-gold-500 rounded cursor-pointer">
-        </div>
-
-        <div class="flex items-center justify-between py-2 border-b border-gray-100">
-          <div>
-            <p class="text-xs font-semibold text-navy">ตั้งค่า / เปลี่ยน PIN Code</p>
-            <p class="text-[11px] text-gray-500">รหัส PIN ปัจจุบัน: <span id="currentPinMask" class="font-mono text-gold-700">****</span></p>
-          </div>
-          <button onclick="app.promptSetPin()" class="text-xs px-3 py-1.5 rounded-xl bg-gold-100 text-gold-800 border border-gold-500/30 hover:bg-gold-500 hover:text-white font-semibold transition-all">ตั้งค่า PIN</button>
-        </div>
-      </div>
-
-    </section>
-
-  </main>
-
-  <!-- ==================== MODAL: AI LIVE SAVINGS CHAT PRO 2.1.6 ==================== -->
-  <div id="modal-ai-chat" class="fixed inset-0 bg-navy/60 backdrop-blur-md z-50 flex items-center justify-center p-3 sm:p-4 hidden">
-    <div class="glass-card w-full max-w-2xl h-[85vh] rounded-3xl border border-gold-500/40 flex flex-col overflow-hidden shadow-2xl bg-white">
-      
-      <!-- Chat Header -->
-      <div class="px-5 py-4 bg-navy text-white flex items-center justify-between border-b border-gold-500/30">
-        <div class="flex items-center gap-3">
-          <div class="w-10 h-10 rounded-xl gold-gradient-bg flex items-center justify-center text-white shadow-gold-glow">
-            <i class="fa-solid fa-robot text-lg"></i>
-          </div>
-          <div>
-            <h3 class="text-sm font-bold tracking-wide">AI Live Savings Advisor Pro</h3>
-            <p class="text-[10px] text-gold-400 font-semibold flex items-center gap-1">
-              <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span> Local On-Device AI • Data Auto-Refreshed
-            </p>
-          </div>
-        </div>
-        <div class="flex items-center gap-2">
-          <button onclick="app.clearChatHistory()" class="text-xs text-gray-300 hover:text-white px-2 py-1 rounded-lg bg-white/10" title="ล้างประวัติแชท">
-            <i class="fa-solid fa-trash-can"></i>
-          </button>
-          <button onclick="app.closeAiChat()" class="text-gray-300 hover:text-white touch-target">
-            <i class="fa-solid fa-xmark text-lg"></i>
-          </button>
-        </div>
-      </div>
-
-      <!-- Quick Suggested Questions -->
-      <div class="p-3 bg-ivory-paper border-b border-gold-500/20 overflow-x-auto flex gap-2 no-scrollbar">
-        <button onclick="app.sendQuickChatPrompt('สรุปสถานะรายรับ รายจ่าย และเงินออมสะสม')" class="px-3 py-1.5 rounded-full bg-white border border-gold-500/30 text-xs text-navy font-semibold hover:bg-gold-50 shadow-sm whitespace-nowrap">
-          📊 สรุปยอดออมสะสม
-        </button>
-        <button onclick="app.sendQuickChatPrompt('วิเคราะห์รายจ่ายแยกตามหมวดหมู่')" class="px-3 py-1.5 rounded-full bg-white border border-gold-500/30 text-xs text-navy font-semibold hover:bg-gold-50 shadow-sm whitespace-nowrap">
-          🍕 วิเคราะห์หมวดหมู่อย่างละเอียด
-        </button>
-        <button onclick="app.sendQuickChatPrompt('คำนวณวันที่คาดว่าจะบรรลุเป้าหมาย')" class="px-3 py-1.5 rounded-full bg-white border border-gold-500/30 text-xs text-navy font-semibold hover:bg-gold-50 shadow-sm whitespace-nowrap">
-          🎯 คำนวณวันสำเร็จเป้าหมาย
-        </button>
-        <button onclick="app.sendQuickChatPrompt('สรุปภารกิจประจำเดือน พฤศจิกายน 2026')" class="px-3 py-1.5 rounded-full bg-white border border-gold-500/30 text-xs text-navy font-semibold hover:bg-gold-50 shadow-sm whitespace-nowrap">
-          🏆 สรุปภารกิจประจำเดือน
-        </button>
-      </div>
-
-      <!-- Chat Messages List -->
-      <div id="chatMessagesList" class="flex-1 p-4 overflow-y-auto space-y-4 bg-ivory">
-        <!-- Messages rendered dynamically -->
-      </div>
-
-      <!-- Chat Input Area -->
-      <form onsubmit="app.handleUserChatSubmit(event)" class="p-3 bg-white border-t border-gold-500/20 flex items-center gap-2">
-        <input type="text" id="chatInputText" required placeholder="พิมพ์ข้อความถาม AI วิเคราะห์การเงินภาษาไทย..." class="flex-1 bg-ivory-paper border border-gold-500/30 rounded-2xl px-4 py-3 text-xs text-navy focus:outline-none focus:border-gold-500">
-        <button type="submit" class="w-11 h-11 rounded-2xl gold-gradient-bg text-white flex items-center justify-center shadow-gold-glow hover:opacity-95 transition-all touch-target">
-          <i class="fa-solid fa-paper-plane text-sm"></i>
-        </button>
-      </form>
-
-    </div>
-  </div>
-
-  <!-- ==================== BOTTOM NAVIGATION BAR (56-64dp) ==================== -->
-  <nav class="fixed bottom-0 left-0 right-0 h-16 bg-white/95 backdrop-blur-xl border-t border-gold-500/20 z-40 px-4 flex items-center justify-around shadow-2xl safe-bottom">
-    <button onclick="app.switchTab('home')" id="nav-home" class="nav-btn active flex flex-col items-center justify-center w-14 h-12 text-gold-600 transition-all touch-target">
-      <i class="fa-solid fa-house text-lg"></i>
-      <span class="text-[10px] font-medium mt-0.5">หน้าหลัก</span>
-    </button>
-    
-    <button onclick="app.switchTab('stats')" id="nav-stats" class="nav-btn flex flex-col items-center justify-center w-14 h-12 text-gray-500 hover:text-gold-600 transition-all touch-target">
-      <i class="fa-solid fa-chart-pie text-lg"></i>
-      <span class="text-[10px] font-medium mt-0.5">สถิติ</span>
-    </button>
-
-    <button onclick="app.openModal('modal-transaction', 'income')" class="flex flex-col items-center justify-center -mt-6">
-      <div class="w-13 h-13 rounded-full gold-gradient-bg text-white flex items-center justify-center shadow-gold-glow text-xl font-bold hover:scale-105 transition-all p-3">
-        <i class="fa-solid fa-plus"></i>
-      </div>
-      <span class="text-[10px] font-bold text-gold-700 mt-1">บันทึก</span>
-    </button>
-
-    <button onclick="app.switchTab('goals')" id="nav-goals" class="nav-btn flex flex-col items-center justify-center w-14 h-12 text-gray-500 hover:text-gold-600 transition-all touch-target">
-      <i class="fa-solid fa-bullseye text-lg"></i>
-      <span class="text-[10px] font-medium mt-0.5">เป้าหมาย</span>
-    </button>
-
-    <button onclick="app.switchTab('profile')" id="nav-profile" class="nav-btn flex flex-col items-center justify-center w-14 h-12 text-gray-500 hover:text-gold-600 transition-all touch-target">
-      <i class="fa-solid fa-user text-lg"></i>
-      <span class="text-[10px] font-medium mt-0.5">โปรไฟล์</span>
-    </button>
-  </nav>
-
-  <!-- ==================== MODAL: ADD TRANSACTION ==================== -->
-  <div id="modal-transaction" class="fixed inset-0 bg-navy/60 backdrop-blur-md z-50 flex items-center justify-center p-4 hidden">
-    <div class="glass-card w-full max-w-md rounded-3xl p-6 border border-gold-500/30 relative shadow-2xl bg-white">
-      <button onclick="app.closeModal('modal-transaction')" class="absolute top-4 right-4 text-gray-400 hover:text-navy touch-target">
-        <i class="fa-solid fa-xmark text-lg"></i>
-      </button>
-      
-      <h3 id="txModalTitle" class="text-lg font-bold text-navy mb-1 gold-gradient-text">บันทึกรายการเงิน Pro</h3>
-      <p id="txRuleDescription" class="text-[11px] text-gray-500 mb-4">*ระบบ AI จะทำปรับยอดเงินออมสะสมให้อัตโนมัติ</p>
-
-      <form onsubmit="app.saveTransaction(event)" class="space-y-4">
-        <div class="grid grid-cols-2 gap-2 p-1 rounded-2xl bg-ivory-paper border border-gold-500/20">
-          <button type="button" id="type-income" onclick="app.setTxType('income')" class="py-2.5 rounded-xl text-xs font-bold transition-all">
-            + รายรับ (เข้าเงินออม)
-          </button>
-          <button type="button" id="type-expense" onclick="app.setTxType('expense')" class="py-2.5 rounded-xl text-xs font-bold transition-all">
-            - รายจ่าย (หักเงินออม)
-          </button>
-        </div>
-
-        <div>
-          <label class="block text-xs font-semibold text-navy mb-1">จำนวนเงิน (บาท)</label>
-          <input type="number" step="0.01" id="txAmount" required class="w-full bg-ivory-paper border border-gold-500/30 rounded-xl px-4 py-3 text-navy text-lg font-bold focus:outline-none focus:border-gold-500 placeholder-gray-400" placeholder="0.00">
-        </div>
-
-        <div>
-          <label class="block text-xs font-semibold text-navy mb-1">หมวดหมู่</label>
-          <select id="txCategory" class="w-full bg-ivory-paper border border-gold-500/30 rounded-xl px-4 py-2.5 text-xs text-navy focus:outline-none">
-          </select>
-        </div>
-
-        <div>
-          <label class="block text-xs font-semibold text-navy mb-1">รายละเอียด / รายการ</label>
-          <input type="text" id="txNote" class="w-full bg-ivory-paper border border-gold-500/30 rounded-xl px-4 py-2.5 text-xs text-navy focus:outline-none" placeholder="เช่น เงินเดือน, ค่าอาหารประจำวัน">
-        </div>
-
-        <button type="submit" class="w-full py-3 rounded-xl gold-gradient-bg text-white font-bold text-sm shadow-gold-glow hover:opacity-95 transition-all">
-          ยืนยันการบันทึก (AI Sync Balance)
-        </button>
-      </form>
-    </div>
-  </div>
-
-  <!-- ==================== MODAL: ADD GOAL ==================== -->
-  <div id="modal-goal" class="fixed inset-0 bg-navy/60 backdrop-blur-md z-50 flex items-center justify-center p-4 hidden">
-    <div class="glass-card w-full max-w-md rounded-3xl p-6 border border-gold-500/30 relative shadow-2xl bg-white">
-      <button onclick="app.closeModal('modal-goal')" class="absolute top-4 right-4 text-gray-400 hover:text-navy touch-target">
-        <i class="fa-solid fa-xmark text-lg"></i>
-      </button>
-
-      <h3 class="text-lg font-bold text-navy mb-4 gold-gradient-text">สร้างเป้าหมายการเงิน Pro</h3>
-
-      <form onsubmit="app.saveGoal(event)" class="space-y-4">
-        <div>
-          <label class="block text-xs font-semibold text-navy mb-1">ชื่อเป้าหมาย</label>
-          <input type="text" id="goalTitle" required class="w-full bg-ivory-paper border border-gold-500/30 rounded-xl px-4 py-2.5 text-xs text-navy focus:outline-none" placeholder="เช่น กองทุนเกษียณ, ซื้อทองคำ">
-        </div>
-
-        <div>
-          <label class="block text-xs font-semibold text-navy mb-1">ยอดเงินเป้าหมาย (บาท)</label>
-          <input type="number" step="0.01" id="goalTargetAmount" required class="w-full bg-ivory-paper border border-gold-500/30 rounded-xl px-4 py-2.5 text-xs text-navy focus:outline-none" placeholder="100000">
-        </div>
-
-        <div>
-          <label class="block text-xs font-semibold text-navy mb-1">เงินต้นที่มีอยู่แล้ว (บาท)</label>
-          <input type="number" step="0.01" id="goalCurrentAmount" class="w-full bg-ivory-paper border border-gold-500/30 rounded-xl px-4 py-2.5 text-xs text-navy focus:outline-none" placeholder="0">
-        </div>
-
-        <button type="submit" class="w-full py-3 rounded-xl gold-gradient-bg text-white font-bold text-sm shadow-gold-glow hover:opacity-95 transition-all">
-          สร้างเป้าหมาย Pro
-        </button>
-      </form>
-    </div>
-  </div>
-
-  <!-- ==================== APPLICATION CORE LOGIC PRO 2.1.6 ==================== -->
-  <script>
-    /**
-     * AI Automatic Savings 2026 v2.1.6 (Premium & Luxury Pro Edition)
-     * Core Rules & Upgrades:
-     * 1. Income -> Instantly deposited into accumulated savings.
-     * 2. Expense -> Instantly deducted from accumulated savings.
-     * 3. AI Live Chat Pro -> Live Data Auto Sync & Favorite/Pin answer feature.
-     * 4. Mission System Lockout between 23:00 - 23:15 for AI Daily Calculation.
-     * 5. Auto 28th Monthly Summary trigger via AI Chat.
-     */
-
-    const CURRENT_DB_KEY = 'AI_SAVINGS_DB_v2.1.6';
-    const PREVIOUS_DB_KEYS = [
-      'AI_SAVINGS_DB_v2.1.4',
-      'AI_SAVINGS_DB_v2.1.2',
-      'AI_SAVINGS_DB_v2.0.8',
-      'AI_SAVINGS_DB_v2.0.6',
-      'AI_SAVINGS_DB_v2.0.5',
-      'AI_SAVINGS_DB_v2.0.4',
-      'ai_savings_data'
-    ];
-
-    class LuxurySavingsAppPro {
-      constructor() {
-        this.data = {
-          version: '2.1.6',
-          user: {
-            name: 'VIP Elite Member Pro',
-            xp: 0,
-            level: 1,
-            levelName: 'Bronze',
-            streak: 0,
-            pin: '',
-            pinEnabled: false,
-            lastActiveDate: new Date().toISOString().split('T')[0]
-          },
-          transactions: [],
-          goals: [],
-          chatHistory: [
-            {
-              id: 'chat_init',
-              sender: 'ai',
-              text: 'สวัสดีครับ! ผมคือ AI Live Savings Advisor Pro v2.1.6 พร้อมวิเคราะห์เงินออมเรียลไทม์หลังการบันทึกทุกครั้ง โดยเมื่อคุณบันทึกรายรับ ระบบจะนำเข้าเงินออมสะสมทันที และเมื่อบันทึกรายจ่าย ระบบจะหักจากเงินออมให้อัตโนมัติครับ',
-              time: new Date().toLocaleTimeString('th-TH', { hour: '2-digit', minute: '2-digit' }),
-              pinned: false
-            }
-          ],
-          achievements: [
-            { id: 'first_save', title: 'First Savings Pro', desc: 'บันทึกนำเข้าเงินออมครั้งแรก', icon: 'fa-piggy-bank', unlocked: false },
-            { id: 'streak_3', title: 'Saver Streak', desc: 'ออมเงินต่อเนื่อง 3 วัน', icon: 'fa-fire', unlocked: false },
-            { id: 'gold_tier', title: 'Gold Status', desc: 'ยกระดับถึง Gold Tier', icon: 'fa-crown', unlocked: false },
-            { id: 'master_planner', title: 'Master Goal', desc: 'บรรลุเป้าหมายการออม 1 รายการ', icon: 'fa-trophy', unlocked: false }
-          ],
-          monthlyMissions: {
-            theme: 'พฤศจิกายน 2026: สร้างวินัยความมั่งคั่งส่งท้ายปี Pro',
-            missions: [
-              { id: 'm_daily_1', title: 'บันทึกรายรับนำเข้าเงินออมอย่างน้อย 1 รายการ', rewardXp: 40, type: 'daily', completed: false },
-              { id: 'm_daily_2', title: 'บันทึกการใช้จ่ายเพื่อตัดยอดเงินออม 1 รายการ', rewardXp: 20, type: 'daily', completed: false },
-              { id: 'm_weekly_1', title: 'รักษายอดเงินออมสะสมสุทธิเกิน 2,000 บาท', rewardXp: 100, type: 'weekly', completed: false },
-              { id: 'm_monthly_elite', title: 'ทำอัตราการออม (Saving Rate) ให้ถึง 25%', rewardXp: 250, type: 'monthly', completed: false }
-            ]
-          }
-        };
-
-        this.currentTxType = 'income';
-        this.chartInstances = {};
-        this.pinInputBuffer = '';
-      }
-
-      init() {
-        try {
-          this.performDatabaseMigration();
-
-          if (this.data.user.pinEnabled && this.data.user.pin) {
-            document.getElementById('pinLockScreen').classList.remove('hidden');
-          }
-
-          this.checkDailyReset();
-          this.checkLockoutWindow();
-          this.checkMonthlySummaryTrigger();
-          this.runGoalSimulator();
-          this.renderAll();
-
-          console.log('AI Automatic Savings 2026 v2.1.6 Premium & Luxury Pro Engine Ready.');
-        } catch (err) {
-          console.error('App Launch Recovery Exception:', err);
-          this.recoverState();
-        }
-      }
-
-      // ================= DATABASE MIGRATION & PERMANENT DATA PROTECTION =================
-      performDatabaseMigration() {
-        try {
-          const existingData = localStorage.getItem(CURRENT_DB_KEY);
-          if (existingData) {
-            this.data = JSON.parse(existingData);
-            this.ensureSchemaIntegrity();
-            return;
-          }
-
-          let legacyMigrated = false;
-          for (const oldKey of PREVIOUS_DB_KEYS) {
-            const raw = localStorage.getItem(oldKey);
-            if (raw) {
-              try {
-                const parsed = JSON.parse(raw);
-                console.log(`Migrating data seamlessly from legacy storage key: ${oldKey}`);
-
-                if (parsed.transactions && Array.isArray(parsed.transactions)) {
-                  this.data.transactions = [...parsed.transactions];
-                }
-                if (parsed.goals && Array.isArray(parsed.goals)) {
-                  this.data.goals = [...parsed.goals];
-                }
-                if (parsed.chatHistory && Array.isArray(parsed.chatHistory)) {
-                  this.data.chatHistory = [...parsed.chatHistory];
-                }
-                if (parsed.user) {
-                  this.data.user.xp = parsed.user.xp || 0;
-                  this.data.user.name = parsed.user.name || this.data.user.name;
-                  this.data.user.pin = parsed.user.pin || '';
-                  this.data.user.pinEnabled = parsed.user.pinEnabled || false;
-                }
-
-                legacyMigrated = true;
-                break;
-              } catch (e) {
-                console.warn('Failed parsing legacy key:', oldKey);
-              }
-            }
-          }
-
-          this.saveData();
-
-          if (legacyMigrated) {
-            const banner = document.getElementById('migrationBanner');
-            if (banner) banner.classList.remove('hidden');
-          }
-        } catch (error) {
-          console.error('Migration Protection Error:', error);
-        }
-      }
-
-      ensureSchemaIntegrity() {
-        if (!this.data.transactions) this.data.transactions = [];
-        if (!this.data.goals) this.data.goals = [];
-        if (!this.data.chatHistory) this.data.chatHistory = [];
-        if (!this.data.user) this.data.user = { xp: 0, level: 1, levelName: 'Bronze', streak: 0 };
-        if (!this.data.achievements) this.data.achievements = [];
-        if (!this.data.monthlyMissions) {
-          this.data.monthlyMissions = {
-            theme: 'พฤศจิกายน 2026: สร้างวินัยความมั่งคั่งส่งท้ายปี Pro',
-            missions: [
-              { id: 'm_daily_1', title: 'บันทึกรายรับนำเข้าเงินออมอย่างน้อย 1 รายการ', rewardXp: 40, type: 'daily', completed: false },
-              { id: 'm_daily_2', title: 'บันทึกการใช้จ่ายเพื่อตัดยอดเงินออม 1 รายการ', rewardXp: 20, type: 'daily', completed: false },
-              { id: 'm_weekly_1', title: 'รักษายอดเงินออมสะสมสุทธิเกิน 2,000 บาท', rewardXp: 100, type: 'weekly', completed: false },
-              { id: 'm_monthly_elite', title: 'ทำอัตราการออม (Saving Rate) ให้ถึง 25%', rewardXp: 250, type: 'monthly', completed: false }
-            ]
-          };
-        }
-      }
-
-      saveData() {
-        try {
-          this.data.version = '2.1.6';
-          localStorage.setItem(CURRENT_DB_KEY, JSON.stringify(this.data));
-        } catch (e) {
-          console.error('Error persisting data to local storage:', e);
-        }
-      }
-
-      exportData() {
-        const jsonString = `data:text/json;charset=utf-8,${encodeURIComponent(JSON.stringify(this.data, null, 2))}`;
-        const downloadAnchor = document.createElement('a');
-        downloadAnchor.setAttribute("href", jsonString);
-        downloadAnchor.setAttribute("download", `AI_Savings_v2.1.6_Backup_${new Date().toISOString().split('T')[0]}.json`);
-        document.body.appendChild(downloadAnchor);
-        downloadAnchor.click();
-        downloadAnchor.remove();
-      }
-
-      importData(event) {
-        const file = event.target.files[0];
-        if (!file) return;
-
-        const reader = new FileReader();
-        reader.onload = (e) => {
-          try {
-            const imported = JSON.parse(e.target.result);
-            if (imported.transactions && Array.isArray(imported.transactions)) {
-              this.data = imported;
-              this.ensureSchemaIntegrity();
-              this.saveData();
-              this.renderAll();
-              alert('นำเข้าข้อมูลสำเร็จ! ข้อมูลระบบได้รับการย้ายมายัง v2.1.6 เรียบร้อยแล้ว');
-            } else {
-              alert('รูปแบบไฟล์ Backup ไม่ถูกต้อง');
-            }
-          } catch (err) {
-            alert('เกิดข้อผิดพลาดในการนำเข้าไฟล์');
-          }
-        };
-        reader.readAsText(file);
-      }
-
-      verifyDataIntegrity() {
-        const txCount = this.data.transactions.length;
-        const goalCount = this.data.goals.length;
-        const chatCount = this.data.chatHistory.length;
-        alert(`Data Protection Verification v2.1.6:\n\nApp Version: 2.1.6 Pro\nRegistered Transactions: ${txCount}\nSavings Goals: ${goalCount}\nSaved Chat History: ${chatCount}\nAuto Savings Engine: Active`);
-      }
-
-      recoverState() {
-        this.ensureSchemaIntegrity();
-        this.saveData();
-        this.renderAll();
-      }
-
-      // ================= SECURITY & PIN =================
-      enterPin(digit) {
-        if (this.pinInputBuffer.length < 4) {
-          this.pinInputBuffer += digit;
-          this.updatePinDots();
-        }
-
-        if (this.pinInputBuffer.length === 4) {
-          setTimeout(() => {
-            if (this.pinInputBuffer === this.data.user.pin || !this.data.user.pin) {
-              document.getElementById('pinLockScreen').classList.add('hidden');
-              this.pinInputBuffer = '';
-            } else {
-              alert('PIN Code ไม่ถูกต้อง กรุณาลองอีกครั้ง');
-              this.clearPin();
-            }
-          }, 100);
-        }
-      }
-
-      clearPin() {
-        this.pinInputBuffer = '';
-        this.updatePinDots();
-      }
-
-      updatePinDots() {
-        const dots = document.getElementById('pinDots').children;
-        for (let i = 0; i < 4; i++) {
-          if (i < this.pinInputBuffer.length) {
-            dots[i].classList.add('bg-gold-500');
-          } else {
-            dots[i].classList.remove('bg-gold-500');
-          }
-        }
-      }
-
-      triggerBiometric() {
-        alert('Biometric Auth Triggered: ยืนยันตัวตนสำเร็จ');
-        document.getElementById('pinLockScreen').classList.add('hidden');
-      }
-
-      bypassPinForDemo() {
-        document.getElementById('pinLockScreen').classList.add('hidden');
-      }
-
-      togglePinProtection(enabled) {
-        this.data.user.pinEnabled = enabled;
-        if (enabled && !this.data.user.pin) {
-          this.promptSetPin();
-        } else {
-          this.saveData();
-        }
-      }
-
-      promptSetPin() {
-        const newPin = prompt('กรุณากำหนด PIN Code 4 หลักใหม่:');
-        if (newPin && /^\d{4}$/.exec(newPin)) {
-          this.data.user.pin = newPin;
-          this.data.user.pinEnabled = true;
-          this.saveData();
-          document.getElementById('pinToggle').checked = true;
-          document.getElementById('currentPinMask').innerText = '**** (Active)';
-          alert('เปิดใช้งาน PIN Code เรียบร้อยแล้ว');
-        } else {
-          alert('PIN Code ต้องเป็นตัวเลข 4 หลักเท่านั้น');
-        }
-      }
-
-      // ================= GAMIFICATION & XP =================
-      addXP(amount, reason) {
-        this.data.user.xp += amount;
-        
-        const newLevel = Math.floor(this.data.user.xp / 100) + 1;
-        let levelName = 'Bronze';
-        if (newLevel >= 15) levelName = 'Elite Master';
-        else if (newLevel >= 10) levelName = 'Diamond';
-        else if (newLevel >= 7) levelName = 'Platinum';
-        else if (newLevel >= 4) levelName = 'Gold';
-        else if (newLevel >= 2) levelName = 'Silver';
-
-        if (newLevel > this.data.user.level) {
-          this.data.user.level = newLevel;
-          this.data.user.levelName = levelName;
-          if (typeof confetti === 'function') {
-            confetti({ particleCount: 100, spread: 70, origin: { y: 0.6 } });
-          }
-        }
-
-        this.data.user.levelName = levelName;
-        this.saveData();
-        this.renderProfile();
-      }
-
-      checkDailyReset() {
-        const today = new Date().toISOString().split('T')[0];
-        if (this.data.user.lastActiveDate !== today) {
-          const yesterday = new Date();
-          yesterday.setDate(yesterday.getDate() - 1);
-          const yesterdayStr = yesterday.toISOString().split('T')[0];
-
-          if (this.data.user.lastActiveDate === yesterdayStr) {
-            this.data.user.streak += 1;
-          } else {
-            this.data.user.streak = 1;
-          }
-
-          if (this.data.monthlyMissions && this.data.monthlyMissions.missions) {
-            this.data.monthlyMissions.missions.forEach(m => {
-              if (m.type === 'daily') m.completed = false;
-            });
-          }
-
-          this.data.user.lastActiveDate = today;
-          this.saveData();
-        }
-      }
-
-      checkLockoutWindow() {
-        const now = new Date();
-        const hours = now.getHours();
-        const minutes = now.getMinutes();
-
-        const isLockout = (hours === 23 && minutes >= 0 && minutes <= 15);
-        const alertBanner = document.getElementById('missionLockoutAlert');
-
-        if (isLockout && alertBanner) {
-          alertBanner.classList.remove('hidden');
-        } else if (alertBanner) {
-          alertBanner.classList.add('hidden');
-        }
-      }
-
-      checkMonthlySummaryTrigger() {
-        const now = new Date();
-        if (now.getDate() === 28 && now.getHours() === 23) {
-          const summaryKey = `monthly_summary_${now.getFullYear()}_${now.getMonth()}`;
-          if (!localStorage.getItem(summaryKey)) {
-            localStorage.setItem(summaryKey, 'true');
-            const timeNow = now.toLocaleTimeString('th-TH', { hour: '2-digit', minute: '2-digit' });
-            
-            const summaryMessage = `📅 **รายงานสรุปภารกิจและผลประกอบการประจำเดือน (28 พฤศจิกายน 23:00 น.)**:\n• ยอดออมสะสมสุทธิ: ฿${this.calculateAccumulatedSavings().toLocaleString()}\n• ภารกิจสำเร็จแล้ว: ${this.data.monthlyMissions.missions.filter(m=>m.completed).length}/${this.data.monthlyMissions.missions.length}\n• XP ปัจจุบัน: ${this.data.user.xp} XP\n\nยินดีด้วยกับการสร้างวินัยการเงินตลอดเดือนนี้ครับ!`;
-
-            this.data.chatHistory.push({
-              id: 'chat_' + Date.now(),
-              sender: 'ai',
-              text: summaryMessage,
-              time: timeNow,
-              pinned: true
-            });
-            this.saveData();
-          }
-        }
-      }
-
-      // ================= CORE AUTOMATED SAVINGS ENGINE =================
-      calculateAccumulatedSavings() {
-        let totalIncome = 0;
-        let totalExpense = 0;
-
-        this.data.transactions.forEach(t => {
-          if (t.type === 'income') totalIncome += t.amount;
-          if (t.type === 'expense') totalExpense += t.amount;
-        });
-
-        return Math.max(0, totalIncome - totalExpense);
-      }
-
-      setTxType(type) {
-        this.currentTxType = type;
-        const btnIncome = document.getElementById('type-income');
-        const btnExpense = document.getElementById('type-expense');
-        const desc = document.getElementById('txRuleDescription');
-
-        const categorySelect = document.getElementById('txCategory');
-        categorySelect.innerHTML = '';
-
-        if (type === 'income') {
-          btnIncome.className = 'py-2.5 rounded-xl text-xs font-bold bg-emerald-600 text-white transition-all';
-          btnExpense.className = 'py-2.5 rounded-xl text-xs font-bold text-gray-500 transition-all';
-          desc.innerText = '*เมื่อบันทึกรายรับ AI นำเข้าเงินออมสะสมทันที';
-
-          ['เงินเดือน', 'ธุรกิจส่วนตัว', 'การลงทุน', 'โบนัส', 'เงินเสน่หา', 'อื่นๆ'].forEach(cat => {
-            categorySelect.innerHTML += `<option value="${cat}">${cat}</option>`;
-          });
-        } else {
-          btnExpense.className = 'py-2.5 rounded-xl text-xs font-bold bg-rose-600 text-white transition-all';
-          btnIncome.className = 'py-2.5 rounded-xl text-xs font-bold text-gray-500 transition-all';
-          desc.innerText = '*เมื่อบันทึกรายจ่าย AI จะหักออกทันทีจากเงินออมสะสม';
-
-          ['อาหารและเครื่องดื่ม', 'การเดินทาง', 'สาธารณูปโภค', 'ช้อปปิ้ง', 'ความบันเทิง', 'อื่นๆ'].forEach(cat => {
-            categorySelect.innerHTML += `<option value="${cat}">${cat}</option>`;
-          });
-        }
-      }
-
-      saveTransaction(e) {
-        e.preventDefault();
-
-        // Lockout Check
-        const now = new Date();
-        if (now.getHours() === 23 && now.getMinutes() >= 0 && now.getMinutes() <= 15) {
-          alert('ขณะนี้อยู่ในช่วงเวลาประมวลผลคำนวณภารกิจประจำวัน (23:00 - 23:15 น.) กรุณาทำรายการใหม่อีกครั้งหลังเวลา 23:15 น.');
-          return;
-        }
-
-        const amount = parseFloat(document.getElementById('txAmount').value);
-        const category = document.getElementById('txCategory').value;
-        const note = document.getElementById('txNote').value || category;
-
-        if (!amount || amount <= 0) return;
-
-        const tx = {
-          id: 'tx_' + Date.now(),
-          type: this.currentTxType,
-          amount: amount,
-          category: category,
-          note: note,
-          date: new Date().toISOString()
-        };
-
-        this.data.transactions.unshift(tx);
-        
-        if (this.currentTxType === 'income') {
-          this.addXP(40, 'บันทึกรายรับนำเข้าเงินออม');
-          const m1 = this.data.monthlyMissions.missions.find(m => m.id === 'm_daily_1');
-          if (m1 && !m1.completed) {
-            m1.completed = true;
-            this.addXP(m1.rewardXp, 'ภารกิจนำเข้าเงินออมสำเร็จ');
-            alert(`🎉 ภารกิจสำเร็จ! "${m1.title}" (+${m1.rewardXp} XP)`);
-          }
-        } else {
-          this.addXP(15, 'บันทึกรายจ่ายตัดเงินออม');
-          const m2 = this.data.monthlyMissions.missions.find(m => m.id === 'm_daily_2');
-          if (m2 && !m2.completed) {
-            m2.completed = true;
-            this.addXP(m2.rewardXp, 'ภารกิจบันทึกรายจ่ายสำเร็จ');
-            alert(`🎉 ภารกิจสำเร็จ! "${m2.title}" (+${m2.rewardXp} XP)`);
-          }
-        }
-
-        this.saveData();
-        this.closeModal('modal-transaction');
-        this.renderAll();
-
-        document.getElementById('txAmount').value = '';
-        document.getElementById('txNote').value = '';
-      }
-
-      // ================= GOAL SIMULATOR PRO =================
-      runGoalSimulator() {
-        const target = parseFloat(document.getElementById('simTarget').value) || 0;
-        const monthly = parseFloat(document.getElementById('simMonthly').value) || 1;
-        const initial = parseFloat(document.getElementById('simInitial').value) || 0;
-
-        const remaining = Math.max(0, target - initial);
-        const monthsNeeded = Math.ceil(remaining / monthly);
-        
-        const simResultEl = document.getElementById('simResult');
-        if (simResultEl) {
-          simResultEl.innerHTML = `
-            💡 <strong>ผลการจำลอง AI Goal Simulator</strong>:<br>
-            • จำนวนเงินที่ต้องการเพิ่ม: <strong>฿${remaining.toLocaleString()}</strong><br>
-            • หากออมเงินเดือนละ <strong>฿${monthly.toLocaleString()}</strong> คุณจะบรรลุเป้าหมายในอีก <strong>${monthsNeeded} เดือน</strong> (หรือประมาณ ${(monthsNeeded/12).toFixed(1)} ปี)<br>
-            • <em>คำแนะนำ Pro:</em> เพิ่มยอดออมอีกเพียง 15% จะช่วยย่นระยะเวลาได้ถึง ${Math.max(1, Math.round(monthsNeeded * 0.15))} เดือน!
-          `;
-        }
-      }
-
-      // ================= SAVINGS GOALS =================
-      saveGoal(e) {
-        e.preventDefault();
-        const title = document.getElementById('goalTitle').value;
-        const target = parseFloat(document.getElementById('goalTargetAmount').value);
-        const current = parseFloat(document.getElementById('goalCurrentAmount').value) || 0;
-
-        if (!title || !target) return;
-
-        const goal = {
-          id: 'goal_' + Date.now(),
-          title: title,
-          targetAmount: target,
-          currentAmount: current,
-          createdAt: new Date().toISOString()
-        };
-
-        this.data.goals.push(goal);
-        this.addXP(50, 'สร้างเป้าหมายใหม่ Pro');
-        this.saveData();
-        this.closeModal('modal-goal');
-        this.renderGoals();
-
-        document.getElementById('goalTitle').value = '';
-        document.getElementById('goalTargetAmount').value = '';
-        document.getElementById('goalCurrentAmount').value = '';
-      }
-
-      depositGoal(goalId) {
-        const amountStr = prompt('ระบุจำนวนเงินฝากออมเพิ่มในเป้าหมายนี้ (บาท):');
-        const amount = parseFloat(amountStr);
-        if (!amount || amount <= 0) return;
-
-        const goal = this.data.goals.find(g => g.id === goalId);
-        if (goal) {
-          goal.currentAmount += amount;
-          
-          this.data.transactions.unshift({
-            id: 'tx_' + Date.now(),
-            type: 'income',
-            amount: amount,
-            category: 'เงินออมเป้าหมาย',
-            note: `ออมเพิ่มเข้าเป้าหมาย: ${goal.title}`,
-            date: new Date().toISOString()
-          });
-
-          this.addXP(35, 'ฝากเงินเป้าหมาย Pro');
-          this.saveData();
-          this.renderAll();
-        }
-      }
-
-      // ================= ON-DEVICE LOCAL AI CHAT 2.1.6 =================
-      openAiChat() {
-        document.getElementById('modal-ai-chat').classList.remove('hidden');
-        this.renderChatMessages();
-      }
-
-      closeAiChat() {
-        document.getElementById('modal-ai-chat').classList.add('hidden');
-      }
-
-      clearChatHistory() {
-        if (confirm('คุณต้องการล้างประวัติการสนทนาทั้งหมดหรือไม่? (ข้อความที่ Pin ไว้จะไม่ถูกลบ)')) {
-          this.data.chatHistory = this.data.chatHistory.filter(msg => msg.pinned);
-          if (this.data.chatHistory.length === 0) {
-            this.data.chatHistory.push({
-              id: 'chat_' + Date.now(),
-              sender: 'ai',
-              text: 'ประวัติแชทถูกล้างเรียบร้อยแล้วครับ พร้อมเริ่มต้นตอบคำถามใหม่ทันที',
-              time: new Date().toLocaleTimeString('th-TH', { hour: '2-digit', minute: '2-digit' }),
-              pinned: false
-            });
-          }
-          this.saveData();
-          this.renderChatMessages();
-        }
-      }
-
-      togglePinMessage(msgId) {
-        const msg = this.data.chatHistory.find(m => m.id === msgId);
-        if (msg) {
-          msg.pinned = !msg.pinned;
-          this.saveData();
-          this.renderChatMessages();
-        }
-      }
-
-      sendQuickChatPrompt(promptText) {
-        document.getElementById('chatInputText').value = promptText;
-        this.handleUserChatSubmit(new Event('submit'));
-      }
-
-      handleUserChatSubmit(e) {
-        e.preventDefault();
-        const inputEl = document.getElementById('chatInputText');
-        const userText = inputEl.value.trim();
-        if (!userText) return;
-
-        const timeNow = new Date().toLocaleTimeString('th-TH', { hour: '2-digit', minute: '2-digit' });
-
-        this.data.chatHistory.push({
-          id: 'chat_' + Date.now(),
-          sender: 'user',
-          text: userText,
-          time: timeNow,
-          pinned: false
-        });
-
-        inputEl.value = '';
-        this.renderChatMessages();
-        this.showTypingIndicator();
-
-        setTimeout(() => {
-          const aiResponseText = this.generateLocalAiResponse(userText);
-          this.hideTypingIndicator();
-          this.data.chatHistory.push({
-            id: 'chat_' + Date.now(),
-            sender: 'ai',
-            text: aiResponseText,
-            time: new Date().toLocaleTimeString('th-TH', { hour: '2-digit', minute: '2-digit' }),
-            pinned: false
-          });
-          this.saveData();
-          this.renderChatMessages();
-        }, 600);
-      }
-
-      generateLocalAiResponse(queryText) {
-        let totalInc = 0, totalExp = 0;
-        const catMap = {};
-
-        this.data.transactions.forEach(t => {
-          if (t.type === 'income') totalInc += t.amount;
-          if (t.type === 'expense') {
-            totalExp += t.amount;
-            catMap[t.category] = (catMap[t.category] || 0) + t.amount;
-          }
-        });
-
-        const accumulatedSavings = this.calculateAccumulatedSavings();
-        const savingRate = totalInc > 0 ? ((accumulatedSavings / totalInc) * 100).toFixed(1) : 0;
-        const queryLower = queryText.toLowerCase();
-
-        if (queryLower.includes('หมวดหมู่') || queryLower.includes('วิเคราะห์รายจ่าย')) {
-          const topCats = Object.entries(catMap).sort((a,b) => b[1] - a[1]);
-          if (topCats.length === 0) {
-            return `🍕 **วิเคราะห์รายจ่ายแยกหมวดหมู่**:\nยังไม่มีข้อมูลการใช้จ่ายในระบบครับ`;
-          }
-          let catReport = topCats.map(([cat, amt]) => `• ${cat}: ฿${amt.toLocaleString()} (${((amt/totalExp)*100).toFixed(1)}%)`).join('\n');
-          return `🍕 **วิเคราะห์รายจ่ายแยกตามหมวดหมู่**:\n${catReport}\n\n💡 *คำแนะนำ*: หมวดหมู่ที่คุณจ่ายมากที่สุดคือ **${topCats[0][0]}** ลองตั้งงบประมาณจำกัดหมวดนี้เพื่อเพิ่มเงินออมสะสมครับ`;
-        }
-
-        if (queryLower.includes('สรุป') || queryLower.includes('สถานะ') || queryLower.includes('ยอดออม')) {
-          return `📊 **สรุปสถานะเงินออมสะสมสุทธิ (v2.1.6 Auto-Allocated)**:\n• **เงินออมสะสมคงเหลือสุทธิ**: **฿${accumulatedSavings.toLocaleString('th-TH', {minimumFractionDigits: 2})}**\n• รายรับนำเข้าออมรวม: ฿${totalInc.toLocaleString()}\n• รายจ่ายหักออมรวม: ฿${totalExp.toLocaleString()}\n• **Saving Rate**: **${savingRate}%**\n\n*(ข้อมูลประมวลผลจาก Local Database เรียลไทม์)*`;
-        }
-
-        if (queryLower.includes('เป้าหมาย') || queryLower.includes('วัน')) {
-          if (this.data.goals.length === 0) {
-            return `🎯 คุณยังไม่ได้ตั้งเป้าหมายการเงินครับ สามารถไปที่เมนู **"เป้าหมาย"** เพื่อสร้างแผนได้เลย!`;
-          }
-          const g = this.data.goals[0];
-          const remaining = g.targetAmount - g.currentAmount;
-          const monthsLeft = accumulatedSavings > 0 ? Math.ceil(remaining / (accumulatedSavings || 1000)) : 4;
-          return `🎯 **วิเคราะห์เป้าหมาย "${g.title}"**:\n• เป้าหมาย: ฿${g.targetAmount.toLocaleString()}\n• ออมได้แล้ว: ฿${g.currentAmount.toLocaleString()}\n• คงเหลือ: ฿${remaining.toLocaleString()}\n\n⏳ คาดว่าจะบรรลุเป้าหมายในอีก **${monthsLeft} เดือน** ครับ!`;
-        }
-
-        if (queryLower.includes('ภารกิจ')) {
-          return `🏆 **สรุปภารกิจประจำเดือน**:\nธีม: "${this.data.monthlyMissions.theme}"\nคุณมี XP รวม **${this.data.user.xp} XP** (Level ${this.data.user.level} • ${this.data.user.levelName})\n\n*(หมายเหตุ: ระบบ AI ปิดปรับปรุงภารกิจประจำวันเวลา 23:00-23:15 น. ของทุกวัน)*`;
-        }
-
-        return `🤖 จากการวิเคราะห์ข้อมูลการเงินในเครื่อง:\nเงินออมสะสมคงเหลือปัจจุบันของคุณคือ **฿${accumulatedSavings.toLocaleString()}** (Saving Rate: ${savingRate}%)\n\nคุณสามารถคลิกคำถามด่วนด้านบนเพื่อสรุปหมวดหมู่รายจ่าย หรือจำลองวันสำเร็จเป้าหมายได้ทันทีครับ!`;
-      }
-
-      showTypingIndicator() {
-        const list = document.getElementById('chatMessagesList');
-        const typingEl = document.createElement('div');
-        typingEl.id = 'aiTypingIndicator';
-        typingEl.className = 'flex gap-2 max-w-[80%] items-center p-3 rounded-2xl bg-white border border-gold-500/20 text-xs shadow-sm';
-        typingEl.innerHTML = `
-          <div class="w-6 h-6 rounded-full gold-gradient-bg flex items-center justify-center text-white text-xs">
-            <i class="fa-solid fa-robot"></i>
-          </div>
-          <div class="flex items-center gap-1">
-            <span class="w-1.5 h-1.5 rounded-full bg-gold-600 typing-dot"></span>
-            <span class="w-1.5 h-1.5 rounded-full bg-gold-600 typing-dot"></span>
-            <span class="w-1.5 h-1.5 rounded-full bg-gold-600 typing-dot"></span>
-          </div>
-        `;
-        list.appendChild(typingEl);
-        list.scrollTop = list.scrollHeight;
-      }
-
-      hideTypingIndicator() {
-        const el = document.getElementById('aiTypingIndicator');
-        if (el) el.remove();
-      }
-
-      renderChatMessages() {
-        const list = document.getElementById('chatMessagesList');
-        if (!list) return;
-
-        list.innerHTML = this.data.chatHistory.map(msg => {
-          const isUser = msg.sender === 'user';
-          return `
-            <div class="flex flex-col ${isUser ? 'items-end' : 'items-start'} space-y-1">
-              <div class="flex gap-2 max-w-[85%] ${isUser ? 'flex-row-reverse' : 'flex-row'}">
-                <div class="w-7 h-7 rounded-full ${isUser ? 'bg-navy text-white' : 'gold-gradient-bg text-white'} flex items-center justify-center text-xs flex-shrink-0 shadow-sm">
-                  <i class="fa-solid ${isUser ? 'fa-user' : 'fa-robot'}"></i>
-                </div>
-                <div class="relative p-3.5 rounded-2xl text-xs leading-relaxed ${isUser ? 'bg-navy text-white rounded-tr-none' : 'bg-white border border-gold-500/30 text-navy rounded-tl-none shadow-sm'}">
-                  ${msg.text.replace(/\n/g, '<br>').replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')}
-                  ${!isUser ? `
-                    <button onclick="app.togglePinMessage('${msg.id}')" class="ml-2 text-[10px] ${msg.pinned ? 'text-amber-500 font-bold' : 'text-gray-300 hover:text-amber-500'}">
-                      <i class="fa-solid fa-thumbtack"></i> ${msg.pinned ? 'Pinned' : ''}
-                    </button>
-                  ` : ''}
-                </div>
-              </div>
-              <span class="text-[9px] text-gray-400 px-9">${msg.time}</span>
-            </div>
-          `;
-        }).join('');
-
-        list.scrollTop = list.scrollHeight;
-      }
-
-      // ================= RENDERERS & CHARTS =================
-      renderAll() {
-        this.renderDashboard();
-        this.renderTransactions();
-        this.renderGoals();
-        this.renderProfile();
-        this.renderMissions();
-        this.renderCharts();
-      }
-
-      renderDashboard() {
-        let inc = 0, exp = 0;
-        this.data.transactions.forEach(t => {
-          if (t.type === 'income') inc += t.amount;
-          if (t.type === 'expense') exp += t.amount;
-        });
-
-        const accumulatedSavings = this.calculateAccumulatedSavings();
-        const savingRate = inc > 0 ? Math.min(100, Math.round((accumulatedSavings / inc) * 100)) : 0;
-
-        document.getElementById('monthlySavings').innerText = `฿${accumulatedSavings.toLocaleString('th-TH', { minimumFractionDigits: 2 })}`;
-        document.getElementById('monthlyIncome').innerText = `฿${inc.toLocaleString('th-TH', { minimumFractionDigits: 2 })}`;
-        document.getElementById('monthlyExpense').innerText = `฿${exp.toLocaleString('th-TH', { minimumFractionDigits: 2 })}`;
-
-        // Progress Ring Update
-        const circle = document.getElementById('savingRateCircle');
-        const text = document.getElementById('savingRateText');
-        if (circle && text) {
-          const circumference = 163.36;
-          const offset = circumference - (savingRate / 100) * circumference;
-          circle.style.strokeDashoffset = offset;
-          text.innerText = `${savingRate}%`;
-        }
-
-        // Smart Insight Bubble Text
-        const bubble = document.getElementById('aiSmartInsightBubble');
-        if (bubble) {
-          bubble.innerHTML = `
-            <div>
-              <p class="font-bold text-navy mb-0.5">💡 AI Smart Insights Pro v2.1.6:</p>
-              <p class="text-xs text-gray-600">เงินออมสุทธิสะสมปัจจุบันอยู่ที่ <strong>฿${accumulatedSavings.toLocaleString()}</strong> (${savingRate}% Saving Rate) รายรับจะถูกสะสมเข้าออมทันทีเมื่อกดบันทึก</p>
-            </div>
-            <i class="fa-solid fa-sparkles text-gold-600 text-lg ml-2 flex-shrink-0"></i>
-          `;
-        }
-      }
-
-      renderTransactions() {
-        const list = document.getElementById('recentTransactionsList');
-        document.getElementById('txCountLabel').innerText = `${this.data.transactions.length} รายการ`;
-
-        if (this.data.transactions.length === 0) {
-          list.innerHTML = `<p class="text-xs text-gray-400 text-center py-6">ยังไม่มีข้อมูลรายการย้อนหลัง</p>`;
-          return;
-        }
-
-        list.innerHTML = this.data.transactions.slice(0, 6).map(t => {
-          let icon = 'fa-minus-circle text-rose-600';
-          let sign = '-';
-          let amountColor = 'text-rose-600';
-          let autoTag = 'หักจากเงินออมสะสม';
-
-          if (t.type === 'income') {
-            icon = 'fa-plus-circle text-emerald-600';
-            sign = '+';
-            amountColor = 'text-emerald-600';
-            autoTag = 'นำเข้าเงินออมสะสมทันที';
-          }
-
-          const dateStr = new Date(t.date).toLocaleDateString('th-TH', { day: 'numeric', month: 'short' });
-
-          return `
-            <div class="flex items-center justify-between p-3 rounded-2xl bg-ivory-paper border border-gold-500/20 hover:border-gold-500 transition-all">
-              <div class="flex items-center gap-3">
-                <div class="w-9 h-9 rounded-xl bg-white flex items-center justify-center border border-gold-500/20 shadow-sm">
-                  <i class="fa-solid ${icon}"></i>
+<body class="bg-darkslate-950 text-slate-100 min-h-screen flex flex-col transition-colors duration-300">
+
+    <!-- TOP NAVIGATION BAR -->
+    <header class="sticky top-0 z-30 glass-card border-b border-slate-800/80 px-4 py-3">
+        <div class="max-w-7xl mx-auto flex justify-between items-center">
+            <div class="flex items-center space-x-3">
+                <div class="w-10 h-10 rounded-xl gold-bg-gradient flex items-center justify-center font-bold text-slate-950 text-xl shadow-lg shadow-amber-500/20">
+                    AI
                 </div>
                 <div>
-                  <p class="text-xs font-bold text-navy">${t.note}</p>
-                  <p class="text-[10px] text-gray-500">${t.category} • ${dateStr} <span class="text-gold-700 font-semibold">(${autoTag})</span></p>
+                    <h1 class="font-bold text-lg leading-tight tracking-wide gold-gradient-text">SAVINGS SYSTEM 2026</h1>
+                    <span class="text-xs text-amber-500/80 font-medium px-2 py-0.5 rounded-full bg-amber-500/10 border border-amber-500/20">v2.3 SMART LEDGER</span>
                 </div>
-              </div>
-              <p class="text-xs font-bold ${amountColor}">${sign}฿${t.amount.toLocaleString('th-TH', { minimumFractionDigits: 2 })}</p>
             </div>
-          `;
-        }).join('');
-      }
 
-      renderGoals() {
-        const container = document.getElementById('goalsContainer');
-        if (this.data.goals.length === 0) {
-          container.innerHTML = `<p class="text-xs text-gray-400 col-span-2 text-center py-10">ยังไม่มีเป้าหมายการออม คลิก "+ เพิ่มเป้าหมาย" เพื่อเริ่มต้น</p>`;
-          return;
-        }
-
-        container.innerHTML = this.data.goals.map(g => {
-          const pct = Math.min(100, Math.round((g.currentAmount / g.targetAmount) * 100));
-          return `
-            <div class="glass-card rounded-3xl p-5 border border-gold-500/20 relative">
-              <div class="flex justify-between items-start mb-2">
-                <div>
-                  <h4 class="text-sm font-bold text-navy">${g.title}</h4>
-                  <p class="text-[11px] text-gray-500">เป้าหมาย: ฿${g.targetAmount.toLocaleString()}</p>
-                </div>
-                <span class="text-xs font-bold text-gold-700">${pct}%</span>
-              </div>
-
-              <div class="w-full bg-ivory-paper rounded-full h-2.5 mb-4 border border-gold-500/20 overflow-hidden">
-                <div class="gold-gradient-bg h-full rounded-full transition-all duration-500" style="width: ${pct}%"></div>
-              </div>
-
-              <div class="flex items-center justify-between pt-2 border-t border-gray-100">
-                <p class="text-xs text-emerald-700 font-bold">สะสมแล้ว: ฿${g.currentAmount.toLocaleString()}</p>
-                <button onclick="app.depositGoal('${g.id}')" class="px-3 py-1 rounded-xl bg-gold-100 text-gold-800 border border-gold-500/30 text-xs font-bold hover:bg-gold-500 hover:text-white transition-all">
-                  + ฝากเงิน
+            <!-- Controls -->
+            <div class="flex items-center space-x-2">
+                <button id="lockAppBtn" class="hidden px-3 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-amber-400 text-sm border border-amber-500/30 transition flex items-center gap-1.5">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>
+                    <span class="hidden sm:inline">ล็อกระบบ</span>
                 </button>
-              </div>
+                <button id="themeToggleBtn" class="p-2 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 transition">
+                    <svg id="themeIcon" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/></svg>
+                </button>
             </div>
-          `;
-        }).join('');
-      }
+        </div>
+    </header>
 
-      renderMissions() {
-        const list = document.getElementById('missionsList');
-        document.getElementById('streakBadge').innerText = `🔥 Streak ${this.data.user.streak} วัน`;
-        document.getElementById('monthlyMissionThemeTitle').innerText = this.data.monthlyMissions.theme;
+    <!-- MAIN APP WRAPPER -->
+    <main class="flex-grow max-w-7xl w-full mx-auto p-4 md:p-6 space-y-6">
 
-        list.innerHTML = this.data.monthlyMissions.missions.map(m => `
-          <div class="flex items-center justify-between p-3 rounded-2xl bg-ivory-paper border border-gold-500/20">
-            <div class="flex items-center gap-3">
-              <i class="fa-solid ${m.completed ? 'fa-circle-check text-emerald-600' : 'fa-circle-dot text-gray-400'} text-base"></i>
-              <div>
-                <p class="text-xs font-semibold ${m.completed ? 'line-through text-gray-400' : 'text-navy'}">${m.title}</p>
-                <p class="text-[10px] text-gold-700 font-bold">+${m.rewardXp} XP (${m.type.toUpperCase()})</p>
-              </div>
+        <!-- NOTIFICATION CONTAINER -->
+        <div id="toastContainer" class="fixed top-16 right-4 z-50 flex flex-col gap-2 max-w-md w-full pointer-events-none"></div>
+
+        <!-- APP DASHBOARD VERSION 2.3 -->
+        <div id="mainDashboard" class="space-y-6">
+            
+            <!-- STATS CARDS GRID -->
+            <div class="grid grid-cols-2 md:grid-cols-5 gap-4">
+                <div class="glass-card p-4 rounded-2xl relative overflow-hidden col-span-2 md:col-span-1">
+                    <div class="text-xs text-slate-400 mb-1">ยอดเงินออมสะสมสุทธิ</div>
+                    <div class="text-2xl md:text-3xl font-extrabold text-amber-400" id="statNetBalance">฿0.00</div>
+                    <div class="text-[11px] text-slate-500 mt-1">เงินออมจริงคงเหลือ</div>
+                </div>
+
+                <div class="glass-card p-4 rounded-2xl">
+                    <div class="text-xs text-slate-400 mb-1">เงินออมทั้งหมด</div>
+                    <div class="text-xl md:text-2xl font-bold text-emerald-400" id="statTotalSavings">฿0.00</div>
+                    <div class="text-[11px] text-slate-500 mt-1">สะสมรวม: <span id="statSavingsCount" class="text-slate-300">0</span> รายการ</div>
+                </div>
+
+                <div class="glass-card p-4 rounded-2xl">
+                    <div class="text-xs text-slate-400 mb-1">รายจ่ายทั้งหมด</div>
+                    <div class="text-xl md:text-2xl font-bold text-rose-400" id="statTotalExpenses">฿0.00</div>
+                    <div class="text-[11px] text-slate-500 mt-1">รวมทั้งสิ้น: <span id="statExpenseCount" class="text-slate-300">0</span> รายการ</div>
+                </div>
+
+                <div class="glass-card p-4 rounded-2xl">
+                    <div class="text-xs text-slate-400 mb-1">สรุปวันนี้</div>
+                    <div class="text-sm font-semibold text-slate-200">
+                        ออม: <span id="statTodayDeposit" class="text-emerald-400">฿0</span>
+                    </div>
+                    <div class="text-sm font-semibold text-slate-200 mt-0.5">
+                        จ่าย: <span id="statTodayExpense" class="text-rose-400">฿0</span>
+                    </div>
+                </div>
+
+                <div class="glass-card p-4 rounded-2xl">
+                    <div class="text-xs text-slate-400 mb-1">ความก้าวหน้าเป้าหมาย</div>
+                    <div class="text-2xl font-bold text-purple-400" id="statGoalProgress">0%</div>
+                    <div class="w-full bg-slate-700/50 rounded-full h-1.5 mt-2">
+                        <div id="statGoalProgressBar" class="bg-purple-500 h-1.5 rounded-full transition-all duration-500" style="width: 0%"></div>
+                    </div>
+                </div>
             </div>
-            <span class="text-[10px] px-2.5 py-0.5 rounded-full ${m.completed ? 'bg-emerald-100 text-emerald-800 font-bold' : 'bg-gray-100 text-gray-500'}">
-              ${m.completed ? 'สำเร็จ' : 'กำลังทำ'}
-            </span>
-          </div>
-        `).join('');
-      }
 
-      renderProfile() {
-        document.getElementById('headerUserLevel').innerText = `Level ${this.data.user.level} • ${this.data.user.levelName}`;
-        document.getElementById('headerXP').innerText = `${this.data.user.xp} XP`;
-
-        document.getElementById('profileName').innerText = this.data.user.name;
-        document.getElementById('profileLevelText').innerText = `Level ${this.data.user.level} • ${this.data.user.levelName} Saver`;
-
-        const xpProgress = this.data.user.xp % 100;
-        document.getElementById('profileXpBar').style.width = `${xpProgress}%`;
-
-        const grid = document.getElementById('achievementsGrid');
-        grid.innerHTML = this.data.achievements.map(a => `
-          <div class="p-3 rounded-2xl bg-white border ${a.unlocked ? 'border-gold-500 shadow-gold-glow' : 'border-gray-200 opacity-60'} text-center">
-            <div class="w-10 h-10 mx-auto rounded-xl ${a.unlocked ? 'gold-gradient-bg text-white' : 'bg-gray-100 text-gray-400'} flex items-center justify-center text-lg mb-2">
-              <i class="fa-solid ${a.icon}"></i>
+            <!-- AI FINANCIAL HEALTH MONITOR (v2.3) -->
+            <div class="glass-card p-5 rounded-2xl border-l-4 border-amber-500 relative">
+                <div class="flex items-center justify-between mb-3">
+                    <div class="flex items-center space-x-2">
+                        <div class="p-1.5 rounded-lg bg-amber-500/10 text-amber-400">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+                        </div>
+                        <h2 class="font-semibold text-slate-200">AI Financial Health Monitor v2.3</h2>
+                    </div>
+                    <span id="aiHealthScore" class="text-xs font-semibold px-2.5 py-1 rounded-full bg-slate-800 text-amber-400 border border-amber-500/20">ประมวลผลภายในเครื่อง</span>
+                </div>
+                <div id="aiAnalysisText" class="text-sm text-slate-300 leading-relaxed space-y-2">
+                    กำลังโหลดข้อมูลและประเมินสุขภาพทางการเงิน...
+                </div>
             </div>
-            <p class="text-xs font-bold text-navy">${a.title}</p>
-            <p class="text-[9px] text-gray-500 mt-0.5">${a.desc}</p>
-          </div>
-        `).join('');
 
-        if (this.data.user.pinEnabled) {
-          document.getElementById('pinToggle').checked = true;
-          document.getElementById('currentPinMask').innerText = '**** (Active)';
-        }
-      }
+            <!-- NAVIGATION TABS -->
+            <div class="flex flex-wrap gap-2 border-b border-slate-800 pb-3">
+                <button id="tabSavings" onclick="switchTab('savings')" class="tab-btn px-4 py-2 rounded-xl text-sm font-medium bg-amber-500 text-slate-950 shadow-md transition">💰 บันทึกการออม</button>
+                <button id="tabExpense" onclick="switchTab('expense')" class="tab-btn px-4 py-2 rounded-xl text-sm font-medium bg-slate-800 text-slate-300 hover:bg-slate-700 transition">💸 บันทึกรายจ่าย</button>
+                <button id="tabGoals" onclick="switchTab('goals')" class="tab-btn px-4 py-2 rounded-xl text-sm font-medium bg-slate-800 text-slate-300 hover:bg-slate-700 transition">🎯 เป้าหมายการออม</button>
+                <button id="tabAnalytics" onclick="switchTab('analytics')" class="tab-btn px-4 py-2 rounded-xl text-sm font-medium bg-slate-800 text-slate-300 hover:bg-slate-700 transition">📊 กราฟ & วิเคราะห์</button>
+                <button id="tabSettings" onclick="switchTab('settings')" class="tab-btn px-4 py-2 rounded-xl text-sm font-medium bg-slate-800 text-slate-300 hover:bg-slate-700 transition">🔒 ความปลอดภัย & ข้อมูล</button>
+            </div>
 
-      renderCharts() {
-        if (this.chartInstances.expense) this.chartInstances.expense.destroy();
-        if (this.chartInstances.overview) this.chartInstances.overview.destroy();
+            <!-- MODULE 1: SAVINGS LEDGER (บันทึกการออม) -->
+            <div id="viewSavings" class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                <!-- SAVINGS FORM -->
+                <div class="glass-card p-5 rounded-2xl space-y-4 h-fit">
+                    <h3 class="font-semibold text-lg text-emerald-400 flex items-center gap-2">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"/></svg>
+                        บันทึกรายการเงินออม (+)
+                    </h3>
+                    <form id="savingsForm" onsubmit="handleSaveSavings(event)" class="space-y-4">
+                        <input type="hidden" id="savingsId">
+                        
+                        <div>
+                            <label class="block text-xs text-slate-400 mb-1">จำนวนเงินออม (บาท)</label>
+                            <input type="number" step="0.01" min="0.01" id="savingsAmount" required placeholder="0.00" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-2.5 text-emerald-400 font-bold focus:outline-none focus:border-emerald-500 text-lg">
+                        </div>
 
-        const catTotals = {};
-        let totalInc = 0, totalExp = 0;
+                        <div class="grid grid-cols-2 gap-3">
+                            <div>
+                                <label class="block text-xs text-slate-400 mb-1">หมวดหมู่การออม</label>
+                                <select id="savingsCategory" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-3 py-2 text-sm text-slate-200 focus:outline-none focus:border-emerald-500">
+                                    <option value="เงินออมประจำ">เงินออมประจำ</option>
+                                    <option value="เงินโบนัส">เงินโบนัส</option>
+                                    <option value="รายได้พิเศษ">รายได้พิเศษ</option>
+                                    <option value="เงินคืน/ส่วนลด">เงินคืน/ส่วนลด</option>
+                                    <option value="อื่นๆ">อื่นๆ</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="block text-xs text-slate-400 mb-1">วันที่ & เวลา</label>
+                                <input type="datetime-local" id="savingsDatetime" required class="w-full bg-slate-900 border border-slate-700 rounded-xl px-3 py-2 text-xs text-slate-200 focus:outline-none focus:border-emerald-500">
+                            </div>
+                        </div>
 
-        this.data.transactions.forEach(t => {
-          if (t.type === 'expense') {
-            catTotals[t.category] = (catTotals[t.category] || 0) + t.amount;
-            totalExp += t.amount;
-          } else if (t.type === 'income') {
-            totalInc += t.amount;
-          }
+                        <div>
+                            <label class="block text-xs text-slate-400 mb-1">หมายเหตุ</label>
+                            <input type="text" id="savingsNote" placeholder="รายละเอียดเพิ่มเติม..." class="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-2 text-sm text-slate-200 focus:outline-none focus:border-emerald-500">
+                        </div>
+
+                        <div class="flex gap-2 pt-2">
+                            <button type="submit" id="saveSavingsBtn" class="flex-1 bg-emerald-600 hover:bg-emerald-500 text-slate-950 font-semibold py-2.5 rounded-xl transition shadow-lg text-sm">
+                                บันทึกเพิ่มเงินออม
+                            </button>
+                            <button type="button" id="cancelSavingsEditBtn" onclick="resetSavingsForm()" class="hidden px-4 py-2.5 bg-slate-800 text-slate-400 hover:text-white rounded-xl text-sm">
+                                ยกเลิก
+                            </button>
+                        </div>
+                    </form>
+                </div>
+
+                <!-- SAVINGS HISTORY TABLE -->
+                <div class="glass-card p-5 rounded-2xl lg:col-span-2 space-y-4 flex flex-col justify-between">
+                    <div>
+                        <div class="flex justify-between items-center mb-4">
+                            <h3 class="font-semibold text-lg text-slate-200">ประวัติการออมเงิน</h3>
+                            <input type="text" id="searchSavingsInput" onkeyup="renderSavingsTable()" placeholder="ค้นหารายการออม..." class="bg-slate-900 border border-slate-700 rounded-xl px-3 py-1 text-xs text-slate-300 focus:outline-none focus:border-emerald-500 w-44 sm:w-56">
+                        </div>
+
+                        <div class="overflow-x-auto max-h-[420px] overflow-y-auto pr-1">
+                            <table class="w-full text-left text-sm text-slate-300 border-collapse">
+                                <thead class="text-xs uppercase bg-slate-900/80 sticky top-0 text-slate-400 border-b border-slate-800">
+                                    <tr>
+                                        <th class="p-3">วัน/เวลา</th>
+                                        <th class="p-3">หมวดหมู่</th>
+                                        <th class="p-3">หมายเหตุ</th>
+                                        <th class="p-3 text-right">จำนวนเงิน</th>
+                                        <th class="p-3 text-center">จัดการ</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="savingsTableBody" class="divide-y divide-slate-800/50">
+                                    <!-- Rendered dynamically -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- MODULE 2: EXPENSE LEDGER (บันทึกรายจ่าย) -->
+            <div id="viewExpense" class="hidden grid grid-cols-1 lg:grid-cols-3 gap-6">
+                <!-- EXPENSE FORM -->
+                <div class="glass-card p-5 rounded-2xl space-y-4 h-fit border-l-2 border-rose-500">
+                    <h3 class="font-semibold text-lg text-rose-400 flex items-center gap-2">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 12H4"/></svg>
+                        บันทึกรายการรายจ่าย (-)
+                    </h3>
+                    <div class="p-3 bg-rose-500/10 border border-rose-500/20 rounded-xl text-xs text-rose-300">
+                        🔒 **ระบบป้องกันเงินออมติดลบ:** รายจ่ายจะหักจากยอดสะสมสุทธิ และไม่อนุญาตให้จ่ายเกินยอดเงินออมคงเหลือที่มีอยู่
+                    </div>
+                    <form id="expenseForm" onsubmit="handleSaveExpense(event)" class="space-y-4">
+                        <input type="hidden" id="expenseId">
+                        
+                        <div>
+                            <label class="block text-xs text-slate-400 mb-1">จำนวนเงินรายจ่าย (บาท)</label>
+                            <input type="number" step="0.01" min="0.01" id="expenseAmount" required placeholder="0.00" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-2.5 text-rose-400 font-bold focus:outline-none focus:border-rose-500 text-lg">
+                        </div>
+
+                        <div class="grid grid-cols-2 gap-3">
+                            <div>
+                                <label class="block text-xs text-slate-400 mb-1">หมวดหมู่รายจ่าย</label>
+                                <select id="expenseCategory" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-3 py-2 text-sm text-slate-200 focus:outline-none focus:border-rose-500">
+                                    <option value="ค่าอาหาร & เครื่องดื่ม">ค่าอาหาร & เครื่องดื่ม</option>
+                                    <option value="ค่าเดินทาง">ค่าเดินทาง</option>
+                                    <option value="ค่าที่พัก & สาธารณูปโภค">ค่าที่พัก & สาธารณูปโภค</option>
+                                    <option value="ซื้อของใช้/ช้อปปิ้ง">ซื้อของใช้/ช้อปปิ้ง</option>
+                                    <option value="ความบันเทิง">ความบันเทิง</option>
+                                    <option value="จำเป็นฉุกเฉิน">จำเป็นฉุกเฉิน</option>
+                                    <option value="อื่นๆ">อื่นๆ</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="block text-xs text-slate-400 mb-1">วันที่ & เวลา</label>
+                                <input type="datetime-local" id="expenseDatetime" required class="w-full bg-slate-900 border border-slate-700 rounded-xl px-3 py-2 text-xs text-slate-200 focus:outline-none focus:border-rose-500">
+                            </div>
+                        </div>
+
+                        <div>
+                            <label class="block text-xs text-slate-400 mb-1">หมายเหตุ</label>
+                            <input type="text" id="expenseNote" placeholder="รายละเอียด..." class="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-2 text-sm text-slate-200 focus:outline-none focus:border-rose-500">
+                        </div>
+
+                        <div class="flex gap-2 pt-2">
+                            <button type="submit" id="saveExpenseBtn" class="flex-1 bg-rose-600 hover:bg-rose-500 text-white font-semibold py-2.5 rounded-xl transition shadow-lg text-sm">
+                                บันทึกหักรายจ่าย
+                            </button>
+                            <button type="button" id="cancelExpenseEditBtn" onclick="resetExpenseForm()" class="hidden px-4 py-2.5 bg-slate-800 text-slate-400 hover:text-white rounded-xl text-sm">
+                                ยกเลิก
+                            </button>
+                        </div>
+                    </form>
+                </div>
+
+                <!-- EXPENSE HISTORY TABLE -->
+                <div class="glass-card p-5 rounded-2xl lg:col-span-2 space-y-4 flex flex-col justify-between">
+                    <div>
+                        <div class="flex justify-between items-center mb-4">
+                            <h3 class="font-semibold text-lg text-slate-200">ประวัติรายการรายจ่าย</h3>
+                            <input type="text" id="searchExpenseInput" onkeyup="renderExpenseTable()" placeholder="ค้นหารายจ่าย..." class="bg-slate-900 border border-slate-700 rounded-xl px-3 py-1 text-xs text-slate-300 focus:outline-none focus:border-rose-500 w-44 sm:w-56">
+                        </div>
+
+                        <div class="overflow-x-auto max-h-[420px] overflow-y-auto pr-1">
+                            <table class="w-full text-left text-sm text-slate-300 border-collapse">
+                                <thead class="text-xs uppercase bg-slate-900/80 sticky top-0 text-slate-400 border-b border-slate-800">
+                                    <tr>
+                                        <th class="p-3">วัน/เวลา</th>
+                                        <th class="p-3">หมวดหมู่</th>
+                                        <th class="p-3">หมายเหตุ</th>
+                                        <th class="p-3 text-right">จำนวนเงิน</th>
+                                        <th class="p-3 text-center">จัดการ</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="expenseTableBody" class="divide-y divide-slate-800/50">
+                                    <!-- Rendered dynamically -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- VIEW 3: SAVINGS GOALS -->
+            <div id="viewGoals" class="hidden space-y-6">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <!-- GOAL FORM -->
+                    <div class="glass-card p-5 rounded-2xl space-y-4">
+                        <h3 class="font-semibold text-lg text-amber-400">สร้างเป้าหมายการออมใหม่</h3>
+                        <form id="goalForm" onsubmit="handleSaveGoal(event)" class="space-y-4">
+                            <input type="hidden" id="goalId">
+                            <div>
+                                <label class="block text-xs text-slate-400 mb-1">ชื่อเป้าหมาย</label>
+                                <input type="text" id="goalTitle" required placeholder="เช่น ซื้อคอมพิวเตอร์, ท่องเที่ยว" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-2 text-sm text-slate-200 focus:outline-none focus:border-amber-500">
+                            </div>
+                            <div>
+                                <label class="block text-xs text-slate-400 mb-1">จำนวนเงินเป้าหมาย (บาท)</label>
+                                <input type="number" step="1" min="1" id="goalTargetAmount" required placeholder="10000" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-2 text-amber-400 font-bold focus:outline-none focus:border-amber-500">
+                            </div>
+                            <div>
+                                <label class="block text-xs text-slate-400 mb-1">วันที่ต้องการบรรลุเป้าหมาย</label>
+                                <input type="date" id="goalTargetDate" required class="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-2 text-xs text-slate-200 focus:outline-none focus:border-amber-500">
+                            </div>
+                            <div>
+                                <label class="block text-xs text-slate-400 mb-1">ระยะเป้าหมาย</label>
+                                <select id="goalTerm" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-3 py-2 text-sm text-slate-200">
+                                    <option value="short">ระยะสั้น (&lt; 6 เดือน)</option>
+                                    <option value="medium">ระยะกลาง (6 - 12 เดือน)</option>
+                                    <option value="long">ระยะยาว (&gt; 1 ปี)</option>
+                                </select>
+                            </div>
+                            <button type="submit" class="w-full gold-bg-gradient hover:opacity-90 text-slate-950 font-semibold py-2.5 rounded-xl transition shadow-lg text-sm">
+                                บันทึกเป้าหมาย
+                            </button>
+                        </form>
+                    </div>
+
+                    <!-- GOALS LIST CONTAINER -->
+                    <div class="md:col-span-2 space-y-4">
+                        <h3 class="font-semibold text-lg text-slate-200">เป้าหมายทั้งหมด</h3>
+                        <div id="goalsContainer" class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            <!-- Goals dynamic list -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- VIEW 4: ANALYTICS & CHARTS -->
+            <div id="viewAnalytics" class="hidden space-y-6">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                    <!-- CHART 1: SAVINGS VS EXPENSES TREND -->
+                    <div class="glass-card p-5 rounded-2xl">
+                        <div class="flex justify-between items-center mb-4">
+                            <h4 class="font-semibold text-slate-200 text-sm">เปรียบเทียบ เงินออม (+) vs รายจ่าย (-)</h4>
+                            <span class="text-xs text-slate-400">Canvas Native v2.3</span>
+                        </div>
+                        <div class="relative h-64 w-full">
+                            <canvas id="savingsTrendCanvas" class="w-full h-full"></canvas>
+                        </div>
+                    </div>
+
+                    <!-- CHART 2: CATEGORY DISTRIBUTION -->
+                    <div class="glass-card p-5 rounded-2xl">
+                        <div class="flex justify-between items-center mb-4">
+                            <h4 class="font-semibold text-slate-200 text-sm">สัดส่วนหมวดหมู่เงินออม & รายจ่าย</h4>
+                            <span class="text-xs text-slate-400">Category Breakdown</span>
+                        </div>
+                        <div class="relative h-64 w-full flex items-center justify-center">
+                            <canvas id="categoryDistributionCanvas" class="w-full h-full"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- VIEW 5: SECURITY & DATA MANAGEMENT -->
+            <div id="viewSettings" class="hidden space-y-6 max-w-4xl mx-auto">
+                <!-- PIN SECURITY CONFIG -->
+                <div class="glass-card p-6 rounded-2xl space-y-4">
+                    <div class="flex items-center gap-3">
+                        <div class="p-2 rounded-xl bg-amber-500/10 text-amber-400">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-lg text-slate-100">ระบบความปลอดภัย PIN 4 หลัก</h3>
+                            <p class="text-xs text-slate-400">ตั้งค่ารหัส PIN เพื่อปกป้องข้อมูลการออมจากเบราว์เซอร์นี้</p>
+                        </div>
+                    </div>
+
+                    <div id="pinStatusBox" class="p-4 rounded-xl bg-slate-900 border border-slate-800 text-xs text-slate-300 space-y-2">
+                        <!-- Dynamic Status -->
+                    </div>
+
+                    <div id="pinSetupSection" class="space-y-3 pt-2">
+                        <div class="max-w-xs">
+                            <label class="block text-xs text-slate-400 mb-1">กรอก PIN 4 หลักเพื่อเริ่มต้นตั้งค่า</label>
+                            <input type="password" maxlength="4" id="setupPinInput" placeholder="••••" class="w-full tracking-widest text-center bg-slate-900 border border-slate-700 rounded-xl py-2 text-xl text-amber-400 font-bold focus:outline-none focus:border-amber-500">
+                        </div>
+                        <button onclick="handleSetupPin()" class="gold-bg-gradient hover:opacity-90 text-slate-950 font-semibold px-5 py-2.5 rounded-xl text-sm transition">
+                            ตั้งค่ารหัส PIN
+                        </button>
+                    </div>
+
+                    <div class="p-3 bg-amber-500/10 border border-amber-500/20 rounded-xl text-xs text-amber-300 leading-relaxed">
+                        ⚠️ <strong>ข้อจำกัดความปลอดภัย:</strong> ระบบ PIN ฝั่งเบราว์เซอร์ช่วยป้องกันการแอบดูหน้าจอในเครื่องนี้ แต่ไม่สามารถป้องกันผู้ที่มีสิทธิ์ระดับ Admin หรือเข้าถึงระบบไฟล์ดิบของเครื่องได้อย่างสมบูรณ์
+                    </div>
+                </div>
+
+                <!-- BACKUP & RESTORE SECTION -->
+                <div class="glass-card p-6 rounded-2xl space-y-4">
+                    <div class="flex items-center gap-3">
+                        <div class="p-2 rounded-xl bg-blue-500/10 text-blue-400">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7H5a2 2 0 00-2 2v9a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-3m-1 4l-3 3m0 0l-3-3m3 3V4"/></svg>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-lg text-slate-100">การสำรองและกู้คืนข้อมูล (Backup & Restore v2.3)</h3>
+                            <p class="text-xs text-slate-400">ส่งออกข้อมูลเป็นไฟล์ JSON เพื่อสำรองไว้ในอุปกรณ์ หรือนำเข้าข้อมูลเดิม</p>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
+                        <div class="p-4 rounded-xl bg-slate-900 border border-slate-800 space-y-3">
+                            <h4 class="font-semibold text-sm text-slate-200">ส่งออกข้อมูล (Export)</h4>
+                            <p class="text-xs text-slate-400">ดาวน์โหลดรายการออม รายจ่าย เป้าหมาย และการตั้งค่าลงเครื่องแบบ Offline</p>
+                            <button onclick="exportBackupJSON()" class="w-full bg-slate-800 hover:bg-slate-700 text-amber-400 font-medium py-2 rounded-xl border border-amber-500/30 text-sm transition flex items-center justify-center gap-2">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
+                                ดาวน์โหลด JSON Backup v2.3
+                            </button>
+                        </div>
+
+                        <div class="p-4 rounded-xl bg-slate-900 border border-slate-800 space-y-3">
+                            <h4 class="font-semibold text-sm text-slate-200">นำเข้าข้อมูล (Import)</h4>
+                            <p class="text-xs text-slate-400">เลือกไฟล์ `.json` เพื่อกู้คืนข้อมูล (ข้อมูลเดิมจะถูกตรวจสอบอย่างปลอดภัย)</p>
+                            <input type="file" id="importFileInput" accept=".json" class="hidden" onchange="importBackupJSON(event)">
+                            <button onclick="document.getElementById('importFileInput').click()" class="w-full bg-slate-800 hover:bg-slate-700 text-emerald-400 font-medium py-2 rounded-xl border border-emerald-500/30 text-sm transition flex items-center justify-center gap-2">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12"/></svg>
+                                เลือกไฟล์ JSON นำเข้า
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- PIN LOCK OVERLAY SCREEN -->
+    <div id="pinLockModal" class="fixed inset-0 z-50 bg-slate-950 flex items-center justify-center p-4 hidden">
+        <div class="glass-card max-w-sm w-full p-6 rounded-3xl text-center space-y-6 border border-amber-500/20 shadow-2xl">
+            <div class="w-16 h-16 rounded-2xl gold-bg-gradient mx-auto flex items-center justify-center text-slate-950 shadow-lg shadow-amber-500/20">
+                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>
+            </div>
+            
+            <div>
+                <h2 class="text-xl font-bold text-slate-100">กรุณายืนยันรหัส PIN</h2>
+                <p class="text-xs text-slate-400 mt-1" id="pinModalSubtext">ป้อน PIN 4 หลักเพื่อปลดล็อกเข้าสู่ระบบ</p>
+            </div>
+
+            <!-- PIN DISPLAY DOTS -->
+            <div class="flex justify-center gap-3 my-4">
+                <div class="pin-dot w-4 h-4 rounded-full border-2 border-slate-700 bg-transparent"></div>
+                <div class="pin-dot w-4 h-4 rounded-full border-2 border-slate-700 bg-transparent"></div>
+                <div class="pin-dot w-4 h-4 rounded-full border-2 border-slate-700 bg-transparent"></div>
+                <div class="pin-dot w-4 h-4 rounded-full border-2 border-slate-700 bg-transparent"></div>
+            </div>
+
+            <!-- KEYPAD -->
+            <div class="grid grid-cols-3 gap-3 max-w-[240px] mx-auto">
+                <button onclick="pressPinKey('1')" class="py-3 rounded-2xl bg-slate-900 text-xl font-bold hover:bg-slate-800 active:scale-95 transition">1</button>
+                <button onclick="pressPinKey('2')" class="py-3 rounded-2xl bg-slate-900 text-xl font-bold hover:bg-slate-800 active:scale-95 transition">2</button>
+                <button onclick="pressPinKey('3')" class="py-3 rounded-2xl bg-slate-900 text-xl font-bold hover:bg-slate-800 active:scale-95 transition">3</button>
+                <button onclick="pressPinKey('4')" class="py-3 rounded-2xl bg-slate-900 text-xl font-bold hover:bg-slate-800 active:scale-95 transition">4</button>
+                <button onclick="pressPinKey('5')" class="py-3 rounded-2xl bg-slate-900 text-xl font-bold hover:bg-slate-800 active:scale-95 transition">5</button>
+                <button onclick="pressPinKey('6')" class="py-3 rounded-2xl bg-slate-900 text-xl font-bold hover:bg-slate-800 active:scale-95 transition">6</button>
+                <button onclick="pressPinKey('7')" class="py-3 rounded-2xl bg-slate-900 text-xl font-bold hover:bg-slate-800 active:scale-95 transition">7</button>
+                <button onclick="pressPinKey('8')" class="py-3 rounded-2xl bg-slate-900 text-xl font-bold hover:bg-slate-800 active:scale-95 transition">8</button>
+                <button onclick="pressPinKey('9')" class="py-3 rounded-2xl bg-slate-900 text-xl font-bold hover:bg-slate-800 active:scale-95 transition">9</button>
+                <button onclick="clearPin()" class="py-3 rounded-2xl bg-slate-900 text-xs text-rose-400 font-medium hover:bg-slate-800 transition">ล้าง</button>
+                <button onclick="pressPinKey('0')" class="py-3 rounded-2xl bg-slate-900 text-xl font-bold hover:bg-slate-800 active:scale-95 transition">0</button>
+                <button onclick="deletePinDigit()" class="py-3 rounded-2xl bg-slate-900 text-xs text-slate-400 font-medium hover:bg-slate-800 transition">⌫</button>
+            </div>
+
+            <div id="pinErrorMsg" class="text-xs text-rose-400 min-h-[1rem]"></div>
+        </div>
+    </div>
+
+    <!-- MAIN SYSTEM LOGIC SCRIPTS (VERSION 2.3) -->
+    <script>
+        /**
+         * AI SAVINGS SYSTEM 2026 VERSION 2.3
+         * SMART SAVINGS & EXPENSE EDITION
+         * CORE ENGINE: Satang Integer Precision, Atomic IndexedDB v3 Migration, Web Crypto API
+         */
+
+        const DB_NAME = 'AISavingsDB_v2_1';
+        const DB_VERSION = 3; // Upgraded DB Version for v2.3 Migration
+        let db = null;
+
+        // Application State
+        let state = {
+            transactions: [],
+            goals: [],
+            settings: {
+                pinHash: null,
+                pinSalt: null,
+                isPinSet: false,
+                version: '2.3'
+            },
+            currentPinInput: '',
+            pinAttempts: 0,
+            lockoutUntil: 0,
+            isSubmitting: false // Debounce Guard
+        };
+
+        // Initialize App
+        window.addEventListener('DOMContentLoaded', async () => {
+            initTheme();
+            setDefaultDatetimes();
+
+            try {
+                await initIndexedDB();
+                await loadAllData();
+                checkSecurityLockState();
+                renderAll();
+                initCanvasResizeListener();
+            } catch (err) {
+                showToast('เกิดข้อผิดพลาดในการโหลดระบบ v2.3: ' + err.message, 'error');
+            }
         });
 
-        const accumulatedSavings = this.calculateAccumulatedSavings();
+        /* ==========================================================================
+           1. INDEXEDDB ENGINE & MIGRATION SYSTEM v2.3
+           ========================================================================== */
+        function initIndexedDB() {
+            return new Promise((resolve, reject) => {
+                const request = indexedDB.open(DB_NAME, DB_VERSION);
 
-        // Doughnut Chart
-        const ctxExp = document.getElementById('expenseChart')?.getContext('2d');
-        if (ctxExp) {
-          this.chartInstances.expense = new Chart(ctxExp, {
-            type: 'doughnut',
-            data: {
-              labels: Object.keys(catTotals).length ? Object.keys(catTotals) : ['ไม่มีข้อมูล'],
-              datasets: [{
-                data: Object.values(catTotals).length ? Object.values(catTotals) : [1],
-                backgroundColor: ['#F5E472', '#C5A028', '#A3821D', '#E11D48', '#059669', '#4F46E5'],
-                borderWidth: 0
-              }]
-            },
-            options: {
-              responsive: true,
-              maintainAspectRatio: false,
-              plugins: { legend: { labels: { color: '#1A202C', font: { size: 10 } } } }
+                request.onupgradeneeded = (event) => {
+                    const dbUpgrade = event.target.result;
+                    const oldVer = event.oldVersion;
+
+                    if (oldVer < 1) {
+                        const txStore = dbUpgrade.createObjectStore('transactions', { keyPath: 'id' });
+                        txStore.createIndex('date', 'date', { unique: false });
+                        txStore.createIndex('type', 'type', { unique: false });
+
+                        const goalStore = dbUpgrade.createObjectStore('goals', { keyPath: 'id' });
+                        goalStore.createIndex('targetDate', 'targetDate', { unique: false });
+
+                        dbUpgrade.createObjectStore('settings', { keyPath: 'key' });
+                    }
+
+                    if (oldVer >= 1 && oldVer < 3) {
+                        const txStore = event.target.transaction.objectStore('transactions');
+                        if (!txStore.indexNames.contains('type')) {
+                            txStore.createIndex('type', 'type', { unique: false });
+                        }
+                        // Perform migration: Convert legacy 'withdraw' types to 'expense'
+                        const requestAll = txStore.getAll();
+                        requestAll.onsuccess = () => {
+                            const records = requestAll.result || [];
+                            records.forEach(rec => {
+                                if (rec.type === 'withdraw') {
+                                    rec.type = 'expense';
+                                    txStore.put(rec);
+                                }
+                                // Standardize Satangs calculation on legacy amounts
+                                if (rec.amount && !rec.satangs) {
+                                    rec.satangs = Math.round(rec.amount * 100);
+                                    txStore.put(rec);
+                                }
+                            });
+                        };
+                    }
+                };
+
+                request.onsuccess = (event) => {
+                    db = event.target.result;
+                    resolve(db);
+                };
+
+                request.onerror = (event) => {
+                    reject(event.target.error);
+                };
+            });
+        }
+
+        function dbTransaction(storeName, mode, callback) {
+            return new Promise((resolve, reject) => {
+                const tx = db.transaction(storeName, mode);
+                const store = tx.objectStore(storeName);
+                const res = callback(store);
+                tx.oncomplete = () => resolve(res);
+                tx.onerror = () => reject(tx.error);
+            });
+        }
+
+        async function loadAllData() {
+            state.transactions = await dbTransaction('transactions', 'readonly', (store) => {
+                return new Promise((res) => {
+                    const req = store.getAll();
+                    req.onsuccess = () => {
+                        const list = req.result || [];
+                        // Ensure satangs attribute exists
+                        list.forEach(t => {
+                            if (!t.satangs && t.amount) t.satangs = Math.round(t.amount * 100);
+                        });
+                        res(list);
+                    };
+                });
+            });
+
+            state.goals = await dbTransaction('goals', 'readonly', (store) => {
+                return new Promise((res) => {
+                    const req = store.getAll();
+                    req.onsuccess = () => res(req.result || []);
+                });
+            });
+
+            const settingsList = await dbTransaction('settings', 'readonly', (store) => {
+                return new Promise((res) => {
+                    const req = store.getAll();
+                    req.onsuccess = () => res(req.result || []);
+                });
+            });
+
+            settingsList.forEach(item => {
+                state.settings[item.key] = item.value;
+            });
+        }
+
+        /* ==========================================================================
+           2. MATH ENGINE: FIXED-POINT SATANG CALCULATIONS
+           ========================================================================== */
+        function calculateLedgerTotals() {
+            let depositSatangs = 0;
+            let expenseSatangs = 0;
+
+            state.transactions.forEach(t => {
+                const satangs = t.satangs || Math.round((t.amount || 0) * 100);
+                if (t.type === 'deposit') {
+                    depositSatangs += satangs;
+                } else if (t.type === 'expense' || t.type === 'withdraw') {
+                    expenseSatangs += satangs;
+                }
+            });
+
+            const netSatangs = depositSatangs - expenseSatangs;
+
+            return {
+                depositSatangs,
+                expenseSatangs,
+                netSatangs,
+                totalSavings: depositSatangs / 100,
+                totalExpenses: expenseSatangs / 100,
+                netBalance: netSatangs / 100
+            };
+        }
+
+        /* ==========================================================================
+           3. WEB CRYPTO API & SECURITY SYSTEM
+           ========================================================================== */
+        async function hashPin(pin, saltHex) {
+            const encoder = new TextEncoder();
+            const salt = saltHex ? hexToBuf(saltHex) : window.crypto.getRandomValues(new Uint8Array(16));
+            const pinBuf = encoder.encode(pin);
+
+            const keyMaterial = await window.crypto.subtle.importKey(
+                'raw', pinBuf, { name: 'PBKDF2' }, false, ['deriveBits', 'deriveKey']
+            );
+
+            const derivedBits = await window.crypto.subtle.deriveBits(
+                {
+                    name: 'PBKDF2',
+                    salt: salt,
+                    iterations: 100000,
+                    hash: 'SHA-256'
+                },
+                keyMaterial, 256
+            );
+
+            return {
+                hashHex: bufToHex(derivedBits),
+                saltHex: bufToHex(salt)
+            };
+        }
+
+        function bufToHex(buf) {
+            return Array.from(new Uint8Array(buf)).map(b => b.toString(16).padStart(2, '0')).join('');
+        }
+
+        function hexToBuf(hex) {
+            return new Uint8Array(hex.match(/.{1,2}/g).map(byte => parseInt(byte, 16)));
+        }
+
+        async function handleSetupPin() {
+            if (state.settings.isPinSet) {
+                showToast('การตั้งค่า PIN ทำได้เพียงครั้งเดียวเพื่อความปลอดภัย', 'error');
+                return;
             }
-          });
-        }
 
-        // Overview Bar Chart
-        const ctxOverview = document.getElementById('overviewChart')?.getContext('2d');
-        if (ctxOverview) {
-          this.chartInstances.overview = new Chart(ctxOverview, {
-            type: 'bar',
-            data: {
-              labels: ['รายรับนำเข้า', 'รายจ่ายหักออก', 'เงินออมคงเหลือ'],
-              datasets: [{
-                data: [totalInc, totalExp, accumulatedSavings],
-                backgroundColor: ['rgba(5, 150, 105, 0.85)', 'rgba(225, 29, 72, 0.85)', 'rgba(197, 160, 40, 0.85)'],
-                borderRadius: 8
-              }]
-            },
-            options: {
-              responsive: true,
-              maintainAspectRatio: false,
-              plugins: { legend: { display: false } },
-              scales: {
-                x: { ticks: { color: '#4A5568' }, grid: { display: false } },
-                y: { ticks: { color: '#4A5568' }, grid: { color: 'rgba(0,0,0,0.05)' } }
-              }
+            const pin = document.getElementById('setupPinInput').value.trim();
+            if (pin.length !== 4 || !/^\d{4}$/.test(pin)) {
+                showToast('กรุณากรอก PIN เป็นตัวเลข 4 หลักเท่านั้น', 'error');
+                return;
             }
-          });
+
+            const { hashHex, saltHex } = await hashPin(pin);
+
+            await dbTransaction('settings', 'readwrite', (store) => {
+                store.put({ key: 'pinHash', value: hashHex });
+                store.put({ key: 'pinSalt', value: saltHex });
+                store.put({ key: 'isPinSet', value: true });
+            });
+
+            state.settings.pinHash = hashHex;
+            state.settings.pinSalt = saltHex;
+            state.settings.isPinSet = true;
+
+            showToast('ตั้งค่า PIN เรียบร้อย ระบบสลับเป็นโหมดปลอดภัย', 'success');
+            document.getElementById('setupPinInput').value = '';
+            checkSecurityLockState();
+            renderSettingsView();
         }
-      }
 
-      // ================= UI SWITCHING HELPERS =================
-      switchTab(tabId) {
-        document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
-        document.querySelectorAll('.nav-btn').forEach(el => el.classList.remove('active', 'text-gold-600'));
-
-        const targetTab = document.getElementById(`tab-${tabId}`);
-        const targetNav = document.getElementById(`nav-${tabId}`);
-
-        if (targetTab) targetTab.classList.remove('hidden');
-        if (targetNav) targetNav.classList.add('active', 'text-gold-600');
-
-        if (tabId === 'stats') this.renderCharts();
-      }
-
-      openModal(modalId, txType = 'income') {
-        document.getElementById(modalId)?.classList.remove('hidden');
-        if (modalId === 'modal-transaction') {
-          this.setTxType(txType);
+        function checkSecurityLockState() {
+            const lockBtn = document.getElementById('lockAppBtn');
+            if (state.settings.isPinSet) {
+                lockBtn.classList.remove('hidden');
+                showPinLockModal();
+            } else {
+                lockBtn.classList.add('hidden');
+                hidePinLockModal();
+            }
         }
-      }
 
-      closeModal(modalId) {
-        document.getElementById(modalId)?.classList.add('hidden');
-      }
-    }
+        function showPinLockModal() {
+            state.currentPinInput = '';
+            updatePinDots();
+            document.getElementById('pinLockModal').classList.remove('hidden');
+        }
 
-    // App Execution
-    const app = new LuxurySavingsAppPro();
-    window.onload = () => {
-      app.init();
-    };
-  </script>
+        function hidePinLockModal() {
+            document.getElementById('pinLockModal').classList.add('hidden');
+            state.currentPinInput = '';
+        }
+
+        document.getElementById('lockAppBtn').addEventListener('click', () => {
+            if (state.settings.isPinSet) {
+                showPinLockModal();
+                showToast('ล็อกระบบเรียบร้อยแล้ว', 'info');
+            }
+        });
+
+        async function pressPinKey(num) {
+            if (Date.now() < state.lockoutUntil) {
+                const waitSec = Math.ceil((state.lockoutUntil - Date.now()) / 1000);
+                document.getElementById('pinErrorMsg').innerText = `ระบบถูกล็อกชั่วคราว ลองใหม่ใน ${waitSec} วินาที`;
+                return;
+            }
+
+            if (state.currentPinInput.length < 4) {
+                state.currentPinInput += num;
+                updatePinDots();
+
+                if (state.currentPinInput.length === 4) {
+                    await verifyPin();
+                }
+            }
+        }
+
+        function deletePinDigit() {
+            state.currentPinInput = state.currentPinInput.slice(0, -1);
+            updatePinDots();
+        }
+
+        function clearPin() {
+            state.currentPinInput = '';
+            updatePinDots();
+            document.getElementById('pinErrorMsg').innerText = '';
+        }
+
+        function updatePinDots() {
+            const dots = document.querySelectorAll('.pin-dot');
+            dots.forEach((dot, index) => {
+                if (index < state.currentPinInput.length) {
+                    dot.classList.add('bg-amber-400', 'border-amber-400');
+                    dot.classList.remove('bg-transparent', 'border-slate-700');
+                } else {
+                    dot.classList.remove('bg-amber-400', 'border-amber-400');
+                    dot.classList.add('bg-transparent', 'border-slate-700');
+                }
+            });
+        }
+
+        async function verifyPin() {
+            const { hashHex } = await hashPin(state.currentPinInput, state.settings.pinSalt);
+            if (hashHex === state.settings.pinHash) {
+                state.pinAttempts = 0;
+                document.getElementById('pinErrorMsg').innerText = '';
+                hidePinLockModal();
+                showToast('ปลดล็อกเข้าสู่ระบบสำเร็จ', 'success');
+            } else {
+                state.pinAttempts++;
+                state.currentPinInput = '';
+                updatePinDots();
+
+                if (state.pinAttempts >= 3) {
+                    state.lockoutUntil = Date.now() + 30000;
+                    document.getElementById('pinErrorMsg').innerText = 'กรอก PIN ผิด 3 ครั้ง ระบบล็อกชั่วคราว 30 วินาที';
+                } else {
+                    document.getElementById('pinErrorMsg').innerText = `รหัส PIN ไม่ถูกต้อง (เหลือ ${3 - state.pinAttempts} ครั้ง)`;
+                }
+            }
+        }
+
+        /* ==========================================================================
+           4. MODULE A & B: SAVINGS & EXPENSE LEDGERS (VERSION 2.3)
+           ========================================================================== */
+        function setDefaultDatetimes() {
+            const now = new Date();
+            now.setMinutes(now.getMinutes() - now.getTimezoneOffset());
+            const iso = now.toISOString().slice(0, 16);
+            if (document.getElementById('savingsDatetime')) document.getElementById('savingsDatetime').value = iso;
+            if (document.getElementById('expenseDatetime')) document.getElementById('expenseDatetime').value = iso;
+        }
+
+        // --- MODULE A: SAVINGS HANDLING ---
+        async function handleSaveSavings(e) {
+            e.preventDefault();
+            if (state.isSubmitting) return;
+            state.isSubmitting = true;
+
+            try {
+                const id = document.getElementById('savingsId').value || 'save_' + Date.now();
+                const amount = parseFloat(document.getElementById('savingsAmount').value);
+                const category = document.getElementById('savingsCategory').value;
+                const datetime = document.getElementById('savingsDatetime').value;
+                const note = document.getElementById('savingsNote').value.trim();
+
+                if (!amount || amount <= 0) {
+                    showToast('กรุณากรอกจำนวนเงินออมให้ถูกต้อง', 'error');
+                    return;
+                }
+
+                const satangs = Math.round(amount * 100);
+                const txObj = { id, type: 'deposit', amount, satangs, category, date: datetime, note };
+
+                // Atomic Transaction
+                await dbTransaction('transactions', 'readwrite', (store) => {
+                    store.put(txObj);
+                });
+
+                const idx = state.transactions.findIndex(t => t.id === id);
+                if (idx >= 0) state.transactions[idx] = txObj;
+                else state.transactions.unshift(txObj);
+
+                showToast('บันทึกเพิ่มเงินออมสำเร็จ (+฿' + amount.toLocaleString(undefined, {minimumFractionDigits: 2}) + ')', 'success');
+                resetSavingsForm();
+                renderAll();
+            } finally {
+                state.isSubmitting = false;
+            }
+        }
+
+        function resetSavingsForm() {
+            document.getElementById('savingsId').value = '';
+            document.getElementById('savingsAmount').value = '';
+            document.getElementById('savingsNote').value = '';
+            document.getElementById('cancelSavingsEditBtn').classList.add('hidden');
+            setDefaultDatetimes();
+        }
+
+        // --- MODULE B: EXPENSE HANDLING ---
+        async function handleSaveExpense(e) {
+            e.preventDefault();
+            if (state.isSubmitting) return;
+            state.isSubmitting = true;
+
+            try {
+                const id = document.getElementById('expenseId').value || 'exp_' + Date.now();
+                const amount = parseFloat(document.getElementById('expenseAmount').value);
+                const category = document.getElementById('expenseCategory').value;
+                const datetime = document.getElementById('expenseDatetime').value;
+                const note = document.getElementById('expenseNote').value.trim();
+
+                if (!amount || amount <= 0) {
+                    showToast('กรุณากรอกจำนวนเงินรายจ่ายให้ถูกต้อง', 'error');
+                    return;
+                }
+
+                const expenseSatangs = Math.round(amount * 100);
+
+                // ZERO NEGATIVE BALANCE GUARDRAIL CHECK
+                let currentNetSatangs = calculateLedgerTotals().netSatangs;
+                
+                // If editing existing expense, temporarily add back original amount to test
+                const existingIdx = state.transactions.findIndex(t => t.id === id);
+                if (existingIdx >= 0) {
+                    const origSatangs = state.transactions[existingIdx].satangs || Math.round(state.transactions[existingIdx].amount * 100);
+                    currentNetSatangs += origSatangs;
+                }
+
+                if (expenseSatangs > currentNetSatangs) {
+                    const availableNet = (currentNetSatangs / 100).toLocaleString(undefined, {minimumFractionDigits: 2});
+                    showToast(`⚠️ ไม่สามารถบันทึกรายจ่ายได้! ยอดสะสมคงเหลือมีเพียง ฿${availableNet} (ไม่อนุญาตให้ติดลบ)`, 'error');
+                    return;
+                }
+
+                const txObj = { id, type: 'expense', amount, satangs: expenseSatangs, category, date: datetime, note };
+
+                // Atomic Transaction
+                await dbTransaction('transactions', 'readwrite', (store) => {
+                    store.put(txObj);
+                });
+
+                if (existingIdx >= 0) state.transactions[existingIdx] = txObj;
+                else state.transactions.unshift(txObj);
+
+                showToast('บันทึกหักรายจ่ายสำเร็จ (-฿' + amount.toLocaleString(undefined, {minimumFractionDigits: 2}) + ')', 'info');
+                resetExpenseForm();
+                renderAll();
+            } finally {
+                state.isSubmitting = false;
+            }
+        }
+
+        function resetExpenseForm() {
+            document.getElementById('expenseId').value = '';
+            document.getElementById('expenseAmount').value = '';
+            document.getElementById('expenseNote').value = '';
+            document.getElementById('cancelExpenseEditBtn').classList.add('hidden');
+            setDefaultDatetimes();
+        }
+
+        async function deleteTransaction(id) {
+            const tx = state.transactions.find(t => t.id === id);
+            if (!tx) return;
+
+            // Protection if deleting a deposit drops net balance below zero
+            if (tx.type === 'deposit') {
+                const currentNetSatangs = calculateLedgerTotals().netSatangs;
+                const txSatangs = tx.satangs || Math.round(tx.amount * 100);
+                if (currentNetSatangs - txSatangs < 0) {
+                    showToast('⚠️ ไม่อนุญาตให้ลบรายการออมนี้ เนื่องจากจะทำให้ยอดเงินออมสะสมสุทธิเป็นลบ!', 'error');
+                    return;
+                }
+            }
+
+            if (!confirm('คุณต้องการลบรายการนี้ใช่หรือไม่?')) return;
+
+            await dbTransaction('transactions', 'readwrite', (store) => {
+                store.delete(id);
+            });
+
+            state.transactions = state.transactions.filter(t => t.id !== id);
+            showToast('ลบรายการสำเร็จ', 'info');
+            renderAll();
+        }
+
+        function editTransaction(id) {
+            const tx = state.transactions.find(t => t.id === id);
+            if (!tx) return;
+
+            if (tx.type === 'deposit') {
+                switchTab('savings');
+                document.getElementById('savingsId').value = tx.id;
+                document.getElementById('savingsAmount').value = tx.amount;
+                document.getElementById('savingsCategory').value = tx.category;
+                document.getElementById('savingsDatetime').value = tx.date;
+                document.getElementById('savingsNote').value = tx.note || '';
+                document.getElementById('cancelSavingsEditBtn').classList.remove('hidden');
+            } else {
+                switchTab('expense');
+                document.getElementById('expenseId').value = tx.id;
+                document.getElementById('expenseAmount').value = tx.amount;
+                document.getElementById('expenseCategory').value = tx.category;
+                document.getElementById('expenseDatetime').value = tx.date;
+                document.getElementById('expenseNote').value = tx.note || '';
+                document.getElementById('cancelExpenseEditBtn').classList.remove('hidden');
+            }
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        /* ==========================================================================
+           5. GOALS ENGINE
+           ========================================================================== */
+        async function handleSaveGoal(e) {
+            e.preventDefault();
+            const id = document.getElementById('goalId').value || 'goal_' + Date.now();
+            const title = document.getElementById('goalTitle').value.trim();
+            const targetAmount = parseFloat(document.getElementById('goalTargetAmount').value);
+            const targetDate = document.getElementById('goalTargetDate').value;
+            const term = document.getElementById('goalTerm').value;
+
+            if (!title || !targetAmount || targetAmount <= 0 || !targetDate) {
+                showToast('กรุณากรอกข้อมูลเป้าหมายให้ครบถ้วน', 'error');
+                return;
+            }
+
+            const goalObj = { id, title, targetAmount, targetDate, term, createdAt: new Date().toISOString() };
+
+            await dbTransaction('goals', 'readwrite', (store) => {
+                store.put(goalObj);
+            });
+
+            const idx = state.goals.findIndex(g => g.id === id);
+            if (idx >= 0) state.goals[idx] = goalObj;
+            else state.goals.push(goalObj);
+
+            showToast('บันทึกเป้าหมายการออมสำเร็จ', 'success');
+            document.getElementById('goalForm').reset();
+            renderAll();
+        }
+
+        async function deleteGoal(id) {
+            if (!confirm('ยืนยันการลบเป้าหมายการออมนี้?')) return;
+            await dbTransaction('goals', 'readwrite', (store) => store.delete(id));
+            state.goals = state.goals.filter(g => g.id !== id);
+            showToast('ลบเป้าหมายเรียบร้อย', 'info');
+            renderAll();
+        }
+
+        /* ==========================================================================
+           6. AI FINANCIAL HEALTH MONITOR v2.3
+           ========================================================================== */
+        function runAIFinancialHealthMonitor() {
+            const container = document.getElementById('aiAnalysisText');
+
+            if (state.transactions.length === 0) {
+                container.innerHTML = '<p class="text-slate-400">ยังไม่มีข้อมูลสำหรับวิเคราะห์ AI Financial Health Monitor ต้องการบันทึกอย่างน้อย 1 รายการ</p>';
+                document.getElementById('aiHealthScore').innerText = 'AI Score: -/100';
+                return;
+            }
+
+            const ledger = calculateLedgerTotals();
+            const deposits = state.transactions.filter(t => t.type === 'deposit');
+            const expenses = state.transactions.filter(t => t.type === 'expense' || t.type === 'withdraw');
+
+            // Savings Rate Calculation
+            const savingsRate = ledger.totalSavings > 0 
+                ? Math.round((ledger.netBalance / ledger.totalSavings) * 100) 
+                : 0;
+
+            // Score Logic based on genuine data
+            let score = 70;
+            if (savingsRate >= 50) score += 20;
+            else if (savingsRate < 20) score -= 25;
+
+            if (expenses.length > deposits.length * 2) score -= 15;
+            if (ledger.netBalance > 0) score += 10;
+
+            score = Math.min(100, Math.max(0, score));
+
+            // Expense Anomaly Detection
+            let anomalyWarning = '';
+            if (expenses.length > 0) {
+                const avgExpense = ledger.totalExpenses / expenses.length;
+                const maxExp = Math.max(...expenses.map(e => e.amount));
+                if (maxExp > avgExpense * 2.5) {
+                    anomalyWarning = `<p class="text-xs text-rose-400 mt-1">⚠️ <strong>ตรวจพบรายการจ่ายสูงผิดปกติ:</strong> มีรายการจ่ายสูงสุด ฿${maxExp.toLocaleString()} (สูงกว่าค่าเฉลี่ยรายจ่าย ฿${avgExpense.toFixed(2)})</p>`;
+                }
+            }
+
+            // Target Trajectory
+            let goalReport = '';
+            if (state.goals.length > 0) {
+                const primaryGoal = state.goals[0];
+                const needed = Math.max(0, primaryGoal.targetAmount - ledger.netBalance);
+                const targetD = new Date(primaryGoal.targetDate);
+                const daysLeft = Math.max(1, Math.ceil((targetD - new Date()) / (1000 * 60 * 60 * 24)));
+                const dailyNeeded = needed / daysLeft;
+
+                goalReport = `<p class="text-xs text-amber-300 mt-1">🎯 <strong>แผนเป้าหมาย "${primaryGoal.title}":</strong> ต้องออมอีก ฿${needed.toLocaleString()} (เฉลี่ยวันละ ฿${dailyNeeded.toFixed(2)} ใน ${daysLeft} วันที่เหลือ)</p>`;
+            }
+
+            container.innerHTML = `
+                <div class="space-y-1">
+                    <div class="flex items-center gap-2">
+                        <span class="font-bold ${savingsRate >= 40 ? 'text-emerald-400' : 'text-amber-400'}">อัตราคงเหลือเงินออม (Savings Retention Rate): ${savingsRate}%</span>
+                    </div>
+                    <p class="text-slate-300">รวมการออม <strong>฿${ledger.totalSavings.toLocaleString()}</strong> | รวมรายจ่าย <strong>฿${ledger.totalExpenses.toLocaleString()}</strong> | สะสมสุทธิ <strong>฿${ledger.netBalance.toLocaleString()}</strong></p>
+                    ${anomalyWarning}
+                    ${goalReport}
+                    <div class="text-xs text-slate-400 mt-2">ประมวลผลตามจริง 100% โดยคำนวณระดับ Satang Integer Precision</div>
+                </div>
+            `;
+
+            document.getElementById('aiHealthScore').innerText = `AI Score: ${score}/100`;
+        }
+
+        /* ==========================================================================
+           7. RENDERING & TABLES
+           ========================================================================== */
+        function renderAll() {
+            renderStats();
+            renderSavingsTable();
+            renderExpenseTable();
+            renderGoals();
+            renderSettingsView();
+            runAIFinancialHealthMonitor();
+            renderAnalyticsCharts();
+        }
+
+        function renderStats() {
+            const ledger = calculateLedgerTotals();
+
+            const deposits = state.transactions.filter(t => t.type === 'deposit');
+            const expenses = state.transactions.filter(t => t.type === 'expense' || t.type === 'withdraw');
+
+            const nowStr = new Date().toDateString();
+
+            const todayDeposit = deposits
+                .filter(t => new Date(t.date).toDateString() === nowStr)
+                .reduce((s, t) => s + (t.satangs || Math.round(t.amount * 100)), 0) / 100;
+
+            const todayExpense = expenses
+                .filter(t => new Date(t.date).toDateString() === nowStr)
+                .reduce((s, t) => s + (t.satangs || Math.round(t.amount * 100)), 0) / 100;
+
+            document.getElementById('statNetBalance').innerText = '฿' + ledger.netBalance.toLocaleString(undefined, { minimumFractionDigits: 2 });
+            document.getElementById('statTotalSavings').innerText = '฿' + ledger.totalSavings.toLocaleString(undefined, { minimumFractionDigits: 2 });
+            document.getElementById('statTotalExpenses').innerText = '฿' + ledger.totalExpenses.toLocaleString(undefined, { minimumFractionDigits: 2 });
+
+            document.getElementById('statSavingsCount').innerText = deposits.length;
+            document.getElementById('statExpenseCount').innerText = expenses.length;
+
+            document.getElementById('statTodayDeposit').innerText = '฿' + todayDeposit.toLocaleString();
+            document.getElementById('statTodayExpense').innerText = '฿' + todayExpense.toLocaleString();
+
+            let goalPercent = 0;
+            if (state.goals.length > 0) {
+                const totalTarget = state.goals.reduce((s, g) => s + g.targetAmount, 0);
+                goalPercent = Math.min(100, Math.max(0, Math.round((ledger.netBalance / totalTarget) * 100)));
+            }
+            document.getElementById('statGoalProgress').innerText = `${goalPercent}%`;
+            document.getElementById('statGoalProgressBar').style.width = `${goalPercent}%`;
+        }
+
+        function renderSavingsTable() {
+            const tbody = document.getElementById('savingsTableBody');
+            const search = (document.getElementById('searchSavingsInput').value || '').toLowerCase();
+            tbody.innerHTML = '';
+
+            const deposits = state.transactions.filter(t => t.type === 'deposit' && 
+                (t.category.toLowerCase().includes(search) || (t.note && t.note.toLowerCase().includes(search)))
+            );
+
+            if (deposits.length === 0) {
+                tbody.innerHTML = '<tr><td colspan="5" class="p-4 text-center text-slate-500 text-xs">ไม่พบรายการเงินออม</td></tr>';
+                return;
+            }
+
+            deposits.forEach(t => {
+                const tr = document.createElement('tr');
+                tr.className = 'hover:bg-slate-800/40 transition text-xs border-b border-slate-800/40';
+
+                const d = new Date(t.date);
+                const dateStr = `${d.toLocaleDateString('th-TH')} ${d.toLocaleTimeString('th-TH', { hour: '2-digit', minute: '2-digit' })}`;
+
+                tr.innerHTML = `
+                    <td class="p-3 text-slate-400 whitespace-nowrap">${dateStr}</td>
+                    <td class="p-3 font-medium text-slate-200">${t.category}</td>
+                    <td class="p-3 text-slate-400">${t.note || '-'}</td>
+                    <td class="p-3 text-right text-emerald-400 font-semibold">+฿${t.amount.toLocaleString(undefined, { minimumFractionDigits: 2 })}</td>
+                    <td class="p-3 text-center space-x-1 whitespace-nowrap">
+                        <button onclick="editTransaction('${t.id}')" class="p-1 text-slate-400 hover:text-amber-400 transition" title="แก้ไข">✏️</button>
+                        <button onclick="deleteTransaction('${t.id}')" class="p-1 text-slate-400 hover:text-rose-400 transition" title="ลบ">🗑️</button>
+                    </td>
+                `;
+                tbody.appendChild(tr);
+            });
+        }
+
+        function renderExpenseTable() {
+            const tbody = document.getElementById('expenseTableBody');
+            const search = (document.getElementById('searchExpenseInput').value || '').toLowerCase();
+            tbody.innerHTML = '';
+
+            const expenses = state.transactions.filter(t => (t.type === 'expense' || t.type === 'withdraw') && 
+                (t.category.toLowerCase().includes(search) || (t.note && t.note.toLowerCase().includes(search)))
+            );
+
+            if (expenses.length === 0) {
+                tbody.innerHTML = '<tr><td colspan="5" class="p-4 text-center text-slate-500 text-xs">ไม่พบรายการรายจ่าย</td></tr>';
+                return;
+            }
+
+            expenses.forEach(t => {
+                const tr = document.createElement('tr');
+                tr.className = 'hover:bg-slate-800/40 transition text-xs border-b border-slate-800/40';
+
+                const d = new Date(t.date);
+                const dateStr = `${d.toLocaleDateString('th-TH')} ${d.toLocaleTimeString('th-TH', { hour: '2-digit', minute: '2-digit' })}`;
+
+                tr.innerHTML = `
+                    <td class="p-3 text-slate-400 whitespace-nowrap">${dateStr}</td>
+                    <td class="p-3 font-medium text-slate-200">${t.category}</td>
+                    <td class="p-3 text-slate-400">${t.note || '-'}</td>
+                    <td class="p-3 text-right text-rose-400 font-semibold">-฿${t.amount.toLocaleString(undefined, { minimumFractionDigits: 2 })}</td>
+                    <td class="p-3 text-center space-x-1 whitespace-nowrap">
+                        <button onclick="editTransaction('${t.id}')" class="p-1 text-slate-400 hover:text-amber-400 transition" title="แก้ไข">✏️</button>
+                        <button onclick="deleteTransaction('${t.id}')" class="p-1 text-slate-400 hover:text-rose-400 transition" title="ลบ">🗑️</button>
+                    </td>
+                `;
+                tbody.appendChild(tr);
+            });
+        }
+
+        function renderGoals() {
+            const container = document.getElementById('goalsContainer');
+            container.innerHTML = '';
+
+            if (state.goals.length === 0) {
+                container.innerHTML = '<div class="col-span-full glass-card p-6 rounded-2xl text-center text-slate-400 text-sm">ยังไม่มีเป้าหมายการออม</div>';
+                return;
+            }
+
+            const netSavings = calculateLedgerTotals().netBalance;
+
+            state.goals.forEach(goal => {
+                const percent = Math.min(100, Math.max(0, Math.round((netSavings / goal.targetAmount) * 100)));
+                const remaining = Math.max(0, goal.targetAmount - netSavings);
+
+                const card = document.createElement('div');
+                card.className = 'glass-card p-5 rounded-2xl space-y-3 relative overflow-hidden';
+                card.innerHTML = `
+                    <div class="flex justify-between items-start">
+                        <div>
+                            <h4 class="font-bold text-slate-100 text-base">${goal.title}</h4>
+                            <span class="text-[11px] px-2 py-0.5 rounded-full bg-slate-800 text-amber-400 border border-slate-700 uppercase">${goal.term} term</span>
+                        </div>
+                        <button onclick="deleteGoal('${goal.id}')" class="text-slate-500 hover:text-rose-400 text-xs">🗑️ ลบ</button>
+                    </div>
+
+                    <div>
+                        <div class="flex justify-between text-xs text-slate-400 mb-1">
+                            <span>ความคืบหน้า</span>
+                            <span class="font-bold text-amber-400">${percent}%</span>
+                        </div>
+                        <div class="w-full bg-slate-800 rounded-full h-2">
+                            <div class="bg-gradient-to-r from-amber-500 to-emerald-400 h-2 rounded-full transition-all duration-500" style="width: ${percent}%"></div>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-2 gap-2 text-xs border-t border-slate-800/60 pt-2 text-slate-400">
+                        <div>เป้าหมาย: <span class="text-slate-200 font-semibold">฿${goal.targetAmount.toLocaleString()}</span></div>
+                        <div>ขาดอีก: <span class="text-rose-400 font-semibold">฿${remaining.toLocaleString()}</span></div>
+                        <div class="col-span-2">กำหนดบรรลุ: <span class="text-slate-200">${new Date(goal.targetDate).toLocaleDateString('th-TH')}</span></div>
+                    </div>
+                `;
+                container.appendChild(card);
+            });
+        }
+
+        function renderSettingsView() {
+            const statusBox = document.getElementById('pinStatusBox');
+            const setupSection = document.getElementById('pinSetupSection');
+
+            if (state.settings.isPinSet) {
+                statusBox.innerHTML = `
+                    <div class="flex items-center text-emerald-400 font-medium gap-2">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                        ระบบ PIN 4 หลักเปิดใช้งานแล้ว (ป้องกันข้อมูลเรียบร้อย)
+                    </div>
+                    <div class="text-slate-400">รหัส PIN ถูกจัดเก็บด้วย Web Crypto API Hash (PBKDF2 SHA-256 + Salt)</div>
+                `;
+                setupSection.classList.add('hidden');
+            } else {
+                statusBox.innerHTML = `
+                    <div class="text-amber-400 font-medium">ยังไม่ได้เปิดใช้งาน PIN ล็อกระบบ</div>
+                    <div class="text-slate-400">สามารถใช้งานบันทึกข้อมูลได้ตามปกติ หรือตั้งรหัสเพื่อความปลอดภัย</div>
+                `;
+                setupSection.classList.remove('hidden');
+            }
+        }
+
+        /* ==========================================================================
+           8. HTML5 CANVAS CHARTS SYSTEM v2.3
+           ========================================================================== */
+        function renderAnalyticsCharts() {
+            renderSavingsTrendChart();
+            renderCategoryDistributionChart();
+        }
+
+        function renderSavingsTrendChart() {
+            const canvas = document.getElementById('savingsTrendCanvas');
+            if (!canvas) return;
+            const ctx = canvas.getContext('2d');
+
+            const rect = canvas.getBoundingClientRect();
+            canvas.width = rect.width * window.devicePixelRatio || 400;
+            canvas.height = rect.height * window.devicePixelRatio || 250;
+            ctx.scale(window.devicePixelRatio, window.devicePixelRatio);
+
+            const width = rect.width;
+            const height = rect.height;
+            ctx.clearRect(0, 0, width, height);
+
+            if (state.transactions.length === 0) {
+                ctx.fillStyle = '#94a3b8';
+                ctx.font = '12px Prompt';
+                ctx.textAlign = 'center';
+                ctx.fillText('ยังไม่มีข้อมูลสำหรับแสดงกราฟ', width / 2, height / 2);
+                return;
+            }
+
+            const monthlyData = {};
+            state.transactions.forEach(t => {
+                const d = new Date(t.date);
+                const key = `${d.getFullYear()}-${(d.getMonth() + 1).toString().padStart(2, '0')}`;
+                if (!monthlyData[key]) monthlyData[key] = { deposit: 0, expense: 0 };
+                if (t.type === 'deposit') monthlyData[key].deposit += t.amount;
+                else monthlyData[key].expense += t.amount;
+            });
+
+            const keys = Object.keys(monthlyData).sort().slice(-6);
+            if (keys.length === 0) return;
+
+            const padding = 40;
+            const chartWidth = width - padding * 2;
+            const chartHeight = height - padding * 2;
+
+            const maxVal = Math.max(...keys.map(k => Math.max(monthlyData[k].deposit, monthlyData[k].expense)), 100);
+
+            // Draw Axes
+            ctx.strokeStyle = 'rgba(255,255,255,0.1)';
+            ctx.lineWidth = 1;
+            ctx.beginPath();
+            ctx.moveTo(padding, padding);
+            ctx.lineTo(padding, height - padding);
+            ctx.lineTo(width - padding, height - padding);
+            ctx.stroke();
+
+            const groupWidth = chartWidth / keys.length;
+            const barWidth = groupWidth * 0.3;
+
+            keys.forEach((key, idx) => {
+                const xBase = padding + idx * groupWidth + groupWidth / 4;
+
+                const depHeight = (monthlyData[key].deposit / maxVal) * chartHeight;
+                const depY = height - padding - depHeight;
+
+                const expHeight = (monthlyData[key].expense / maxVal) * chartHeight;
+                const expY = height - padding - expHeight;
+
+                // Savings (Green)
+                ctx.fillStyle = '#10b981';
+                ctx.fillRect(xBase, depY, barWidth, depHeight);
+
+                // Expense (Rose Red)
+                ctx.fillStyle = '#f43f5e';
+                ctx.fillRect(xBase + barWidth + 4, expY, barWidth, expHeight);
+
+                ctx.fillStyle = '#94a3b8';
+                ctx.font = '10px Prompt';
+                ctx.textAlign = 'center';
+                ctx.fillText(key, xBase + barWidth, height - padding + 15);
+            });
+        }
+
+        function renderCategoryDistributionChart() {
+            const canvas = document.getElementById('categoryDistributionCanvas');
+            if (!canvas) return;
+            const ctx = canvas.getContext('2d');
+
+            const rect = canvas.getBoundingClientRect();
+            canvas.width = rect.width * window.devicePixelRatio || 300;
+            canvas.height = rect.height * window.devicePixelRatio || 250;
+            ctx.scale(window.devicePixelRatio, window.devicePixelRatio);
+
+            const width = rect.width;
+            const height = rect.height;
+
+            ctx.clearRect(0, 0, width, height);
+
+            if (state.transactions.length === 0) {
+                ctx.fillStyle = '#94a3b8';
+                ctx.font = '12px Prompt';
+                ctx.textAlign = 'center';
+                ctx.fillText('ยังไม่มีข้อมูลการบันทึก', width / 2, height / 2);
+                return;
+            }
+
+            const catTotals = {};
+            state.transactions.forEach(t => {
+                catTotals[t.category] = (catTotals[t.category] || 0) + t.amount;
+            });
+
+            const totalSum = Object.values(catTotals).reduce((a, b) => a + b, 0);
+            const colors = ['#10b981', '#f43f5e', '#f59e0b', '#3b82f6', '#8b5cf6', '#ec4899', '#64748b'];
+
+            const centerX = width / 3;
+            const centerY = height / 2;
+            const radius = Math.min(centerX, centerY) - 20;
+
+            let startAngle = 0;
+            let colorIdx = 0;
+
+            Object.entries(catTotals).forEach(([cat, val]) => {
+                const sliceAngle = (val / totalSum) * 2 * Math.PI;
+
+                ctx.beginPath();
+                ctx.moveTo(centerX, centerY);
+                ctx.arc(centerX, centerY, radius, startAngle, startAngle + sliceAngle);
+                ctx.closePath();
+                ctx.fillStyle = colors[colorIdx % colors.length];
+                ctx.fill();
+
+                startAngle += sliceAngle;
+                colorIdx++;
+            });
+
+            // Legend
+            colorIdx = 0;
+            let legendY = 25;
+            const legendX = width * 0.62;
+
+            Object.entries(catTotals).slice(0, 6).forEach(([cat, val]) => {
+                const pct = Math.round((val / totalSum) * 100);
+
+                ctx.fillStyle = colors[colorIdx % colors.length];
+                ctx.fillRect(legendX, legendY, 10, 10);
+
+                ctx.fillStyle = '#cbd5e1';
+                ctx.font = '11px Prompt';
+                ctx.textAlign = 'left';
+                ctx.fillText(`${cat} (${pct}%)`, legendX + 16, legendY + 9);
+
+                legendY += 20;
+                colorIdx++;
+            });
+        }
+
+        function initCanvasResizeListener() {
+            window.addEventListener('resize', () => {
+                renderAnalyticsCharts();
+            });
+        }
+
+        /* ==========================================================================
+           9. BACKUP & RESTORE (EXPORT / IMPORT JSON v2.3)
+           ========================================================================== */
+        function exportBackupJSON() {
+            const dataPayload = {
+                version: '2.3',
+                exportedAt: new Date().toISOString(),
+                transactions: state.transactions,
+                goals: state.goals,
+                settings: {
+                    isPinSet: state.settings.isPinSet,
+                    pinHash: state.settings.pinHash,
+                    pinSalt: state.settings.pinSalt
+                }
+            };
+
+            const jsonStr = JSON.stringify(dataPayload, null, 2);
+            const blob = new Blob([jsonStr], { type: 'application/json' });
+            const url = URL.createObjectURL(blob);
+
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `AI_Savings_Backup_v2.3_${new Date().toISOString().slice(0,10)}.json`;
+            a.click();
+            URL.revokeObjectURL(url);
+
+            showToast('ส่งออกไฟล์สำรองข้อมูล v2.3 สำเร็จ', 'success');
+        }
+
+        async function importBackupJSON(event) {
+            const file = event.target.files[0];
+            if (!file) return;
+
+            const reader = new FileReader();
+            reader.onload = async (e) => {
+                try {
+                    const importedData = JSON.parse(e.target.result);
+
+                    if (!importedData.transactions || !Array.isArray(importedData.transactions)) {
+                        throw new Error('โครงสร้างไฟล์ JSON ไม่ถูกต้อง');
+                    }
+
+                    if (!confirm(`ยืนยันการนำเข้าข้อมูล? รายการ ${importedData.transactions.length} รายการ จะถูกกู้คืนเข้ามาในระบบ`)) {
+                        return;
+                    }
+
+                    await dbTransaction('transactions', 'readwrite', (store) => {
+                        importedData.transactions.forEach(t => store.put(t));
+                    });
+
+                    if (importedData.goals && Array.isArray(importedData.goals)) {
+                        await dbTransaction('goals', 'readwrite', (store) => {
+                            importedData.goals.forEach(g => store.put(g));
+                        });
+                    }
+
+                    await loadAllData();
+                    renderAll();
+                    showToast('นำเข้าข้อมูลเรียบร้อยแล้ว', 'success');
+                } catch (err) {
+                    showToast('นำเข้าข้อมูลล้มเหลว: ' + err.message, 'error');
+                }
+            };
+            reader.readAsText(file);
+        }
+
+        /* ==========================================================================
+           10. UI CONTROLS
+           ========================================================================== */
+        function switchTab(tabName) {
+            const views = ['savings', 'expense', 'goals', 'analytics', 'settings'];
+            views.forEach(v => {
+                const el = document.getElementById('view' + capitalize(v));
+                const btn = document.getElementById('tab' + capitalize(v));
+                if (el) el.classList.add('hidden');
+                if (btn) {
+                    btn.classList.remove('bg-amber-500', 'text-slate-950');
+                    btn.classList.add('bg-slate-800', 'text-slate-300');
+                }
+            });
+
+            const targetView = document.getElementById('view' + capitalize(tabName));
+            const targetBtn = document.getElementById('tab' + capitalize(tabName));
+            if (targetView) targetView.classList.remove('hidden');
+            if (targetBtn) {
+                targetBtn.classList.add('bg-amber-500', 'text-slate-950');
+                targetBtn.classList.remove('bg-slate-800', 'text-slate-300');
+            }
+
+            if (tabName === 'analytics') {
+                setTimeout(renderAnalyticsCharts, 50);
+            }
+        }
+
+        function capitalize(str) {
+            return str.charAt(0).toUpperCase() + str.slice(1);
+        }
+
+        function initTheme() {
+            const themeBtn = document.getElementById('themeToggleBtn');
+            themeBtn.addEventListener('click', () => {
+                document.documentElement.classList.toggle('dark');
+                document.documentElement.classList.toggle('light');
+                renderAnalyticsCharts();
+            });
+        }
+
+        function showToast(msg, type = 'info') {
+            const toast = document.createElement('div');
+            const colors = {
+                success: 'bg-emerald-500 text-slate-950',
+                error: 'bg-rose-500 text-white',
+                info: 'bg-amber-500 text-slate-950'
+            };
+
+            toast.className = `p-3 rounded-xl shadow-xl font-medium text-xs border border-white/20 transition-all duration-300 transform translate-y-2 pointer-events-auto ${colors[type] || colors.info}`;
+            toast.innerText = msg;
+
+            const container = document.getElementById('toastContainer');
+            container.appendChild(toast);
+
+            setTimeout(() => {
+                toast.classList.add('opacity-0', 'translate-y-[-10px]');
+                setTimeout(() => toast.remove(), 300);
+            }, 3000);
+        }
+    </script>
 </body>
 </html>
 ```
