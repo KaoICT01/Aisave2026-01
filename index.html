@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>AI SAVINGS SYSTEM 2026 v2.3 — SMART SAVINGS & EXPENSE EDITION</title>
+    <title>AI SAVINGS SYSTEM 2026 v2.5 — ULTIMATE SMART SAVINGS EDITION</title>
     <!-- Tailwind CSS via CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
@@ -40,9 +40,9 @@
             border: 1px solid rgba(255, 255, 255, 0.08);
         }
         .light .glass-card {
-            background: rgba(255, 255, 255, 0.85);
+            background: rgba(255, 255, 255, 0.88);
             backdrop-filter: blur(12px);
-            border: 1px solid rgba(0, 0, 0, 0.06);
+            border: 1px solid rgba(0, 0, 0, 0.08);
         }
         .gold-gradient-text {
             background: linear-gradient(135deg, #FDE68A 0%, #F59E0B 50%, #D97706 100%);
@@ -70,7 +70,7 @@
                 </div>
                 <div>
                     <h1 class="font-bold text-lg leading-tight tracking-wide gold-gradient-text">SAVINGS SYSTEM 2026</h1>
-                    <span class="text-xs text-amber-500/80 font-medium px-2 py-0.5 rounded-full bg-amber-500/10 border border-amber-500/20">v2.3 SMART LEDGER</span>
+                    <span class="text-xs text-amber-500/80 font-medium px-2 py-0.5 rounded-full bg-amber-500/10 border border-amber-500/20">v2.5 ULTIMATE EDITION</span>
                 </div>
             </div>
 
@@ -93,15 +93,15 @@
         <!-- NOTIFICATION CONTAINER -->
         <div id="toastContainer" class="fixed top-16 right-4 z-50 flex flex-col gap-2 max-w-md w-full pointer-events-none"></div>
 
-        <!-- APP DASHBOARD VERSION 2.3 -->
+        <!-- APP DASHBOARD VERSION 2.5 -->
         <div id="mainDashboard" class="space-y-6">
             
             <!-- STATS CARDS GRID -->
-            <div class="grid grid-cols-2 md:grid-cols-5 gap-4">
+            <div class="grid grid-cols-2 md:grid-cols-6 gap-3 md:gap-4">
                 <div class="glass-card p-4 rounded-2xl relative overflow-hidden col-span-2 md:col-span-1">
-                    <div class="text-xs text-slate-400 mb-1">ยอดเงินออมสะสมสุทธิ</div>
+                    <div class="text-xs text-slate-400 mb-1">ยอดเงินสะสมสุทธิ</div>
                     <div class="text-2xl md:text-3xl font-extrabold text-amber-400" id="statNetBalance">฿0.00</div>
-                    <div class="text-[11px] text-slate-500 mt-1">เงินออมจริงคงเหลือ</div>
+                    <div class="text-[11px] text-slate-500 mt-1">เงินคงเหลือในระบบ</div>
                 </div>
 
                 <div class="glass-card p-4 rounded-2xl">
@@ -111,53 +111,66 @@
                 </div>
 
                 <div class="glass-card p-4 rounded-2xl">
-                    <div class="text-xs text-slate-400 mb-1">รายจ่ายทั้งหมด</div>
+                    <div class="text-xs text-slate-400 mb-1">รายได้ส่งอาหารสุทธิ</div>
+                    <div class="text-xl md:text-2xl font-bold text-cyan-400" id="statDeliveryNet">฿0.00</div>
+                    <div class="text-[11px] text-slate-500 mt-1">ส่งงาน: <span id="statDeliveryTrips" class="text-slate-300">0</span> เที่ยว</div>
+                </div>
+
+                <div class="glass-card p-4 rounded-2xl">
+                    <div class="text-xs text-slate-400 mb-1">รายจ่ายรวม</div>
                     <div class="text-xl md:text-2xl font-bold text-rose-400" id="statTotalExpenses">฿0.00</div>
                     <div class="text-[11px] text-slate-500 mt-1">รวมทั้งสิ้น: <span id="statExpenseCount" class="text-slate-300">0</span> รายการ</div>
                 </div>
 
                 <div class="glass-card p-4 rounded-2xl">
                     <div class="text-xs text-slate-400 mb-1">สรุปวันนี้</div>
-                    <div class="text-sm font-semibold text-slate-200">
+                    <div class="text-xs font-semibold text-slate-200">
                         ออม: <span id="statTodayDeposit" class="text-emerald-400">฿0</span>
                     </div>
-                    <div class="text-sm font-semibold text-slate-200 mt-0.5">
+                    <div class="text-xs font-semibold text-slate-200 mt-0.5">
+                        ส่งอาหาร: <span id="statTodayDelivery" class="text-cyan-400">฿0</span>
+                    </div>
+                    <div class="text-xs font-semibold text-slate-200 mt-0.5">
                         จ่าย: <span id="statTodayExpense" class="text-rose-400">฿0</span>
                     </div>
                 </div>
 
                 <div class="glass-card p-4 rounded-2xl">
-                    <div class="text-xs text-slate-400 mb-1">ความก้าวหน้าเป้าหมาย</div>
-                    <div class="text-2xl font-bold text-purple-400" id="statGoalProgress">0%</div>
+                    <div class="text-xs text-slate-400 mb-1">ภารกิจออมประจำเดือน</div>
+                    <div class="flex items-center justify-between">
+                        <span id="statMissionBadge" class="text-xs font-bold px-2 py-0.5 rounded-full bg-amber-500/20 text-amber-400 border border-amber-500/30">Bronze</span>
+                        <span class="text-sm font-bold text-slate-200" id="statMissionProgress">0%</span>
+                    </div>
                     <div class="w-full bg-slate-700/50 rounded-full h-1.5 mt-2">
-                        <div id="statGoalProgressBar" class="bg-purple-500 h-1.5 rounded-full transition-all duration-500" style="width: 0%"></div>
+                        <div id="statMissionProgressBar" class="bg-gradient-to-r from-amber-500 to-emerald-400 h-1.5 rounded-full transition-all duration-500" style="width: 0%"></div>
                     </div>
                 </div>
             </div>
 
-            <!-- AI FINANCIAL HEALTH MONITOR (v2.3) -->
+            <!-- AI FINANCIAL HEALTH & CASHFLOW MONITOR (v2.5) -->
             <div class="glass-card p-5 rounded-2xl border-l-4 border-amber-500 relative">
                 <div class="flex items-center justify-between mb-3">
                     <div class="flex items-center space-x-2">
                         <div class="p-1.5 rounded-lg bg-amber-500/10 text-amber-400">
                             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
                         </div>
-                        <h2 class="font-semibold text-slate-200">AI Financial Health Monitor v2.3</h2>
+                        <h2 class="font-semibold text-slate-200">AI Smart Cashflow & Financial Health Monitor v2.5</h2>
                     </div>
                     <span id="aiHealthScore" class="text-xs font-semibold px-2.5 py-1 rounded-full bg-slate-800 text-amber-400 border border-amber-500/20">ประมวลผลภายในเครื่อง</span>
                 </div>
                 <div id="aiAnalysisText" class="text-sm text-slate-300 leading-relaxed space-y-2">
-                    กำลังโหลดข้อมูลและประเมินสุขภาพทางการเงิน...
+                    กำลังวิเคราะห์กระแสเงินสดและสุขภาพทางการเงิน...
                 </div>
             </div>
 
             <!-- NAVIGATION TABS -->
             <div class="flex flex-wrap gap-2 border-b border-slate-800 pb-3">
                 <button id="tabSavings" onclick="switchTab('savings')" class="tab-btn px-4 py-2 rounded-xl text-sm font-medium bg-amber-500 text-slate-950 shadow-md transition">💰 บันทึกการออม</button>
+                <button id="tabDelivery" onclick="switchTab('delivery')" class="tab-btn px-4 py-2 rounded-xl text-sm font-medium bg-slate-800 text-slate-300 hover:bg-slate-700 transition">🛵 รายได้ส่งอาหาร</button>
                 <button id="tabExpense" onclick="switchTab('expense')" class="tab-btn px-4 py-2 rounded-xl text-sm font-medium bg-slate-800 text-slate-300 hover:bg-slate-700 transition">💸 บันทึกรายจ่าย</button>
-                <button id="tabGoals" onclick="switchTab('goals')" class="tab-btn px-4 py-2 rounded-xl text-sm font-medium bg-slate-800 text-slate-300 hover:bg-slate-700 transition">🎯 เป้าหมายการออม</button>
+                <button id="tabMission" onclick="switchTab('mission')" class="tab-btn px-4 py-2 rounded-xl text-sm font-medium bg-slate-800 text-slate-300 hover:bg-slate-700 transition">🎯 ภารกิจการออม AI</button>
                 <button id="tabAnalytics" onclick="switchTab('analytics')" class="tab-btn px-4 py-2 rounded-xl text-sm font-medium bg-slate-800 text-slate-300 hover:bg-slate-700 transition">📊 กราฟ & วิเคราะห์</button>
-                <button id="tabSettings" onclick="switchTab('settings')" class="tab-btn px-4 py-2 rounded-xl text-sm font-medium bg-slate-800 text-slate-300 hover:bg-slate-700 transition">🔒 ความปลอดภัย & ข้อมูล</button>
+                <button id="tabSettings" onclick="switchTab('settings')" class="tab-btn px-4 py-2 rounded-xl text-sm font-medium bg-slate-800 text-slate-300 hover:bg-slate-700 transition">🔒 ความปลอดภัย & สำรอง</button>
             </div>
 
             <!-- MODULE 1: SAVINGS LEDGER (บันทึกการออม) -->
@@ -237,7 +250,122 @@
                 </div>
             </div>
 
-            <!-- MODULE 2: EXPENSE LEDGER (บันทึกรายจ่าย) -->
+            <!-- MODULE 2: DELIVERY INCOME (รายได้พิเศษส่งอาหาร v2.5) -->
+            <div id="viewDelivery" class="hidden grid grid-cols-1 lg:grid-cols-3 gap-6">
+                <!-- DELIVERY FORM -->
+                <div class="glass-card p-5 rounded-2xl space-y-4 h-fit border-l-2 border-cyan-500">
+                    <h3 class="font-semibold text-lg text-cyan-400 flex items-center gap-2">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+                        บันทึกรายได้ส่งอาหารประจำวัน
+                    </h3>
+                    <form id="deliveryForm" onsubmit="handleSaveDelivery(event)" class="space-y-3">
+                        <input type="hidden" id="deliveryId">
+                        
+                        <div>
+                            <label class="block text-xs text-slate-400 mb-1">วันที่ทำงาน</label>
+                            <input type="date" id="deliveryWorkDate" required class="w-full bg-slate-900 border border-slate-700 rounded-xl px-3 py-2 text-xs text-slate-200 focus:outline-none focus:border-cyan-500">
+                        </div>
+
+                        <div class="grid grid-cols-2 gap-3">
+                            <div>
+                                <label class="block text-xs text-slate-400 mb-1">เวลาเริ่มงาน</label>
+                                <input type="time" id="deliveryStartTime" required class="w-full bg-slate-900 border border-slate-700 rounded-xl px-3 py-2 text-xs text-slate-200 focus:outline-none focus:border-cyan-500">
+                            </div>
+                            <div>
+                                <label class="block text-xs text-slate-400 mb-1">เวลาสิ้นสุดงาน</label>
+                                <input type="time" id="deliveryEndTime" required class="w-full bg-slate-900 border border-slate-700 rounded-xl px-3 py-2 text-xs text-slate-200 focus:outline-none focus:border-cyan-500">
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-2 gap-3">
+                            <div>
+                                <label class="block text-xs text-slate-400 mb-1">จำนวนงานที่ส่ง (เที่ยว)</label>
+                                <input type="number" min="1" step="1" id="deliveryTrips" required placeholder="0" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-3 py-2 text-sm text-slate-200 focus:outline-none focus:border-cyan-500">
+                            </div>
+                            <div>
+                                <label class="block text-xs text-slate-400 mb-1">รายได้รวม (บาท)</label>
+                                <input type="number" step="0.01" min="0" id="deliveryGrossIncome" required placeholder="0.00" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-3 py-2 text-cyan-400 font-bold text-sm focus:outline-none focus:border-cyan-500">
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-2 gap-3">
+                            <div>
+                                <label class="block text-xs text-slate-400 mb-1">ค่าน้ำมัน (บาท)</label>
+                                <input type="number" step="0.01" min="0" id="deliveryFuelCost" value="0" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-3 py-2 text-sm text-rose-300 focus:outline-none focus:border-cyan-500">
+                            </div>
+                            <div>
+                                <label class="block text-xs text-slate-400 mb-1">ค่าใช้จ่ายอื่น ๆ (บาท)</label>
+                                <input type="number" step="0.01" min="0" id="deliveryOtherOpsCost" value="0" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-3 py-2 text-sm text-rose-300 focus:outline-none focus:border-cyan-500">
+                            </div>
+                        </div>
+
+                        <div>
+                            <label class="block text-xs text-slate-400 mb-1">หมายเหตุ</label>
+                            <input type="text" id="deliveryNote" placeholder="รายละเอียด เช่น แพลตฟอร์ม, สภาพอากาศ" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-3 py-2 text-sm text-slate-200 focus:outline-none focus:border-cyan-500">
+                        </div>
+
+                        <div class="p-3 bg-cyan-500/10 rounded-xl border border-cyan-500/20 text-xs text-cyan-300 flex justify-between items-center">
+                            <span>รายได้สุทธิที่จะเข้าสู่ยอดสะสม:</span>
+                            <span id="deliveryNetPreview" class="font-bold text-sm text-cyan-400">฿0.00</span>
+                        </div>
+
+                        <div class="flex gap-2 pt-2">
+                            <button type="submit" id="saveDeliveryBtn" class="flex-1 bg-cyan-600 hover:bg-cyan-500 text-slate-950 font-semibold py-2.5 rounded-xl transition shadow-lg text-sm">
+                                บันทึกรายได้ส่งอาหาร
+                            </button>
+                            <button type="button" id="cancelDeliveryEditBtn" onclick="resetDeliveryForm()" class="hidden px-4 py-2.5 bg-slate-800 text-slate-400 hover:text-white rounded-xl text-sm">
+                                ยกเลิก
+                            </button>
+                        </div>
+                    </form>
+                </div>
+
+                <!-- DELIVERY HISTORY TABLE & STATS -->
+                <div class="glass-card p-5 rounded-2xl lg:col-span-2 space-y-4 flex flex-col justify-between">
+                    <div>
+                        <div class="flex justify-between items-center mb-4">
+                            <h3 class="font-semibold text-lg text-slate-200">ประวัติการทำงานส่งอาหาร</h3>
+                            <input type="text" id="searchDeliveryInput" onkeyup="renderDeliveryTable()" placeholder="ค้นหาประวัติงาน..." class="bg-slate-900 border border-slate-700 rounded-xl px-3 py-1 text-xs text-slate-300 focus:outline-none focus:border-cyan-500 w-44 sm:w-56">
+                        </div>
+
+                        <!-- Efficiency Stats Summary -->
+                        <div class="grid grid-cols-3 gap-2 mb-4 p-3 bg-slate-900/60 rounded-xl border border-slate-800 text-center">
+                            <div>
+                                <div class="text-[10px] text-slate-400">เฉลี่ยรายได้/ชม.</div>
+                                <div id="statDeliveryAvgPerHour" class="text-xs md:text-sm font-bold text-cyan-400">฿0.00</div>
+                            </div>
+                            <div>
+                                <div class="text-[10px] text-slate-400">เฉลี่ยรายได้/งาน</div>
+                                <div id="statDeliveryAvgPerTrip" class="text-xs md:text-sm font-bold text-emerald-400">฿0.00</div>
+                            </div>
+                            <div>
+                                <div class="text-[10px] text-slate-400">ชั่วโมงทำงานรวม</div>
+                                <div id="statDeliveryTotalHours" class="text-xs md:text-sm font-bold text-amber-400">0 ชม.</div>
+                            </div>
+                        </div>
+
+                        <div class="overflow-x-auto max-h-[380px] overflow-y-auto pr-1">
+                            <table class="w-full text-left text-sm text-slate-300 border-collapse">
+                                <thead class="text-xs uppercase bg-slate-900/80 sticky top-0 text-slate-400 border-b border-slate-800">
+                                    <tr>
+                                        <th class="p-2.5">วันที่/เวลา</th>
+                                        <th class="p-2.5">งาน (เที่ยว)</th>
+                                        <th class="p-2.5 text-right">รวม</th>
+                                        <th class="p-2.5 text-right">ต้นทุน</th>
+                                        <th class="p-2.5 text-right">สุทธิ</th>
+                                        <th class="p-2.5 text-center">จัดการ</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="deliveryTableBody" class="divide-y divide-slate-800/50">
+                                    <!-- Rendered dynamically -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- MODULE 3: EXPENSE LEDGER (บันทึกรายจ่าย) -->
             <div id="viewExpense" class="hidden grid grid-cols-1 lg:grid-cols-3 gap-6">
                 <!-- EXPENSE FORM -->
                 <div class="glass-card p-5 rounded-2xl space-y-4 h-fit border-l-2 border-rose-500">
@@ -246,7 +374,7 @@
                         บันทึกรายการรายจ่าย (-)
                     </h3>
                     <div class="p-3 bg-rose-500/10 border border-rose-500/20 rounded-xl text-xs text-rose-300">
-                        🔒 **ระบบป้องกันเงินออมติดลบ:** รายจ่ายจะหักจากยอดสะสมสุทธิ และไม่อนุญาตให้จ่ายเกินยอดเงินออมคงเหลือที่มีอยู่
+                        🔒 **ระบบป้องกันเงินสะสมติดลบ:** รายจ่ายจะหักจากยอดสะสมสุทธิ และไม่อนุญาตให้จ่ายเกินยอดเงินคงเหลือที่มีอยู่
                     </div>
                     <form id="expenseForm" onsubmit="handleSaveExpense(event)" class="space-y-4">
                         <input type="hidden" id="expenseId">
@@ -319,68 +447,71 @@
                 </div>
             </div>
 
-            <!-- VIEW 3: SAVINGS GOALS -->
-            <div id="viewGoals" class="hidden space-y-6">
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                    <!-- GOAL FORM -->
-                    <div class="glass-card p-5 rounded-2xl space-y-4">
-                        <h3 class="font-semibold text-lg text-amber-400">สร้างเป้าหมายการออมใหม่</h3>
-                        <form id="goalForm" onsubmit="handleSaveGoal(event)" class="space-y-4">
-                            <input type="hidden" id="goalId">
-                            <div>
-                                <label class="block text-xs text-slate-400 mb-1">ชื่อเป้าหมาย</label>
-                                <input type="text" id="goalTitle" required placeholder="เช่น ซื้อคอมพิวเตอร์, ท่องเที่ยว" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-2 text-sm text-slate-200 focus:outline-none focus:border-amber-500">
+            <!-- MODULE 4: AI MONTHLY SAVINGS MISSION (v2.5) -->
+            <div id="viewMission" class="hidden space-y-6">
+                <div class="glass-card p-6 rounded-2xl space-y-6">
+                    <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+                        <div>
+                            <div class="flex items-center gap-2">
+                                <h3 class="font-bold text-xl text-slate-100">AI Monthly Savings Mission</h3>
+                                <span id="missionLevelBadge" class="px-3 py-1 rounded-full text-xs font-bold gold-bg-gradient text-slate-950">Level: Bronze</span>
                             </div>
-                            <div>
-                                <label class="block text-xs text-slate-400 mb-1">จำนวนเงินเป้าหมาย (บาท)</label>
-                                <input type="number" step="1" min="1" id="goalTargetAmount" required placeholder="10000" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-2 text-amber-400 font-bold focus:outline-none focus:border-amber-500">
-                            </div>
-                            <div>
-                                <label class="block text-xs text-slate-400 mb-1">วันที่ต้องการบรรลุเป้าหมาย</label>
-                                <input type="date" id="goalTargetDate" required class="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-2 text-xs text-slate-200 focus:outline-none focus:border-amber-500">
-                            </div>
-                            <div>
-                                <label class="block text-xs text-slate-400 mb-1">ระยะเป้าหมาย</label>
-                                <select id="goalTerm" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-3 py-2 text-sm text-slate-200">
-                                    <option value="short">ระยะสั้น (&lt; 6 เดือน)</option>
-                                    <option value="medium">ระยะกลาง (6 - 12 เดือน)</option>
-                                    <option value="long">ระยะยาว (&gt; 1 ปี)</option>
-                                </select>
-                            </div>
-                            <button type="submit" class="w-full gold-bg-gradient hover:opacity-90 text-slate-950 font-semibold py-2.5 rounded-xl transition shadow-lg text-sm">
-                                บันทึกเป้าหมาย
-                            </button>
-                        </form>
+                            <p class="text-xs text-slate-400 mt-1">ภารกิจการออมเงินประจำเดือน ประมวลผลจากกำลังการออมจริงโดย AI</p>
+                        </div>
+                        <button onclick="evaluateAIMonthlyMission(true)" class="px-4 py-2 bg-slate-800 hover:bg-slate-700 text-amber-400 border border-amber-500/30 rounded-xl text-xs font-semibold transition flex items-center gap-2">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/></svg>
+                            คำนวณปรับภารกิจใหม่
+                        </button>
                     </div>
 
-                    <!-- GOALS LIST CONTAINER -->
-                    <div class="md:col-span-2 space-y-4">
-                        <h3 class="font-semibold text-lg text-slate-200">เป้าหมายทั้งหมด</h3>
-                        <div id="goalsContainer" class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                            <!-- Goals dynamic list -->
+                    <!-- MISSION METRICS -->
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                        <div class="p-4 rounded-xl bg-slate-900 border border-slate-800">
+                            <div class="text-xs text-slate-400 mb-1">เป้าหมายเงินออมประจำเดือนนี้</div>
+                            <div class="text-2xl font-bold text-amber-400" id="missionTargetAmount">฿0.00</div>
+                            <div class="text-[11px] text-slate-500 mt-1">คำนวณออมต่อวัน: <span id="missionDailyTarget" class="text-slate-300">฿0</span></div>
                         </div>
+
+                        <div class="p-4 rounded-xl bg-slate-900 border border-slate-800">
+                            <div class="text-xs text-slate-400 mb-1">เงินออมที่เข้าเงื่อนไขเดือนนี้</div>
+                            <div class="text-2xl font-bold text-emerald-400" id="missionCurrentSaved">฿0.00</div>
+                            <div class="text-[11px] text-slate-500 mt-1">นับเฉพาะหมวดเงินออมจริง</div>
+                        </div>
+
+                        <div class="p-4 rounded-xl bg-slate-900 border border-slate-800">
+                            <div class="text-xs text-slate-400 mb-1">เปอร์เซ็นต์ความสำเร็จภารกิจ</div>
+                            <div class="text-2xl font-bold text-cyan-400" id="missionCompletionPct">0%</div>
+                            <div class="w-full bg-slate-800 rounded-full h-1.5 mt-2">
+                                <div id="missionCompletionBar" class="bg-cyan-400 h-1.5 rounded-full transition-all duration-500" style="width: 0%"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- MISSION DETAILS BOX -->
+                    <div id="missionAdviceBox" class="p-4 rounded-xl bg-amber-500/10 border border-amber-500/20 text-xs text-slate-300 leading-relaxed">
+                        <!-- AI Mission Guidance -->
                     </div>
                 </div>
             </div>
 
-            <!-- VIEW 4: ANALYTICS & CHARTS -->
+            <!-- MODULE 5: ANALYTICS & CHARTS -->
             <div id="viewAnalytics" class="hidden space-y-6">
                 <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
-                    <!-- CHART 1: SAVINGS VS EXPENSES TREND -->
+                    <!-- CHART 1: CASHFLOW COMPARISON -->
                     <div class="glass-card p-5 rounded-2xl">
                         <div class="flex justify-between items-center mb-4">
-                            <h4 class="font-semibold text-slate-200 text-sm">เปรียบเทียบ เงินออม (+) vs รายจ่าย (-)</h4>
-                            <span class="text-xs text-slate-400">Canvas Native v2.3</span>
+                            <h4 class="font-semibold text-slate-200 text-sm">เปรียบเทียบ รายได้ส่งอาหาร vs เงินออม vs รายจ่าย</h4>
+                            <span class="text-xs text-slate-400">Cashflow Engine v2.5</span>
                         </div>
                         <div class="relative h-64 w-full">
-                            <canvas id="savingsTrendCanvas" class="w-full h-full"></canvas>
+                            <canvas id="cashflowTrendCanvas" class="w-full h-full"></canvas>
                         </div>
                     </div>
 
                     <!-- CHART 2: CATEGORY DISTRIBUTION -->
                     <div class="glass-card p-5 rounded-2xl">
                         <div class="flex justify-between items-center mb-4">
-                            <h4 class="font-semibold text-slate-200 text-sm">สัดส่วนหมวดหมู่เงินออม & รายจ่าย</h4>
+                            <h4 class="font-semibold text-slate-200 text-sm">สัดส่วนโครงสร้างธุรกรรม</h4>
                             <span class="text-xs text-slate-400">Category Breakdown</span>
                         </div>
                         <div class="relative h-64 w-full flex items-center justify-center">
@@ -390,7 +521,7 @@
                 </div>
             </div>
 
-            <!-- VIEW 5: SECURITY & DATA MANAGEMENT -->
+            <!-- MODULE 6: SECURITY & DATA MANAGEMENT -->
             <div id="viewSettings" class="hidden space-y-6 max-w-4xl mx-auto">
                 <!-- PIN SECURITY CONFIG -->
                 <div class="glass-card p-6 rounded-2xl space-y-4">
@@ -418,6 +549,13 @@
                         </button>
                     </div>
 
+                    <!-- SECURITY RECOVERY KEY DISPLAY -->
+                    <div id="recoveryKeyBox" class="hidden p-4 rounded-xl bg-slate-900 border border-amber-500/30 text-xs space-y-2">
+                        <div class="font-bold text-amber-400">🔑 รหัสกู้คืนความปลอดภัย (Offline Security Key):</div>
+                        <div id="recoveryKeyDisplay" class="font-mono text-sm text-slate-200 select-all bg-slate-950 p-2 rounded-lg border border-slate-800 text-center tracking-widest"></div>
+                        <p class="text-slate-400 text-[11px]">โปรดบันทึกรหัสกู้คืนนี้ไว้ในสถานที่ปลอดภัย หากลืม PIN สามารถใช้รหัสนี้รีเซ็ต PIN ได้โดยไม่สูญเสียข้อมูล</p>
+                    </div>
+
                     <div class="p-3 bg-amber-500/10 border border-amber-500/20 rounded-xl text-xs text-amber-300 leading-relaxed">
                         ⚠️ <strong>ข้อจำกัดความปลอดภัย:</strong> ระบบ PIN ฝั่งเบราว์เซอร์ช่วยป้องกันการแอบดูหน้าจอในเครื่องนี้ แต่ไม่สามารถป้องกันผู้ที่มีสิทธิ์ระดับ Admin หรือเข้าถึงระบบไฟล์ดิบของเครื่องได้อย่างสมบูรณ์
                     </div>
@@ -430,7 +568,7 @@
                             <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7H5a2 2 0 00-2 2v9a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-3m-1 4l-3 3m0 0l-3-3m3 3V4"/></svg>
                         </div>
                         <div>
-                            <h3 class="font-bold text-lg text-slate-100">การสำรองและกู้คืนข้อมูล (Backup & Restore v2.3)</h3>
+                            <h3 class="font-bold text-lg text-slate-100">การสำรองและกู้คืนข้อมูล (Backup & Restore v2.5)</h3>
                             <p class="text-xs text-slate-400">ส่งออกข้อมูลเป็นไฟล์ JSON เพื่อสำรองไว้ในอุปกรณ์ หรือนำเข้าข้อมูลเดิม</p>
                         </div>
                     </div>
@@ -438,10 +576,10 @@
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
                         <div class="p-4 rounded-xl bg-slate-900 border border-slate-800 space-y-3">
                             <h4 class="font-semibold text-sm text-slate-200">ส่งออกข้อมูล (Export)</h4>
-                            <p class="text-xs text-slate-400">ดาวน์โหลดรายการออม รายจ่าย เป้าหมาย และการตั้งค่าลงเครื่องแบบ Offline</p>
+                            <p class="text-xs text-slate-400">ดาวน์โหลดรายการออม รายได้ส่งอาหาร รายจ่าย และตั้งค่าลงเครื่องแบบ Offline</p>
                             <button onclick="exportBackupJSON()" class="w-full bg-slate-800 hover:bg-slate-700 text-amber-400 font-medium py-2 rounded-xl border border-amber-500/30 text-sm transition flex items-center justify-center gap-2">
                                 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
-                                ดาวน์โหลด JSON Backup v2.3
+                                ดาวน์โหลด JSON Backup v2.5
                             </button>
                         </div>
 
@@ -498,30 +636,36 @@
             </div>
 
             <div id="pinErrorMsg" class="text-xs text-rose-400 min-h-[1rem]"></div>
+
+            <div class="pt-2">
+                <button onclick="promptPinRecovery()" class="text-xs text-amber-400 hover:underline">ลืมรหัส PIN? ใช้รหัสกู้คืนความปลอดภัย</button>
+            </div>
         </div>
     </div>
 
-    <!-- MAIN SYSTEM LOGIC SCRIPTS (VERSION 2.3) -->
+    <!-- MAIN SYSTEM LOGIC SCRIPTS (VERSION 2.5) -->
     <script>
         /**
-         * AI SAVINGS SYSTEM 2026 VERSION 2.3
-         * SMART SAVINGS & EXPENSE EDITION
-         * CORE ENGINE: Satang Integer Precision, Atomic IndexedDB v3 Migration, Web Crypto API
+         * AI SAVINGS SYSTEM 2026 VERSION 2.5
+         * ULTIMATE SMART SAVINGS EDITION
+         * CORE ENGINE: Satang Integer Precision, Delivery Module, AI Mission, Web Crypto API
          */
 
         const DB_NAME = 'AISavingsDB_v2_1';
-        const DB_VERSION = 3; // Upgraded DB Version for v2.3 Migration
+        const DB_VERSION = 4; // Upgraded DB Version for v2.5 Migration (Delivery & Mission Stores)
         let db = null;
 
         // Application State
         let state = {
             transactions: [],
-            goals: [],
+            deliveryLogs: [],
+            missionState: null,
             settings: {
                 pinHash: null,
                 pinSalt: null,
+                recoveryKey: null,
                 isPinSet: false,
-                version: '2.3'
+                version: '2.5'
             },
             currentPinInput: '',
             pinAttempts: 0,
@@ -533,20 +677,22 @@
         window.addEventListener('DOMContentLoaded', async () => {
             initTheme();
             setDefaultDatetimes();
+            initDeliveryFormListeners();
 
             try {
                 await initIndexedDB();
                 await loadAllData();
                 checkSecurityLockState();
+                evaluateAIMonthlyMission(false);
                 renderAll();
                 initCanvasResizeListener();
             } catch (err) {
-                showToast('เกิดข้อผิดพลาดในการโหลดระบบ v2.3: ' + err.message, 'error');
+                showToast('เกิดข้อผิดพลาดในการโหลดระบบ v2.5: ' + err.message, 'error');
             }
         });
 
         /* ==========================================================================
-           1. INDEXEDDB ENGINE & MIGRATION SYSTEM v2.3
+           1. INDEXEDDB ENGINE & MIGRATION SYSTEM v2.5
            ========================================================================== */
         function initIndexedDB() {
             return new Promise((resolve, reject) => {
@@ -561,33 +707,18 @@
                         txStore.createIndex('date', 'date', { unique: false });
                         txStore.createIndex('type', 'type', { unique: false });
 
-                        const goalStore = dbUpgrade.createObjectStore('goals', { keyPath: 'id' });
-                        goalStore.createIndex('targetDate', 'targetDate', { unique: false });
-
+                        dbUpgrade.createObjectStore('goals', { keyPath: 'id' });
                         dbUpgrade.createObjectStore('settings', { keyPath: 'key' });
                     }
 
-                    if (oldVer >= 1 && oldVer < 3) {
-                        const txStore = event.target.transaction.objectStore('transactions');
-                        if (!txStore.indexNames.contains('type')) {
-                            txStore.createIndex('type', 'type', { unique: false });
+                    if (oldVer < 4) {
+                        if (!dbUpgrade.objectStoreNames.contains('deliveryLogs')) {
+                            const delStore = dbUpgrade.createObjectStore('deliveryLogs', { keyPath: 'id' });
+                            delStore.createIndex('workDate', 'workDate', { unique: false });
                         }
-                        // Perform migration: Convert legacy 'withdraw' types to 'expense'
-                        const requestAll = txStore.getAll();
-                        requestAll.onsuccess = () => {
-                            const records = requestAll.result || [];
-                            records.forEach(rec => {
-                                if (rec.type === 'withdraw') {
-                                    rec.type = 'expense';
-                                    txStore.put(rec);
-                                }
-                                // Standardize Satangs calculation on legacy amounts
-                                if (rec.amount && !rec.satangs) {
-                                    rec.satangs = Math.round(rec.amount * 100);
-                                    txStore.put(rec);
-                                }
-                            });
-                        };
+                        if (!dbUpgrade.objectStoreNames.contains('missions')) {
+                            dbUpgrade.createObjectStore('missions', { keyPath: 'monthKey' });
+                        }
                     }
                 };
 
@@ -618,7 +749,6 @@
                     const req = store.getAll();
                     req.onsuccess = () => {
                         const list = req.result || [];
-                        // Ensure satangs attribute exists
                         list.forEach(t => {
                             if (!t.satangs && t.amount) t.satangs = Math.round(t.amount * 100);
                         });
@@ -627,10 +757,18 @@
                 });
             });
 
-            state.goals = await dbTransaction('goals', 'readonly', (store) => {
+            state.deliveryLogs = await dbTransaction('deliveryLogs', 'readonly', (store) => {
                 return new Promise((res) => {
                     const req = store.getAll();
                     req.onsuccess = () => res(req.result || []);
+                });
+            });
+
+            const currentMonthKey = new Date().toISOString().slice(0, 7);
+            state.missionState = await dbTransaction('missions', 'readonly', (store) => {
+                return new Promise((res) => {
+                    const req = store.get(currentMonthKey);
+                    req.onsuccess = () => res(req.result || null);
                 });
             });
 
@@ -652,6 +790,7 @@
         function calculateLedgerTotals() {
             let depositSatangs = 0;
             let expenseSatangs = 0;
+            let deliveryNetSatangs = 0;
 
             state.transactions.forEach(t => {
                 const satangs = t.satangs || Math.round((t.amount || 0) * 100);
@@ -662,20 +801,27 @@
                 }
             });
 
-            const netSatangs = depositSatangs - expenseSatangs;
+            state.deliveryLogs.forEach(d => {
+                const netSat = d.netSatangs || Math.round((d.netIncome || 0) * 100);
+                deliveryNetSatangs += netSat;
+            });
+
+            const netSatangs = depositSatangs + deliveryNetSatangs - expenseSatangs;
 
             return {
                 depositSatangs,
                 expenseSatangs,
+                deliveryNetSatangs,
                 netSatangs,
                 totalSavings: depositSatangs / 100,
                 totalExpenses: expenseSatangs / 100,
+                totalDeliveryNet: deliveryNetSatangs / 100,
                 netBalance: netSatangs / 100
             };
         }
 
         /* ==========================================================================
-           3. WEB CRYPTO API & SECURITY SYSTEM
+           3. WEB CRYPTO API & SECURITY RECOVERY SYSTEM
            ========================================================================== */
         async function hashPin(pin, saltHex) {
             const encoder = new TextEncoder();
@@ -702,6 +848,11 @@
             };
         }
 
+        function generateRandomRecoveryKey() {
+            const bytes = window.crypto.getRandomValues(new Uint8Array(8));
+            return bufToHex(bytes).toUpperCase();
+        }
+
         function bufToHex(buf) {
             return Array.from(new Uint8Array(buf)).map(b => b.toString(16).padStart(2, '0')).join('');
         }
@@ -723,21 +874,37 @@
             }
 
             const { hashHex, saltHex } = await hashPin(pin);
+            const recoveryKey = generateRandomRecoveryKey();
 
             await dbTransaction('settings', 'readwrite', (store) => {
                 store.put({ key: 'pinHash', value: hashHex });
                 store.put({ key: 'pinSalt', value: saltHex });
+                store.put({ key: 'recoveryKey', value: recoveryKey });
                 store.put({ key: 'isPinSet', value: true });
             });
 
             state.settings.pinHash = hashHex;
             state.settings.pinSalt = saltHex;
+            state.settings.recoveryKey = recoveryKey;
             state.settings.isPinSet = true;
 
             showToast('ตั้งค่า PIN เรียบร้อย ระบบสลับเป็นโหมดปลอดภัย', 'success');
             document.getElementById('setupPinInput').value = '';
             checkSecurityLockState();
             renderSettingsView();
+        }
+
+        function promptPinRecovery() {
+            const inputKey = prompt('กรอกรหัสกู้คืนความปลอดภัย (Offline Recovery Key):');
+            if (!inputKey) return;
+
+            if (inputKey.trim().toUpperCase() === state.settings.recoveryKey) {
+                state.pinAttempts = 0;
+                hidePinLockModal();
+                showToast('ยืนยันรหัสกู้คืนสำเร็จ! สามารถเข้าใช้งานระบบได้', 'success');
+            } else {
+                showToast('รหัสกู้คืนความปลอดภัยไม่ถูกต้อง', 'error');
+            }
         }
 
         function checkSecurityLockState() {
@@ -832,7 +999,7 @@
         }
 
         /* ==========================================================================
-           4. MODULE A & B: SAVINGS & EXPENSE LEDGERS (VERSION 2.3)
+           4. MODULE A, B & C: SAVINGS, DELIVERY & EXPENSE LEDGERS
            ========================================================================== */
         function setDefaultDatetimes() {
             const now = new Date();
@@ -840,6 +1007,25 @@
             const iso = now.toISOString().slice(0, 16);
             if (document.getElementById('savingsDatetime')) document.getElementById('savingsDatetime').value = iso;
             if (document.getElementById('expenseDatetime')) document.getElementById('expenseDatetime').value = iso;
+            if (document.getElementById('deliveryWorkDate')) document.getElementById('deliveryWorkDate').value = now.toISOString().slice(0, 10);
+        }
+
+        function initDeliveryFormListeners() {
+            const grossEl = document.getElementById('deliveryGrossIncome');
+            const fuelEl = document.getElementById('deliveryFuelCost');
+            const opsEl = document.getElementById('deliveryOtherOpsCost');
+
+            const updatePreview = () => {
+                const gross = parseFloat(grossEl.value) || 0;
+                const fuel = parseFloat(fuelEl.value) || 0;
+                const ops = parseFloat(opsEl.value) || 0;
+                const net = Math.max(0, gross - fuel - ops);
+                document.getElementById('deliveryNetPreview').innerText = '฿' + net.toLocaleString(undefined, {minimumFractionDigits: 2});
+            };
+
+            if (grossEl) grossEl.addEventListener('input', updatePreview);
+            if (fuelEl) fuelEl.addEventListener('input', updatePreview);
+            if (opsEl) opsEl.addEventListener('input', updatePreview);
         }
 
         // --- MODULE A: SAVINGS HANDLING ---
@@ -863,7 +1049,6 @@
                 const satangs = Math.round(amount * 100);
                 const txObj = { id, type: 'deposit', amount, satangs, category, date: datetime, note };
 
-                // Atomic Transaction
                 await dbTransaction('transactions', 'readwrite', (store) => {
                     store.put(txObj);
                 });
@@ -874,6 +1059,7 @@
 
                 showToast('บันทึกเพิ่มเงินออมสำเร็จ (+฿' + amount.toLocaleString(undefined, {minimumFractionDigits: 2}) + ')', 'success');
                 resetSavingsForm();
+                evaluateAIMonthlyMission(false);
                 renderAll();
             } finally {
                 state.isSubmitting = false;
@@ -888,7 +1074,97 @@
             setDefaultDatetimes();
         }
 
-        // --- MODULE B: EXPENSE HANDLING ---
+        // --- MODULE B: DELIVERY INCOME HANDLING (v2.5) ---
+        async function handleSaveDelivery(e) {
+            e.preventDefault();
+            if (state.isSubmitting) return;
+            state.isSubmitting = true;
+
+            try {
+                const id = document.getElementById('deliveryId').value || 'del_' + Date.now();
+                const workDate = document.getElementById('deliveryWorkDate').value;
+                const startTime = document.getElementById('deliveryStartTime').value;
+                const endTime = document.getElementById('deliveryEndTime').value;
+                const trips = parseInt(document.getElementById('deliveryTrips').value, 10);
+                const grossIncome = parseFloat(document.getElementById('deliveryGrossIncome').value) || 0;
+                const fuelCost = parseFloat(document.getElementById('deliveryFuelCost').value) || 0;
+                const otherOpsCost = parseFloat(document.getElementById('deliveryOtherOpsCost').value) || 0;
+                const note = document.getElementById('deliveryNote').value.trim();
+
+                if (!workDate || !startTime || !endTime || isNaN(trips) || trips <= 0 || grossIncome <= 0) {
+                    showToast('กรุณากรอกข้อมูลการทำงานส่งอาหารให้ถูกต้อง', 'error');
+                    return;
+                }
+
+                // Calculate Net Income & Satangs
+                const netIncome = Math.max(0, grossIncome - fuelCost - otherOpsCost);
+                const netSatangs = Math.round(netIncome * 100);
+
+                // Work Hours Calculation
+                const startDT = new Date(`${workDate}T${startTime}`);
+                let endDT = new Date(`${workDate}T${endTime}`);
+                if (endDT < startDT) endDT.setDate(endDT.getDate() + 1); // Overnight shift
+                const workHours = Math.max(0.1, (endDT - startDT) / (1000 * 60 * 60));
+
+                const delObj = {
+                    id, workDate, startTime, endTime, workHours, trips,
+                    grossIncome, fuelCost, otherOpsCost, netIncome, netSatangs, note,
+                    createdAt: new Date().toISOString()
+                };
+
+                await dbTransaction('deliveryLogs', 'readwrite', (store) => {
+                    store.put(delObj);
+                });
+
+                const idx = state.deliveryLogs.findIndex(d => d.id === id);
+                if (idx >= 0) state.deliveryLogs[idx] = delObj;
+                else state.deliveryLogs.unshift(delObj);
+
+                showToast('บันทึกรายได้ส่งอาหารสำเร็จ (+สุทธิ ฿' + netIncome.toLocaleString(undefined, {minimumFractionDigits: 2}) + ')', 'success');
+                resetDeliveryForm();
+                renderAll();
+            } finally {
+                state.isSubmitting = false;
+            }
+        }
+
+        function resetDeliveryForm() {
+            document.getElementById('deliveryId').value = '';
+            document.getElementById('deliveryTrips').value = '';
+            document.getElementById('deliveryGrossIncome').value = '';
+            document.getElementById('deliveryFuelCost').value = '0';
+            document.getElementById('deliveryOtherOpsCost').value = '0';
+            document.getElementById('deliveryNote').value = '';
+            document.getElementById('deliveryNetPreview').innerText = '฿0.00';
+            document.getElementById('cancelDeliveryEditBtn').classList.add('hidden');
+            setDefaultDatetimes();
+        }
+
+        async function deleteDelivery(id) {
+            const del = state.deliveryLogs.find(d => d.id === id);
+            if (!del) return;
+
+            // Protection if deleting delivery drops net balance below zero
+            const currentNetSatangs = calculateLedgerTotals().netSatangs;
+            const delSatangs = del.netSatangs || Math.round(del.netIncome * 100);
+
+            if (currentNetSatangs - delSatangs < 0) {
+                showToast('⚠️ ไม่อนุญาตให้ลบรายการส่งอาหารนี้ เนื่องจากจะทำให้ยอดเงินสะสมเป็นลบ!', 'error');
+                return;
+            }
+
+            if (!confirm('คุณต้องการลบรายการส่งอาหารนี้ใช่หรือไม่?')) return;
+
+            await dbTransaction('deliveryLogs', 'readwrite', (store) => {
+                store.delete(id);
+            });
+
+            state.deliveryLogs = state.deliveryLogs.filter(d => d.id !== id);
+            showToast('ลบรายการส่งอาหารเรียบร้อยแล้ว', 'info');
+            renderAll();
+        }
+
+        // --- MODULE C: EXPENSE HANDLING ---
         async function handleSaveExpense(e) {
             e.preventDefault();
             if (state.isSubmitting) return;
@@ -910,8 +1186,6 @@
 
                 // ZERO NEGATIVE BALANCE GUARDRAIL CHECK
                 let currentNetSatangs = calculateLedgerTotals().netSatangs;
-                
-                // If editing existing expense, temporarily add back original amount to test
                 const existingIdx = state.transactions.findIndex(t => t.id === id);
                 if (existingIdx >= 0) {
                     const origSatangs = state.transactions[existingIdx].satangs || Math.round(state.transactions[existingIdx].amount * 100);
@@ -926,7 +1200,6 @@
 
                 const txObj = { id, type: 'expense', amount, satangs: expenseSatangs, category, date: datetime, note };
 
-                // Atomic Transaction
                 await dbTransaction('transactions', 'readwrite', (store) => {
                     store.put(txObj);
                 });
@@ -954,12 +1227,11 @@
             const tx = state.transactions.find(t => t.id === id);
             if (!tx) return;
 
-            // Protection if deleting a deposit drops net balance below zero
             if (tx.type === 'deposit') {
                 const currentNetSatangs = calculateLedgerTotals().netSatangs;
                 const txSatangs = tx.satangs || Math.round(tx.amount * 100);
                 if (currentNetSatangs - txSatangs < 0) {
-                    showToast('⚠️ ไม่อนุญาตให้ลบรายการออมนี้ เนื่องจากจะทำให้ยอดเงินออมสะสมสุทธิเป็นลบ!', 'error');
+                    showToast('⚠️ ไม่อนุญาตให้ลบรายการออมนี้ เนื่องจากจะทำให้ยอดเงินสะสมเป็นลบ!', 'error');
                     return;
                 }
             }
@@ -972,6 +1244,7 @@
 
             state.transactions = state.transactions.filter(t => t.id !== id);
             showToast('ลบรายการสำเร็จ', 'info');
+            evaluateAIMonthlyMission(false);
             renderAll();
         }
 
@@ -1000,106 +1273,139 @@
         }
 
         /* ==========================================================================
-           5. GOALS ENGINE
+           5. AI MONTHLY SAVINGS MISSION ENGINE (v2.5)
            ========================================================================== */
-        async function handleSaveGoal(e) {
-            e.preventDefault();
-            const id = document.getElementById('goalId').value || 'goal_' + Date.now();
-            const title = document.getElementById('goalTitle').value.trim();
-            const targetAmount = parseFloat(document.getElementById('goalTargetAmount').value);
-            const targetDate = document.getElementById('goalTargetDate').value;
-            const term = document.getElementById('goalTerm').value;
+        async function evaluateAIMonthlyMission(forceRecalculate = false) {
+            const currentMonthKey = new Date().toISOString().slice(0, 7); // e.g. "2026-11"
+            const currentMonthDeposits = state.transactions.filter(t => 
+                t.type === 'deposit' && t.date.startsWith(currentMonthKey)
+            );
 
-            if (!title || !targetAmount || targetAmount <= 0 || !targetDate) {
-                showToast('กรุณากรอกข้อมูลเป้าหมายให้ครบถ้วน', 'error');
-                return;
+            const currentSavedSatangs = currentMonthDeposits.reduce((s, t) => s + (t.satangs || Math.round(t.amount * 100)), 0);
+            const currentSaved = currentSavedSatangs / 100;
+
+            if (!state.missionState || forceRecalculate) {
+                // Calculate average monthly savings capacity from past months
+                const pastDeposits = state.transactions.filter(t => t.type === 'deposit');
+                const pastMonths = new Set(pastDeposits.map(t => t.date.slice(0, 7)));
+                const monthCount = Math.max(1, pastMonths.size);
+                const avgMonthlySavings = pastDeposits.reduce((s, t) => s + (t.satangs || Math.round(t.amount * 100)), 0) / (100 * monthCount);
+
+                let targetAmount = Math.max(1000, Math.round(avgMonthlySavings * 1.15));
+                if (targetAmount === 1000 && currentSaved > 1000) targetAmount = Math.round(currentSaved * 1.2);
+
+                let level = 'Beginner';
+                if (targetAmount >= 20000) level = 'Diamond';
+                else if (targetAmount >= 12000) level = 'Platinum';
+                else if (targetAmount >= 7000) level = 'Gold';
+                else if (targetAmount >= 4000) level = 'Silver';
+                else if (targetAmount >= 2000) level = 'Bronze';
+
+                state.missionState = {
+                    monthKey: currentMonthKey,
+                    targetAmount,
+                    level,
+                    updatedAt: new Date().toISOString()
+                };
+
+                await dbTransaction('missions', 'readwrite', (store) => {
+                    store.put(state.missionState);
+                });
+
+                if (forceRecalculate) showToast('AI คำนวณปรับระดับภารกิจประจำเดือนใหม่แล้ว', 'success');
             }
 
-            const goalObj = { id, title, targetAmount, targetDate, term, createdAt: new Date().toISOString() };
-
-            await dbTransaction('goals', 'readwrite', (store) => {
-                store.put(goalObj);
-            });
-
-            const idx = state.goals.findIndex(g => g.id === id);
-            if (idx >= 0) state.goals[idx] = goalObj;
-            else state.goals.push(goalObj);
-
-            showToast('บันทึกเป้าหมายการออมสำเร็จ', 'success');
-            document.getElementById('goalForm').reset();
-            renderAll();
+            renderMissionUI(currentSaved);
         }
 
-        async function deleteGoal(id) {
-            if (!confirm('ยืนยันการลบเป้าหมายการออมนี้?')) return;
-            await dbTransaction('goals', 'readwrite', (store) => store.delete(id));
-            state.goals = state.goals.filter(g => g.id !== id);
-            showToast('ลบเป้าหมายเรียบร้อย', 'info');
-            renderAll();
+        function renderMissionUI(currentSaved) {
+            if (!state.missionState) return;
+
+            const target = state.missionState.targetAmount;
+            const pct = Math.min(100, Math.max(0, Math.round((currentSaved / target) * 100)));
+
+            const now = new Date();
+            const daysInMonth = new Date(now.getFullYear(), now.getMonth() + 1, 0).getDate();
+            const daysLeft = Math.max(1, daysInMonth - now.getDate() + 1);
+            const needed = Math.max(0, target - currentSaved);
+            const dailyTarget = (needed / daysLeft).toFixed(2);
+
+            document.getElementById('statMissionBadge').innerText = state.missionState.level;
+            document.getElementById('statMissionProgress').innerText = `${pct}%`;
+            document.getElementById('statMissionProgressBar').style.width = `${pct}%`;
+
+            if (document.getElementById('missionLevelBadge')) document.getElementById('missionLevelBadge').innerText = `Level: ${state.missionState.level}`;
+            if (document.getElementById('missionTargetAmount')) document.getElementById('missionTargetAmount').innerText = '฿' + target.toLocaleString();
+            if (document.getElementById('missionCurrentSaved')) document.getElementById('missionCurrentSaved').innerText = '฿' + currentSaved.toLocaleString(undefined, {minimumFractionDigits: 2});
+            if (document.getElementById('missionCompletionPct')) document.getElementById('missionCompletionPct').innerText = `${pct}%`;
+            if (document.getElementById('missionCompletionBar')) document.getElementById('missionCompletionBar').style.width = `${pct}%`;
+            if (document.getElementById('missionDailyTarget')) document.getElementById('missionDailyTarget').innerText = `฿${dailyTarget}`;
+
+            const adviceBox = document.getElementById('missionAdviceBox');
+            if (adviceBox) {
+                let msg = '';
+                if (pct >= 100) {
+                    msg = `🎉 <strong>ยินดีด้วย! บรรลุภารกิจออมเงินระดับ ${state.missionState.level} ประจำเดือนนี้แล้ว!</strong> สามารถสะสมเพิ่มเติมเพื่อยกระดับสู่ Level ถัดไปได้`;
+                } else {
+                    msg = `💪 <strong>คำแนะนำ AI:</strong> ภารกิจเดือนนี้ต้องการอีก ฿${needed.toLocaleString()} ออมเฉลี่ยวันละ ฿${dailyTarget} ใน ${daysLeft} วันที่เหลือของเดือนเพื่อบรรลุเป้าหมาย`;
+                }
+                adviceBox.innerHTML = msg;
+            }
         }
 
         /* ==========================================================================
-           6. AI FINANCIAL HEALTH MONITOR v2.3
+           6. AI SMART CASHFLOW MONITOR & ANOMALY ENGINE
            ========================================================================== */
         function runAIFinancialHealthMonitor() {
             const container = document.getElementById('aiAnalysisText');
 
-            if (state.transactions.length === 0) {
-                container.innerHTML = '<p class="text-slate-400">ยังไม่มีข้อมูลสำหรับวิเคราะห์ AI Financial Health Monitor ต้องการบันทึกอย่างน้อย 1 รายการ</p>';
+            if (state.transactions.length === 0 && state.deliveryLogs.length === 0) {
+                container.innerHTML = '<p class="text-slate-400">ยังไม่มีข้อมูลสำหรับวิเคราะห์ ต้องการบันทึกรายการออม รายได้ส่งอาหาร หรือรายจ่ายอย่างน้อย 1 รายการ</p>';
                 document.getElementById('aiHealthScore').innerText = 'AI Score: -/100';
                 return;
             }
 
             const ledger = calculateLedgerTotals();
-            const deposits = state.transactions.filter(t => t.type === 'deposit');
             const expenses = state.transactions.filter(t => t.type === 'expense' || t.type === 'withdraw');
 
-            // Savings Rate Calculation
-            const savingsRate = ledger.totalSavings > 0 
-                ? Math.round((ledger.netBalance / ledger.totalSavings) * 100) 
-                : 0;
+            const totalInflow = ledger.totalSavings + ledger.totalDeliveryNet;
+            const savingsRetention = totalInflow > 0 ? Math.round((ledger.netBalance / totalInflow) * 100) : 0;
 
-            // Score Logic based on genuine data
-            let score = 70;
-            if (savingsRate >= 50) score += 20;
-            else if (savingsRate < 20) score -= 25;
+            let score = 75;
+            if (savingsRetention >= 40) score += 15;
+            else if (savingsRetention < 15) score -= 20;
 
-            if (expenses.length > deposits.length * 2) score -= 15;
             if (ledger.netBalance > 0) score += 10;
-
             score = Math.min(100, Math.max(0, score));
 
-            // Expense Anomaly Detection
-            let anomalyWarning = '';
+            // Anomaly Check
+            let anomalyText = '';
             if (expenses.length > 0) {
-                const avgExpense = ledger.totalExpenses / expenses.length;
+                const avgExp = ledger.totalExpenses / expenses.length;
                 const maxExp = Math.max(...expenses.map(e => e.amount));
-                if (maxExp > avgExpense * 2.5) {
-                    anomalyWarning = `<p class="text-xs text-rose-400 mt-1">⚠️ <strong>ตรวจพบรายการจ่ายสูงผิดปกติ:</strong> มีรายการจ่ายสูงสุด ฿${maxExp.toLocaleString()} (สูงกว่าค่าเฉลี่ยรายจ่าย ฿${avgExpense.toFixed(2)})</p>`;
+                if (maxExp > avgExp * 2.5) {
+                    anomalyText = `<p class="text-xs text-rose-400 mt-1">⚠️ <strong>พบรายการจ่ายสูงผิดปกติ:</strong> มีรายการจ่ายสูงสุด ฿${maxExp.toLocaleString()} (สูงกว่าค่าเฉลี่ยรายจ่าย ฿${avgExp.toFixed(2)})</p>`;
                 }
             }
 
-            // Target Trajectory
-            let goalReport = '';
-            if (state.goals.length > 0) {
-                const primaryGoal = state.goals[0];
-                const needed = Math.max(0, primaryGoal.targetAmount - ledger.netBalance);
-                const targetD = new Date(primaryGoal.targetDate);
-                const daysLeft = Math.max(1, Math.ceil((targetD - new Date()) / (1000 * 60 * 60 * 24)));
-                const dailyNeeded = needed / daysLeft;
-
-                goalReport = `<p class="text-xs text-amber-300 mt-1">🎯 <strong>แผนเป้าหมาย "${primaryGoal.title}":</strong> ต้องออมอีก ฿${needed.toLocaleString()} (เฉลี่ยวันละ ฿${dailyNeeded.toFixed(2)} ใน ${daysLeft} วันที่เหลือ)</p>`;
+            // Delivery Efficiency Insights
+            let deliveryInsight = '';
+            if (state.deliveryLogs.length > 0) {
+                const totalHours = state.deliveryLogs.reduce((s, d) => s + (d.workHours || 0), 0);
+                const totalTrips = state.deliveryLogs.reduce((s, d) => s + (d.trips || 0), 0);
+                const avgPerHour = totalHours > 0 ? (ledger.totalDeliveryNet / totalHours).toFixed(2) : 0;
+                deliveryInsight = `<p class="text-xs text-cyan-300 mt-1">🛵 <strong>ประสิทธิภาพงานส่งอาหาร:</strong> รวม ${totalTrips} เที่ยว (${totalHours.toFixed(1)} ชม.) รายได้สุทธิเฉลี่ย ฿${avgPerHour}/ชั่วโมง</p>`;
             }
 
             container.innerHTML = `
                 <div class="space-y-1">
                     <div class="flex items-center gap-2">
-                        <span class="font-bold ${savingsRate >= 40 ? 'text-emerald-400' : 'text-amber-400'}">อัตราคงเหลือเงินออม (Savings Retention Rate): ${savingsRate}%</span>
+                        <span class="font-bold ${savingsRetention >= 35 ? 'text-emerald-400' : 'text-amber-400'}">อัตราคงเหลือเงินสะสม (Cash Retention): ${savingsRetention}%</span>
                     </div>
-                    <p class="text-slate-300">รวมการออม <strong>฿${ledger.totalSavings.toLocaleString()}</strong> | รวมรายจ่าย <strong>฿${ledger.totalExpenses.toLocaleString()}</strong> | สะสมสุทธิ <strong>฿${ledger.netBalance.toLocaleString()}</strong></p>
-                    ${anomalyWarning}
-                    ${goalReport}
-                    <div class="text-xs text-slate-400 mt-2">ประมวลผลตามจริง 100% โดยคำนวณระดับ Satang Integer Precision</div>
+                    <p class="text-slate-300">กระแสเงินเข้าคงเหลือจริง: <strong>฿${ledger.netBalance.toLocaleString()}</strong> (รวมเงินออม ฿${ledger.totalSavings.toLocaleString()} + ส่งอาหารสุทธิ ฿${ledger.totalDeliveryNet.toLocaleString()} - รายจ่าย ฿${ledger.totalExpenses.toLocaleString()})</p>
+                    ${anomalyText}
+                    ${deliveryInsight}
+                    <div class="text-xs text-slate-400 mt-2">ประมวลผลตรงตามโครงสร้างธุรกรรม Satang Precision 100%</div>
                 </div>
             `;
 
@@ -1112,8 +1418,8 @@
         function renderAll() {
             renderStats();
             renderSavingsTable();
+            renderDeliveryTable();
             renderExpenseTable();
-            renderGoals();
             renderSettingsView();
             runAIFinancialHealthMonitor();
             renderAnalyticsCharts();
@@ -1126,6 +1432,7 @@
             const expenses = state.transactions.filter(t => t.type === 'expense' || t.type === 'withdraw');
 
             const nowStr = new Date().toDateString();
+            const todayISO = new Date().toISOString().slice(0, 10);
 
             const todayDeposit = deposits
                 .filter(t => new Date(t.date).toDateString() === nowStr)
@@ -1135,23 +1442,24 @@
                 .filter(t => new Date(t.date).toDateString() === nowStr)
                 .reduce((s, t) => s + (t.satangs || Math.round(t.amount * 100)), 0) / 100;
 
+            const todayDelivery = state.deliveryLogs
+                .filter(d => d.workDate === todayISO)
+                .reduce((s, d) => s + (d.netSatangs || Math.round(d.netIncome * 100)), 0) / 100;
+
+            const totalDeliveryTrips = state.deliveryLogs.reduce((s, d) => s + (d.trips || 0), 0);
+
             document.getElementById('statNetBalance').innerText = '฿' + ledger.netBalance.toLocaleString(undefined, { minimumFractionDigits: 2 });
             document.getElementById('statTotalSavings').innerText = '฿' + ledger.totalSavings.toLocaleString(undefined, { minimumFractionDigits: 2 });
+            document.getElementById('statDeliveryNet').innerText = '฿' + ledger.totalDeliveryNet.toLocaleString(undefined, { minimumFractionDigits: 2 });
             document.getElementById('statTotalExpenses').innerText = '฿' + ledger.totalExpenses.toLocaleString(undefined, { minimumFractionDigits: 2 });
 
             document.getElementById('statSavingsCount').innerText = deposits.length;
+            document.getElementById('statDeliveryTrips').innerText = totalDeliveryTrips;
             document.getElementById('statExpenseCount').innerText = expenses.length;
 
             document.getElementById('statTodayDeposit').innerText = '฿' + todayDeposit.toLocaleString();
+            document.getElementById('statTodayDelivery').innerText = '฿' + todayDelivery.toLocaleString();
             document.getElementById('statTodayExpense').innerText = '฿' + todayExpense.toLocaleString();
-
-            let goalPercent = 0;
-            if (state.goals.length > 0) {
-                const totalTarget = state.goals.reduce((s, g) => s + g.targetAmount, 0);
-                goalPercent = Math.min(100, Math.max(0, Math.round((ledger.netBalance / totalTarget) * 100)));
-            }
-            document.getElementById('statGoalProgress').innerText = `${goalPercent}%`;
-            document.getElementById('statGoalProgressBar').style.width = `${goalPercent}%`;
         }
 
         function renderSavingsTable() {
@@ -1183,6 +1491,55 @@
                     <td class="p-3 text-center space-x-1 whitespace-nowrap">
                         <button onclick="editTransaction('${t.id}')" class="p-1 text-slate-400 hover:text-amber-400 transition" title="แก้ไข">✏️</button>
                         <button onclick="deleteTransaction('${t.id}')" class="p-1 text-slate-400 hover:text-rose-400 transition" title="ลบ">🗑️</button>
+                    </td>
+                `;
+                tbody.appendChild(tr);
+            });
+        }
+
+        function renderDeliveryTable() {
+            const tbody = document.getElementById('deliveryTableBody');
+            const search = (document.getElementById('searchDeliveryInput').value || '').toLowerCase();
+            tbody.innerHTML = '';
+
+            const filtered = state.deliveryLogs.filter(d => 
+                d.workDate.includes(search) || (d.note && d.note.toLowerCase().includes(search))
+            );
+
+            let totalHours = 0;
+            let totalTrips = 0;
+            let totalNet = 0;
+
+            state.deliveryLogs.forEach(d => {
+                totalHours += (d.workHours || 0);
+                totalTrips += (d.trips || 0);
+                totalNet += (d.netIncome || 0);
+            });
+
+            document.getElementById('statDeliveryAvgPerHour').innerText = totalHours > 0 ? '฿' + (totalNet / totalHours).toFixed(2) : '฿0.00';
+            document.getElementById('statDeliveryAvgPerTrip').innerText = totalTrips > 0 ? '฿' + (totalNet / totalTrips).toFixed(2) : '฿0.00';
+            document.getElementById('statDeliveryTotalHours').innerText = `${totalHours.toFixed(1)} ชม.`;
+
+            if (filtered.length === 0) {
+                tbody.innerHTML = '<tr><td colspan="6" class="p-4 text-center text-slate-500 text-xs">ไม่พบประวัติงานส่งอาหาร</td></tr>';
+                return;
+            }
+
+            filtered.forEach(d => {
+                const tr = document.createElement('tr');
+                tr.className = 'hover:bg-slate-800/40 transition text-xs border-b border-slate-800/40';
+
+                const totalCost = (d.fuelCost || 0) + (d.otherOpsCost || 0);
+                const workDateStr = new Date(d.workDate).toLocaleDateString('th-TH');
+
+                tr.innerHTML = `
+                    <td class="p-2.5 text-slate-300 whitespace-nowrap">${workDateStr} (${d.startTime}-${d.endTime})</td>
+                    <td class="p-2.5 text-slate-300 font-medium">${d.trips} เที่ยว (${(d.workHours||0).toFixed(1)}ชม.)</td>
+                    <td class="p-2.5 text-right text-slate-400">฿${d.grossIncome.toLocaleString()}</td>
+                    <td class="p-2.5 text-right text-rose-300">฿${totalCost.toLocaleString()}</td>
+                    <td class="p-2.5 text-right text-cyan-400 font-bold">+฿${d.netIncome.toLocaleString(undefined, {minimumFractionDigits: 2})}</td>
+                    <td class="p-2.5 text-center space-x-1 whitespace-nowrap">
+                        <button onclick="deleteDelivery('${d.id}')" class="p-1 text-slate-400 hover:text-rose-400 transition" title="ลบ">🗑️</button>
                     </td>
                 `;
                 tbody.appendChild(tr);
@@ -1224,55 +1581,10 @@
             });
         }
 
-        function renderGoals() {
-            const container = document.getElementById('goalsContainer');
-            container.innerHTML = '';
-
-            if (state.goals.length === 0) {
-                container.innerHTML = '<div class="col-span-full glass-card p-6 rounded-2xl text-center text-slate-400 text-sm">ยังไม่มีเป้าหมายการออม</div>';
-                return;
-            }
-
-            const netSavings = calculateLedgerTotals().netBalance;
-
-            state.goals.forEach(goal => {
-                const percent = Math.min(100, Math.max(0, Math.round((netSavings / goal.targetAmount) * 100)));
-                const remaining = Math.max(0, goal.targetAmount - netSavings);
-
-                const card = document.createElement('div');
-                card.className = 'glass-card p-5 rounded-2xl space-y-3 relative overflow-hidden';
-                card.innerHTML = `
-                    <div class="flex justify-between items-start">
-                        <div>
-                            <h4 class="font-bold text-slate-100 text-base">${goal.title}</h4>
-                            <span class="text-[11px] px-2 py-0.5 rounded-full bg-slate-800 text-amber-400 border border-slate-700 uppercase">${goal.term} term</span>
-                        </div>
-                        <button onclick="deleteGoal('${goal.id}')" class="text-slate-500 hover:text-rose-400 text-xs">🗑️ ลบ</button>
-                    </div>
-
-                    <div>
-                        <div class="flex justify-between text-xs text-slate-400 mb-1">
-                            <span>ความคืบหน้า</span>
-                            <span class="font-bold text-amber-400">${percent}%</span>
-                        </div>
-                        <div class="w-full bg-slate-800 rounded-full h-2">
-                            <div class="bg-gradient-to-r from-amber-500 to-emerald-400 h-2 rounded-full transition-all duration-500" style="width: ${percent}%"></div>
-                        </div>
-                    </div>
-
-                    <div class="grid grid-cols-2 gap-2 text-xs border-t border-slate-800/60 pt-2 text-slate-400">
-                        <div>เป้าหมาย: <span class="text-slate-200 font-semibold">฿${goal.targetAmount.toLocaleString()}</span></div>
-                        <div>ขาดอีก: <span class="text-rose-400 font-semibold">฿${remaining.toLocaleString()}</span></div>
-                        <div class="col-span-2">กำหนดบรรลุ: <span class="text-slate-200">${new Date(goal.targetDate).toLocaleDateString('th-TH')}</span></div>
-                    </div>
-                `;
-                container.appendChild(card);
-            });
-        }
-
         function renderSettingsView() {
             const statusBox = document.getElementById('pinStatusBox');
             const setupSection = document.getElementById('pinSetupSection');
+            const recoveryBox = document.getElementById('recoveryKeyBox');
 
             if (state.settings.isPinSet) {
                 statusBox.innerHTML = `
@@ -1283,25 +1595,28 @@
                     <div class="text-slate-400">รหัส PIN ถูกจัดเก็บด้วย Web Crypto API Hash (PBKDF2 SHA-256 + Salt)</div>
                 `;
                 setupSection.classList.add('hidden');
+                recoveryBox.classList.remove('hidden');
+                document.getElementById('recoveryKeyDisplay').innerText = state.settings.recoveryKey || 'N/A';
             } else {
                 statusBox.innerHTML = `
                     <div class="text-amber-400 font-medium">ยังไม่ได้เปิดใช้งาน PIN ล็อกระบบ</div>
                     <div class="text-slate-400">สามารถใช้งานบันทึกข้อมูลได้ตามปกติ หรือตั้งรหัสเพื่อความปลอดภัย</div>
                 `;
                 setupSection.classList.remove('hidden');
+                recoveryBox.classList.add('hidden');
             }
         }
 
         /* ==========================================================================
-           8. HTML5 CANVAS CHARTS SYSTEM v2.3
+           8. HTML5 CANVAS CHARTS SYSTEM v2.5
            ========================================================================== */
         function renderAnalyticsCharts() {
-            renderSavingsTrendChart();
+            renderCashflowTrendChart();
             renderCategoryDistributionChart();
         }
 
-        function renderSavingsTrendChart() {
-            const canvas = document.getElementById('savingsTrendCanvas');
+        function renderCashflowTrendChart() {
+            const canvas = document.getElementById('cashflowTrendCanvas');
             if (!canvas) return;
             const ctx = canvas.getContext('2d');
 
@@ -1314,7 +1629,7 @@
             const height = rect.height;
             ctx.clearRect(0, 0, width, height);
 
-            if (state.transactions.length === 0) {
+            if (state.transactions.length === 0 && state.deliveryLogs.length === 0) {
                 ctx.fillStyle = '#94a3b8';
                 ctx.font = '12px Prompt';
                 ctx.textAlign = 'center';
@@ -1326,19 +1641,25 @@
             state.transactions.forEach(t => {
                 const d = new Date(t.date);
                 const key = `${d.getFullYear()}-${(d.getMonth() + 1).toString().padStart(2, '0')}`;
-                if (!monthlyData[key]) monthlyData[key] = { deposit: 0, expense: 0 };
+                if (!monthlyData[key]) monthlyData[key] = { deposit: 0, delivery: 0, expense: 0 };
                 if (t.type === 'deposit') monthlyData[key].deposit += t.amount;
                 else monthlyData[key].expense += t.amount;
+            });
+
+            state.deliveryLogs.forEach(d => {
+                const key = d.workDate.slice(0, 7);
+                if (!monthlyData[key]) monthlyData[key] = { deposit: 0, delivery: 0, expense: 0 };
+                monthlyData[key].delivery += d.netIncome;
             });
 
             const keys = Object.keys(monthlyData).sort().slice(-6);
             if (keys.length === 0) return;
 
-            const padding = 40;
+            const padding = 35;
             const chartWidth = width - padding * 2;
             const chartHeight = height - padding * 2;
 
-            const maxVal = Math.max(...keys.map(k => Math.max(monthlyData[k].deposit, monthlyData[k].expense)), 100);
+            const maxVal = Math.max(...keys.map(k => Math.max(monthlyData[k].deposit, monthlyData[k].delivery, monthlyData[k].expense)), 100);
 
             // Draw Axes
             ctx.strokeStyle = 'rgba(255,255,255,0.1)';
@@ -1350,29 +1671,31 @@
             ctx.stroke();
 
             const groupWidth = chartWidth / keys.length;
-            const barWidth = groupWidth * 0.3;
+            const barWidth = groupWidth * 0.24;
 
             keys.forEach((key, idx) => {
-                const xBase = padding + idx * groupWidth + groupWidth / 4;
+                const xBase = padding + idx * groupWidth + groupWidth / 8;
 
-                const depHeight = (monthlyData[key].deposit / maxVal) * chartHeight;
-                const depY = height - padding - depHeight;
-
-                const expHeight = (monthlyData[key].expense / maxVal) * chartHeight;
-                const expY = height - padding - expHeight;
+                const depH = (monthlyData[key].deposit / maxVal) * chartHeight;
+                const delH = (monthlyData[key].delivery / maxVal) * chartHeight;
+                const expH = (monthlyData[key].expense / maxVal) * chartHeight;
 
                 // Savings (Green)
                 ctx.fillStyle = '#10b981';
-                ctx.fillRect(xBase, depY, barWidth, depHeight);
+                ctx.fillRect(xBase, height - padding - depH, barWidth, depH);
 
-                // Expense (Rose Red)
+                // Delivery Net (Cyan)
+                ctx.fillStyle = '#06b6d4';
+                ctx.fillRect(xBase + barWidth + 2, height - padding - delH, barWidth, delH);
+
+                // Expense (Rose)
                 ctx.fillStyle = '#f43f5e';
-                ctx.fillRect(xBase + barWidth + 4, expY, barWidth, expHeight);
+                ctx.fillRect(xBase + (barWidth + 2) * 2, height - padding - expH, barWidth, expH);
 
                 ctx.fillStyle = '#94a3b8';
                 ctx.font = '10px Prompt';
                 ctx.textAlign = 'center';
-                ctx.fillText(key, xBase + barWidth, height - padding + 15);
+                ctx.fillText(key, xBase + barWidth * 1.5, height - padding + 15);
             });
         }
 
@@ -1391,7 +1714,7 @@
 
             ctx.clearRect(0, 0, width, height);
 
-            if (state.transactions.length === 0) {
+            if (state.transactions.length === 0 && state.deliveryLogs.length === 0) {
                 ctx.fillStyle = '#94a3b8';
                 ctx.font = '12px Prompt';
                 ctx.textAlign = 'center';
@@ -1403,9 +1726,12 @@
             state.transactions.forEach(t => {
                 catTotals[t.category] = (catTotals[t.category] || 0) + t.amount;
             });
+            if (state.deliveryLogs.length > 0) {
+                catTotals['ส่งอาหารสุทธิ'] = state.deliveryLogs.reduce((s, d) => s + d.netIncome, 0);
+            }
 
             const totalSum = Object.values(catTotals).reduce((a, b) => a + b, 0);
-            const colors = ['#10b981', '#f43f5e', '#f59e0b', '#3b82f6', '#8b5cf6', '#ec4899', '#64748b'];
+            const colors = ['#06b6d4', '#10b981', '#f43f5e', '#f59e0b', '#3b82f6', '#8b5cf6', '#ec4899', '#64748b'];
 
             const centerX = width / 3;
             const centerY = height / 2;
@@ -1430,10 +1756,10 @@
 
             // Legend
             colorIdx = 0;
-            let legendY = 25;
+            let legendY = 20;
             const legendX = width * 0.62;
 
-            Object.entries(catTotals).slice(0, 6).forEach(([cat, val]) => {
+            Object.entries(catTotals).slice(0, 7).forEach(([cat, val]) => {
                 const pct = Math.round((val / totalSum) * 100);
 
                 ctx.fillStyle = colors[colorIdx % colors.length];
@@ -1444,7 +1770,7 @@
                 ctx.textAlign = 'left';
                 ctx.fillText(`${cat} (${pct}%)`, legendX + 16, legendY + 9);
 
-                legendY += 20;
+                legendY += 18;
                 colorIdx++;
             });
         }
@@ -1456,18 +1782,20 @@
         }
 
         /* ==========================================================================
-           9. BACKUP & RESTORE (EXPORT / IMPORT JSON v2.3)
+           9. BACKUP & RESTORE (EXPORT / IMPORT JSON v2.5)
            ========================================================================== */
         function exportBackupJSON() {
             const dataPayload = {
-                version: '2.3',
+                version: '2.5',
                 exportedAt: new Date().toISOString(),
                 transactions: state.transactions,
-                goals: state.goals,
+                deliveryLogs: state.deliveryLogs,
+                missionState: state.missionState,
                 settings: {
                     isPinSet: state.settings.isPinSet,
                     pinHash: state.settings.pinHash,
-                    pinSalt: state.settings.pinSalt
+                    pinSalt: state.settings.pinSalt,
+                    recoveryKey: state.settings.recoveryKey
                 }
             };
 
@@ -1477,11 +1805,11 @@
 
             const a = document.createElement('a');
             a.href = url;
-            a.download = `AI_Savings_Backup_v2.3_${new Date().toISOString().slice(0,10)}.json`;
+            a.download = `AI_Savings_Backup_v2.5_${new Date().toISOString().slice(0,10)}.json`;
             a.click();
             URL.revokeObjectURL(url);
 
-            showToast('ส่งออกไฟล์สำรองข้อมูล v2.3 สำเร็จ', 'success');
+            showToast('ส่งออกไฟล์สำรองข้อมูล v2.5 สำเร็จ', 'success');
         }
 
         async function importBackupJSON(event) {
@@ -1497,7 +1825,7 @@
                         throw new Error('โครงสร้างไฟล์ JSON ไม่ถูกต้อง');
                     }
 
-                    if (!confirm(`ยืนยันการนำเข้าข้อมูล? รายการ ${importedData.transactions.length} รายการ จะถูกกู้คืนเข้ามาในระบบ`)) {
+                    if (!confirm(`ยืนยันการนำเข้าข้อมูล? รายการออม/จ่าย ${importedData.transactions.length} รายการ จะถูกกู้คืนเข้ามาในระบบ`)) {
                         return;
                     }
 
@@ -1505,13 +1833,14 @@
                         importedData.transactions.forEach(t => store.put(t));
                     });
 
-                    if (importedData.goals && Array.isArray(importedData.goals)) {
-                        await dbTransaction('goals', 'readwrite', (store) => {
-                            importedData.goals.forEach(g => store.put(g));
+                    if (importedData.deliveryLogs && Array.isArray(importedData.deliveryLogs)) {
+                        await dbTransaction('deliveryLogs', 'readwrite', (store) => {
+                            importedData.deliveryLogs.forEach(d => store.put(d));
                         });
                     }
 
                     await loadAllData();
+                    evaluateAIMonthlyMission(false);
                     renderAll();
                     showToast('นำเข้าข้อมูลเรียบร้อยแล้ว', 'success');
                 } catch (err) {
@@ -1525,7 +1854,7 @@
            10. UI CONTROLS
            ========================================================================== */
         function switchTab(tabName) {
-            const views = ['savings', 'expense', 'goals', 'analytics', 'settings'];
+            const views = ['savings', 'delivery', 'expense', 'mission', 'analytics', 'settings'];
             views.forEach(v => {
                 const el = document.getElementById('view' + capitalize(v));
                 const btn = document.getElementById('tab' + capitalize(v));
@@ -1584,4 +1913,3 @@
     </script>
 </body>
 </html>
-```
