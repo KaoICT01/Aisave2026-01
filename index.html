@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>AI SAVINGS SYSTEM 2026 v2.7 — ULTIMATE INTELLIGENCE & STABILITY EDITION</title>
+    <title>AI AUTOMATIC SAVINGS 2026 v2.9 — PREMIUM AI FINANCIAL SYSTEM</title>
     <style>
         /* ==========================================================================
            SELF-CONTAINED LUXURY DESIGN SYSTEM (ZERO EXTERNAL CDN DEPENDENCIES)
@@ -249,11 +249,14 @@
         .btn-rose:hover { background-color: #f43f5e; }
 
         .tab-btn {
-            padding: 0.55rem 0.95rem;
-            font-size: 0.82rem;
+            padding: 0.65rem 1rem;
+            font-size: 0.85rem;
             background-color: var(--bg-secondary);
             color: var(--text-secondary);
             border: 1px solid var(--border-subtle);
+            width: 100%;
+            justify-content: flex-start;
+            gap: 0.65rem;
         }
         .tab-btn.active {
             background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
@@ -262,6 +265,74 @@
             border-color: transparent;
             box-shadow: 0 4px 12px rgba(245, 158, 11, 0.25);
         }
+
+        /* Overlay Navigation Drawer (Does Not Affect Main Layout Width) */
+        .drawer-backdrop {
+            position: fixed;
+            inset: 0;
+            z-index: 40;
+            background: rgba(9, 13, 22, 0.65);
+            backdrop-filter: blur(4px);
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.22s ease;
+        }
+        .drawer-backdrop.open {
+            opacity: 1;
+            pointer-events: auto;
+        }
+        .ai-menu-drawer {
+            position: fixed;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            width: 290px;
+            max-width: 84vw;
+            z-index: 45;
+            background: var(--bg-primary);
+            border-right: 1px solid var(--border-subtle);
+            box-shadow: 12px 0 35px rgba(0, 0, 0, 0.45);
+            padding: 1.25rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.6rem;
+            transform: translateX(-105%);
+            transition: transform 0.25s cubic-bezier(0.22, 1, 0.36, 1);
+            overflow-y: auto;
+        }
+        .ai-menu-drawer.open {
+            transform: translateX(0);
+        }
+
+        /* Financial Calendar Grid */
+        .calendar-grid {
+            display: grid;
+            grid-template-columns: repeat(7, minmax(0, 1fr));
+            gap: 0.35rem;
+        }
+        .cal-day-header {
+            text-align: center;
+            font-size: 0.72rem;
+            font-weight: 700;
+            color: var(--text-muted);
+            padding: 0.35rem 0;
+        }
+        .cal-cell {
+            min-height: 68px;
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-subtle);
+            border-radius: 0.65rem;
+            padding: 0.35rem;
+            font-size: 0.7rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            cursor: pointer;
+            transition: border-color 0.15s ease;
+        }
+        .cal-cell:hover { border-color: var(--accent-gold); }
+        .cal-cell.today { border: 1.5px solid var(--accent-gold); }
+        .cal-cell.empty { background: transparent; border-color: transparent; cursor: default; }
 
         /* Tables */
         .table-wrapper {
@@ -405,20 +476,26 @@
     <header class="top-nav">
         <div class="container-max flex justify-between items-center">
             <div class="flex items-center gap-3">
-                <div class="logo-box gold-bg-gradient">AI</div>
+                <button id="aiMenuToggleBtn" onclick="toggleAiMenuDrawer()" class="logo-box gold-bg-gradient" title="เปิด/ปิดแถบเมนูหลัก (AI Menu)" aria-label="Toggle AI Menu">
+                    AI
+                </button>
                 <div>
-                    <div class="font-bold text-base gold-gradient-text" style="letter-spacing: 0.03em;">SAVINGS SYSTEM 2026</div>
+                    <div class="font-bold text-base gold-gradient-text" style="letter-spacing: 0.03em;">AUTOMATIC SAVINGS 2026</div>
                     <div class="flex items-center gap-2 mt-1">
-                        <span class="badge badge-gold">v2.7 ULTIMATE STABILITY</span>
+                        <span class="badge badge-gold">v2.9 PREMIUM</span>
                         <span id="headerHealthBadge" class="badge badge-emerald" onclick="switchTab('health')" style="cursor:pointer;" title="คลิกเพื่อดูสถานะสุขภาพระบบ">● SYSTEM OK</span>
                     </div>
                 </div>
             </div>
 
             <div class="flex items-center gap-2">
+                <button onclick="toggleAiMenuDrawer()" class="btn-surface btn-sm gap-1-5" title="เปิดแถบเมนูหลัก">
+                    <span>☰</span>
+                    <span>เมนูหลัก</span>
+                </button>
                 <button id="lockAppBtn" class="btn-surface btn-sm hidden gap-1-5" title="ล็อกหน้าจอด้วย PIN">
                     <span>🔒</span>
-                    <span>ล็อกระบบ</span>
+                    <span>ล็อก</span>
                 </button>
                 <button id="themeToggleBtn" class="btn-surface btn-sm" title="สลับโหมดสี Dark / Light">
                     <span id="themeIconText">☀️ Light</span>
@@ -426,6 +503,34 @@
             </div>
         </div>
     </header>
+
+    <!-- OVERLAY AI MENU DRAWER (DOES NOT RESIZE MAIN DASHBOARD) -->
+    <div id="drawerBackdrop" class="drawer-backdrop" onclick="closeAiMenuDrawer()"></div>
+    <aside id="aiMenuDrawer" class="ai-menu-drawer" aria-label="Main Navigation Drawer">
+        <div class="flex justify-between items-center pb-2" style="border-bottom: 1px solid var(--border-subtle); padding-bottom: 0.75rem;">
+            <div class="flex items-center gap-2">
+                <span class="badge badge-gold">AI MENU v2.9</span>
+            </div>
+            <button onclick="closeAiMenuDrawer()" class="btn-surface btn-sm" title="ปิดแถบเมนู (Esc)">✕</button>
+        </div>
+
+        <div class="text-xs text-muted mt-1">ระบบการเงินหลัก 3 ส่วน</div>
+        <button id="tabSavings" onclick="switchTab('savings')" class="tab-btn active">💰 บันทึกการออม (Savings)</button>
+        <button id="tabDelivery" onclick="switchTab('delivery')" class="tab-btn">🛵 รายได้ส่งอาหาร (Delivery)</button>
+        <button id="tabExpense" onclick="switchTab('expense')" class="tab-btn">💸 บันทึกรายจ่าย (Expenses)</button>
+
+        <div class="text-xs text-muted mt-2">ระบบวางแผน & ปฏิทินอัจฉริยะ</div>
+        <button id="tabGoals" onclick="switchTab('goals')" class="tab-btn">🏆 เป้าหมายการออมหลายรายการ</button>
+        <button id="tabCalendar" onclick="switchTab('calendar')" class="tab-btn">📅 ปฏิทินการเงิน AI</button>
+        <button id="tabMission" onclick="switchTab('mission')" class="tab-btn">🎯 ภารกิจการออมประจำเดือน</button>
+
+        <div class="text-xs text-muted mt-2">ระบบวิเคราะห์ AI & ความปลอดภัย</div>
+        <button id="tabDetector" onclick="switchTab('detector')" class="tab-btn">🕵️ AI ตรวจจับรายจ่ายอัจฉริยะ</button>
+        <button id="tabAllocation" onclick="switchTab('allocation')" class="tab-btn">🧠 AI จัดสรรเงิน & กระแสเงินสด</button>
+        <button id="tabAnalytics" onclick="switchTab('analytics')" class="tab-btn">📊 กราฟ & รายงานภาพรวม</button>
+        <button id="tabHealth" onclick="switchTab('health')" class="tab-btn">🛡️ สุขภาพระบบ & Audit Log</button>
+        <button id="tabSettings" onclick="switchTab('settings')" class="tab-btn">🔒 PIN 4 หลัก & สำรองข้อมูล</button>
+    </aside>
 
     <!-- MAIN CONTENT -->
     <main class="container-max flex-grow p-4 md-p-6 space-y-6">
@@ -482,26 +587,17 @@
         <section class="glass-card p-5 border-l-gold space-y-2">
             <div class="flex flex-wrap justify-between items-center gap-2">
                 <div class="flex items-center gap-2">
-                    <span class="text-gold font-bold">⚡ AI Smart Cashflow & Financial Health Monitor v2.7</span>
+                    <span class="text-gold font-bold">⚡ AI Smart Cashflow & Financial Health Monitor v2.9</span>
                 </div>
-                <span id="aiHealthScore" class="badge badge-gold">AI Score: -/100</span>
+                <div class="flex items-center gap-2">
+                    <span id="aiActiveModuleLabel" class="badge badge-cyan">โมดูล: บันทึกการออม</span>
+                    <span id="aiHealthScore" class="badge badge-gold">AI Score: -/100</span>
+                </div>
             </div>
             <div id="aiAnalysisText" class="text-sm text-secondary space-y-1">
                 กำลังประมวลผลวิเคราะห์ข้อมูลการเงินภายในอุปกรณ์...
             </div>
         </section>
-
-        <!-- MODULE NAVIGATION TABS -->
-        <nav class="flex flex-wrap gap-2">
-            <button id="tabSavings" onclick="switchTab('savings')" class="tab-btn active">💰 บันทึกการออม</button>
-            <button id="tabDelivery" onclick="switchTab('delivery')" class="tab-btn">🛵 รายได้ส่งอาหาร</button>
-            <button id="tabExpense" onclick="switchTab('expense')" class="tab-btn">💸 บันทึกรายจ่าย</button>
-            <button id="tabAllocation" onclick="switchTab('allocation')" class="tab-btn">🧠 AI จัดสรรเงิน</button>
-            <button id="tabMission" onclick="switchTab('mission')" class="tab-btn">🎯 ภารกิจการออม AI</button>
-            <button id="tabAnalytics" onclick="switchTab('analytics')" class="tab-btn">📊 กราฟ & รายงาน</button>
-            <button id="tabHealth" onclick="switchTab('health')" class="tab-btn">🛡️ สุขภาพระบบ & Log</button>
-            <button id="tabSettings" onclick="switchTab('settings')" class="tab-btn">🔒 PIN & สำรองข้อมูล</button>
-        </nav>
 
         <!-- ==========================================================================
              VIEW 1: SAVINGS LEDGER (บันทึกการออม)
@@ -568,178 +664,111 @@
         </section>
 
         <!-- ==========================================================================
-             VIEW 2: DELIVERY INCOME (รายได้พิเศษส่งอาหาร)
+             VIEW 4: AI MULTI-GOAL SAVINGS PLANNER (v2.9 NEW)
              ========================================================================== -->
-        <section id="viewDelivery" class="grid grid-cols-1 lg-grid-cols-3 gap-6 hidden">
-            <div class="glass-card p-5 border-l-cyan space-y-4">
-                <h2 class="font-bold text-lg text-cyan">🛵 บันทึกรายได้ส่งอาหารประจำวัน</h2>
-                <form id="deliveryForm" onsubmit="handleSaveDelivery(event)" class="space-y-3">
-                    <input type="hidden" id="deliveryId">
+        <section id="viewGoals" class="grid grid-cols-1 lg-grid-cols-3 gap-6 hidden">
+            <div class="glass-card p-5 border-l-gold space-y-4">
+                <h2 class="font-bold text-lg text-gold">🏆 สร้างเป้าหมายการออมใหม่</h2>
+                <div class="alert-box alert-gold">
+                    <strong>ระบบวางแผนเป้าหมาย:</strong> คำนวณความก้าวหน้าและวันบรรลุเป้าหมายตามกำลังการออมจริง โดยไม่หักเงินซ้ำจากยอดเงินสะสมหลัก
+                </div>
+                <form id="goalForm" onsubmit="handleSaveGoal(event)" class="space-y-3">
+                    <input type="hidden" id="goalId">
                     <div>
-                        <label class="text-xs text-muted mb-1" style="display:block;">วันที่ทำงาน</label>
-                        <input type="date" id="deliveryWorkDate" required>
+                        <label class="text-xs text-muted mb-1" style="display:block;">ชื่อเป้าหมายการออม</label>
+                        <input type="text" id="goalTitle" required placeholder="เช่น กองทุนสำรองฉุกเฉิน, ซื้ออุปกรณ์ทำงาน...">
                     </div>
-
                     <div class="grid grid-cols-2 gap-3">
                         <div>
-                            <label class="text-xs text-muted mb-1" style="display:block;">เวลาเริ่มงาน</label>
-                            <input type="time" id="deliveryStartTime" required>
+                            <label class="text-xs text-muted mb-1" style="display:block;">ยอดเงินเป้าหมาย (บาท)</label>
+                            <input type="number" step="0.01" min="1" id="goalTargetAmount" required placeholder="10000.00">
                         </div>
                         <div>
-                            <label class="text-xs text-muted mb-1" style="display:block;">เวลาสิ้นสุดงาน</label>
-                            <input type="time" id="deliveryEndTime" required>
+                            <label class="text-xs text-muted mb-1" style="display:block;">วันที่ต้องการบรรลุ</label>
+                            <input type="date" id="goalDeadline" required>
                         </div>
                     </div>
-
-                    <div class="grid grid-cols-2 gap-3">
-                        <div>
-                            <label class="text-xs text-muted mb-1" style="display:block;">จำนวนงานส่ง (เที่ยว)</label>
-                            <input type="number" min="1" step="1" id="deliveryTrips" required placeholder="0">
-                        </div>
-                        <div>
-                            <label class="text-xs text-muted mb-1" style="display:block;">รายได้รวม (บาท)</label>
-                            <input type="number" step="0.01" min="0.01" id="deliveryGrossIncome" required placeholder="0.00" class="text-cyan font-bold">
-                        </div>
-                    </div>
-
-                    <div class="grid grid-cols-2 gap-3">
-                        <div>
-                            <label class="text-xs text-muted mb-1" style="display:block;">ค่าน้ำมัน (บาท)</label>
-                            <input type="number" step="0.01" min="0" id="deliveryFuelCost" value="0">
-                        </div>
-                        <div>
-                            <label class="text-xs text-muted mb-1" style="display:block;">ค่าใช้จ่ายอื่น (บาท)</label>
-                            <input type="number" step="0.01" min="0" id="deliveryOtherOpsCost" value="0">
-                        </div>
-                    </div>
-
                     <div>
-                        <label class="text-xs text-muted mb-1" style="display:block;">หมายเหตุ</label>
-                        <input type="text" id="deliveryNote" placeholder="เช่น แพลตฟอร์ม, โซนวิ่งงาน...">
+                        <label class="text-xs text-muted mb-1" style="display:block;">ยอดจัดสรรตั้งต้นเพื่อวางแผน (บาท)</label>
+                        <input type="number" step="0.01" min="0" id="goalAllocatedAmount" value="0" placeholder="0.00">
                     </div>
-
-                    <div class="alert-box alert-cyan flex justify-between items-center">
-                        <span>รายได้สุทธิที่จะเพิ่มเข้ายอดสะสม:</span>
-                        <strong id="deliveryNetPreview" class="text-base text-cyan">฿0.00</strong>
-                    </div>
-
                     <div class="flex gap-2">
-                        <button type="submit" id="saveDeliveryBtn" class="btn-cyan btn-md flex-1">บันทึกรายได้ส่งอาหาร</button>
-                        <button type="button" id="cancelDeliveryEditBtn" onclick="resetDeliveryForm()" class="btn-surface btn-md hidden">ยกเลิก</button>
+                        <button type="submit" class="gold-bg-gradient btn-md flex-1">บันทึกเป้าหมาย</button>
+                        <button type="button" id="cancelGoalEditBtn" onclick="resetGoalForm()" class="btn-surface btn-md hidden">ยกเลิก</button>
                     </div>
                 </form>
             </div>
 
             <div class="glass-card p-5 lg-col-span-2 space-y-4">
-                <div class="flex flex-wrap justify-between items-center gap-2">
-                    <h3 class="font-bold text-base">ประวัติการทำงานส่งอาหาร</h3>
-                    <input type="text" id="searchDeliveryInput" onkeyup="renderDeliveryTable()" placeholder="ค้นหาวันที่หรือหมายเหตุ..." style="max-width: 240px;">
+                <div class="flex justify-between items-center">
+                    <h3 class="font-bold text-base">รายการเป้าหมายการออมทั้งหมด & การประเมินโดย AI</h3>
+                    <span id="goalSummaryCount" class="badge badge-gold">0 เป้าหมาย</span>
                 </div>
-
-                <div class="grid grid-cols-3 gap-3 sub-card p-3 text-center">
-                    <div>
-                        <div class="text-xs text-muted">เฉลี่ยรายได้สุทธิ / ชม.</div>
-                        <div id="statDeliveryAvgPerHour" class="text-sm font-bold text-cyan mt-1">฿0.00</div>
-                    </div>
-                    <div>
-                        <div class="text-xs text-muted">เฉลี่ยรายได้สุทธิ / งาน</div>
-                        <div id="statDeliveryAvgPerTrip" class="text-sm font-bold text-emerald mt-1">฿0.00</div>
-                    </div>
-                    <div>
-                        <div class="text-xs text-muted">ชั่วโมงทำงานสะสม</div>
-                        <div id="statDeliveryTotalHours" class="text-sm font-bold text-gold mt-1">0 ชม.</div>
-                    </div>
-                </div>
-
-                <div class="table-wrapper">
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>วันที่/เวลา</th>
-                                <th>จำนวนงาน</th>
-                                <th class="text-right">รายได้รวม</th>
-                                <th class="text-right">ต้นทุนรวม</th>
-                                <th class="text-right">รายได้สุทธิ</th>
-                                <th class="text-center">จัดการ</th>
-                            </tr>
-                        </thead>
-                        <tbody id="deliveryTableBody"></tbody>
-                    </table>
-                </div>
+                <div id="goalsListContainer" class="space-y-3"></div>
             </div>
         </section>
 
         <!-- ==========================================================================
-             VIEW 3: EXPENSE LEDGER (บันทึกรายจ่าย)
+             VIEW 5: AI FINANCIAL CALENDAR (v2.9 NEW)
              ========================================================================== -->
-        <section id="viewExpense" class="grid grid-cols-1 lg-grid-cols-3 gap-6 hidden">
-            <div class="glass-card p-5 border-l-rose space-y-4">
-                <h2 class="font-bold text-lg text-rose">➖ บันทึกรายการรายจ่าย</h2>
-                <div class="alert-box alert-rose">
-                    <strong>ระบบป้องกันเงินสะสมติดลบ:</strong> ระบบตรวจสอบยอดเงินสะสมสุทธิก่อนหักทุกครั้ง และไม่อนุญาตให้บันทึกรายจ่ายเกินยอดเงินคงเหลือ
-                </div>
-                <form id="expenseForm" onsubmit="handleSaveExpense(event)" class="space-y-3">
-                    <input type="hidden" id="expenseId">
+        <section id="viewCalendar" class="space-y-6 hidden">
+            <div class="glass-card p-6 space-y-4">
+                <div class="flex flex-wrap justify-between items-center gap-3">
                     <div>
-                        <label class="text-xs text-muted mb-1" style="display:block;">จำนวนเงินรายจ่าย (บาท)</label>
-                        <input type="number" step="0.01" min="0.01" id="expenseAmount" required placeholder="0.00" class="text-rose font-bold text-lg">
+                        <h2 class="font-bold text-xl">📅 AI Financial Calendar & Reminder</h2>
+                        <p class="text-xs text-muted mt-1">สรุปความเคลื่อนไหวการออม รายได้ส่งอาหาร และรายจ่ายรายวัน พร้อมตั้งเตือนการออมภายในแอป</p>
                     </div>
-
-                    <div class="grid grid-cols-2 gap-3">
-                        <div>
-                            <label class="text-xs text-muted mb-1" style="display:block;">หมวดหมู่รายจ่าย</label>
-                            <select id="expenseCategory">
-                                <option value="ค่าอาหาร & เครื่องดื่ม">ค่าอาหาร & เครื่องดื่ม</option>
-                                <option value="ค่าเดินทาง">ค่าเดินทาง</option>
-                                <option value="ค่าที่พัก & สาธารณูปโภค">ค่าที่พัก & สาธารณูปโภค</option>
-                                <option value="ซื้อของใช้/ช้อปปิ้ง">ซื้อของใช้/ช้อปปิ้ง</option>
-                                <option value="ความบันเทิง">ความบันเทิง</option>
-                                <option value="จำเป็นฉุกเฉิน">จำเป็นฉุกเฉิน</option>
-                                <option value="อื่นๆ">อื่นๆ</option>
-                            </select>
-                        </div>
-                        <div>
-                            <label class="text-xs text-muted mb-1" style="display:block;">วันที่ & เวลา</label>
-                            <input type="datetime-local" id="expenseDatetime" required>
-                        </div>
+                    <div class="flex items-center gap-2">
+                        <button onclick="changeCalendarMonth(-1)" class="btn-surface btn-sm">◀ เดือนก่อน</button>
+                        <span id="calendarMonthLabel" class="font-bold text-sm text-gold px-3">-</span>
+                        <button onclick="changeCalendarMonth(1)" class="btn-surface btn-sm">เดือนถัดไป ▶</button>
                     </div>
-
-                    <div>
-                        <label class="text-xs text-muted mb-1" style="display:block;">หมายเหตุ</label>
-                        <input type="text" id="expenseNote" placeholder="ระบุรายละเอียด...">
-                    </div>
-
-                    <div class="flex gap-2 mt-2">
-                        <button type="submit" id="saveExpenseBtn" class="btn-rose btn-md flex-1">บันทึกหักรายจ่าย</button>
-                        <button type="button" id="cancelExpenseEditBtn" onclick="resetExpenseForm()" class="btn-surface btn-md hidden">ยกเลิก</button>
-                    </div>
-                </form>
-            </div>
-
-            <div class="glass-card p-5 lg-col-span-2 space-y-4">
-                <div class="flex flex-wrap justify-between items-center gap-2">
-                    <h3 class="font-bold text-base">ประวัติรายการรายจ่าย</h3>
-                    <input type="text" id="searchExpenseInput" onkeyup="renderExpenseTable()" placeholder="ค้นหารายจ่าย..." style="max-width: 240px;">
                 </div>
-                <div class="table-wrapper">
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>วัน/เวลา</th>
-                                <th>หมวดหมู่</th>
-                                <th>หมายเหตุ</th>
-                                <th class="text-right">จำนวนเงิน</th>
-                                <th class="text-center">จัดการ</th>
-                            </tr>
-                        </thead>
-                        <tbody id="expenseTableBody"></tbody>
-                    </table>
+
+                <!-- Reminder Bar -->
+                <div class="sub-card p-4 flex flex-wrap justify-between items-center gap-3">
+                    <div class="flex items-center gap-2">
+                        <span class="text-gold font-bold text-sm">⏰ ตั้งเวลาเตือนออมเงินประจำวัน:</span>
+                        <input type="time" id="dailyReminderTime" style="width: auto;">
+                        <button onclick="saveDailyReminderSetting()" class="btn-emerald btn-sm">บันทึกเวลาเตือน</button>
+                    </div>
+                    <div id="reminderStatusText" class="text-xs text-muted">ยังไม่ได้ตั้งเวลาเตือน</div>
                 </div>
+
+                <div class="calendar-grid">
+                    <div class="cal-day-header">อา.</div>
+                    <div class="cal-day-header">จ.</div>
+                    <div class="cal-day-header">อ.</div>
+                    <div class="cal-day-header">พ.</div>
+                    <div class="cal-day-header">พฤ.</div>
+                    <div class="cal-day-header">ศ.</div>
+                    <div class="cal-day-header">ส.</div>
+                </div>
+                <div id="calendarGridDays" class="calendar-grid"></div>
+
+                <div id="calendarDayDetailBox" class="alert-box alert-cyan hidden"></div>
             </div>
         </section>
 
         <!-- ==========================================================================
-             VIEW 4: FEATURE 02 - AI SMART MONEY ALLOCATION (v2.7 NEW)
+             VIEW 6: AI SMART EXPENSE DETECTOR (v2.9 NEW)
+             ========================================================================== -->
+        <section id="viewDetector" class="space-y-6 hidden">
+            <div class="glass-card p-6 border-l-rose space-y-4">
+                <div class="flex flex-wrap justify-between items-center gap-3">
+                    <div>
+                        <h2 class="font-bold text-xl">🕵️ AI Smart Expense Detector</h2>
+                        <p class="text-xs text-muted mt-1">วิเคราะห์ความผิดปกติของรายจ่าย ตรวจสอบรายการที่อาจซ้ำซ้อน และแนะนำแนวทางประหยัดพร้อมเหตุผลประกอบ</p>
+                    </div>
+                    <button onclick="renderSmartExpenseDetector()" class="btn-surface btn-sm">🔍 วิเคราะห์รายจ่ายใหม่</button>
+                </div>
+
+                <div id="expenseDetectorContainer" class="space-y-4"></div>
+            </div>
+        </section>
+
+        <!-- ==========================================================================
+             VIEW 7: FEATURE 02 - AI SMART MONEY ALLOCATION
              ========================================================================== -->
         <section id="viewAllocation" class="space-y-6 hidden">
             <div class="glass-card p-6 border-l-gold space-y-4">
@@ -827,7 +856,7 @@
         </section>
 
         <!-- ==========================================================================
-             VIEW 7: FEATURE 01 - AI SYSTEM HEALTH GUARD & ERROR LOG (v2.7 NEW)
+             VIEW 10: FEATURE 01 - AI SYSTEM HEALTH GUARD & ERROR LOG
              ========================================================================== -->
         <section id="viewHealth" class="space-y-6 hidden">
             <div class="glass-card p-6 space-y-5">
@@ -846,7 +875,7 @@
                 <div class="grid grid-cols-2 md-grid-cols-4 gap-4">
                     <div class="sub-card p-4">
                         <div class="text-xs text-muted">สถานะฐานข้อมูล IndexedDB</div>
-                        <div id="healthDbStatus" class="text-sm font-bold text-emerald mt-1">● ปกติ (DB v5)</div>
+                        <div id="healthDbStatus" class="text-sm font-bold text-emerald mt-1">● ปกติ (DB v6)</div>
                     </div>
                     <div class="sub-card p-4">
                         <div class="text-xs text-muted">ระบบบัญชี Ledger & Satang</div>
@@ -974,7 +1003,7 @@
     </div>
 
     <!-- ==========================================================================
-         CORE JAVASCRIPT APPLICATION MODULES (VERSION 2.7)
+         CORE JAVASCRIPT APPLICATION MODULES (VERSION 2.9)
          ========================================================================== -->
     <script>
         'use strict';
@@ -982,17 +1011,19 @@
         /**
          * MODULE 0: GLOBAL CONFIGURATION & STATE
          */
-        const APP_VERSION = '2.7';
+        const APP_VERSION = '2.9';
         const DB_NAME = 'AISavingsDB_v2_1'; // Keep exact DB name to guarantee zero-loss migration
-        const DB_VERSION = 5; // Upgraded from v4 (v2.5) to v5 (v2.7)
+        const DB_VERSION = 6; // Upgraded from v5 (v2.7) to v6 (v2.9)
         const IDLE_LOCK_MS = 5 * 60 * 1000; // 5 minutes idle auto-lock
 
         let db = null;
         let idleTimer = null;
+        let calendarViewDate = new Date();
 
         const state = {
             transactions: [],
             deliveryLogs: [],
+            goals: [],
             missionState: null,
             systemLogs: [],
             settings: {
@@ -1000,6 +1031,8 @@
                 pinSalt: null,
                 recoveryKey: null,
                 isPinSet: false,
+                dailyReminderTime: '',
+                lastReminderDate: '',
                 version: APP_VERSION
             },
             currentPinInput: '',
@@ -1009,7 +1042,7 @@
         };
 
         /* ==========================================================================
-           MODULE 1: GLOBAL ERROR CATCHER & SYSTEM HEALTH GUARD (FEATURE 01)
+           MODULE 1: GLOBAL ERROR CATCHER & SYSTEM HEALTH GUARD
            ========================================================================== */
         window.onerror = function (message, source, lineno, colno, error) {
             recordSystemLog('ERROR', 'RuntimeJS', `${message} (Line: ${lineno})`);
@@ -1074,7 +1107,7 @@
 
             // Update Dashboard Health Indicators
             document.getElementById('healthDbStatus').innerHTML = dbOk
-                ? '<span class="text-emerald">● ปกติ (DB v5 Connected)</span>'
+                ? '<span class="text-emerald">● ปกติ (DB v6 Connected)</span>'
                 : '<span class="text-rose">● พบปัญหาการเชื่อมต่อ</span>';
 
             document.getElementById('healthLedgerStatus').innerHTML = (ledger.netSatangs >= 0 && !Number.isNaN(ledger.netSatangs))
@@ -1174,6 +1207,12 @@
                         }
                     }
 
+                    if (oldVer < 6) {
+                        if (!dbUpgrade.objectStoreNames.contains('goals')) {
+                            dbUpgrade.createObjectStore('goals', { keyPath: 'id' });
+                        }
+                    }
+
                     // Mark migration version upgrade safely inside transaction
                     const settingsStore = event.target.transaction.objectStore('settings');
                     settingsStore.put({ key: 'version', value: APP_VERSION });
@@ -1230,618 +1269,15 @@
                 });
             });
 
-            const currentMonthKey = new Date().toISOString().slice(0, 7);
-            state.missionState = await dbTransaction('missions', 'readonly', (store) => {
-                return new Promise((res) => {
-                    const req = store.get(currentMonthKey);
-                    req.onsuccess = () => res(req.result || null);
-                });
-            });
-
-            if (db.objectStoreNames.contains('systemLogs')) {
-                state.systemLogs = await dbTransaction('systemLogs', 'readonly', (store) => {
+            if (db.objectStoreNames.contains('goals')) {
+                state.goals = await dbTransaction('goals', 'readonly', (store) => {
                     return new Promise((res) => {
                         const req = store.getAll();
-                        req.onsuccess = () => {
-                            const logs = req.result || [];
-                            logs.sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp));
-                            res(logs);
-                        };
+                        req.onsuccess = () => res(req.result || []);
                     });
                 });
             }
 
-            const settingsList = await dbTransaction('settings', 'readonly', (store) => {
-                return new Promise((res) => {
-                    const req = store.getAll();
-                    req.onsuccess = () => res(req.result || []);
-                });
-            });
-
-            settingsList.forEach(item => {
-                state.settings[item.key] = item.value;
-            });
-
-            if (state.settings.lastMigratedFrom !== undefined && state.settings.lastMigratedFrom < 5) {
-                await recordSystemLog('MIGRATION', 'VersionGuardian', `อัปเกรดฐานข้อมูลจาก Schema v${state.settings.lastMigratedFrom} สู่ v5 (App v2.7) สำเร็จ ข้อมูลเดิมครบถ้วน`);
-                await dbTransaction('settings', 'readwrite', (store) => store.delete('lastMigratedFrom'));
-                delete state.settings.lastMigratedFrom;
-            }
-        }
-
-        /* ==========================================================================
-           MODULE 3: FIXED-POINT SATANG LEDGER ENGINE
-           ========================================================================== */
-        function calculateLedgerTotals() {
-            let depositSatangs = 0;
-            let expenseSatangs = 0;
-            let deliveryNetSatangs = 0;
-            let deliveryGrossSatangs = 0;
-            let deliveryCostSatangs = 0;
-
-            state.transactions.forEach(t => {
-                const satangs = typeof t.satangs === 'number' ? t.satangs : Math.round((t.amount || 0) * 100);
-                if (t.type === 'deposit') {
-                    depositSatangs += satangs;
-                } else if (t.type === 'expense' || t.type === 'withdraw') {
-                    expenseSatangs += satangs;
-                }
-            });
-
-            state.deliveryLogs.forEach(d => {
-                const netSat = typeof d.netSatangs === 'number' ? d.netSatangs : Math.round((d.netIncome || 0) * 100);
-                const grossSat = Math.round((d.grossIncome || 0) * 100);
-                const costSat = Math.round(((d.fuelCost || 0) + (d.otherOpsCost || 0)) * 100);
-
-                deliveryNetSatangs += netSat;
-                deliveryGrossSatangs += grossSat;
-                deliveryCostSatangs += costSat;
-            });
-
-            const netSatangs = depositSatangs + deliveryNetSatangs - expenseSatangs;
-
-            return {
-                depositSatangs,
-                expenseSatangs,
-                deliveryNetSatangs,
-                netSatangs,
-                totalSavings: depositSatangs / 100,
-                totalExpenses: expenseSatangs / 100,
-                totalDeliveryNet: deliveryNetSatangs / 100,
-                totalDeliveryGross: deliveryGrossSatangs / 100,
-                totalDeliveryCost: deliveryCostSatangs / 100,
-                netBalance: netSatangs / 100
-            };
-        }
-
-        /* ==========================================================================
-           MODULE 4: WEB CRYPTO API PIN SECURITY & AUTO-LOCK
-           ========================================================================== */
-        async function hashPin(pin, saltHex) {
-            const encoder = new TextEncoder();
-            const salt = saltHex ? hexToBuf(saltHex) : window.crypto.getRandomValues(new Uint8Array(16));
-            const pinBuf = encoder.encode(pin);
-
-            const keyMaterial = await window.crypto.subtle.importKey(
-                'raw', pinBuf, { name: 'PBKDF2' }, false, ['deriveBits']
-            );
-
-            const derivedBits = await window.crypto.subtle.deriveBits(
-                { name: 'PBKDF2', salt: salt, iterations: 100000, hash: 'SHA-256' },
-                keyMaterial, 256
-            );
-
-            return { hashHex: bufToHex(derivedBits), saltHex: bufToHex(salt) };
-        }
-
-        function generateRandomRecoveryKey() {
-            const bytes = window.crypto.getRandomValues(new Uint8Array(8));
-            return bufToHex(bytes).toUpperCase();
-        }
-
-        function bufToHex(buf) {
-            return Array.from(new Uint8Array(buf)).map(b => b.toString(16).padStart(2, '0')).join('');
-        }
-
-        function hexToBuf(hex) {
-            return new Uint8Array(hex.match(/.{1,2}/g).map(byte => parseInt(byte, 16)));
-        }
-
-        async function handleSetupPin() {
-            if (state.settings.isPinSet) {
-                showToast('การตั้งค่า PIN ทำได้เพียงครั้งเดียวเพื่อความปลอดภัย', 'error');
-                return;
-            }
-
-            const pin = document.getElementById('setupPinInput').value.trim();
-            if (!/^\d{4}$/.test(pin)) {
-                showToast('กรุณากรอก PIN เป็นตัวเลข 4 หลักเท่านั้น', 'error');
-                return;
-            }
-
-            const { hashHex, saltHex } = await hashPin(pin);
-            const recoveryKey = generateRandomRecoveryKey();
-
-            await dbTransaction('settings', 'readwrite', (store) => {
-                store.put({ key: 'pinHash', value: hashHex });
-                store.put({ key: 'pinSalt', value: saltHex });
-                store.put({ key: 'recoveryKey', value: recoveryKey });
-                store.put({ key: 'isPinSet', value: true });
-            });
-
-            state.settings.pinHash = hashHex;
-            state.settings.pinSalt = saltHex;
-            state.settings.recoveryKey = recoveryKey;
-            state.settings.isPinSet = true;
-
-            await recordSystemLog('INFO', 'SecurityPIN', 'เปิดใช้งานระบบป้องกัน PIN 4 หลักสำเร็จ');
-            showToast('ตั้งค่า PIN เรียบร้อย เปิดใช้งานระบบล็อกอัตโนมัติแล้ว', 'success');
-            document.getElementById('setupPinInput').value = '';
-            checkSecurityLockState();
-            renderSettingsView();
-        }
-
-        function checkSecurityLockState() {
-            const lockBtn = document.getElementById('lockAppBtn');
-            if (state.settings.isPinSet) {
-                lockBtn.classList.remove('hidden');
-                showPinLockModal();
-                resetIdleTimer();
-            } else {
-                lockBtn.classList.add('hidden');
-                hidePinLockModal();
-            }
-        }
-
-        function resetIdleTimer() {
-            if (idleTimer) clearTimeout(idleTimer);
-            if (state.settings.isPinSet) {
-                idleTimer = setTimeout(() => {
-                    if (document.getElementById('pinLockModal').classList.contains('hidden')) {
-                        showPinLockModal();
-                        showToast('ล็อกหน้าจออัตโนมัติเนื่องจากไม่มีการใช้งาน', 'info');
-                    }
-                }, IDLE_LOCK_MS);
-            }
-        }
-
-        ['click', 'keydown', 'touchstart'].forEach(evt => {
-            document.addEventListener(evt, resetIdleTimer, { passive: true });
-        });
-
-        function showPinLockModal() {
-            state.currentPinInput = '';
-            updatePinDots();
-            document.getElementById('pinLockModal').classList.remove('hidden');
-        }
-
-        function hidePinLockModal() {
-            document.getElementById('pinLockModal').classList.add('hidden');
-            state.currentPinInput = '';
-        }
-
-        document.getElementById('lockAppBtn').addEventListener('click', () => {
-            if (state.settings.isPinSet) {
-                showPinLockModal();
-                showToast('ล็อกระบบเรียบร้อยแล้ว', 'info');
-            }
-        });
-
-        async function pressPinKey(num) {
-            if (Date.now() < state.lockoutUntil) {
-                const waitSec = Math.ceil((state.lockoutUntil - Date.now()) / 1000);
-                document.getElementById('pinErrorMsg').innerText = `ระบบถูกล็อกชั่วคราว ลองใหม่ใน ${waitSec} วินาที`;
-                return;
-            }
-            if (state.currentPinInput.length < 4) {
-                state.currentPinInput += num;
-                updatePinDots();
-                if (state.currentPinInput.length === 4) {
-                    await verifyPin();
-                }
-            }
-        }
-
-        function deletePinDigit() {
-            state.currentPinInput = state.currentPinInput.slice(0, -1);
-            updatePinDots();
-        }
-
-        function clearPin() {
-            state.currentPinInput = '';
-            updatePinDots();
-            document.getElementById('pinErrorMsg').innerText = '';
-        }
-
-        function updatePinDots() {
-            const dots = document.querySelectorAll('.pin-dot');
-            dots.forEach((dot, idx) => {
-                if (idx < state.currentPinInput.length) dot.classList.add('filled');
-                else dot.classList.remove('filled');
-            });
-        }
-
-        async function verifyPin() {
-            const { hashHex } = await hashPin(state.currentPinInput, state.settings.pinSalt);
-            if (hashHex === state.settings.pinHash) {
-                state.pinAttempts = 0;
-                document.getElementById('pinErrorMsg').innerText = '';
-                hidePinLockModal();
-                showToast('ปลดล็อกเข้าสู่ระบบสำเร็จ', 'success');
-            } else {
-                state.pinAttempts++;
-                state.currentPinInput = '';
-                updatePinDots();
-                if (state.pinAttempts >= 3) {
-                    state.lockoutUntil = Date.now() + 30000;
-                    await recordSystemLog('WARN', 'SecurityPIN', 'กรอกรหัส PIN ผิดครบ 3 ครั้ง ระบบหน่วงเวลา 30 วินาที');
-                    document.getElementById('pinErrorMsg').innerText = 'กรอก PIN ผิด 3 ครั้ง ระบบหน่วงเวลา 30 วินาที';
-                } else {
-                    document.getElementById('pinErrorMsg').innerText = `รหัส PIN ไม่ถูกต้อง (เหลือโอกาส ${3 - state.pinAttempts} ครั้ง)`;
-                }
-            }
-        }
-
-        function promptPinRecovery() {
-            const inputKey = prompt('กรอกรหัสกู้คืนความปลอดภัย (Offline Security Recovery Key):');
-            if (!inputKey) return;
-            if (inputKey.trim().toUpperCase() === state.settings.recoveryKey) {
-                state.pinAttempts = 0;
-                state.lockoutUntil = 0;
-                hidePinLockModal();
-                recordSystemLog('INFO', 'SecurityPIN', 'ปลดล็อกระบบด้วย Offline Recovery Key');
-                showToast('ยืนยันรหัสกู้คืนสำเร็จ! เข้าสู่ระบบได้แล้ว', 'success');
-            } else {
-                showToast('รหัสกู้คืนความปลอดภัยไม่ถูกต้อง', 'error');
-            }
-        }
-
-        /* ==========================================================================
-           MODULE 5: TRANSACTIONS (SAVINGS, DELIVERY INCOME, EXPENSES)
-           ========================================================================== */
-        function setDefaultDatetimes() {
-            const now = new Date();
-            now.setMinutes(now.getMinutes() - now.getTimezoneOffset());
-            const iso = now.toISOString().slice(0, 16);
-            if (document.getElementById('savingsDatetime')) document.getElementById('savingsDatetime').value = iso;
-            if (document.getElementById('expenseDatetime')) document.getElementById('expenseDatetime').value = iso;
-            if (document.getElementById('deliveryWorkDate')) document.getElementById('deliveryWorkDate').value = now.toISOString().slice(0, 10);
-        }
-
-        function initDeliveryFormListeners() {
-            const grossEl = document.getElementById('deliveryGrossIncome');
-            const fuelEl = document.getElementById('deliveryFuelCost');
-            const opsEl = document.getElementById('deliveryOtherOpsCost');
-
-            const updatePreview = () => {
-                const gross = parseFloat(grossEl.value) || 0;
-                const fuel = parseFloat(fuelEl.value) || 0;
-                const ops = parseFloat(opsEl.value) || 0;
-                const net = Math.max(0, gross - fuel - ops);
-                document.getElementById('deliveryNetPreview').innerText = '฿' + net.toLocaleString(undefined, { minimumFractionDigits: 2 });
-            };
-
-            [grossEl, fuelEl, opsEl].forEach(el => {
-                if (el) el.addEventListener('input', updatePreview);
-            });
-        }
-
-        // --- A. SAVINGS ---
-        async function handleSaveSavings(e) {
-            e.preventDefault();
-            if (state.isSubmitting) return;
-            state.isSubmitting = true;
-
-            try {
-                const id = document.getElementById('savingsId').value || 'save_' + Date.now();
-                const amount = parseFloat(document.getElementById('savingsAmount').value);
-                const category = document.getElementById('savingsCategory').value;
-                const datetime = document.getElementById('savingsDatetime').value;
-                const note = document.getElementById('savingsNote').value.trim();
-
-                if (!Number.isFinite(amount) || amount <= 0) {
-                    showToast('กรุณากรอกจำนวนเงินออมให้ถูกต้อง', 'error');
-                    return;
-                }
-
-                const satangs = Math.round(amount * 100);
-                const txObj = { id, type: 'deposit', amount: satangs / 100, satangs, category, date: datetime, note };
-
-                await dbTransaction('transactions', 'readwrite', (store) => store.put(txObj));
-
-                const idx = state.transactions.findIndex(t => t.id === id);
-                if (idx >= 0) state.transactions[idx] = txObj;
-                else state.transactions.unshift(txObj);
-
-                state.transactions.sort((a, b) => new Date(b.date) - new Date(a.date));
-                showToast('บันทึกเงินออมสำเร็จ (+฿' + (satangs / 100).toLocaleString(undefined, { minimumFractionDigits: 2 }) + ')', 'success');
-                resetSavingsForm();
-                evaluateAIMonthlyMission(false);
-                renderAll();
-            } finally {
-                state.isSubmitting = false;
-            }
-        }
-
-        function resetSavingsForm() {
-            document.getElementById('savingsId').value = '';
-            document.getElementById('savingsAmount').value = '';
-            document.getElementById('savingsNote').value = '';
-            document.getElementById('cancelSavingsEditBtn').classList.add('hidden');
-            setDefaultDatetimes();
-        }
-
-        // --- B. DELIVERY INCOME ---
-        async function handleSaveDelivery(e) {
-            e.preventDefault();
-            if (state.isSubmitting) return;
-            state.isSubmitting = true;
-
-            try {
-                const id = document.getElementById('deliveryId').value || 'del_' + Date.now();
-                const workDate = document.getElementById('deliveryWorkDate').value;
-                const startTime = document.getElementById('deliveryStartTime').value;
-                const endTime = document.getElementById('deliveryEndTime').value;
-                const trips = parseInt(document.getElementById('deliveryTrips').value, 10);
-                const grossIncome = parseFloat(document.getElementById('deliveryGrossIncome').value) || 0;
-                const fuelCost = parseFloat(document.getElementById('deliveryFuelCost').value) || 0;
-                const otherOpsCost = parseFloat(document.getElementById('deliveryOtherOpsCost').value) || 0;
-                const note = document.getElementById('deliveryNote').value.trim();
-
-                if (!workDate || !startTime || !endTime || isNaN(trips) || trips <= 0 || grossIncome <= 0) {
-                    showToast('กรุณากรอกข้อมูลการทำงานส่งอาหารให้ครบถ้วน', 'error');
-                    return;
-                }
-
-                const grossSat = Math.round(grossIncome * 100);
-                const fuelSat = Math.round(fuelCost * 100);
-                const opsSat = Math.round(otherOpsCost * 100);
-                const netSatangs = Math.max(0, grossSat - fuelSat - opsSat);
-                const netIncome = netSatangs / 100;
-
-                const startDT = new Date(`${workDate}T${startTime}`);
-                let endDT = new Date(`${workDate}T${endTime}`);
-                if (endDT < startDT) endDT.setDate(endDT.getDate() + 1);
-                const workHours = Math.max(0.1, (endDT - startDT) / (1000 * 60 * 60));
-
-                const delObj = {
-                    id, workDate, startTime, endTime, workHours, trips,
-                    grossIncome: grossSat / 100,
-                    fuelCost: fuelSat / 100,
-                    otherOpsCost: opsSat / 100,
-                    netIncome, netSatangs, note,
-                    createdAt: new Date().toISOString()
-                };
-
-                await dbTransaction('deliveryLogs', 'readwrite', (store) => store.put(delObj));
-
-                const idx = state.deliveryLogs.findIndex(d => d.id === id);
-                if (idx >= 0) state.deliveryLogs[idx] = delObj;
-                else state.deliveryLogs.unshift(delObj);
-
-                state.deliveryLogs.sort((a, b) => new Date(b.workDate) - new Date(a.workDate));
-                showToast('บันทึกรายได้ส่งอาหารสำเร็จ (+สุทธิ ฿' + netIncome.toLocaleString(undefined, { minimumFractionDigits: 2 }) + ')', 'success');
-                resetDeliveryForm();
-                renderAll();
-            } finally {
-                state.isSubmitting = false;
-            }
-        }
-
-        function editDelivery(id) {
-            const d = state.deliveryLogs.find(item => item.id === id);
-            if (!d) return;
-            switchTab('delivery');
-            document.getElementById('deliveryId').value = d.id;
-            document.getElementById('deliveryWorkDate').value = d.workDate;
-            document.getElementById('deliveryStartTime').value = d.startTime;
-            document.getElementById('deliveryEndTime').value = d.endTime;
-            document.getElementById('deliveryTrips').value = d.trips;
-            document.getElementById('deliveryGrossIncome').value = d.grossIncome;
-            document.getElementById('deliveryFuelCost').value = d.fuelCost;
-            document.getElementById('deliveryOtherOpsCost').value = d.otherOpsCost;
-            document.getElementById('deliveryNote').value = d.note || '';
-            document.getElementById('deliveryNetPreview').innerText = '฿' + d.netIncome.toLocaleString(undefined, { minimumFractionDigits: 2 });
-            document.getElementById('cancelDeliveryEditBtn').classList.remove('hidden');
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        }
-
-        function resetDeliveryForm() {
-            document.getElementById('deliveryId').value = '';
-            document.getElementById('deliveryTrips').value = '';
-            document.getElementById('deliveryGrossIncome').value = '';
-            document.getElementById('deliveryFuelCost').value = '0';
-            document.getElementById('deliveryOtherOpsCost').value = '0';
-            document.getElementById('deliveryNote').value = '';
-            document.getElementById('deliveryNetPreview').innerText = '฿0.00';
-            document.getElementById('cancelDeliveryEditBtn').classList.add('hidden');
-            setDefaultDatetimes();
-        }
-
-        async function deleteDelivery(id) {
-            const del = state.deliveryLogs.find(d => d.id === id);
-            if (!del) return;
-
-            const currentNetSatangs = calculateLedgerTotals().netSatangs;
-            const delSatangs = typeof del.netSatangs === 'number' ? del.netSatangs : Math.round(del.netIncome * 100);
-
-            if (currentNetSatangs - delSatangs < 0) {
-                showToast('⚠️ ไม่อนุญาตให้ลบรายการส่งอาหารนี้ เนื่องจากจะทำให้ยอดเงินสะสมติดลบ!', 'error');
-                return;
-            }
-
-            if (!confirm('ยืนยันการลบรายการส่งอาหารนี้ใช่หรือไม่?')) return;
-
-            await dbTransaction('deliveryLogs', 'readwrite', (store) => store.delete(id));
-            state.deliveryLogs = state.deliveryLogs.filter(d => d.id !== id);
-            showToast('ลบรายการส่งอาหารเรียบร้อยแล้ว', 'info');
-            renderAll();
-        }
-
-        // --- C. EXPENSES ---
-        async function handleSaveExpense(e) {
-            e.preventDefault();
-            if (state.isSubmitting) return;
-            state.isSubmitting = true;
-
-            try {
-                const id = document.getElementById('expenseId').value || 'exp_' + Date.now();
-                const amount = parseFloat(document.getElementById('expenseAmount').value);
-                const category = document.getElementById('expenseCategory').value;
-                const datetime = document.getElementById('expenseDatetime').value;
-                const note = document.getElementById('expenseNote').value.trim();
-
-                if (!Number.isFinite(amount) || amount <= 0) {
-                    showToast('กรุณากรอกจำนวนเงินรายจ่ายให้ถูกต้อง', 'error');
-                    return;
-                }
-
-                const expenseSatangs = Math.round(amount * 100);
-                let currentNetSatangs = calculateLedgerTotals().netSatangs;
-
-                const existingIdx = state.transactions.findIndex(t => t.id === id);
-                if (existingIdx >= 0) {
-                    const origSatangs = state.transactions[existingIdx].satangs || Math.round(state.transactions[existingIdx].amount * 100);
-                    currentNetSatangs += origSatangs;
-                }
-
-                if (expenseSatangs > currentNetSatangs) {
-                    const availableNet = (currentNetSatangs / 100).toLocaleString(undefined, { minimumFractionDigits: 2 });
-                    showToast(`⚠️ ไม่สามารถบันทึกรายจ่ายได้! ยอดสะสมคงเหลือมีเพียง ฿${availableNet}`, 'error');
-                    return;
-                }
-
-                const txObj = { id, type: 'expense', amount: expenseSatangs / 100, satangs: expenseSatangs, category, date: datetime, note };
-                await dbTransaction('transactions', 'readwrite', (store) => store.put(txObj));
-
-                if (existingIdx >= 0) state.transactions[existingIdx] = txObj;
-                else state.transactions.unshift(txObj);
-
-                state.transactions.sort((a, b) => new Date(b.date) - new Date(a.date));
-                showToast('บันทึกหักรายจ่ายสำเร็จ (-฿' + (expenseSatangs / 100).toLocaleString(undefined, { minimumFractionDigits: 2 }) + ')', 'info');
-                resetExpenseForm();
-                renderAll();
-            } finally {
-                state.isSubmitting = false;
-            }
-        }
-
-        function resetExpenseForm() {
-            document.getElementById('expenseId').value = '';
-            document.getElementById('expenseAmount').value = '';
-            document.getElementById('expenseNote').value = '';
-            document.getElementById('cancelExpenseEditBtn').classList.add('hidden');
-            setDefaultDatetimes();
-        }
-
-        async function deleteTransaction(id) {
-            const tx = state.transactions.find(t => t.id === id);
-            if (!tx) return;
-
-            if (tx.type === 'deposit') {
-                const currentNetSatangs = calculateLedgerTotals().netSatangs;
-                const txSatangs = tx.satangs || Math.round(tx.amount * 100);
-                if (currentNetSatangs - txSatangs < 0) {
-                    showToast('⚠️ ไม่อนุญาตให้ลบรายการออมนี้ เนื่องจากจะทำให้ยอดเงินสะสมติดลบ!', 'error');
-                    return;
-                }
-            }
-
-            if (!confirm('ยืนยันการลบรายการนี้ใช่หรือไม่?')) return;
-
-            await dbTransaction('transactions', 'readwrite', (store) => store.delete(id));
-            state.transactions = state.transactions.filter(t => t.id !== id);
-            showToast('ลบรายการสำเร็จ', 'info');
-            evaluateAIMonthlyMission(false);
-            renderAll();
-        }
-
-        function editTransaction(id) {
-            const tx = state.transactions.find(t => t.id === id);
-            if (!tx) return;
-
-            if (tx.type === 'deposit') {
-                switchTab('savings');
-                document.getElementById('savingsId').value = tx.id;
-                document.getElementById('savingsAmount').value = tx.amount;
-                document.getElementById('savingsCategory').value = tx.category;
-                document.getElementById('savingsDatetime').value = tx.date;
-                document.getElementById('savingsNote').value = tx.note || '';
-                document.getElementById('cancelSavingsEditBtn').classList.remove('hidden');
-            } else {
-                switchTab('expense');
-                document.getElementById('expenseId').value = tx.id;
-                document.getElementById('expenseAmount').value = tx.amount;
-                document.getElementById('expenseCategory').value = tx.category;
-                document.getElementById('expenseDatetime').value = tx.date;
-                document.getElementById('expenseNote').value = tx.note || '';
-                document.getElementById('cancelExpenseEditBtn').classList.remove('hidden');
-            }
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        }
-
-        /* ==========================================================================
-           MODULE 6: FEATURE 02 - AI SMART MONEY ALLOCATION (v2.7 NEW)
-           ========================================================================== */
-        function renderSmartAllocation() {
-            const container = document.getElementById('allocationContent');
-            if (!container) return;
-
-            const ledger = calculateLedgerTotals();
-            const totalInflow = ledger.totalSavings + ledger.totalDeliveryNet;
-
-            if (totalInflow <= 0) {
-                container.innerHTML = `
-                    <div class="alert-box alert-gold">
-                        ยังไม่มีข้อมูลรายรับหรือเงินออมเพียงพอสำหรับการคำนวณแผนจัดสรรเงิน กรุณาบันทึกรายการออมหรือรายได้ส่งอาหารก่อน
-                    </div>
-                `;
-                return;
-            }
-
-            // Proportional Allocation Based on Actual Expense Ratio & Net Balance
-            const expenseRatio = Math.min(0.6, ledger.totalExpenses / totalInflow);
-            const saveRatio = Math.max(0.25, 0.50 - (expenseRatio * 0.3));
-            const emergencyRatio = 0.20;
-            const goalRatio = Math.max(0.05, 1 - saveRatio - emergencyRatio - expenseRatio);
-
-            const allocSavings = ledger.netBalance * (saveRatio / (saveRatio + emergencyRatio + goalRatio));
-            const allocEmergency = ledger.netBalance * (emergencyRatio / (saveRatio + emergencyRatio + goalRatio));
-            const allocGoals = Math.max(0, ledger.netBalance - allocSavings - allocEmergency);
-
-            const recommendedDailySpendLimit = Math.max(0, (ledger.netBalance * 0.25) / 30);
-
-            container.innerHTML = `
-                <div class="grid grid-cols-1 md-grid-cols-3 gap-4">
-                    <div class="sub-card p-4 border-l-emerald">
-                        <div class="text-xs text-muted">1. เงินออมหลักระยะยาว (แนะนำ ${Math.round((allocSavings / Math.max(1, ledger.netBalance)) * 100)}%)</div>
-                        <div class="text-xl font-bold text-emerald mt-1">฿${allocSavings.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</div>
-                        <div class="text-xs text-muted mt-1">คำนวณจากยอดเงินสะสมสุทธิจริง ฿${ledger.netBalance.toLocaleString()}</div>
-                    </div>
-
-                    <div class="sub-card p-4 border-l-cyan">
-                        <div class="text-xs text-muted">2. กองทุนสำรองฉุกเฉิน (แนะนำ ${Math.round((allocEmergency / Math.max(1, ledger.netBalance)) * 100)}%)</div>
-                        <div class="text-xl font-bold text-cyan mt-1">฿${allocEmergency.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</div>
-                        <div class="text-xs text-muted mt-1">สำหรับซ่อมบำรุงรถส่งอาหารและเหตุฉุกเฉิน</div>
-                    </div>
-
-                    <div class="sub-card p-4 border-l-gold">
-                        <div class="text-xs text-muted">3. เป้าหมายระยะสั้น / วงเงินหมุนเวียน</div>
-                        <div class="text-xl font-bold text-gold mt-1">฿${allocGoals.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</div>
-                        <div class="text-xs text-muted mt-1">วงเงินใช้จ่ายเฉลี่ยที่แนะนำ: ฿${recommendedDailySpendLimit.toFixed(2)} / วัน</div>
-                    </div>
-                </div>
-
-                <div class="alert-box alert-emerald">
-                    <strong>ที่มาของการคำนวณ AI:</strong> ระบบวิเคราะห์จากสัดส่วนรายจ่ายจริงต่อรายรับรวม (${Math.round(expenseRatio * 100)}%) และยอดเงินคงเหลือจริงในบัญชีกลาง ฿${ledger.netBalance.toLocaleString(undefined, { minimumFractionDigits: 2 })} โดยตัวเลขจัดสรรเป็น<strong>ข้อเสนอแนะเชิงวางแผน</strong> ไม่มีการหักหรือแยกยอดออกจากบัญชีหลักอัตโนมัติ
-                </div>
-            `;
-        }
-
-        /* ==========================================================================
-           MODULE 7: AI MONTHLY SAVINGS MISSION & CASHFLOW INTELLIGENCE
-           ========================================================================== */
-        async function evaluateAIMonthlyMission(forceRecalculate = false) {
             const currentMonthKey = new Date().toISOString().slice(0, 7);
             const currentMonthDeposits = state.transactions.filter(t => t.type === 'deposit' && t.date.startsWith(currentMonthKey));
             const currentSaved = currentMonthDeposits.reduce((s, t) => s + (t.satangs || Math.round(t.amount * 100)), 0) / 100;
@@ -1935,25 +1371,28 @@
                 const totalTrips = state.deliveryLogs.reduce((s, d) => s + (d.trips || 0), 0);
                 const avgHr = totalHours > 0 ? (ledger.totalDeliveryNet / totalHours).toFixed(2) : '0.00';
                 deliveryText = `<div class="text-xs text-cyan mt-1">🛵 <strong>สรุปงานส่งอาหาร:</strong> วิ่งงานรวม ${totalTrips} เที่ยว (${totalHours.toFixed(1)} ชม.) รายได้สุทธิเฉลี่ย ฿${avgHr}/ชม. (ต้นทุนรวม ฿${ledger.totalDeliveryCost.toLocaleString()})</div>`;
-            }
+            settingsList.forEach(item => {
+                state.settings[item.key] = item.value;
+            });
 
-            container.innerHTML = `
-                <div>อัตราคงเหลือเงินสะสมจริง (Cash Retention): <strong class="${retentionRate >= 35 ? 'text-emerald' : 'text-gold'}">${retentionRate}%</strong></div>
-                <div>ยอดเงินสะสมสุทธิ: <strong>฿${ledger.netBalance.toLocaleString(undefined, { minimumFractionDigits: 2 })}</strong> (ออม ฿${ledger.totalSavings.toLocaleString()} + ส่งอาหารสุทธิ ฿${ledger.totalDeliveryNet.toLocaleString()} − รายจ่าย ฿${ledger.totalExpenses.toLocaleString()})</div>
-                ${anomalyText}
-                ${deliveryText}
-            `;
-            document.getElementById('aiHealthScore').innerText = `AI Score: ${score}/100`;
+            if (state.settings.lastMigratedFrom !== undefined && state.settings.lastMigratedFrom < 6) {
+                await recordSystemLog('MIGRATION', 'VersionGuardian', `อัปเกรดฐานข้อมูลจาก Schema v${state.settings.lastMigratedFrom} สู่ v6 (App v2.9) สำเร็จ ข้อมูลเดิมครบถ้วน`);
+                await dbTransaction('settings', 'readwrite', (store) => store.delete('lastMigratedFrom'));
+                delete state.settings.lastMigratedFrom;
+            }
         }
 
         /* ==========================================================================
-           MODULE 8: RENDERING TABLES & CHARTS
+           MODULE 3: FIXED-POINT SATANG LEDGER ENGINE
            ========================================================================== */
         function renderAll() {
             renderStats();
             renderSavingsTable();
             renderDeliveryTable();
             renderExpenseTable();
+            renderGoalsList();
+            renderFinancialCalendar();
+            renderSmartExpenseDetector();
             renderSmartAllocation();
             renderSettingsView();
             runAIFinancialHealthMonitor();
@@ -1961,415 +1400,374 @@
             renderAnalyticsCharts();
         }
 
-        function renderStats() {
-            const ledger = calculateLedgerTotals();
-            const deposits = state.transactions.filter(t => t.type === 'deposit');
-            const expenses = state.transactions.filter(t => t.type === 'expense' || t.type === 'withdraw');
+        /* ==========================================================================
+           MODULE 6B: AI MULTI-GOAL SAVINGS PLANNER (v2.9 NEW)
+           ========================================================================== */
+        async function handleSaveGoal(e) {
+            e.preventDefault();
+            const id = document.getElementById('goalId').value || 'goal_' + Date.now();
+            const title = document.getElementById('goalTitle').value.trim();
+            const targetAmount = parseFloat(document.getElementById('goalTargetAmount').value);
+            const deadline = document.getElementById('goalDeadline').value;
+            const allocatedAmount = parseFloat(document.getElementById('goalAllocatedAmount').value) || 0;
 
-            const nowStr = new Date().toDateString();
+            if (!title || !Number.isFinite(targetAmount) || targetAmount <= 0 || !deadline) {
+                showToast('กรุณากรอกข้อมูลเป้าหมายให้ครบถ้วน', 'error');
+                return;
+            }
+
+            const netBal = calculateLedgerTotals().netBalance;
+            if (allocatedAmount > netBal) {
+                showToast(`ยอดจัดสรรวางแผนต้องไม่เกินยอดเงินสะสมสุทธิปัจจุบัน (฿${netBal.toLocaleString()})`, 'error');
+                return;
+            }
+
+            const goalObj = {
+                id,
+                title,
+                targetAmount,
+                deadline,
+                allocatedAmount,
+                updatedAt: new Date().toISOString()
+            };
+
+            await dbTransaction('goals', 'readwrite', (store) => store.put(goalObj));
+            const idx = state.goals.findIndex(g => g.id === id);
+            if (idx >= 0) state.goals[idx] = goalObj;
+            else state.goals.push(goalObj);
+
+            resetGoalForm();
+            renderGoalsList();
+            showToast('บันทึกเป้าหมายการออมสำเร็จ', 'success');
+        }
+
+        function editGoal(id) {
+            const g = state.goals.find(item => item.id === id);
+            if (!g) return;
+            document.getElementById('goalId').value = g.id;
+            document.getElementById('goalTitle').value = g.title;
+            document.getElementById('goalTargetAmount').value = g.targetAmount;
+            document.getElementById('goalDeadline').value = g.deadline;
+            document.getElementById('goalAllocatedAmount').value = g.allocatedAmount || 0;
+            document.getElementById('cancelGoalEditBtn').classList.remove('hidden');
+        }
+
+        async function deleteGoal(id) {
+            if (!confirm('ยืนยันการลบเป้าหมายการออมนี้? (ยอดเงินสะสมจริงจะไม่ได้รับผลกระทบ)')) return;
+            await dbTransaction('goals', 'readwrite', (store) => store.delete(id));
+            state.goals = state.goals.filter(g => g.id !== id);
+            renderGoalsList();
+            showToast('ลบเป้าหมายเรียบร้อยแล้ว', 'info');
+        }
+
+        function resetGoalForm() {
+            document.getElementById('goalId').value = '';
+            document.getElementById('goalTitle').value = '';
+            document.getElementById('goalTargetAmount').value = '';
+            document.getElementById('goalDeadline').value = '';
+            document.getElementById('goalAllocatedAmount').value = '0';
+            document.getElementById('cancelGoalEditBtn').classList.add('hidden');
+        }
+
+        function renderGoalsList() {
+            const container = document.getElementById('goalsListContainer');
+            const badge = document.getElementById('goalSummaryCount');
+            if (!container) return;
+            badge.innerText = `${state.goals.length} เป้าหมาย`;
+
+            if (state.goals.length === 0) {
+                container.innerHTML = '<div class="text-center text-muted p-5">ยังไม่มีเป้าหมายการออม กรุณาสร้างเป้าหมายใหม่ด้านซ้าย</div>';
+                return;
+            }
+
+            // Compute genuine daily saving velocity
+            const deposits = state.transactions.filter(t => t.type === 'deposit');
+            const totalSaved = deposits.reduce((s, t) => s + t.amount, 0);
+            const activeDays = Math.max(1, new Set(deposits.map(t => t.date.slice(0, 10))).size);
+            const avgDailySave = totalSaved / activeDays;
+
+            container.innerHTML = '';
+            state.goals.forEach(g => {
+                const current = Math.min(g.targetAmount, g.allocatedAmount || 0);
+                const pct = Math.min(100, Math.round((current / g.targetAmount) * 100));
+                const remaining = Math.max(0, g.targetAmount - current);
+
+                const today = new Date();
+                const targetDate = new Date(g.deadline);
+                const daysLeft = Math.max(1, Math.ceil((targetDate - today) / (1000 * 60 * 60 * 24)));
+                const requiredDaily = remaining / daysLeft;
+
+                let aiForecast = 'ยังไม่สามารถประเมินวันสำเร็จได้เนื่องจากยังไม่มีประวัติการออม';
+                if (remaining === 0) {
+                    aiForecast = '🎉 บรรลุเป้าหมายนี้ครบ 100% แล้ว';
+                } else if (avgDailySave > 0) {
+                    const estDays = Math.ceil(remaining / avgDailySave);
+                    const estDate = new Date(Date.now() + estDays * 86400000);
+                    aiForecast = `คาดว่าจะสำเร็จประมาณวันที่ ${estDate.toLocaleDateString('th-TH')} (จากอัตราออมเฉลี่ย ฿${avgDailySave.toFixed(2)}/วัน)`;
+                }
+
+                const card = document.createElement('div');
+                card.className = 'sub-card p-4 space-y-2';
+                card.innerHTML = `
+                    <div class="flex justify-between items-start gap-2">
+                        <div>
+                            <div class="font-bold text-base text-primary">${escapeHtml(g.title)}</div>
+                            <div class="text-xs text-muted">กำหนดเสร็จ: ${targetDate.toLocaleDateString('th-TH')} (เหลือ ${daysLeft} วัน)</div>
+                        </div>
+                        <div class="flex gap-1-5">
+                            <button onclick="editGoal('${g.id}')" class="btn-surface btn-sm">✏️</button>
+                            <button onclick="deleteGoal('${g.id}')" class="btn-surface btn-sm">🗑️</button>
+                        </div>
+                    </div>
+                    <div class="flex justify-between text-xs font-semibold">
+                        <span>จัดสรรวางแผน: <strong class="text-emerald">฿${current.toLocaleString()}</strong> / ฿${g.targetAmount.toLocaleString()}</span>
+                        <span class="text-gold">${pct}%</span>
+                    </div>
+                    <div class="progress-track">
+                        <div class="progress-fill" style="width: ${pct}%; background: linear-gradient(90deg, #f59e0b, #10b981);"></div>
+                    </div>
+                    <div class="text-xs text-secondary">
+                        ต้องออมเฉลี่ย: <strong>฿${requiredDaily.toFixed(2)}/วัน</strong> | <span class="text-cyan">${aiForecast}</span>
+                    </div>
+                `;
+                container.appendChild(card);
+            });
+        }
+
+        /* ==========================================================================
+           MODULE 6C: AI FINANCIAL CALENDAR & DAILY REMINDER (v2.9 NEW)
+           ========================================================================== */
+        function changeCalendarMonth(delta) {
+            calendarViewDate.setMonth(calendarViewDate.getMonth() + delta);
+            renderFinancialCalendar();
+        }
+
+        async function saveDailyReminderSetting() {
+            const timeVal = document.getElementById('dailyReminderTime').value;
+            if (!timeVal) {
+                showToast('กรุณาเลือกเวลาแจ้งเตือน', 'error');
+                return;
+            }
+            state.settings.dailyReminderTime = timeVal;
+            await dbTransaction('settings', 'readwrite', (store) => {
+                store.put({ key: 'dailyReminderTime', value: timeVal });
+            });
+            updateReminderStatusUI();
+            showToast(`ตั้งเวลาเตือนออมเงินประจำวันเป็น ${timeVal} น. เรียบร้อย`, 'success');
+        }
+
+        function updateReminderStatusUI() {
+            const el = document.getElementById('reminderStatusText');
+            const input = document.getElementById('dailyReminderTime');
+            if (!el) return;
+            if (state.settings.dailyReminderTime) {
+                if (input) input.value = state.settings.dailyReminderTime;
+                el.innerHTML = `<span class="text-emerald">● เปิดแจ้งเตือนทุกวันเวลา ${state.settings.dailyReminderTime} น. (แจ้งเตือนภายในแอป)</span>`;
+            } else {
+                el.innerText = 'ยังไม่ได้ตั้งเวลาเตือน';
+            }
+        }
+
+        function checkDailySavingsReminder() {
+            if (!state.settings.dailyReminderTime) return;
+            const now = new Date();
+            const todayStr = now.toISOString().slice(0, 10);
+            if (state.settings.lastReminderDate === todayStr) return;
+
+            const [remH, remM] = state.settings.dailyReminderTime.split(':').map(Number);
+            if (now.getHours() > remH || (now.getHours() === remH && now.getMinutes() >= remM)) {
+                const savedToday = state.transactions.some(t => t.type === 'deposit' && t.date.startsWith(todayStr));
+                state.settings.lastReminderDate = todayStr;
+                if (!savedToday) {
+                    showToast('⏰ แจ้งเตือน AI Calendar: วันนี้คุณยังไม่ได้บันทึกรายการออมเงินประจำวัน', 'info');
+                }
+            }
+        }
+
+        function renderFinancialCalendar() {
+            const grid = document.getElementById('calendarGridDays');
+            const label = document.getElementById('calendarMonthLabel');
+            if (!grid || !label) return;
+
+            updateReminderStatusUI();
+
+            const year = calendarViewDate.getFullYear();
+            const month = calendarViewDate.getMonth();
+            label.innerText = calendarViewDate.toLocaleDateString('th-TH', { month: 'long', year: 'numeric' });
+
+            const firstDayIndex = new Date(year, month, 1).getDay();
+            const daysInMonth = new Date(year, month + 1, 0).getDate();
             const todayISO = new Date().toISOString().slice(0, 10);
 
-            const todayDeposit = deposits
-                .filter(t => new Date(t.date).toDateString() === nowStr)
-                .reduce((s, t) => s + (t.satangs || Math.round(t.amount * 100)), 0) / 100;
+            grid.innerHTML = '';
 
-            const todayExpense = expenses
-                .filter(t => new Date(t.date).toDateString() === nowStr)
-                .reduce((s, t) => s + (t.satangs || Math.round(t.amount * 100)), 0) / 100;
-
-            const todayDelivery = state.deliveryLogs
-                .filter(d => d.workDate === todayISO)
-                .reduce((s, d) => s + (d.netSatangs || Math.round(d.netIncome * 100)), 0) / 100;
-
-            const totalTrips = state.deliveryLogs.reduce((s, d) => s + (d.trips || 0), 0);
-
-            document.getElementById('statNetBalance').innerText = '฿' + ledger.netBalance.toLocaleString(undefined, { minimumFractionDigits: 2 });
-            document.getElementById('statTotalSavings').innerText = '฿' + ledger.totalSavings.toLocaleString(undefined, { minimumFractionDigits: 2 });
-            document.getElementById('statDeliveryNet').innerText = '฿' + ledger.totalDeliveryNet.toLocaleString(undefined, { minimumFractionDigits: 2 });
-            document.getElementById('statTotalExpenses').innerText = '฿' + ledger.totalExpenses.toLocaleString(undefined, { minimumFractionDigits: 2 });
-
-            document.getElementById('statSavingsCount').innerText = deposits.length;
-            document.getElementById('statDeliveryTrips').innerText = totalTrips;
-            document.getElementById('statExpenseCount').innerText = expenses.length;
-
-            document.getElementById('statTodayDeposit').innerText = '฿' + todayDeposit.toLocaleString();
-            document.getElementById('statTodayDelivery').innerText = '฿' + todayDelivery.toLocaleString();
-            document.getElementById('statTodayExpense').innerText = '฿' + todayExpense.toLocaleString();
-        }
-
-        function renderSavingsTable() {
-            const tbody = document.getElementById('savingsTableBody');
-            const search = (document.getElementById('searchSavingsInput').value || '').toLowerCase();
-            tbody.innerHTML = '';
-
-            const deposits = state.transactions.filter(t => t.type === 'deposit' &&
-                (t.category.toLowerCase().includes(search) || (t.note && t.note.toLowerCase().includes(search)))
-            );
-
-            if (deposits.length === 0) {
-                tbody.innerHTML = '<tr><td colspan="5" class="text-center text-muted">ไม่พบรายการเงินออม</td></tr>';
-                return;
+            for (let i = 0; i < firstDayIndex; i++) {
+                const empty = document.createElement('div');
+                empty.className = 'cal-cell empty';
+                grid.appendChild(empty);
             }
 
-            deposits.forEach(t => {
-                const tr = document.createElement('tr');
-                const d = new Date(t.date);
-                const dateStr = `${d.toLocaleDateString('th-TH')} ${d.toLocaleTimeString('th-TH', { hour: '2-digit', minute: '2-digit' })}`;
+            for (let day = 1; day <= daysInMonth; day++) {
+                const dateStr = `${year}-${String(month + 1).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
+                const daySav = state.transactions
+                    .filter(t => t.type === 'deposit' && t.date.startsWith(dateStr))
+                    .reduce((s, t) => s + t.amount, 0);
+                const dayExp = state.transactions
+                    .filter(t => (t.type === 'expense' || t.type === 'withdraw') && t.date.startsWith(dateStr))
+                    .reduce((s, t) => s + t.amount, 0);
+                const dayDel = state.deliveryLogs
+                    .filter(d => d.workDate === dateStr)
+                    .reduce((s, d) => s + d.netIncome, 0);
 
-                tr.innerHTML = `
-                    <td class="text-muted whitespace-nowrap">${dateStr}</td>
-                    <td class="font-medium">${escapeHtml(t.category)}</td>
-                    <td class="text-muted">${escapeHtml(t.note || '-')}</td>
-                    <td class="text-right text-emerald font-bold">+฿${t.amount.toLocaleString(undefined, { minimumFractionDigits: 2 })}</td>
-                    <td class="text-center whitespace-nowrap">
-                        <button onclick="editTransaction('${t.id}')" class="btn-surface btn-sm" title="แก้ไข">✏️</button>
-                        <button onclick="deleteTransaction('${t.id}')" class="btn-surface btn-sm" title="ลบ">🗑️</button>
-                    </td>
+                const cell = document.createElement('div');
+                cell.className = 'cal-cell' + (dateStr === todayISO ? ' today' : '');
+                cell.onclick = () => showCalendarDayDetail(dateStr, daySav, dayDel, dayExp);
+
+                let badges = '';
+                if (daySav > 0) badges += `<div class="text-emerald font-bold">+฿${Math.round(daySav)}</div>`;
+                if (dayDel > 0) badges += `<div class="text-cyan font-bold">🛵฿${Math.round(dayDel)}</div>`;
+                if (dayExp > 0) badges += `<div class="text-rose">-฿${Math.round(dayExp)}</div>`;
+
+                cell.innerHTML = `
+                    <div class="font-bold text-secondary">${day}</div>
+                    <div style="font-size: 0.65rem; line-height: 1.2;">${badges || '<span class="text-muted">-</span>'}</div>
                 `;
-                tbody.appendChild(tr);
-            });
-        }
-
-        function renderDeliveryTable() {
-            const tbody = document.getElementById('deliveryTableBody');
-            const search = (document.getElementById('searchDeliveryInput').value || '').toLowerCase();
-            tbody.innerHTML = '';
-
-            const filtered = state.deliveryLogs.filter(d =>
-                d.workDate.includes(search) || (d.note && d.note.toLowerCase().includes(search))
-            );
-
-            let totalHours = 0, totalTrips = 0, totalNet = 0;
-            state.deliveryLogs.forEach(d => {
-                totalHours += (d.workHours || 0);
-                totalTrips += (d.trips || 0);
-                totalNet += (d.netIncome || 0);
-            });
-
-            document.getElementById('statDeliveryAvgPerHour').innerText = totalHours > 0 ? '฿' + (totalNet / totalHours).toFixed(2) : '฿0.00';
-            document.getElementById('statDeliveryAvgPerTrip').innerText = totalTrips > 0 ? '฿' + (totalNet / totalTrips).toFixed(2) : '฿0.00';
-            document.getElementById('statDeliveryTotalHours').innerText = `${totalHours.toFixed(1)} ชม.`;
-
-            if (filtered.length === 0) {
-                tbody.innerHTML = '<tr><td colspan="6" class="text-center text-muted">ไม่พบประวัติการทำงานส่งอาหาร</td></tr>';
-                return;
+                grid.appendChild(cell);
             }
-
-            filtered.forEach(d => {
-                const tr = document.createElement('tr');
-                const totalCost = (d.fuelCost || 0) + (d.otherOpsCost || 0);
-                const workDateStr = new Date(d.workDate).toLocaleDateString('th-TH');
-
-                tr.innerHTML = `
-                    <td class="whitespace-nowrap">${workDateStr} (${escapeHtml(d.startTime)}-${escapeHtml(d.endTime)})</td>
-                    <td>${d.trips} เที่ยว (${(d.workHours || 0).toFixed(1)} ชม.)</td>
-                    <td class="text-right text-muted">฿${d.grossIncome.toLocaleString(undefined, { minimumFractionDigits: 2 })}</td>
-                    <td class="text-right text-rose">฿${totalCost.toLocaleString(undefined, { minimumFractionDigits: 2 })}</td>
-                    <td class="text-right text-cyan font-bold">+฿${d.netIncome.toLocaleString(undefined, { minimumFractionDigits: 2 })}</td>
-                    <td class="text-center whitespace-nowrap">
-                        <button onclick="editDelivery('${d.id}')" class="btn-surface btn-sm" title="แก้ไข">✏️</button>
-                        <button onclick="deleteDelivery('${d.id}')" class="btn-surface btn-sm" title="ลบ">🗑️</button>
-                    </td>
-                `;
-                tbody.appendChild(tr);
-            });
         }
 
-        function renderExpenseTable() {
-            const tbody = document.getElementById('expenseTableBody');
-            const search = (document.getElementById('searchExpenseInput').value || '').toLowerCase();
-            tbody.innerHTML = '';
+        function showCalendarDayDetail(dateStr, sav, del, exp) {
+            const box = document.getElementById('calendarDayDetailBox');
+            box.classList.remove('hidden');
+            const formatted = new Date(dateStr).toLocaleDateString('th-TH', { dateStyle: 'full' });
+            box.innerHTML = `
+                <strong>📅 สรุปวันที่ ${formatted}:</strong>
+                เงินออมเข้า <span class="text-emerald font-bold">฿${sav.toLocaleString()}</span> |
+                รายได้ส่งอาหารสุทธิ <span class="text-cyan font-bold">฿${del.toLocaleString()}</span> |
+                รายจ่าย <span class="text-rose font-bold">฿${exp.toLocaleString()}</span>
+            `;
+        }
 
-            const expenses = state.transactions.filter(t => (t.type === 'expense' || t.type === 'withdraw') &&
-                (t.category.toLowerCase().includes(search) || (t.note && t.note.toLowerCase().includes(search)))
-            );
+        /* ==========================================================================
+           MODULE 6D: AI SMART EXPENSE DETECTOR (v2.9 NEW)
+           ========================================================================== */
+        function renderSmartExpenseDetector() {
+            const container = document.getElementById('expenseDetectorContainer');
+            if (!container) return;
 
+            const expenses = state.transactions.filter(t => t.type === 'expense' || t.type === 'withdraw');
             if (expenses.length === 0) {
-                tbody.innerHTML = '<tr><td colspan="5" class="text-center text-muted">ไม่พบรายการรายจ่าย</td></tr>';
+                container.innerHTML = '<div class="alert-box alert-gold">ยังไม่มีข้อมูลรายจ่ายเพียงพอสำหรับการตรวจจับความผิดปกติ</div>';
                 return;
             }
 
-            expenses.forEach(t => {
-                const tr = document.createElement('tr');
-                const d = new Date(t.date);
-                const dateStr = `${d.toLocaleDateString('th-TH')} ${d.toLocaleTimeString('th-TH', { hour: '2-digit', minute: '2-digit' })}`;
+            const totalExp = expenses.reduce((s, e) => s + e.amount, 0);
+            const avgExp = totalExp / expenses.length;
 
-                tr.innerHTML = `
-                    <td class="text-muted whitespace-nowrap">${dateStr}</td>
-                    <td class="font-medium">${escapeHtml(t.category)}</td>
-                    <td class="text-muted">${escapeHtml(t.note || '-')}</td>
-                    <td class="text-right text-rose font-bold">-฿${t.amount.toLocaleString(undefined, { minimumFractionDigits: 2 })}</td>
-                    <td class="text-center whitespace-nowrap">
-                        <button onclick="editTransaction('${t.id}')" class="btn-surface btn-sm" title="แก้ไข">✏️</button>
-                        <button onclick="deleteTransaction('${t.id}')" class="btn-surface btn-sm" title="ลบ">🗑️</button>
-                    </td>
-                `;
-                tbody.appendChild(tr);
+            // 1. Category breakdown
+            const catMap = {};
+            expenses.forEach(e => {
+                catMap[e.category] = (catMap[e.category] || 0) + e.amount;
             });
-        }
+            const topCatEntry = Object.entries(catMap).sort((a, b) => b[1] - a[1])[0];
 
-        function renderSettingsView() {
-            const statusBox = document.getElementById('pinStatusBox');
-            const setupSection = document.getElementById('pinSetupSection');
-            const recoveryBox = document.getElementById('recoveryKeyBox');
+            // 2. High expense outliers (> 2.2x average)
+            const highOutliers = expenses.filter(e => e.amount > avgExp * 2.2 && expenses.length > 2);
 
-            if (state.settings.isPinSet) {
-                statusBox.innerHTML = `
-                    <div class="text-emerald font-bold">✅ ระบบความปลอดภัย PIN 4 หลักเปิดใช้งานแล้ว</div>
-                    <div class="text-muted">จัดเก็บด้วย PBKDF2 SHA-256 + Random Salt ผ่าน Web Crypto API</div>
-                `;
-                setupSection.classList.add('hidden');
-                recoveryBox.classList.remove('hidden');
-                document.getElementById('recoveryKeyDisplay').innerText = state.settings.recoveryKey || 'N/A';
-            } else {
-                statusBox.innerHTML = `
-                    <div class="text-gold font-bold">⚠️ ยังไม่ได้ตั้งค่ารหัส PIN 4 หลัก</div>
-                    <div class="text-muted">สามารถใช้งานระบบบันทึกการออมได้ทันที หรือตั้งรหัส PIN เพื่อเพิ่มความปลอดภัย</div>
-                `;
-                setupSection.classList.remove('hidden');
-                recoveryBox.classList.add('hidden');
-            }
-        }
-
-        /* ==========================================================================
-           MODULE 9: HTML5 CANVAS CHARTS ENGINE
-           ========================================================================== */
-        function renderAnalyticsCharts() {
-            renderCashflowTrendChart();
-            renderCategoryDistributionChart();
-        }
-
-        function renderCashflowTrendChart() {
-            const canvas = document.getElementById('cashflowTrendCanvas');
-            if (!canvas) return;
-            const ctx = canvas.getContext('2d');
-
-            const rect = canvas.getBoundingClientRect();
-            const dpr = window.devicePixelRatio || 1;
-            canvas.width = (rect.width || 400) * dpr;
-            canvas.height = (rect.height || 240) * dpr;
-            ctx.scale(dpr, dpr);
-
-            const width = rect.width || 400;
-            const height = rect.height || 240;
-            ctx.clearRect(0, 0, width, height);
-
-            if (state.transactions.length === 0 && state.deliveryLogs.length === 0) {
-                ctx.fillStyle = '#94a3b8';
-                ctx.font = '13px sans-serif';
-                ctx.textAlign = 'center';
-                ctx.fillText('ยังไม่มีข้อมูลเพียงพอสำหรับแสดงกราฟ', width / 2, height / 2);
-                return;
-            }
-
-            const monthlyData = {};
-            state.transactions.forEach(t => {
-                const key = t.date.slice(0, 7);
-                if (!monthlyData[key]) monthlyData[key] = { deposit: 0, delivery: 0, expense: 0 };
-                if (t.type === 'deposit') monthlyData[key].deposit += t.amount;
-                else monthlyData[key].expense += t.amount;
-            });
-
-            state.deliveryLogs.forEach(d => {
-                const key = d.workDate.slice(0, 7);
-                if (!monthlyData[key]) monthlyData[key] = { deposit: 0, delivery: 0, expense: 0 };
-                monthlyData[key].delivery += d.netIncome;
-            });
-
-            const keys = Object.keys(monthlyData).sort().slice(-6);
-            if (keys.length === 0) return;
-
-            const padding = 35;
-            const chartWidth = width - padding * 2;
-            const chartHeight = height - padding * 2;
-            const maxVal = Math.max(...keys.map(k => Math.max(monthlyData[k].deposit, monthlyData[k].delivery, monthlyData[k].expense)), 100);
-
-            ctx.strokeStyle = 'rgba(148, 163, 184, 0.25)';
-            ctx.beginPath();
-            ctx.moveTo(padding, padding);
-            ctx.lineTo(padding, height - padding);
-            ctx.lineTo(width - padding, height - padding);
-            ctx.stroke();
-
-            const groupWidth = chartWidth / keys.length;
-            const barWidth = Math.min(26, groupWidth * 0.24);
-
-            keys.forEach((key, idx) => {
-                const xBase = padding + idx * groupWidth + (groupWidth - barWidth * 3) / 2;
-                const depH = (monthlyData[key].deposit / maxVal) * chartHeight;
-                const delH = (monthlyData[key].delivery / maxVal) * chartHeight;
-                const expH = (monthlyData[key].expense / maxVal) * chartHeight;
-
-                ctx.fillStyle = '#10b981';
-                ctx.fillRect(xBase, height - padding - depH, barWidth, depH);
-
-                ctx.fillStyle = '#06b6d4';
-                ctx.fillRect(xBase + barWidth + 2, height - padding - delH, barWidth, delH);
-
-                ctx.fillStyle = '#f43f5e';
-                ctx.fillRect(xBase + (barWidth + 2) * 2, height - padding - expH, barWidth, expH);
-
-                ctx.fillStyle = '#94a3b8';
-                ctx.font = '11px sans-serif';
-                ctx.textAlign = 'center';
-                ctx.fillText(key, xBase + barWidth * 1.5, height - padding + 16);
-            });
-        }
-
-        function renderCategoryDistributionChart() {
-            const canvas = document.getElementById('categoryDistributionCanvas');
-            if (!canvas) return;
-            const ctx = canvas.getContext('2d');
-
-            const rect = canvas.getBoundingClientRect();
-            const dpr = window.devicePixelRatio || 1;
-            canvas.width = (rect.width || 360) * dpr;
-            canvas.height = (rect.height || 240) * dpr;
-            ctx.scale(dpr, dpr);
-
-            const width = rect.width || 360;
-            const height = rect.height || 240;
-            ctx.clearRect(0, 0, width, height);
-
-            if (state.transactions.length === 0 && state.deliveryLogs.length === 0) {
-                ctx.fillStyle = '#94a3b8';
-                ctx.font = '13px sans-serif';
-                ctx.textAlign = 'center';
-                ctx.fillText('ยังไม่มีข้อมูลการบันทึก', width / 2, height / 2);
-                return;
-            }
-
-            const catTotals = {};
-            state.transactions.forEach(t => {
-                catTotals[t.category] = (catTotals[t.category] || 0) + t.amount;
-            });
-            if (state.deliveryLogs.length > 0) {
-                catTotals['ส่งอาหารสุทธิ'] = state.deliveryLogs.reduce((s, d) => s + d.netIncome, 0);
-            }
-
-            const totalSum = Object.values(catTotals).reduce((a, b) => a + b, 0);
-            if (totalSum <= 0) return;
-
-            const colors = ['#06b6d4', '#10b981', '#f43f5e', '#f59e0b', '#3b82f6', '#8b5cf6', '#ec4899', '#64748b'];
-            const centerX = width * 0.32;
-            const centerY = height / 2;
-            const radius = Math.min(centerX, centerY) - 18;
-
-            let startAngle = 0;
-            let colorIdx = 0;
-
-            Object.entries(catTotals).forEach(([, val]) => {
-                const sliceAngle = (val / totalSum) * 2 * Math.PI;
-                ctx.beginPath();
-                ctx.moveTo(centerX, centerY);
-                ctx.arc(centerX, centerY, radius, startAngle, startAngle + sliceAngle);
-                ctx.closePath();
-                ctx.fillStyle = colors[colorIdx % colors.length];
-                ctx.fill();
-                startAngle += sliceAngle;
-                colorIdx++;
-            });
-
-            colorIdx = 0;
-            let legendY = 24;
-            const legendX = width * 0.60;
-
-            Object.entries(catTotals).slice(0, 7).forEach(([cat, val]) => {
-                const pct = Math.round((val / totalSum) * 100);
-                ctx.fillStyle = colors[colorIdx % colors.length];
-                ctx.fillRect(legendX, legendY, 10, 10);
-
-                ctx.fillStyle = '#94a3b8';
-                ctx.font = '11px sans-serif';
-                ctx.textAlign = 'left';
-                ctx.fillText(`${cat} (${pct}%)`, legendX + 16, legendY + 9);
-
-                legendY += 20;
-                colorIdx++;
-            });
-        }
-
-        /* ==========================================================================
-           MODULE 10: EXPORT / IMPORT BACKUP JSON
-           ========================================================================== */
-        function exportBackupJSON() {
-            const payload = {
-                version: APP_VERSION,
-                exportedAt: new Date().toISOString(),
-                transactions: state.transactions,
-                deliveryLogs: state.deliveryLogs,
-                missionState: state.missionState,
-                settings: {
-                    isPinSet: state.settings.isPinSet,
-                    pinHash: state.settings.pinHash,
-                    pinSalt: state.settings.pinSalt,
-                    recoveryKey: state.settings.recoveryKey
+            // 3. Potential duplicate detection (same amount + same category on same date)
+            const duplicates = [];
+            for (let i = 0; i < expenses.length; i++) {
+                for (let j = i + 1; j < expenses.length; j++) {
+                    if (
+                        expenses[i].amount === expenses[j].amount &&
+                        expenses[i].category === expenses[j].category &&
+                        expenses[i].date.slice(0, 10) === expenses[j].date.slice(0, 10)
+                    ) {
+                        duplicates.push(expenses[i]);
+                    }
                 }
-            };
+            }
 
-            const blob = new Blob([JSON.stringify(payload, null, 2)], { type: 'application/json' });
-            const url = URL.createObjectURL(blob);
-            const a = document.createElement('a');
-            a.href = url;
-            a.download = `AI_Savings_Backup_v2.7_${new Date().toISOString().slice(0, 10)}.json`;
-            a.click();
-            URL.revokeObjectURL(url);
+            let html = `
+                <div class="grid grid-cols-1 md-grid-cols-3 gap-4">
+                    <div class="sub-card p-4">
+                        <div class="text-xs text-muted">ค่าเฉลี่ยรายจ่ายต่อรายการ</div>
+                        <div class="text-xl font-bold text-rose mt-1">฿${avgExp.toFixed(2)}</div>
+                        <div class="text-xs text-muted mt-1">จากทั้งหมด ${expenses.length} รายการ</div>
+                    </div>
+                    <div class="sub-card p-4">
+                        <div class="text-xs text-muted">หมวดหมู่ที่ใช้จ่ายสูงสุด</div>
+                        <div class="text-lg font-bold text-gold mt-1">${escapeHtml(topCatEntry[0])}</div>
+                        <div class="text-xs text-muted mt-1">รวม ฿${topCatEntry[1].toLocaleString()} (${Math.round((topCatEntry[1] / totalExp) * 100)}%)</div>
+                    </div>
+                    <div class="sub-card p-4">
+                        <div class="text-xs text-muted">รายการเฝ้าระวังผิดปกติ / ซ้ำ</div>
+                        <div class="text-xl font-bold text-cyan mt-1">${highOutliers.length + duplicates.length} รายการ</div>
+                        <div class="text-xs text-muted mt-1">AI ตรวจสอบอัตโนมัติ (ไม่แก้ไขข้อมูลเอง)</div>
+                    </div>
+                </div>
+            `;
 
-            recordSystemLog('INFO', 'BackupGuardian', 'ส่งออกไฟล์สำรองข้อมูล JSON v2.7 สำเร็จ');
-            showToast('ส่งออกไฟล์สำรองข้อมูล v2.7 สำเร็จ', 'success');
-        }
+            if (highOutliers.length > 0) {
+                html += `<div class="alert-box alert-rose"><strong>⚠️ ตรวจพบรายจ่ายสูงกว่าค่าเฉลี่ยผิดปกติ (${highOutliers.length} รายการ):</strong><ul style="margin-left: 1.2rem; margin-top: 0.35rem;">` +
+                    highOutliers.map(o => `<li>${new Date(o.date).toLocaleDateString('th-TH')} — หมวด ${escapeHtml(o.category)} จำนวน ฿${o.amount.toLocaleString()} (สูงกว่าค่าเฉลี่ย ${(o.amount / avgExp).toFixed(1)} เท่า)</li>`).join('') +
+                    `</ul></div>`;
+            }
 
-        async function importBackupJSON(event) {
-            const file = event.target.files[0];
-            if (!file) return;
+            if (duplicates.length > 0) {
+                html += `<div class="alert-box alert-gold"><strong>🔍 ตรวจพบรายการที่อาจบันทึกซ้ำในวันเดียวกัน (${duplicates.length} รายการ):</strong><ul style="margin-left: 1.2rem; margin-top: 0.35rem;">` +
+                    duplicates.map(d => `<li>วันที่ ${new Date(d.date).toLocaleDateString('th-TH')} — หมวด ${escapeHtml(d.category)} ยอดซ้ำ ฿${d.amount.toLocaleString()}</li>`).join('') +
+                    `</ul></div>`;
+            }
 
-            const reader = new FileReader();
-            reader.onload = async (e) => {
-                try {
-                    const imported = JSON.parse(e.target.result);
-                    if (!imported.transactions || !Array.isArray(imported.transactions)) {
-                        throw new Error('โครงสร้างไฟล์สำรองข้อมูลไม่ถูกต้อง');
-                    }
+            if (highOutliers.length === 0 && duplicates.length === 0) {
+                html += `<div class="alert-box alert-emerald">✅ <strong>พฤติกรรมการใช้จ่ายอยู่ในเกณฑ์ปกติ:</strong> ไม่พบรายการสูงผิดปกติหรือรายการที่บันทึกซ้ำซ้อน</div>`;
+            }
 
-                    if (!confirm(`ยืนยันการนำเข้าข้อมูล? รายการธุรกรรม ${imported.transactions.length} รายการจะถูกกู้คืนเข้าสู่ระบบ`)) {
-                        return;
-                    }
-
-                    await dbTransaction('transactions', 'readwrite', (store) => {
-                        imported.transactions.forEach(t => {
-                            if (typeof t.satangs !== 'number') t.satangs = Math.round((t.amount || 0) * 100);
-                            store.put(t);
-                        });
-                    });
-
-                    if (Array.isArray(imported.deliveryLogs)) {
-                        await dbTransaction('deliveryLogs', 'readwrite', (store) => {
-                            imported.deliveryLogs.forEach(d => {
-                                if (typeof d.netSatangs !== 'number') d.netSatangs = Math.round((d.netIncome || 0) * 100);
-                                store.put(d);
-                            });
-                        });
-                    }
-
-                    await loadAllData();
-                    evaluateAIMonthlyMission(false);
-                    renderAll();
-                    await recordSystemLog('INFO', 'BackupGuardian', `กู้คืนข้อมูลจากไฟล์สำรองสำเร็จ (${imported.transactions.length} รายการ)`);
-                    showToast('กู้คืนข้อมูลเรียบร้อยแล้ว', 'success');
-                } catch (err) {
-                    await recordSystemLog('ERROR', 'BackupGuardian', 'นำเข้าข้อมูลล้มเหลว: ' + err.message);
-                    showToast('นำเข้าข้อมูลล้มเหลว: ' + err.message, 'error');
-                }
-            };
-            reader.readAsText(file);
-            event.target.value = '';
+            container.innerHTML = html;
         }
 
         /* ==========================================================================
-           MODULE 11: UI CONTROLS & INITIALIZATION
+           MODULE 11: AI MENU DRAWER & UI CONTROLS
            ========================================================================== */
+        function toggleAiMenuDrawer() {
+            const drawer = document.getElementById('aiMenuDrawer');
+            const backdrop = document.getElementById('drawerBackdrop');
+            const isOpen = drawer.classList.contains('open');
+            if (isOpen) closeAiMenuDrawer();
+            else {
+                drawer.classList.add('open');
+                backdrop.classList.add('open');
+            }
+        }
+
+        function closeAiMenuDrawer() {
+            document.getElementById('aiMenuDrawer').classList.remove('open');
+            document.getElementById('drawerBackdrop').classList.remove('open');
+        }
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                closeAiMenuDrawer();
+            }
+        });
+
         function switchTab(tabName) {
-            const views = ['savings', 'delivery', 'expense', 'allocation', 'mission', 'analytics', 'health', 'settings'];
+            const views = ['savings', 'delivery', 'expense', 'goals', 'calendar', 'detector', 'allocation', 'mission', 'analytics', 'health', 'settings'];
+            const labels = {
+                savings: 'บันทึกการออม',
+                delivery: 'รายได้ส่งอาหาร',
+                expense: 'บันทึกรายจ่าย',
+                goals: 'เป้าหมายการออมหลายรายการ',
+                calendar: 'ปฏิทินการเงิน AI',
+                detector: 'AI ตรวจจับรายจ่ายอัจฉริยะ',
+                allocation: 'AI จัดสรรเงิน',
+                mission: 'ภารกิจการออมประจำเดือน',
+                analytics: 'กราฟ & รายงาน',
+                health: 'สุขภาพระบบ & Audit Log',
+                settings: 'PIN & สำรองข้อมูล'
+            };
+
             views.forEach(v => {
                 const el = document.getElementById('view' + capitalize(v));
                 const btn = document.getElementById('tab' + capitalize(v));
@@ -2382,8 +1780,16 @@
             if (targetView) targetView.classList.remove('hidden');
             if (targetBtn) targetBtn.classList.add('active');
 
+            const modLabel = document.getElementById('aiActiveModuleLabel');
+            if (modLabel) modLabel.innerText = 'โมดูล: ' + (labels[tabName] || tabName);
+
+            closeAiMenuDrawer();
+
             if (tabName === 'analytics') setTimeout(renderAnalyticsCharts, 40);
             if (tabName === 'allocation') renderSmartAllocation();
+            if (tabName === 'goals') renderGoalsList();
+            if (tabName === 'calendar') renderFinancialCalendar();
+            if (tabName === 'detector') renderSmartExpenseDetector();
             if (tabName === 'health') runFullSystemDiagnostics(false);
         }
 
@@ -2448,8 +1854,10 @@
                 checkSecurityLockState();
                 await evaluateAIMonthlyMission(false);
                 renderAll();
+                checkDailySavingsReminder();
+                setInterval(checkDailySavingsReminder, 60000);
             } catch (err) {
-                showToast('เกิดข้อผิดพลาดในการเริ่มต้นระบบ v2.7: ' + err.message, 'error');
+                showToast('เกิดข้อผิดพลาดในการเริ่มต้นระบบ v2.9: ' + err.message, 'error');
             }
         });
     </script>
