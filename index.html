@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>AI AUTOMATIC SAVINGS 2026 v2.9 — PREMIUM AI FINANCIAL SYSTEM</title>
+    <title>AI AUTOMATIC SAVINGS 2026 v3.1 — ULTIMATE AI FINANCIAL SYSTEM</title>
     <style>
         /* ==========================================================================
            SELF-CONTAINED LUXURY DESIGN SYSTEM (ZERO EXTERNAL CDN DEPENDENCIES)
@@ -12,7 +12,7 @@
         :root {
             --bg-primary: #090d16;
             --bg-secondary: #0f172a;
-            --bg-card: rgba(30, 41, 59, 0.78);
+            --bg-card: rgba(30, 41, 59, 0.82);
             --bg-input: #0f172a;
             --border-subtle: rgba(255, 255, 255, 0.08);
             --border-input: #334155;
@@ -25,12 +25,13 @@
             --accent-cyan: #06b6d4;
             --accent-rose: #f43f5e;
             --accent-blue: #3b82f6;
+            --accent-purple: #a855f7;
         }
 
         html.light {
             --bg-primary: #f8fafc;
             --bg-secondary: #f1f5f9;
-            --bg-card: rgba(255, 255, 255, 0.92);
+            --bg-card: rgba(255, 255, 255, 0.94);
             --bg-input: #ffffff;
             --border-subtle: rgba(15, 23, 42, 0.1);
             --border-input: #cbd5e1;
@@ -57,14 +58,13 @@
         }
 
         /* Layout & Containers */
-        .container-max { max-width: 1280px; width: 100%; margin: 0 auto; }
+        .container-max { max-width: 1320px; width: 100%; margin: 0 auto; }
         .p-4 { padding: 1rem; }
         .p-5 { padding: 1.25rem; }
         .p-6 { padding: 1.5rem; }
         .px-3 { padding-left: 0.75rem; padding-right: 0.75rem; }
         .px-4 { padding-left: 1rem; padding-right: 1rem; }
         .py-2 { padding-top: 0.5rem; padding-bottom: 0.5rem; }
-        .py-2-5 { padding-top: 0.625rem; padding-bottom: 0.625rem; }
         .py-3 { padding-top: 0.75rem; padding-bottom: 0.75rem; }
         .mt-1 { margin-top: 0.25rem; }
         .mt-2 { margin-top: 0.5rem; }
@@ -85,6 +85,7 @@
         .items-start { align-items: flex-start; }
         .justify-between { justify-content: space-between; }
         .justify-center { justify-content: center; }
+        .justify-end { justify-content: flex-end; }
         .flex-1 { flex: 1 1 0%; }
         .flex-grow { flex-grow: 1; }
         .gap-1-5 { gap: 0.375rem; }
@@ -105,8 +106,6 @@
             .md-grid-cols-4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
             .md-grid-cols-6 { grid-template-columns: repeat(6, minmax(0, 1fr)); }
             .md-col-span-1 { grid-column: span 1 / span 1; }
-            .md-flex-row { flex-direction: row; }
-            .md-items-center { align-items: center; }
             .md-p-6 { padding: 1.5rem; }
         }
 
@@ -189,6 +188,7 @@
         .text-cyan { color: var(--accent-cyan); }
         .text-rose { color: var(--accent-rose); }
         .text-blue { color: var(--accent-blue); }
+        .text-purple { color: var(--accent-purple); }
 
         /* Badges */
         .badge {
@@ -203,6 +203,7 @@
         .badge-emerald { background: rgba(16, 185, 129, 0.15); color: #34d399; border: 1px solid rgba(16, 185, 129, 0.3); }
         .badge-rose { background: rgba(244, 63, 94, 0.15); color: #fb7185; border: 1px solid rgba(244, 63, 94, 0.3); }
         .badge-cyan { background: rgba(6, 182, 212, 0.15); color: #22d3ee; border: 1px solid rgba(6, 182, 212, 0.3); }
+        .badge-purple { background: rgba(168, 85, 247, 0.15); color: #c084fc; border: 1px solid rgba(168, 85, 247, 0.3); }
 
         /* Form Inputs & Controls */
         input, select {
@@ -233,6 +234,7 @@
             justify-content: center;
         }
         button:active { transform: scale(0.98); }
+        button:disabled { opacity: 0.5; cursor: not-allowed; }
         .btn-sm { padding: 0.45rem 0.85rem; font-size: 0.8rem; }
         .btn-md { padding: 0.65rem 1.1rem; font-size: 0.875rem; }
         .btn-surface {
@@ -247,16 +249,18 @@
         .btn-cyan:hover { background-color: #06b6d4; }
         .btn-rose { background-color: #e11d48; color: #ffffff; }
         .btn-rose:hover { background-color: #f43f5e; }
+        .btn-purple { background-color: #9333ea; color: #ffffff; }
+        .btn-purple:hover { background-color: #a855f7; }
 
         .tab-btn {
-            padding: 0.65rem 1rem;
-            font-size: 0.85rem;
+            padding: 0.6rem 0.9rem;
+            font-size: 0.82rem;
             background-color: var(--bg-secondary);
             color: var(--text-secondary);
             border: 1px solid var(--border-subtle);
             width: 100%;
             justify-content: flex-start;
-            gap: 0.65rem;
+            gap: 0.6rem;
         }
         .tab-btn.active {
             background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
@@ -286,16 +290,16 @@
             top: 0;
             left: 0;
             bottom: 0;
-            width: 290px;
-            max-width: 84vw;
+            width: 300px;
+            max-width: 85vw;
             z-index: 45;
             background: var(--bg-primary);
             border-right: 1px solid var(--border-subtle);
             box-shadow: 12px 0 35px rgba(0, 0, 0, 0.45);
-            padding: 1.25rem;
+            padding: 1.15rem;
             display: flex;
             flex-direction: column;
-            gap: 0.6rem;
+            gap: 0.45rem;
             transform: translateX(-105%);
             transition: transform 0.25s cubic-bezier(0.22, 1, 0.36, 1);
             overflow-y: auto;
@@ -390,6 +394,7 @@
         .alert-rose { background: rgba(244, 63, 94, 0.1); border: 1px solid rgba(244, 63, 94, 0.25); color: #fda4af; }
         .alert-emerald { background: rgba(16, 185, 129, 0.1); border: 1px solid rgba(16, 185, 129, 0.25); color: #6ee7b7; }
         .alert-cyan { background: rgba(6, 182, 212, 0.1); border: 1px solid rgba(6, 182, 212, 0.25); color: #67e8f9; }
+        .alert-purple { background: rgba(168, 85, 247, 0.1); border: 1px solid rgba(168, 85, 247, 0.25); color: #d8b4fe; }
 
         /* Utilities */
         .hidden { display: none !important; }
@@ -399,14 +404,15 @@
         .border-l-emerald { border-left: 4px solid #10b981; }
         .border-l-cyan { border-left: 4px solid #06b6d4; }
         .border-l-rose { border-left: 4px solid #f43f5e; }
+        .border-l-purple { border-left: 4px solid #a855f7; }
 
-        /* PIN Lock Modal */
+        /* Modals */
         .modal-backdrop {
             position: fixed;
             inset: 0;
             z-index: 50;
-            background-color: rgba(9, 13, 22, 0.96);
-            backdrop-filter: blur(16px);
+            background-color: rgba(9, 13, 22, 0.92);
+            backdrop-filter: blur(14px);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -482,7 +488,7 @@
                 <div>
                     <div class="font-bold text-base gold-gradient-text" style="letter-spacing: 0.03em;">AUTOMATIC SAVINGS 2026</div>
                     <div class="flex items-center gap-2 mt-1">
-                        <span class="badge badge-gold">v2.9 PREMIUM</span>
+                        <span class="badge badge-gold">v3.1 ULTIMATE</span>
                         <span id="headerHealthBadge" class="badge badge-emerald" onclick="switchTab('health')" style="cursor:pointer;" title="คลิกเพื่อดูสถานะสุขภาพระบบ">● SYSTEM OK</span>
                     </div>
                 </div>
@@ -493,7 +499,7 @@
                     <span>☰</span>
                     <span>เมนูหลัก</span>
                 </button>
-                <button id="lockAppBtn" class="btn-surface btn-sm hidden gap-1-5" title="ล็อกหน้าจอด้วย PIN">
+                <button id="lockAppBtn" onclick="lockApplication()" class="btn-surface btn-sm hidden gap-1-5" title="ล็อกหน้าจอด้วย PIN">
                     <span>🔒</span>
                     <span>ล็อก</span>
                 </button>
@@ -509,27 +515,33 @@
     <aside id="aiMenuDrawer" class="ai-menu-drawer" aria-label="Main Navigation Drawer">
         <div class="flex justify-between items-center pb-2" style="border-bottom: 1px solid var(--border-subtle); padding-bottom: 0.75rem;">
             <div class="flex items-center gap-2">
-                <span class="badge badge-gold">AI MENU v2.9</span>
+                <span class="badge badge-gold">AI MENU v3.1</span>
             </div>
             <button onclick="closeAiMenuDrawer()" class="btn-surface btn-sm" title="ปิดแถบเมนู (Esc)">✕</button>
         </div>
 
-        <div class="text-xs text-muted mt-1">ระบบการเงินหลัก 3 ส่วน</div>
-        <button id="tabSavings" onclick="switchTab('savings')" class="tab-btn active">💰 บันทึกการออม (Savings)</button>
-        <button id="tabDelivery" onclick="switchTab('delivery')" class="tab-btn">🛵 รายได้ส่งอาหาร (Delivery)</button>
+        <div class="text-xs text-muted mt-1">ภาพรวม & การเงินหลัก 3 ส่วน</div>
+        <button id="tabDashboard" onclick="switchTab('dashboard')" class="tab-btn active">🏠 Dashboard ภาพรวม</button>
+        <button id="tabSavings" onclick="switchTab('savings')" class="tab-btn">💰 บันทึกการออม (Savings)</button>
         <button id="tabExpense" onclick="switchTab('expense')" class="tab-btn">💸 บันทึกรายจ่าย (Expenses)</button>
+        <button id="tabDelivery" onclick="switchTab('delivery')" class="tab-btn">🛵 รายได้ส่งอาหาร (Delivery)</button>
 
-        <div class="text-xs text-muted mt-2">ระบบวางแผน & ปฏิทินอัจฉริยะ</div>
+        <div class="text-xs text-muted mt-2">ระบบวางแผน & รายการประจำ (v3.1)</div>
+        <button id="tabRecurring" onclick="switchTab('recurring')" class="tab-btn">🔁 รายการการเงินประจำ (Recurring)</button>
+        <button id="tabMission" onclick="switchTab('mission')" class="tab-btn">🎯 ภารกิจออมรายเดือน</button>
         <button id="tabGoals" onclick="switchTab('goals')" class="tab-btn">🏆 เป้าหมายการออมหลายรายการ</button>
         <button id="tabCalendar" onclick="switchTab('calendar')" class="tab-btn">📅 ปฏิทินการเงิน AI</button>
-        <button id="tabMission" onclick="switchTab('mission')" class="tab-btn">🎯 ภารกิจการออมประจำเดือน</button>
 
-        <div class="text-xs text-muted mt-2">ระบบวิเคราะห์ AI & ความปลอดภัย</div>
-        <button id="tabDetector" onclick="switchTab('detector')" class="tab-btn">🕵️ AI ตรวจจับรายจ่ายอัจฉริยะ</button>
-        <button id="tabAllocation" onclick="switchTab('allocation')" class="tab-btn">🧠 AI จัดสรรเงิน & กระแสเงินสด</button>
-        <button id="tabAnalytics" onclick="switchTab('analytics')" class="tab-btn">📊 กราฟ & รายงานภาพรวม</button>
-        <button id="tabHealth" onclick="switchTab('health')" class="tab-btn">🛡️ สุขภาพระบบ & Audit Log</button>
-        <button id="tabSettings" onclick="switchTab('settings')" class="tab-btn">🔒 PIN 4 หลัก & สำรองข้อมูล</button>
+        <div class="text-xs text-muted mt-2">AI อัจฉริยะ & ศูนย์ตรวจสอบ (v3.1)</div>
+        <button id="tabForecast" onclick="switchTab('forecast')" class="tab-btn">🔮 AI Forecast & Risk Alert</button>
+        <button id="tabAudit" onclick="switchTab('audit')" class="tab-btn">🔎 Transaction Audit Center</button>
+        <button id="tabAnalysis" onclick="switchTab('analysis')" class="tab-btn">🧠 AI Financial Analysis</button>
+        <button id="tabAnalytics" onclick="switchTab('analytics')" class="tab-btn">📊 กราฟและรายงาน</button>
+
+        <div class="text-xs text-muted mt-2">ระบบ & ความปลอดภัย</div>
+        <button id="tabBackup" onclick="switchTab('backup')" class="tab-btn">💾 ระบบสำรองข้อมูล</button>
+        <button id="tabSettings" onclick="switchTab('settings')" class="tab-btn">🔒 ตั้งค่า & PIN 4 หลัก</button>
+        <button id="tabHealth" onclick="switchTab('health')" class="tab-btn">🛡️ System Health</button>
     </aside>
 
     <!-- MAIN CONTENT -->
@@ -538,7 +550,7 @@
         <!-- TOAST NOTIFICATIONS -->
         <div id="toastContainer"></div>
 
-        <!-- DASHBOARD OVERVIEW CARDS -->
+        <!-- DASHBOARD OVERVIEW CARDS (ALWAYS VISIBLE AT TOP) -->
         <section class="grid grid-cols-2 md-grid-cols-6 gap-3">
             <div class="glass-card p-4 col-span-2 md-col-span-1">
                 <div class="text-xs text-muted mb-1">ยอดเงินสะสมสุทธิ</div>
@@ -583,14 +595,14 @@
             </div>
         </section>
 
-        <!-- AI FINANCIAL HEALTH & CASHFLOW INTELLIGENCE PANEL -->
+        <!-- AI FINANCIAL HEALTH & CASHFLOW INTELLIGENCE BANNER -->
         <section class="glass-card p-5 border-l-gold space-y-2">
             <div class="flex flex-wrap justify-between items-center gap-2">
                 <div class="flex items-center gap-2">
-                    <span class="text-gold font-bold">⚡ AI Smart Cashflow & Financial Health Monitor v2.9</span>
+                    <span class="text-gold font-bold">⚡ AI Local Rule-Based Financial Intelligence v3.1</span>
                 </div>
                 <div class="flex items-center gap-2">
-                    <span id="aiActiveModuleLabel" class="badge badge-cyan">โมดูล: บันทึกการออม</span>
+                    <span id="aiActiveModuleLabel" class="badge badge-cyan">หน้า: Dashboard ภาพรวม</span>
                     <span id="aiHealthScore" class="badge badge-gold">AI Score: -/100</span>
                 </div>
             </div>
@@ -600,9 +612,48 @@
         </section>
 
         <!-- ==========================================================================
+             VIEW 0: DASHBOARD HOME (รายการล่าสุด & สรุปภาพรวม v3.1)
+             ========================================================================== -->
+        <section id="viewDashboard" class="space-y-6">
+            <div class="grid grid-cols-1 lg-grid-cols-3 gap-6">
+                <!-- Quick Action Shortcuts & Recurring Alerts -->
+                <div class="glass-card p-5 space-y-4">
+                    <h3 class="font-bold text-base text-gold">⚡ ทางลัดบันทึกด่วน & รายการประจำ</h3>
+                    <div class="grid grid-cols-1 gap-2">
+                        <button onclick="switchTab('savings')" class="btn-emerald btn-md w-full">➕ บันทึกเงินออมใหม่</button>
+                        <button onclick="switchTab('delivery')" class="btn-cyan btn-md w-full">🛵 บันทึกรายได้ส่งอาหาร</button>
+                        <button onclick="switchTab('expense')" class="btn-rose btn-md w-full">💸 บันทึกรายจ่ายใหม่</button>
+                    </div>
+                    <div id="dashboardRecurringAlertBox" class="space-y-2"></div>
+                </div>
+
+                <!-- Recent Combined Transactions -->
+                <div class="glass-card p-5 lg-col-span-2 space-y-3">
+                    <div class="flex justify-between items-center">
+                        <h3 class="font-bold text-base">📋 รายการเคลื่อนไหวล่าสุด (บัญชีกลาง)</h3>
+                        <button onclick="switchTab('audit')" class="btn-surface btn-sm text-cyan">ตรวจสอบบัญชีกลาง 🔎</button>
+                    </div>
+                    <div class="table-wrapper">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>วัน/เวลา</th>
+                                    <th>ประเภท</th>
+                                    <th>หมวดหมู่ / รายละเอียด</th>
+                                    <th class="text-right">จำนวนเงิน</th>
+                                </tr>
+                            </thead>
+                            <tbody id="dashboardRecentTableBody"></tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==========================================================================
              VIEW 1: SAVINGS LEDGER (บันทึกการออม)
              ========================================================================== -->
-        <section id="viewSavings" class="grid grid-cols-1 lg-grid-cols-3 gap-6">
+        <section id="viewSavings" class="grid grid-cols-1 lg-grid-cols-3 gap-6 hidden">
             <div class="glass-card p-5 border-l-emerald space-y-4">
                 <h2 class="font-bold text-lg text-emerald">➕ บันทึกรายการเงินออม</h2>
                 <form id="savingsForm" onsubmit="handleSaveSavings(event)" class="space-y-3">
@@ -664,7 +715,265 @@
         </section>
 
         <!-- ==========================================================================
-             VIEW 4: AI MULTI-GOAL SAVINGS PLANNER (v2.9 NEW)
+             VIEW 2: EXPENSES LEDGER (บันทึกรายจ่าย)
+             ========================================================================== -->
+        <section id="viewExpense" class="grid grid-cols-1 lg-grid-cols-3 gap-6 hidden">
+            <div class="glass-card p-5 border-l-rose space-y-4">
+                <h2 class="font-bold text-lg text-rose">➖ บันทึกรายการรายจ่าย</h2>
+                <div class="alert-box alert-rose">
+                    <strong>ระบบตรวจสอบยอดสะสม:</strong> หักจากยอดเงินออมสะสมสุทธิทันที และไม่อนุญาตให้บันทึกเกินยอดเงินคงเหลือจริง
+                </div>
+                <form id="expenseForm" onsubmit="handleSaveExpense(event)" class="space-y-3">
+                    <input type="hidden" id="expenseId">
+                    <div>
+                        <label class="text-xs text-muted mb-1" style="display:block;">จำนวนเงินรายจ่าย (บาท)</label>
+                        <input type="number" step="0.01" min="0.01" id="expenseAmount" required placeholder="0.00" class="text-rose font-bold text-lg">
+                    </div>
+
+                    <div class="grid grid-cols-2 gap-3">
+                        <div>
+                            <label class="text-xs text-muted mb-1" style="display:block;">หมวดหมู่รายจ่าย</label>
+                            <select id="expenseCategory">
+                                <option value="อาหารและเครื่องดื่ม">อาหารและเครื่องดื่ม</option>
+                                <option value="ค่าเดินทาง/ที่พัก">ค่าเดินทาง/ที่พัก</option>
+                                <option value="ค่าสาธารณูปโภค/บิล">ค่าสาธารณูปโภค/บิล</option>
+                                <option value="ของใช้จำเป็น">ของใช้จำเป็น</option>
+                                <option value="สุขภาพ/ฉุกเฉิน">สุขภาพ/ฉุกเฉิน</option>
+                                <option value="อื่นๆ">อื่นๆ</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="text-xs text-muted mb-1" style="display:block;">วันที่ & เวลา</label>
+                            <input type="datetime-local" id="expenseDatetime" required>
+                        </div>
+                    </div>
+
+                    <div>
+                        <label class="text-xs text-muted mb-1" style="display:block;">รายละเอียดรายจ่าย</label>
+                        <input type="text" id="expenseNote" placeholder="ระบุรายการที่ใช้จ่าย...">
+                    </div>
+
+                    <div class="flex gap-2 mt-2">
+                        <button type="submit" id="saveExpenseBtn" class="btn-rose btn-md flex-1">บันทึกหักรายจ่าย</button>
+                        <button type="button" id="cancelExpenseEditBtn" onclick="resetExpenseForm()" class="btn-surface btn-md hidden">ยกเลิก</button>
+                    </div>
+                </form>
+            </div>
+
+            <div class="glass-card p-5 lg-col-span-2 space-y-4">
+                <div class="flex flex-wrap justify-between items-center gap-2">
+                    <h3 class="font-bold text-base">ประวัติรายการรายจ่าย</h3>
+                    <input type="text" id="searchExpenseInput" onkeyup="renderExpenseTable()" placeholder="ค้นหาหมวดหมู่หรือรายละเอียด..." style="max-width: 240px;">
+                </div>
+                <div class="table-wrapper">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>วัน/เวลา</th>
+                                <th>หมวดหมู่</th>
+                                <th>รายละเอียด</th>
+                                <th class="text-right">จำนวนเงิน</th>
+                                <th class="text-center">จัดการ</th>
+                            </tr>
+                        </thead>
+                        <tbody id="expenseTableBody"></tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==========================================================================
+             VIEW 3: DELIVERY INCOME (รายได้พิเศษจากการส่งอาหาร)
+             ========================================================================== -->
+        <section id="viewDelivery" class="grid grid-cols-1 lg-grid-cols-3 gap-6 hidden">
+            <div class="glass-card p-5 border-l-cyan space-y-4">
+                <h2 class="font-bold text-lg text-cyan">🛵 บันทึกรายได้ส่งอาหารประจำวัน</h2>
+                <div class="alert-box alert-cyan">
+                    <strong>สูตรคำนวณอัตโนมัติ:</strong> รายได้สุทธิ = รายได้รวม - ค่าน้ำมัน - ค่าใช้จ่ายอื่น (นำเฉพาะรายได้สุทธิเข้ายอดสะสม ไม่หักต้นทุนซ้ำ)
+                </div>
+                <form id="deliveryForm" onsubmit="handleSaveDelivery(event)" class="space-y-3">
+                    <input type="hidden" id="deliveryId">
+                    <div class="grid grid-cols-2 gap-3">
+                        <div>
+                            <label class="text-xs text-muted mb-1" style="display:block;">วันที่ทำงาน</label>
+                            <input type="date" id="deliveryWorkDate" required>
+                        </div>
+                        <div>
+                            <label class="text-xs text-muted mb-1" style="display:block;">จำนวนงานที่ส่ง (เที่ยว)</label>
+                            <input type="number" min="1" step="1" id="deliveryTrips" required placeholder="0">
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-3 gap-2">
+                        <div>
+                            <label class="text-xs text-muted mb-1" style="display:block;">เวลาเริ่ม</label>
+                            <input type="time" id="deliveryStartTime" required>
+                        </div>
+                        <div>
+                            <label class="text-xs text-muted mb-1" style="display:block;">เวลาสิ้นสุด</label>
+                            <input type="time" id="deliveryEndTime" required>
+                        </div>
+                        <div>
+                            <label class="text-xs text-muted mb-1" style="display:block;">ชั่วโมงทำงาน</label>
+                            <input type="number" step="0.1" min="0.1" id="deliveryHours" required placeholder="0.0">
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-3 gap-2">
+                        <div>
+                            <label class="text-xs text-muted mb-1" style="display:block;">รายได้รวม (฿)</label>
+                            <input type="number" step="0.01" min="0" id="deliveryGross" required placeholder="0.00">
+                        </div>
+                        <div>
+                            <label class="text-xs text-muted mb-1" style="display:block;">ค่าน้ำมัน (฿)</label>
+                            <input type="number" step="0.01" min="0" id="deliveryFuel" value="0" placeholder="0.00">
+                        </div>
+                        <div>
+                            <label class="text-xs text-muted mb-1" style="display:block;">ค่าใช้จ่ายอื่น (฿)</label>
+                            <input type="number" step="0.01" min="0" id="deliveryOtherCost" value="0" placeholder="0.00">
+                        </div>
+                    </div>
+
+                    <div class="sub-card p-3 flex justify-between items-center">
+                        <span class="text-xs text-muted">รายได้สุทธิที่จะเข้ายอดสะสม:</span>
+                        <span id="deliveryNetPreview" class="text-lg font-extrabold text-cyan">฿0.00</span>
+                    </div>
+
+                    <div>
+                        <label class="text-xs text-muted mb-1" style="display:block;">หมายเหตุ</label>
+                        <input type="text" id="deliveryNote" placeholder="โซนวิ่งงาน, โบนัสพิเศษ...">
+                    </div>
+
+                    <div class="flex gap-2">
+                        <button type="submit" id="saveDeliveryBtn" class="btn-cyan btn-md flex-1">บันทึกรายได้ส่งอาหาร</button>
+                        <button type="button" id="cancelDeliveryEditBtn" onclick="resetDeliveryForm()" class="btn-surface btn-md hidden">ยกเลิก</button>
+                    </div>
+                </form>
+            </div>
+
+            <div class="glass-card p-5 lg-col-span-2 space-y-4">
+                <div class="flex flex-wrap justify-between items-center gap-2">
+                    <h3 class="font-bold text-base">ประวัติรายได้พิเศษจากการส่งอาหาร</h3>
+                    <div id="deliverySummaryBadges" class="flex gap-2 text-xs"></div>
+                </div>
+                <div class="table-wrapper">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>วันที่</th>
+                                <th>เวลา / ชม.</th>
+                                <th>งาน</th>
+                                <th class="text-right">รายได้รวม</th>
+                                <th class="text-right">ต้นทุนรวม</th>
+                                <th class="text-right">รายได้สุทธิ</th>
+                                <th class="text-center">จัดการ</th>
+                            </tr>
+                        </thead>
+                        <tbody id="deliveryTableBody"></tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==========================================================================
+             VIEW 7: NEW FEATURE 3.1 #1 - AI FINANCIAL FORECAST & RISK ALERT
+             ========================================================================== -->
+        <section id="viewForecast" class="space-y-6 hidden">
+            <div class="glass-card p-6 border-l-purple space-y-5">
+                <div class="flex flex-wrap justify-between items-center gap-3">
+                    <div>
+                        <h2 class="font-bold text-xl text-purple">🔮 AI Financial Forecast & Risk Alert (v3.1)</h2>
+                        <p class="text-xs text-muted mt-1">คาดการณ์ยอดเงินสะสมในอนาคต วิเคราะห์ความเสี่ยงทางการเงินล่วงหน้าจากสถิติจริง (แยกยอดคาดการณ์ออกจากยอดเงินจริงชัดเจน)</p>
+                    </div>
+                    <button onclick="renderFinancialForecast()" class="btn-purple btn-sm">🔄 คำนวณการคาดการณ์ใหม่</button>
+                </div>
+
+                <div id="forecastContentContainer" class="space-y-4"></div>
+            </div>
+        </section>
+
+        <!-- ==========================================================================
+             VIEW 8: NEW FEATURE 3.1 #2 - AI SMART RECURRING TRANSACTIONS
+             ========================================================================== -->
+        <section id="viewRecurring" class="grid grid-cols-1 lg-grid-cols-3 gap-6 hidden">
+            <div class="glass-card p-5 border-l-gold space-y-4">
+                <h2 class="font-bold text-lg text-gold">🔁 ตั้งค่ารายการการเงินประจำ (Recurring)</h2>
+                <div class="alert-box alert-gold">
+                    <strong>ความปลอดภัยสูงสุด:</strong> ระบบจะแจ้งเตือนเมื่อถึงกำหนดและให้คุณกด <strong>"ยืนยันบันทึก"</strong> ด้วยตนเองทุกครั้ง ไม่หักหรือเพิ่มเงินอัตโนมัติโดยพลการ
+                </div>
+                <form id="recurringForm" onsubmit="handleSaveRecurring(event)" class="space-y-3">
+                    <input type="hidden" id="recurringId">
+                    <div>
+                        <label class="text-xs text-muted mb-1" style="display:block;">ชื่อรายการประจำ</label>
+                        <input type="text" id="recurringTitle" required placeholder="เช่น ออมเงินรายวัน, ค่าอินเทอร์เน็ต...">
+                    </div>
+                    <div class="grid grid-cols-2 gap-3">
+                        <div>
+                            <label class="text-xs text-muted mb-1" style="display:block;">ประเภทธุรกรรม</label>
+                            <select id="recurringType">
+                                <option value="deposit">💰 ออมเงินเข้า (เพิ่มยอด)</option>
+                                <option value="expense">💸 รายจ่ายประจำ (หักยอด)</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="text-xs text-muted mb-1" style="display:block;">ความถี่รอบเวลา</label>
+                            <select id="recurringFrequency">
+                                <option value="daily">รายวัน (Daily)</option>
+                                <option value="weekly">รายสัปดาห์ (Weekly)</option>
+                                <option value="monthly">รายเดือน (Monthly)</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="grid grid-cols-2 gap-3">
+                        <div>
+                            <label class="text-xs text-muted mb-1" style="display:block;">จำนวนเงิน (บาท)</label>
+                            <input type="number" step="0.01" min="0.01" id="recurringAmount" required placeholder="0.00">
+                        </div>
+                        <div>
+                            <label class="text-xs text-muted mb-1" style="display:block;">วันครบกำหนดถัดไป</label>
+                            <input type="date" id="recurringNextDate" required>
+                        </div>
+                    </div>
+                    <div>
+                        <label class="text-xs text-muted mb-1" style="display:block;">หมวดหมู่ / รายละเอียด</label>
+                        <input type="text" id="recurringNote" placeholder="ระบุหมวดหมู่หรือหมายเหตุ...">
+                    </div>
+                    <div class="flex gap-2">
+                        <button type="submit" class="gold-bg-gradient btn-md flex-1">บันทึกรายการประจำ</button>
+                        <button type="button" id="cancelRecurringEditBtn" onclick="resetRecurringForm()" class="btn-surface btn-md hidden">ยกเลิก</button>
+                    </div>
+                </form>
+            </div>
+
+            <div class="glass-card p-5 lg-col-span-2 space-y-4">
+                <div class="flex justify-between items-center">
+                    <h3 class="font-bold text-base">ตารางรายการการเงินประจำ & รายการรอการยืนยัน</h3>
+                    <span id="recurringDueBadge" class="badge badge-gold">0 รายการ</span>
+                </div>
+                <div id="recurringListContainer" class="space-y-3"></div>
+            </div>
+        </section>
+
+        <!-- ==========================================================================
+             VIEW 9: NEW FEATURE 3.1 #3 - AI TRANSACTION AUDIT CENTER
+             ========================================================================== -->
+        <section id="viewAudit" class="space-y-6 hidden">
+            <div class="glass-card p-6 border-l-cyan space-y-5">
+                <div class="flex flex-wrap justify-between items-center gap-3">
+                    <div>
+                        <h2 class="font-bold text-xl text-cyan">🔎 AI Transaction Audit Center (ศูนย์ตรวจสอบบัญชีกลาง)</h2>
+                        <p class="text-xs text-muted mt-1">ตรวจสอบความถูกต้องของธุรกรรมทั้งหมด ยอด Satang Ledger รายการซ้ำซ้อน และประวัติการแก้ไข</p>
+                    </div>
+                    <button onclick="runTransactionAudit(true)" class="btn-cyan btn-sm">🔍 ตรวจสอบบัญชีกลางทั้งหมด</button>
+                </div>
+
+                <div id="auditSummaryGrid" class="grid grid-cols-2 md-grid-cols-4 gap-4"></div>
+                <div id="auditFindingsBox" class="space-y-3"></div>
+            </div>
+        </section>
+
+        <!-- ==========================================================================
+             VIEW 4: AI MULTI-GOAL SAVINGS PLANNER
              ========================================================================== -->
         <section id="viewGoals" class="grid grid-cols-1 lg-grid-cols-3 gap-6 hidden">
             <div class="glass-card p-5 border-l-gold space-y-4">
@@ -709,7 +1018,7 @@
         </section>
 
         <!-- ==========================================================================
-             VIEW 5: AI FINANCIAL CALENDAR (v2.9 NEW)
+             VIEW 5: AI FINANCIAL CALENDAR
              ========================================================================== -->
         <section id="viewCalendar" class="space-y-6 hidden">
             <div class="glass-card p-6 space-y-4">
@@ -751,9 +1060,10 @@
         </section>
 
         <!-- ==========================================================================
-             VIEW 6: AI SMART EXPENSE DETECTOR (v2.9 NEW)
+             VIEW 6: AI FINANCIAL ANALYSIS (EXPENSE DETECTOR + SMART MONEY ALLOCATION)
              ========================================================================== -->
-        <section id="viewDetector" class="space-y-6 hidden">
+        <section id="viewAnalysis" class="space-y-6 hidden">
+            <!-- Smart Expense Detector -->
             <div class="glass-card p-6 border-l-rose space-y-4">
                 <div class="flex flex-wrap justify-between items-center gap-3">
                     <div>
@@ -762,15 +1072,10 @@
                     </div>
                     <button onclick="renderSmartExpenseDetector()" class="btn-surface btn-sm">🔍 วิเคราะห์รายจ่ายใหม่</button>
                 </div>
-
                 <div id="expenseDetectorContainer" class="space-y-4"></div>
             </div>
-        </section>
 
-        <!-- ==========================================================================
-             VIEW 7: FEATURE 02 - AI SMART MONEY ALLOCATION
-             ========================================================================== -->
-        <section id="viewAllocation" class="space-y-6 hidden">
+            <!-- Smart Money Allocation -->
             <div class="glass-card p-6 border-l-gold space-y-4">
                 <div class="flex flex-wrap justify-between items-center gap-3">
                     <div>
@@ -779,15 +1084,12 @@
                     </div>
                     <button onclick="renderSmartAllocation()" class="btn-surface btn-sm">🔄 อัปเดตการวิเคราะห์แผน</button>
                 </div>
-
-                <div id="allocationContent" class="space-y-4">
-                    <!-- Rendered dynamically -->
-                </div>
+                <div id="allocationContent" class="space-y-4"></div>
             </div>
         </section>
 
         <!-- ==========================================================================
-             VIEW 5: AI MONTHLY SAVINGS MISSION
+             VIEW 5B: AI MONTHLY SAVINGS MISSION
              ========================================================================== -->
         <section id="viewMission" class="space-y-6 hidden">
             <div class="glass-card p-6 space-y-5">
@@ -856,7 +1158,7 @@
         </section>
 
         <!-- ==========================================================================
-             VIEW 10: FEATURE 01 - AI SYSTEM HEALTH GUARD & ERROR LOG
+             VIEW 10: AI SYSTEM HEALTH GUARD & ERROR LOG
              ========================================================================== -->
         <section id="viewHealth" class="space-y-6 hidden">
             <div class="glass-card p-6 space-y-5">
@@ -875,7 +1177,7 @@
                 <div class="grid grid-cols-2 md-grid-cols-4 gap-4">
                     <div class="sub-card p-4">
                         <div class="text-xs text-muted">สถานะฐานข้อมูล IndexedDB</div>
-                        <div id="healthDbStatus" class="text-sm font-bold text-emerald mt-1">● ปกติ (DB v6)</div>
+                        <div id="healthDbStatus" class="text-sm font-bold text-emerald mt-1">● ปกติ (DB v7)</div>
                     </div>
                     <div class="sub-card p-4">
                         <div class="text-xs text-muted">ระบบบัญชี Ledger & Satang</div>
@@ -912,10 +1214,32 @@
         </section>
 
         <!-- ==========================================================================
-             VIEW 8: PIN SECURITY & BACKUP / RESTORE
+             VIEW 8A: BACKUP & RESTORE
+             ========================================================================== -->
+        <section id="viewBackup" class="space-y-6 hidden">
+            <div class="glass-card p-6 space-y-4">
+                <h2 class="font-bold text-lg">💾 ระบบสำรองและกู้คืนข้อมูล (Data Integrity Guardian v3.1)</h2>
+                <div class="grid grid-cols-1 md-grid-cols-2 gap-4">
+                    <div class="sub-card p-4 space-y-3">
+                        <h3 class="font-bold text-sm">ส่งออกไฟล์สำรองข้อมูล (Export JSON)</h3>
+                        <p class="text-xs text-muted">ส่งออกข้อมูลการออม รายได้ส่งอาหาร รายจ่าย เป้าหมาย รายการประจำ และสถานะความปลอดภัยเป็นไฟล์ JSON</p>
+                        <button onclick="exportBackupJSON()" class="btn-surface btn-md w-full text-gold">⬇️ ดาวน์โหลดไฟล์สำรอง v3.1 (.json)</button>
+                    </div>
+
+                    <div class="sub-card p-4 space-y-3">
+                        <h3 class="font-bold text-sm">กู้คืนข้อมูลจากไฟล์สำรอง (Import JSON)</h3>
+                        <p class="text-xs text-muted">ตรวจสอบความถูกต้องของโครงสร้างไฟล์และยอด Satang ก่อนกู้คืนข้อมูลเข้าสู่ฐานข้อมูล</p>
+                        <input type="file" id="importFileInput" accept=".json" class="hidden" onchange="importBackupJSON(event)">
+                        <button onclick="document.getElementById('importFileInput').click()" class="btn-surface btn-md w-full text-emerald">⬆️ เลือกไฟล์สำรอง JSON เพื่อนำเข้า</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==========================================================================
+             VIEW 8B: PIN SECURITY SETTINGS
              ========================================================================== -->
         <section id="viewSettings" class="space-y-6 hidden">
-            <!-- PIN SECURITY -->
             <div class="glass-card p-6 space-y-4">
                 <h2 class="font-bold text-lg">🔒 ระบบความปลอดภัย PIN 4 หลัก (Web Crypto PBKDF2)</h2>
                 <div id="pinStatusBox" class="sub-card p-4 text-xs space-y-1"></div>
@@ -938,28 +1262,24 @@
                     ⚠️ <strong>ข้อจำกัดด้านความปลอดภัย:</strong> ระบบ PIN ฝั่งเบราว์เซอร์ช่วยป้องกันการเข้าถึงหน้าจอในอุปกรณ์นี้ แต่ไม่สามารถป้องกันผู้ที่มีสิทธิ์ระดับผู้ดูแลเครื่องหรือเข้าถึงไฟล์ฐานข้อมูลของเบราว์เซอร์โดยตรงได้
                 </div>
             </div>
-
-            <!-- DATA INTEGRITY & BACKUP -->
-            <div class="glass-card p-6 space-y-4">
-                <h2 class="font-bold text-lg">💾 ระบบสำรองและกู้คืนข้อมูล (Data Integrity Guardian v2.7)</h2>
-                <div class="grid grid-cols-1 md-grid-cols-2 gap-4">
-                    <div class="sub-card p-4 space-y-3">
-                        <h3 class="font-bold text-sm">ส่งออกไฟล์สำรองข้อมูล (Export JSON)</h3>
-                        <p class="text-xs text-muted">ส่งออกข้อมูลการออม รายได้ส่งอาหาร รายจ่าย ภารกิจ AI และสถานะความปลอดภัยเป็นไฟล์ JSON</p>
-                        <button onclick="exportBackupJSON()" class="btn-surface btn-md w-full text-gold">⬇️ ดาวน์โหลดไฟล์สำรอง v2.7 (.json)</button>
-                    </div>
-
-                    <div class="sub-card p-4 space-y-3">
-                        <h3 class="font-bold text-sm">กู้คืนข้อมูลจากไฟล์สำรอง (Import JSON)</h3>
-                        <p class="text-xs text-muted">ตรวจสอบความถูกต้องของโครงสร้างไฟล์และยอด Satang ก่อนกู้คืนข้อมูลเข้าสู่ฐานข้อมูล</p>
-                        <input type="file" id="importFileInput" accept=".json" class="hidden" onchange="importBackupJSON(event)">
-                        <button onclick="document.getElementById('importFileInput').click()" class="btn-surface btn-md w-full text-emerald">⬆️ เลือกไฟล์สำรอง JSON เพื่อนำเข้า</button>
-                    </div>
-                </div>
-            </div>
         </section>
 
     </main>
+
+    <!-- CUSTOM CONFIRMATION / INPUT MODAL (REPLACES BROWSER alert/confirm/prompt) -->
+    <div id="customDialogModal" class="modal-backdrop hidden" style="z-index: 70;">
+        <div class="glass-card p-6 space-y-4" style="max-width: 400px; width: 100%;">
+            <h3 id="dialogTitle" class="font-bold text-lg text-gold">ยืนยันการทำรายการ</h3>
+            <p id="dialogMessage" class="text-sm text-secondary"></p>
+            <div id="dialogInputWrap" class="hidden">
+                <input type="text" id="dialogInput" placeholder="กรอกข้อมูล...">
+            </div>
+            <div class="flex justify-end gap-2 mt-3">
+                <button id="dialogCancelBtn" class="btn-surface btn-sm">ยกเลิก</button>
+                <button id="dialogConfirmBtn" class="gold-bg-gradient btn-sm">ยืนยัน</button>
+            </div>
+        </div>
+    </div>
 
     <!-- PIN LOCK MODAL OVERLAY -->
     <div id="pinLockModal" class="modal-backdrop hidden">
@@ -1003,7 +1323,7 @@
     </div>
 
     <!-- ==========================================================================
-         CORE JAVASCRIPT APPLICATION MODULES (VERSION 2.9)
+         CORE JAVASCRIPT APPLICATION MODULES (VERSION 3.1)
          ========================================================================== -->
     <script>
         'use strict';
@@ -1011,10 +1331,10 @@
         /**
          * MODULE 0: GLOBAL CONFIGURATION & STATE
          */
-        const APP_VERSION = '2.9';
-        const DB_NAME = 'AISavingsDB_v2_1'; // Keep exact DB name to guarantee zero-loss migration
-        const DB_VERSION = 6; // Upgraded from v5 (v2.7) to v6 (v2.9)
-        const IDLE_LOCK_MS = 5 * 60 * 1000; // 5 minutes idle auto-lock
+        const APP_VERSION = '3.1';
+        const DB_NAME = 'AISavingsDB_v2_1'; // Keep exact DB name for seamless zero-loss upgrade
+        const DB_VERSION = 7; // Upgraded from v6 (v2.9) to v7 (v3.1)
+        const IDLE_LOCK_MS = 5 * 60 * 1000;
 
         let db = null;
         let idleTimer = null;
@@ -1024,6 +1344,7 @@
             transactions: [],
             deliveryLogs: [],
             goals: [],
+            recurringItems: [],
             missionState: null,
             systemLogs: [],
             settings: {
@@ -1042,9 +1363,51 @@
         };
 
         /* ==========================================================================
+           CUSTOM NON-BLOCKING DIALOG UTILITY (ZERO NATIVE ALERT/CONFIRM)
+           ========================================================================== */
+        function showCustomDialog({ title, message, showInput = false, placeholder = '' }) {
+            return new Promise((resolve) => {
+                const modal = document.getElementById('customDialogModal');
+                const titleEl = document.getElementById('dialogTitle');
+                const msgEl = document.getElementById('dialogMessage');
+                const inputWrap = document.getElementById('dialogInputWrap');
+                const inputEl = document.getElementById('dialogInput');
+                const confirmBtn = document.getElementById('dialogConfirmBtn');
+                const cancelBtn = document.getElementById('dialogCancelBtn');
+
+                titleEl.innerText = title || 'ยืนยันการทำรายการ';
+                msgEl.innerText = message || '';
+                inputEl.value = '';
+                inputEl.placeholder = placeholder;
+
+                if (showInput) inputWrap.classList.remove('hidden');
+                else inputWrap.classList.add('hidden');
+
+                modal.classList.remove('hidden');
+
+                const cleanup = () => {
+                    modal.classList.add('hidden');
+                    confirmBtn.onclick = null;
+                    cancelBtn.onclick = null;
+                };
+
+                confirmBtn.onclick = () => {
+                    const val = showInput ? inputEl.value : true;
+                    cleanup();
+                    resolve(val);
+                };
+
+                cancelBtn.onclick = () => {
+                    cleanup();
+                    resolve(null);
+                };
+            });
+        }
+
+        /* ==========================================================================
            MODULE 1: GLOBAL ERROR CATCHER & SYSTEM HEALTH GUARD
            ========================================================================== */
-        window.onerror = function (message, source, lineno, colno, error) {
+        window.onerror = function (message, source, lineno) {
             recordSystemLog('ERROR', 'RuntimeJS', `${message} (Line: ${lineno})`);
             return false;
         };
@@ -1057,7 +1420,7 @@
             const entry = {
                 id: 'log_' + Date.now() + '_' + Math.random().toString(36).slice(2, 6),
                 timestamp: new Date().toISOString(),
-                level, // 'INFO' | 'WARN' | 'ERROR' | 'MIGRATION'
+                level,
                 module: moduleName,
                 message
             };
@@ -1066,12 +1429,8 @@
 
             if (db && db.objectStoreNames.contains('systemLogs')) {
                 try {
-                    await dbTransaction('systemLogs', 'readwrite', (store) => {
-                        store.put(entry);
-                    });
-                } catch (_) {
-                    // Fail-safe silent fallback if DB is locked
-                }
+                    await dbTransaction('systemLogs', 'readwrite', (store) => store.put(entry));
+                } catch (_) {}
             }
             updateSystemHealthUI();
         }
@@ -1079,21 +1438,23 @@
         async function runFullSystemDiagnostics(manualTrigger = false) {
             let issuesFound = 0;
 
-            // 1. Check IndexedDB Connection
-            const dbOk = Boolean(db && db.objectStoreNames.contains('transactions') && db.objectStoreNames.contains('deliveryLogs'));
+            const dbOk = Boolean(
+                db &&
+                db.objectStoreNames.contains('transactions') &&
+                db.objectStoreNames.contains('deliveryLogs') &&
+                db.objectStoreNames.contains('recurringItems')
+            );
             if (!dbOk) {
                 issuesFound++;
                 await recordSystemLog('ERROR', 'Database', 'ไม่พบ ObjectStore หลักใน IndexedDB');
             }
 
-            // 2. Audit Satang Ledger Precision & Negative Guardrail
             const ledger = calculateLedgerTotals();
             if (Number.isNaN(ledger.netSatangs) || ledger.netSatangs < 0) {
                 issuesFound++;
                 await recordSystemLog('ERROR', 'SatangLedger', `ตรวจพบความผิดปกติของยอดเงินสะสม (${ledger.netBalance})`);
             }
 
-            // 3. Check Duplicate Transaction IDs
             const seenIds = new Set();
             let dupCount = 0;
             state.transactions.forEach(t => {
@@ -1105,27 +1466,33 @@
                 await recordSystemLog('WARN', 'DataIntegrity', `พบรายการที่มี ID ซ้ำซ้อนจำนวน ${dupCount} รายการ`);
             }
 
-            // Update Dashboard Health Indicators
-            document.getElementById('healthDbStatus').innerHTML = dbOk
-                ? '<span class="text-emerald">● ปกติ (DB v6 Connected)</span>'
-                : '<span class="text-rose">● พบปัญหาการเชื่อมต่อ</span>';
+            const dbStatusEl = document.getElementById('healthDbStatus');
+            if (dbStatusEl) {
+                dbStatusEl.innerHTML = dbOk
+                    ? '<span class="text-emerald">● ปกติ (DB v7 Connected)</span>'
+                    : '<span class="text-rose">● พบปัญหาการเชื่อมต่อ</span>';
+            }
 
-            document.getElementById('healthLedgerStatus').innerHTML = (ledger.netSatangs >= 0 && !Number.isNaN(ledger.netSatangs))
-                ? '<span class="text-emerald">● ยอด Satang ถูกต้อง 100%</span>'
-                : '<span class="text-rose">● พบความคลาดเคลื่อน</span>';
-
-            document.getElementById('healthAiStatus').innerHTML = '<span class="text-emerald">● ประมวลผลในเครื่องปกติ</span>';
+            const ledgerStatusEl = document.getElementById('healthLedgerStatus');
+            if (ledgerStatusEl) {
+                ledgerStatusEl.innerHTML = (ledger.netSatangs >= 0 && !Number.isNaN(ledger.netSatangs))
+                    ? '<span class="text-emerald">● ยอด Satang ถูกต้อง 100%</span>'
+                    : '<span class="text-rose">● พบความคลาดเคลื่อน</span>';
+            }
 
             const errorLogs = state.systemLogs.filter(l => l.level === 'ERROR');
-            document.getElementById('healthErrorCount').innerText = `${errorLogs.length} รายการ`;
+            const errCountEl = document.getElementById('healthErrorCount');
+            if (errCountEl) errCountEl.innerText = `${errorLogs.length} รายการ`;
 
             const headerBadge = document.getElementById('headerHealthBadge');
-            if (issuesFound === 0 && errorLogs.length === 0) {
-                headerBadge.className = 'badge badge-emerald';
-                headerBadge.innerText = '● SYSTEM OK';
-            } else {
-                headerBadge.className = 'badge badge-rose';
-                headerBadge.innerText = `● ALERT (${issuesFound + errorLogs.length})`;
+            if (headerBadge) {
+                if (issuesFound === 0 && errorLogs.length === 0) {
+                    headerBadge.className = 'badge badge-emerald';
+                    headerBadge.innerText = '● SYSTEM OK';
+                } else {
+                    headerBadge.className = 'badge badge-rose';
+                    headerBadge.innerText = `● ALERT (${issuesFound + errorLogs.length})`;
+                }
             }
 
             if (manualTrigger) {
@@ -1162,7 +1529,11 @@
         }
 
         async function clearResolvedSystemLogs() {
-            if (!confirm('ยืนยันการล้างประวัติ System Log ทั้งหมด? (ข้อมูลการเงินจะไม่ได้รับผลกระทบ)')) return;
+            const confirmed = await showCustomDialog({
+                title: 'ล้างประวัติ System Log',
+                message: 'ยืนยันการล้างประวัติ System Log ทั้งหมด? (ข้อมูลการเงินและยอดสะสมจะไม่ได้รับผลกระทบ)'
+            });
+            if (!confirmed) return;
             state.systemLogs = [];
             if (db && db.objectStoreNames.contains('systemLogs')) {
                 await dbTransaction('systemLogs', 'readwrite', (store) => store.clear());
@@ -1173,7 +1544,7 @@
         }
 
         /* ==========================================================================
-           MODULE 2: INDEXEDDB ENGINE & DATA INTEGRITY MIGRATION (FEATURE 03)
+           MODULE 2: INDEXEDDB ENGINE & DATA INTEGRITY MIGRATION (DB v7)
            ========================================================================== */
         function initIndexedDB() {
             return new Promise((resolve, reject) => {
@@ -1213,7 +1584,12 @@
                         }
                     }
 
-                    // Mark migration version upgrade safely inside transaction
+                    if (oldVer < 7) {
+                        if (!dbUpgrade.objectStoreNames.contains('recurringItems')) {
+                            dbUpgrade.createObjectStore('recurringItems', { keyPath: 'id' });
+                        }
+                    }
+
                     const settingsStore = event.target.transaction.objectStore('settings');
                     settingsStore.put({ key: 'version', value: APP_VERSION });
                     settingsStore.put({ key: 'lastMigratedFrom', value: oldVer });
@@ -1224,9 +1600,7 @@
                     resolve(db);
                 };
 
-                request.onerror = (event) => {
-                    reject(event.target.error);
-                };
+                request.onerror = (event) => reject(event.target.error);
             });
         }
 
@@ -1251,7 +1625,6 @@
                                 t.satangs = Math.round(t.amount * 100);
                             }
                         });
-                        // Sort descending by date
                         list.sort((a, b) => new Date(b.date) - new Date(a.date));
                         res(list);
                     };
@@ -1278,6 +1651,940 @@
                 });
             }
 
+            if (db.objectStoreNames.contains('recurringItems')) {
+                state.recurringItems = await dbTransaction('recurringItems', 'readonly', (store) => {
+                    return new Promise((res) => {
+                        const req = store.getAll();
+                        req.onsuccess = () => res(req.result || []);
+                    });
+                });
+            }
+
+            if (db.objectStoreNames.contains('systemLogs')) {
+                state.systemLogs = await dbTransaction('systemLogs', 'readonly', (store) => {
+                    return new Promise((res) => {
+                        const req = store.getAll();
+                        req.onsuccess = () => {
+                            const list = req.result || [];
+                            list.sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp));
+                            res(list);
+                        };
+                    });
+                });
+            }
+
+            const currentMonthKey = new Date().toISOString().slice(0, 7);
+            state.missionState = await dbTransaction('missions', 'readonly', (store) => {
+                return new Promise((res) => {
+                    const req = store.get(currentMonthKey);
+                    req.onsuccess = () => res(req.result || null);
+                });
+            });
+
+            const settingsList = await dbTransaction('settings', 'readonly', (store) => {
+                return new Promise((res) => {
+                    const req = store.getAll();
+                    req.onsuccess = () => res(req.result || []);
+                });
+            });
+            settingsList.forEach(item => {
+                state.settings[item.key] = item.value;
+            });
+
+            if (state.settings.lastMigratedFrom !== undefined && state.settings.lastMigratedFrom < 7) {
+                await recordSystemLog('MIGRATION', 'VersionGuardian', `อัปเกรดฐานข้อมูลจาก Schema v${state.settings.lastMigratedFrom} สู่ v7 (App v3.1) สำเร็จ ข้อมูลเดิมครบถ้วน`);
+                await dbTransaction('settings', 'readwrite', (store) => store.delete('lastMigratedFrom'));
+                delete state.settings.lastMigratedFrom;
+            }
+        }
+
+        /* ==========================================================================
+           MODULE 3: FIXED-POINT SATANG CENTRAL LEDGER ENGINE
+           ========================================================================== */
+        function calculateLedgerTotals() {
+            let savingsSatangs = 0;
+            let expenseSatangs = 0;
+            let deliveryNetSatangs = 0;
+            let deliveryGrossSatangs = 0;
+            let deliveryCostSatangs = 0;
+
+            state.transactions.forEach(t => {
+                const s = typeof t.satangs === 'number' ? t.satangs : Math.round(t.amount * 100);
+                if (t.type === 'deposit') {
+                    savingsSatangs += s;
+                } else if (t.type === 'expense' || t.type === 'withdraw') {
+                    expenseSatangs += s;
+                }
+            });
+
+            state.deliveryLogs.forEach(d => {
+                const netS = typeof d.netSatangs === 'number' ? d.netSatangs : Math.round(d.netIncome * 100);
+                const grossS = Math.round((d.grossIncome || 0) * 100);
+                const costS = Math.round(((d.fuelCost || 0) + (d.otherCost || 0)) * 100);
+                deliveryNetSatangs += netS;
+                deliveryGrossSatangs += grossS;
+                deliveryCostSatangs += costS;
+            });
+
+            const netSatangs = savingsSatangs + deliveryNetSatangs - expenseSatangs;
+
+            return {
+                totalSavings: savingsSatangs / 100,
+                totalExpenses: expenseSatangs / 100,
+                totalDeliveryNet: deliveryNetSatangs / 100,
+                totalDeliveryGross: deliveryGrossSatangs / 100,
+                totalDeliveryCost: deliveryCostSatangs / 100,
+                netBalance: netSatangs / 100,
+                netSatangs
+            };
+        }
+
+        function renderStats() {
+            const ledger = calculateLedgerTotals();
+            const todayStr = new Date().toISOString().slice(0, 10);
+
+            const todayDeposit = state.transactions
+                .filter(t => t.type === 'deposit' && t.date.startsWith(todayStr))
+                .reduce((s, t) => s + t.amount, 0);
+
+            const todayExpense = state.transactions
+                .filter(t => (t.type === 'expense' || t.type === 'withdraw') && t.date.startsWith(todayStr))
+                .reduce((s, t) => s + t.amount, 0);
+
+            const todayDelivery = state.deliveryLogs
+                .filter(d => d.workDate === todayStr)
+                .reduce((s, d) => s + d.netIncome, 0);
+
+            const totalTrips = state.deliveryLogs.reduce((s, d) => s + (d.trips || 0), 0);
+            const savingsCount = state.transactions.filter(t => t.type === 'deposit').length;
+            const expenseCount = state.transactions.filter(t => t.type === 'expense' || t.type === 'withdraw').length;
+
+            document.getElementById('statNetBalance').innerText = '฿' + ledger.netBalance.toLocaleString(undefined, { minimumFractionDigits: 2 });
+            document.getElementById('statTotalSavings').innerText = '฿' + ledger.totalSavings.toLocaleString(undefined, { minimumFractionDigits: 2 });
+            document.getElementById('statSavingsCount').innerText = savingsCount;
+            document.getElementById('statDeliveryNet').innerText = '฿' + ledger.totalDeliveryNet.toLocaleString(undefined, { minimumFractionDigits: 2 });
+            document.getElementById('statDeliveryTrips').innerText = totalTrips;
+            document.getElementById('statTotalExpenses').innerText = '฿' + ledger.totalExpenses.toLocaleString(undefined, { minimumFractionDigits: 2 });
+            document.getElementById('statExpenseCount').innerText = expenseCount;
+
+            document.getElementById('statTodayDeposit').innerText = '฿' + todayDeposit.toLocaleString();
+            document.getElementById('statTodayDelivery').innerText = '฿' + todayDelivery.toLocaleString();
+            document.getElementById('statTodayExpense').innerText = '฿' + todayExpense.toLocaleString();
+
+            renderDashboardRecentTable();
+        }
+
+        function renderDashboardRecentTable() {
+            const tbody = document.getElementById('dashboardRecentTableBody');
+            if (!tbody) return;
+
+            const combined = [
+                ...state.transactions.map(t => ({
+                    date: t.date,
+                    kind: t.type === 'deposit' ? 'savings' : 'expense',
+                    label: t.category,
+                    note: t.note,
+                    amount: t.amount
+                })),
+                ...state.deliveryLogs.map(d => ({
+                    date: d.workDate + 'T12:00:00',
+                    kind: 'delivery',
+                    label: `ส่งอาหาร (${d.trips} เที่ยว)`,
+                    note: d.note,
+                    amount: d.netIncome
+                }))
+            ].sort((a, b) => new Date(b.date) - new Date(a.date)).slice(0, 8);
+
+            tbody.innerHTML = '';
+            if (combined.length === 0) {
+                tbody.innerHTML = '<tr><td colspan="4" class="text-center text-muted">ยังไม่มีรายการเคลื่อนไหว กรุณาบันทึกรายการออม รายได้ส่งอาหาร หรือรายจ่าย</td></tr>';
+                return;
+            }
+
+            combined.forEach(item => {
+                const tr = document.createElement('tr');
+                const dtStr = new Date(item.date).toLocaleDateString('th-TH');
+                const badge = item.kind === 'savings'
+                    ? '<span class="badge badge-emerald">+ ออมเงิน</span>'
+                    : (item.kind === 'delivery' ? '<span class="badge badge-cyan">+ ส่งอาหารสุทธิ</span>' : '<span class="badge badge-rose">- รายจ่าย</span>');
+                const colorClass = item.kind === 'expense' ? 'text-rose' : (item.kind === 'delivery' ? 'text-cyan' : 'text-emerald');
+                const sign = item.kind === 'expense' ? '-' : '+';
+
+                tr.innerHTML = `
+                    <td class="text-muted whitespace-nowrap">${dtStr}</td>
+                    <td>${badge}</td>
+                    <td class="font-semibold">${escapeHtml(item.label)} <span class="text-xs text-muted">${escapeHtml(item.note || '')}</span></td>
+                    <td class="text-right font-bold ${colorClass}">${sign}฿${item.amount.toLocaleString(undefined, { minimumFractionDigits: 2 })}</td>
+                `;
+                tbody.appendChild(tr);
+            });
+        }
+
+        /* ==========================================================================
+           MODULE 4A: SAVINGS CRUD HANDLERS
+           ========================================================================== */
+        async function handleSaveSavings(e) {
+            e.preventDefault();
+            if (state.isSubmitting) return;
+            state.isSubmitting = true;
+
+            try {
+                const id = document.getElementById('savingsId').value;
+                const amount = parseFloat(document.getElementById('savingsAmount').value);
+                const category = document.getElementById('savingsCategory').value;
+                const date = document.getElementById('savingsDatetime').value;
+                const note = document.getElementById('savingsNote').value.trim();
+
+                if (!Number.isFinite(amount) || amount <= 0 || !date) {
+                    showToast('กรุณาระบุจำนวนเงินออมและวันที่ให้ถูกต้อง', 'error');
+                    return;
+                }
+
+                const satangs = Math.round(amount * 100);
+                const record = {
+                    id: id || 'sav_' + Date.now() + '_' + Math.random().toString(36).slice(2, 5),
+                    type: 'deposit',
+                    amount: satangs / 100,
+                    satangs,
+                    category,
+                    date,
+                    note,
+                    updatedAt: new Date().toISOString()
+                };
+
+                await dbTransaction('transactions', 'readwrite', (store) => store.put(record));
+
+                const idx = state.transactions.findIndex(t => t.id === record.id);
+                if (idx >= 0) state.transactions[idx] = record;
+                else state.transactions.unshift(record);
+
+                state.transactions.sort((a, b) => new Date(b.date) - new Date(a.date));
+                resetSavingsForm();
+                await evaluateAIMonthlyMission(false);
+                renderAll();
+                showToast(`บันทึกเงินออม +฿${record.amount.toLocaleString(undefined, { minimumFractionDigits: 2 })} สำเร็จ`, 'success');
+            } finally {
+                state.isSubmitting = false;
+            }
+        }
+
+        function editSavings(id) {
+            const item = state.transactions.find(t => t.id === id && t.type === 'deposit');
+            if (!item) return;
+            document.getElementById('savingsId').value = item.id;
+            document.getElementById('savingsAmount').value = item.amount;
+            document.getElementById('savingsCategory').value = item.category;
+            document.getElementById('savingsDatetime').value = item.date.slice(0, 16);
+            document.getElementById('savingsNote').value = item.note || '';
+            document.getElementById('saveSavingsBtn').innerText = 'บันทึกการแก้ไขเงินออม';
+            document.getElementById('cancelSavingsEditBtn').classList.remove('hidden');
+        }
+
+        async function deleteSavings(id) {
+            const item = state.transactions.find(t => t.id === id && t.type === 'deposit');
+            if (!item) return;
+
+            const ledger = calculateLedgerTotals();
+            const itemSatangs = typeof item.satangs === 'number' ? item.satangs : Math.round(item.amount * 100);
+            if (ledger.netSatangs - itemSatangs < 0) {
+                showToast('ไม่สามารถยกเลิกรายการออมนี้ได้ เนื่องจากจะทำให้ยอดเงินสะสมสุทธิติดลบ', 'error');
+                return;
+            }
+
+            const confirmed = await showCustomDialog({
+                title: 'ยืนยันการยกเลิกรายการเงินออม',
+                message: `ต้องการลบรายการเงินออมจำนวน ฿${item.amount.toLocaleString()} (${item.category}) หรือไม่?`
+            });
+            if (!confirmed) return;
+
+            await dbTransaction('transactions', 'readwrite', (store) => store.delete(id));
+            state.transactions = state.transactions.filter(t => t.id !== id);
+            await recordSystemLog('INFO', 'SavingsLedger', `ยกเลิกรายการเงินออม ID: ${id} (฿${item.amount})`);
+            await evaluateAIMonthlyMission(false);
+            renderAll();
+            showToast('ยกเลิกรายการเงินออมเรียบร้อยแล้ว', 'info');
+        }
+
+        function resetSavingsForm() {
+            document.getElementById('savingsId').value = '';
+            document.getElementById('savingsAmount').value = '';
+            document.getElementById('savingsNote').value = '';
+            document.getElementById('saveSavingsBtn').innerText = 'บันทึกเพิ่มเงินออม';
+            document.getElementById('cancelSavingsEditBtn').classList.add('hidden');
+            setDefaultDatetimes();
+        }
+
+        function renderSavingsTable() {
+            const tbody = document.getElementById('savingsTableBody');
+            if (!tbody) return;
+            const q = (document.getElementById('searchSavingsInput')?.value || '').toLowerCase();
+
+            const list = state.transactions.filter(t =>
+                t.type === 'deposit' &&
+                ((t.category || '').toLowerCase().includes(q) || (t.note || '').toLowerCase().includes(q))
+            );
+
+            tbody.innerHTML = '';
+            if (list.length === 0) {
+                tbody.innerHTML = '<tr><td colspan="5" class="text-center text-muted">ไม่พบรายการเงินออม</td></tr>';
+                return;
+            }
+
+            list.forEach(item => {
+                const tr = document.createElement('tr');
+                const dt = new Date(item.date);
+                tr.innerHTML = `
+                    <td class="text-muted whitespace-nowrap">${dt.toLocaleDateString('th-TH')} ${dt.toLocaleTimeString('th-TH', { hour: '2-digit', minute: '2-digit' })}</td>
+                    <td><span class="badge badge-emerald">${escapeHtml(item.category)}</span></td>
+                    <td class="text-secondary">${escapeHtml(item.note || '-')}</td>
+                    <td class="text-right font-bold text-emerald">+฿${item.amount.toLocaleString(undefined, { minimumFractionDigits: 2 })}</td>
+                    <td class="text-center whitespace-nowrap">
+                        <button onclick="editSavings('${item.id}')" class="btn-surface btn-sm">✏️</button>
+                        <button onclick="deleteSavings('${item.id}')" class="btn-surface btn-sm">🗑️</button>
+                    </td>
+                `;
+                tbody.appendChild(tr);
+            });
+        }
+
+        /* ==========================================================================
+           MODULE 4B: EXPENSES CRUD HANDLERS (NEGATIVE BALANCE GUARDRAIL)
+           ========================================================================== */
+        async function handleSaveExpense(e) {
+            e.preventDefault();
+            if (state.isSubmitting) return;
+            state.isSubmitting = true;
+
+            try {
+                const id = document.getElementById('expenseId').value;
+                const amount = parseFloat(document.getElementById('expenseAmount').value);
+                const category = document.getElementById('expenseCategory').value;
+                const date = document.getElementById('expenseDatetime').value;
+                const note = document.getElementById('expenseNote').value.trim();
+
+                if (!Number.isFinite(amount) || amount <= 0 || !date) {
+                    showToast('กรุณาระบุจำนวนเงินรายจ่ายและวันที่ให้ถูกต้อง', 'error');
+                    return;
+                }
+
+                const newSatangs = Math.round(amount * 100);
+                const ledger = calculateLedgerTotals();
+                const existing = id ? state.transactions.find(t => t.id === id) : null;
+                const oldSatangs = existing ? (typeof existing.satangs === 'number' ? existing.satangs : Math.round(existing.amount * 100)) : 0;
+                const availableSatangs = ledger.netSatangs + oldSatangs;
+
+                if (newSatangs > availableSatangs) {
+                    showToast(`ยอดเงินสะสมสุทธิไม่เพียงพอ (คงเหลือสูงสุดที่หักได้ ฿${(availableSatangs / 100).toLocaleString(undefined, { minimumFractionDigits: 2 })})`, 'error');
+                    return;
+                }
+
+                const record = {
+                    id: id || 'exp_' + Date.now() + '_' + Math.random().toString(36).slice(2, 5),
+                    type: 'expense',
+                    amount: newSatangs / 100,
+                    satangs: newSatangs,
+                    category,
+                    date,
+                    note,
+                    updatedAt: new Date().toISOString()
+                };
+
+                await dbTransaction('transactions', 'readwrite', (store) => store.put(record));
+
+                const idx = state.transactions.findIndex(t => t.id === record.id);
+                if (idx >= 0) state.transactions[idx] = record;
+                else state.transactions.unshift(record);
+
+                state.transactions.sort((a, b) => new Date(b.date) - new Date(a.date));
+                resetExpenseForm();
+                renderAll();
+                showToast(`บันทึกรายจ่าย -฿${record.amount.toLocaleString(undefined, { minimumFractionDigits: 2 })} สำเร็จ`, 'success');
+            } finally {
+                state.isSubmitting = false;
+            }
+        }
+
+        function editExpense(id) {
+            const item = state.transactions.find(t => t.id === id && (t.type === 'expense' || t.type === 'withdraw'));
+            if (!item) return;
+            document.getElementById('expenseId').value = item.id;
+            document.getElementById('expenseAmount').value = item.amount;
+            document.getElementById('expenseCategory').value = item.category;
+            document.getElementById('expenseDatetime').value = item.date.slice(0, 16);
+            document.getElementById('expenseNote').value = item.note || '';
+            document.getElementById('saveExpenseBtn').innerText = 'บันทึกการแก้ไขรายจ่าย';
+            document.getElementById('cancelExpenseEditBtn').classList.remove('hidden');
+        }
+
+        async function deleteExpense(id) {
+            const item = state.transactions.find(t => t.id === id && (t.type === 'expense' || t.type === 'withdraw'));
+            if (!item) return;
+
+            const confirmed = await showCustomDialog({
+                title: 'ยืนยันการยกเลิกรายจ่าย',
+                message: `ต้องการยกเลิกรายจ่าย ฿${item.amount.toLocaleString()} (${item.category}) และคืนยอดกลับเข้าเงินสะสมหรือไม่?`
+            });
+            if (!confirmed) return;
+
+            await dbTransaction('transactions', 'readwrite', (store) => store.delete(id));
+            state.transactions = state.transactions.filter(t => t.id !== id);
+            await recordSystemLog('INFO', 'ExpenseLedger', `ยกเลิกรายจ่าย ID: ${id} (฿${item.amount})`);
+            renderAll();
+            showToast('ยกเลิกรายจ่ายและคืนยอดสะสมเรียบร้อย', 'info');
+        }
+
+        function resetExpenseForm() {
+            document.getElementById('expenseId').value = '';
+            document.getElementById('expenseAmount').value = '';
+            document.getElementById('expenseNote').value = '';
+            document.getElementById('saveExpenseBtn').innerText = 'บันทึกหักรายจ่าย';
+            document.getElementById('cancelExpenseEditBtn').classList.add('hidden');
+            setDefaultDatetimes();
+        }
+
+        function renderExpenseTable() {
+            const tbody = document.getElementById('expenseTableBody');
+            if (!tbody) return;
+            const q = (document.getElementById('searchExpenseInput')?.value || '').toLowerCase();
+
+            const list = state.transactions.filter(t =>
+                (t.type === 'expense' || t.type === 'withdraw') &&
+                ((t.category || '').toLowerCase().includes(q) || (t.note || '').toLowerCase().includes(q))
+            );
+
+            tbody.innerHTML = '';
+            if (list.length === 0) {
+                tbody.innerHTML = '<tr><td colspan="5" class="text-center text-muted">ไม่พบรายการรายจ่าย</td></tr>';
+                return;
+            }
+
+            list.forEach(item => {
+                const tr = document.createElement('tr');
+                const dt = new Date(item.date);
+                tr.innerHTML = `
+                    <td class="text-muted whitespace-nowrap">${dt.toLocaleDateString('th-TH')} ${dt.toLocaleTimeString('th-TH', { hour: '2-digit', minute: '2-digit' })}</td>
+                    <td><span class="badge badge-rose">${escapeHtml(item.category)}</span></td>
+                    <td class="text-secondary">${escapeHtml(item.note || '-')}</td>
+                    <td class="text-right font-bold text-rose">-฿${item.amount.toLocaleString(undefined, { minimumFractionDigits: 2 })}</td>
+                    <td class="text-center whitespace-nowrap">
+                        <button onclick="editExpense('${item.id}')" class="btn-surface btn-sm">✏️</button>
+                        <button onclick="deleteExpense('${item.id}')" class="btn-surface btn-sm">🗑️</button>
+                    </td>
+                `;
+                tbody.appendChild(tr);
+            });
+        }
+
+        /* ==========================================================================
+           MODULE 4C: DELIVERY INCOME CRUD HANDLERS
+           ========================================================================== */
+        function initDeliveryFormListeners() {
+            const ids = ['deliveryGross', 'deliveryFuel', 'deliveryOtherCost'];
+            ids.forEach(id => {
+                const el = document.getElementById(id);
+                if (el) el.addEventListener('input', updateDeliveryNetPreview);
+            });
+        }
+
+        function updateDeliveryNetPreview() {
+            const gross = parseFloat(document.getElementById('deliveryGross').value) || 0;
+            const fuel = parseFloat(document.getElementById('deliveryFuel').value) || 0;
+            const other = parseFloat(document.getElementById('deliveryOtherCost').value) || 0;
+            const netSatangs = Math.round(gross * 100) - Math.round(fuel * 100) - Math.round(other * 100);
+            const previewEl = document.getElementById('deliveryNetPreview');
+            if (previewEl) {
+                previewEl.innerText = '฿' + (netSatangs / 100).toLocaleString(undefined, { minimumFractionDigits: 2 });
+                previewEl.className = netSatangs >= 0 ? 'text-lg font-extrabold text-cyan' : 'text-lg font-extrabold text-rose';
+            }
+        }
+
+        async function handleSaveDelivery(e) {
+            e.preventDefault();
+            if (state.isSubmitting) return;
+            state.isSubmitting = true;
+
+            try {
+                const id = document.getElementById('deliveryId').value;
+                const workDate = document.getElementById('deliveryWorkDate').value;
+                const trips = parseInt(document.getElementById('deliveryTrips').value, 10);
+                const startTime = document.getElementById('deliveryStartTime').value;
+                const endTime = document.getElementById('deliveryEndTime').value;
+                const workHours = parseFloat(document.getElementById('deliveryHours').value);
+                const grossIncome = parseFloat(document.getElementById('deliveryGross').value);
+                const fuelCost = parseFloat(document.getElementById('deliveryFuel').value) || 0;
+                const otherCost = parseFloat(document.getElementById('deliveryOtherCost').value) || 0;
+                const note = document.getElementById('deliveryNote').value.trim();
+
+                const netSatangs = Math.round(grossIncome * 100) - Math.round(fuelCost * 100) - Math.round(otherCost * 100);
+                if (netSatangs < 0) {
+                    showToast('รายได้สุทธิจากการส่งอาหารต้องไม่ติดลบ (ต้นทุนสูงกว่ารายได้รวม)', 'error');
+                    return;
+                }
+
+                const record = {
+                    id: id || 'del_' + Date.now() + '_' + Math.random().toString(36).slice(2, 5),
+                    workDate,
+                    trips,
+                    startTime,
+                    endTime,
+                    workHours,
+                    grossIncome,
+                    fuelCost,
+                    otherCost,
+                    netIncome: netSatangs / 100,
+                    netSatangs,
+                    note,
+                    updatedAt: new Date().toISOString()
+                };
+
+                await dbTransaction('deliveryLogs', 'readwrite', (store) => store.put(record));
+
+                const idx = state.deliveryLogs.findIndex(d => d.id === record.id);
+                if (idx >= 0) state.deliveryLogs[idx] = record;
+                else state.deliveryLogs.unshift(record);
+
+                state.deliveryLogs.sort((a, b) => new Date(b.workDate) - new Date(a.workDate));
+                resetDeliveryForm();
+                renderAll();
+                showToast(`บันทึกรายได้ส่งอาหารสุทธิ +฿${record.netIncome.toLocaleString(undefined, { minimumFractionDigits: 2 })} สำเร็จ`, 'success');
+            } finally {
+                state.isSubmitting = false;
+            }
+        }
+
+        function editDelivery(id) {
+            const d = state.deliveryLogs.find(item => item.id === id);
+            if (!d) return;
+            document.getElementById('deliveryId').value = d.id;
+            document.getElementById('deliveryWorkDate').value = d.workDate;
+            document.getElementById('deliveryTrips').value = d.trips;
+            document.getElementById('deliveryStartTime').value = d.startTime;
+            document.getElementById('deliveryEndTime').value = d.endTime;
+            document.getElementById('deliveryHours').value = d.workHours;
+            document.getElementById('deliveryGross').value = d.grossIncome;
+            document.getElementById('deliveryFuel').value = d.fuelCost;
+            document.getElementById('deliveryOtherCost').value = d.otherCost;
+            document.getElementById('deliveryNote').value = d.note || '';
+            updateDeliveryNetPreview();
+            document.getElementById('saveDeliveryBtn').innerText = 'บันทึกแก้ไขรายได้ส่งอาหาร';
+            document.getElementById('cancelDeliveryEditBtn').classList.remove('hidden');
+        }
+
+        async function deleteDelivery(id) {
+            const d = state.deliveryLogs.find(item => item.id === id);
+            if (!d) return;
+
+            const ledger = calculateLedgerTotals();
+            const itemSatangs = typeof d.netSatangs === 'number' ? d.netSatangs : Math.round(d.netIncome * 100);
+            if (ledger.netSatangs - itemSatangs < 0) {
+                showToast('ไม่สามารถลบรายการส่งอาหารนี้ได้ เนื่องจากจะทำให้ยอดเงินสะสมสุทธิติดลบ', 'error');
+                return;
+            }
+
+            const confirmed = await showCustomDialog({
+                title: 'ยืนยันการลบรายการรายได้ส่งอาหาร',
+                message: `ต้องการลบรายการส่งอาหารวันที่ ${d.workDate} รายได้สุทธิ ฿${d.netIncome.toLocaleString()} หรือไม่?`
+            });
+            if (!confirmed) return;
+
+            await dbTransaction('deliveryLogs', 'readwrite', (store) => store.delete(id));
+            state.deliveryLogs = state.deliveryLogs.filter(item => item.id !== id);
+            await recordSystemLog('INFO', 'DeliveryLedger', `ลบรายการส่งอาหาร ID: ${id} (฿${d.netIncome})`);
+            renderAll();
+            showToast('ลบรายการรายได้ส่งอาหารเรียบร้อยแล้ว', 'info');
+        }
+
+        function resetDeliveryForm() {
+            document.getElementById('deliveryId').value = '';
+            document.getElementById('deliveryTrips').value = '';
+            document.getElementById('deliveryHours').value = '';
+            document.getElementById('deliveryGross').value = '';
+            document.getElementById('deliveryFuel').value = '0';
+            document.getElementById('deliveryOtherCost').value = '0';
+            document.getElementById('deliveryNote').value = '';
+            document.getElementById('saveDeliveryBtn').innerText = 'บันทึกรายได้ส่งอาหาร';
+            document.getElementById('cancelDeliveryEditBtn').classList.add('hidden');
+            setDefaultDatetimes();
+            updateDeliveryNetPreview();
+        }
+
+        function renderDeliveryTable() {
+            const tbody = document.getElementById('deliveryTableBody');
+            const badgesBox = document.getElementById('deliverySummaryBadges');
+            if (!tbody) return;
+
+            const ledger = calculateLedgerTotals();
+            if (badgesBox) {
+                badgesBox.innerHTML = `
+                    <span class="badge badge-cyan">รายได้รวม: ฿${ledger.totalDeliveryGross.toLocaleString()}</span>
+                    <span class="badge badge-rose">ต้นทุน: ฿${ledger.totalDeliveryCost.toLocaleString()}</span>
+                    <span class="badge badge-emerald">สุทธิ: ฿${ledger.totalDeliveryNet.toLocaleString()}</span>
+                `;
+            }
+
+            tbody.innerHTML = '';
+            if (state.deliveryLogs.length === 0) {
+                tbody.innerHTML = '<tr><td colspan="7" class="text-center text-muted">ยังไม่มีประวัติรายได้ส่งอาหาร</td></tr>';
+                return;
+            }
+
+            state.deliveryLogs.forEach(d => {
+                const tr = document.createElement('tr');
+                const totalCost = (d.fuelCost || 0) + (d.otherCost || 0);
+                tr.innerHTML = `
+                    <td class="text-muted whitespace-nowrap">${new Date(d.workDate).toLocaleDateString('th-TH')}</td>
+                    <td class="text-xs">${d.startTime}-${d.endTime} (${d.workHours} ชม.)</td>
+                    <td class="font-semibold">${d.trips} เที่ยว</td>
+                    <td class="text-right">฿${d.grossIncome.toLocaleString()}</td>
+                    <td class="text-right text-rose">-฿${totalCost.toLocaleString()}</td>
+                    <td class="text-right font-bold text-cyan">+฿${d.netIncome.toLocaleString(undefined, { minimumFractionDigits: 2 })}</td>
+                    <td class="text-center whitespace-nowrap">
+                        <button onclick="editDelivery('${d.id}')" class="btn-surface btn-sm">✏️</button>
+                        <button onclick="deleteDelivery('${d.id}')" class="btn-surface btn-sm">🗑️</button>
+                    </td>
+                `;
+                tbody.appendChild(tr);
+            });
+        }
+
+        /* ==========================================================================
+           MODULE 5: NEW v3.1 FEATURE #1 - AI FINANCIAL FORECAST & RISK ALERT
+           ========================================================================== */
+        function renderFinancialForecast() {
+            const container = document.getElementById('forecastContentContainer');
+            if (!container) return;
+
+            const ledger = calculateLedgerTotals();
+            const deposits = state.transactions.filter(t => t.type === 'deposit');
+            const expenses = state.transactions.filter(t => t.type === 'expense' || t.type === 'withdraw');
+
+            if (deposits.length === 0 && state.deliveryLogs.length === 0 && expenses.length === 0) {
+                container.innerHTML = '<div class="alert-box alert-gold">ข้อมูลยังไม่เพียงพอสำหรับการคาดการณ์ กรุณาบันทึกรายการออม รายได้ส่งอาหาร หรือรายจ่ายก่อน</div>';
+                return;
+            }
+
+            const activeDaysSet = new Set([
+                ...state.transactions.map(t => t.date.slice(0, 10)),
+                ...state.deliveryLogs.map(d => d.workDate)
+            ]);
+            const activeDays = Math.max(1, activeDaysSet.size);
+
+            const dailyInflowAvg = (ledger.totalSavings + ledger.totalDeliveryNet) / activeDays;
+            const dailyExpenseAvg = ledger.totalExpenses / activeDays;
+            const dailyNetVelocity = dailyInflowAvg - dailyExpenseAvg;
+
+            const now = new Date();
+            const daysInMonth = new Date(now.getFullYear(), now.getMonth() + 1, 0).getDate();
+            const remainingDaysInMonth = Math.max(0, daysInMonth - now.getDate());
+
+            const projectedEndOfMonth = Math.max(0, ledger.netBalance + (dailyNetVelocity * remainingDaysInMonth));
+            const projected30Days = Math.max(0, ledger.netBalance + (dailyNetVelocity * 30));
+
+            let riskLevel = 'ความเสี่ยงต่ำ (LOW RISK)';
+            let riskBadge = 'badge-emerald';
+            let riskReason = 'กระแสเงินสดสุทธิเป็นบวกและมีอัตราการสะสมเงินออมสม่ำเสมอ';
+
+            if (dailyNetVelocity < 0) {
+                riskLevel = 'ความเสี่ยงสูง (HIGH RISK)';
+                riskBadge = 'badge-rose';
+                riskReason = `รายจ่ายเฉลี่ยต่อวัน (฿${dailyExpenseAvg.toFixed(2)}) สูงกว่ารายรับออม/ส่งอาหารเฉลี่ยต่อวัน (฿${dailyInflowAvg.toFixed(2)}) หากไม่ปรับลดรายจ่าย ยอดเงินสะสมมีแนวโน้มลดลง`;
+            } else if (dailyInflowAvg > 0 && (dailyExpenseAvg / dailyInflowAvg) > 0.75) {
+                riskLevel = 'ความเสี่ยงปานกลาง (MODERATE RISK)';
+                riskBadge = 'badge-gold';
+                riskReason = 'สัดส่วนรายจ่ายสูงเกิน 75% ของรายรับออมและส่งอาหาร ควรเพิ่มเงินสำรองฉุกเฉิน';
+            }
+
+            container.innerHTML = `
+                <div class="grid grid-cols-1 md-grid-cols-3 gap-4">
+                    <div class="sub-card p-4">
+                        <div class="text-xs text-muted">ยอดเงินสะสมจริงปัจจุบัน (Actual)</div>
+                        <div class="text-2xl font-extrabold text-gold mt-1">฿${ledger.netBalance.toLocaleString(undefined, { minimumFractionDigits: 2 })}</div>
+                        <div class="text-xs text-muted mt-1">ข้อมูล ณ วันที่ ${now.toLocaleDateString('th-TH')}</div>
+                    </div>
+                    <div class="sub-card p-4">
+                        <div class="text-xs text-muted">ยอดคาดการณ์สิ้นเดือนนี้ (Estimated)</div>
+                        <div class="text-2xl font-extrabold text-cyan mt-1">฿${projectedEndOfMonth.toLocaleString(undefined, { minimumFractionDigits: 2 })}</div>
+                        <div class="text-xs text-muted mt-1">อีก ${remainingDaysInMonth} วันที่เหลือของเดือน</div>
+                    </div>
+                    <div class="sub-card p-4">
+                        <div class="text-xs text-muted">ยอดคาดการณ์อีก 30 วันข้างหน้า (Estimated)</div>
+                        <div class="text-2xl font-extrabold text-purple mt-1">฿${projected30Days.toLocaleString(undefined, { minimumFractionDigits: 2 })}</div>
+                        <div class="text-xs text-muted mt-1">อัตราเติบโตสุทธิ ฿${dailyNetVelocity.toFixed(2)}/วัน</div>
+                    </div>
+                </div>
+
+                <div class="sub-card p-4 space-y-2">
+                    <div class="flex justify-between items-center">
+                        <span class="font-bold text-sm">ระดับความเสี่ยงทางการเงินล่วงหน้า:</span>
+                        <span class="badge ${riskBadge}">${riskLevel}</span>
+                    </div>
+                    <p class="text-xs text-secondary">${riskReason}</p>
+                    <p class="text-xs text-muted">หมายเหตุ: ตัวเลขคาดการณ์คำนวณจากค่าเฉลี่ยสถิติจริง ${activeDays} วันที่มีความเคลื่อนไหวในฐานข้อมูล ไม่ใช่ยอดเงินจริงในบัญชี</p>
+                </div>
+            `;
+        }
+
+        /* ==========================================================================
+           MODULE 6: NEW v3.1 FEATURE #2 - AI SMART RECURRING TRANSACTIONS
+           ========================================================================== */
+        async function handleSaveRecurring(e) {
+            e.preventDefault();
+            const id = document.getElementById('recurringId').value || 'rec_' + Date.now();
+            const title = document.getElementById('recurringTitle').value.trim();
+            const type = document.getElementById('recurringType').value;
+            const frequency = document.getElementById('recurringFrequency').value;
+            const amount = parseFloat(document.getElementById('recurringAmount').value);
+            const nextDate = document.getElementById('recurringNextDate').value;
+            const note = document.getElementById('recurringNote').value.trim();
+
+            if (!title || !Number.isFinite(amount) || amount <= 0 || !nextDate) {
+                showToast('กรุณากรอกข้อมูลรายการประจำให้ครบถ้วน', 'error');
+                return;
+            }
+
+            const item = {
+                id,
+                title,
+                type,
+                frequency,
+                amount: Math.round(amount * 100) / 100,
+                nextDate,
+                note,
+                active: true,
+                updatedAt: new Date().toISOString()
+            };
+
+            await dbTransaction('recurringItems', 'readwrite', (store) => store.put(item));
+            const idx = state.recurringItems.findIndex(r => r.id === id);
+            if (idx >= 0) state.recurringItems[idx] = item;
+            else state.recurringItems.push(item);
+
+            resetRecurringForm();
+            renderRecurringList();
+            showToast('บันทึกรายการการเงินประจำเรียบร้อยแล้ว', 'success');
+        }
+
+        function resetRecurringForm() {
+            document.getElementById('recurringId').value = '';
+            document.getElementById('recurringTitle').value = '';
+            document.getElementById('recurringAmount').value = '';
+            document.getElementById('recurringNote').value = '';
+            document.getElementById('recurringNextDate').value = new Date().toISOString().slice(0, 10);
+            document.getElementById('cancelRecurringEditBtn').classList.add('hidden');
+        }
+
+        function editRecurring(id) {
+            const item = state.recurringItems.find(r => r.id === id);
+            if (!item) return;
+            document.getElementById('recurringId').value = item.id;
+            document.getElementById('recurringTitle').value = item.title;
+            document.getElementById('recurringType').value = item.type;
+            document.getElementById('recurringFrequency').value = item.frequency;
+            document.getElementById('recurringAmount').value = item.amount;
+            document.getElementById('recurringNextDate').value = item.nextDate;
+            document.getElementById('recurringNote').value = item.note || '';
+            document.getElementById('cancelRecurringEditBtn').classList.remove('hidden');
+        }
+
+        async function deleteRecurring(id) {
+            const confirmed = await showCustomDialog({
+                title: 'ลบรายการการเงินประจำ',
+                message: 'ยืนยันการลบตารางรายการประจำนี้? (ธุรกรรมที่เคยบันทึกไปแล้วจะไม่ถูกลบ)'
+            });
+            if (!confirmed) return;
+
+            await dbTransaction('recurringItems', 'readwrite', (store) => store.delete(id));
+            state.recurringItems = state.recurringItems.filter(r => r.id !== id);
+            renderRecurringList();
+            showToast('ลบรายการประจำเรียบร้อยแล้ว', 'info');
+        }
+
+        async function executeRecurringWithConfirmation(id) {
+            const item = state.recurringItems.find(r => r.id === id);
+            if (!item) return;
+
+            const actionLabel = item.type === 'deposit' ? 'เพิ่มเงินออมเข้าบัญชีกลาง' : 'หักรายจ่ายออกจากบัญชีกลาง';
+            const confirmed = await showCustomDialog({
+                title: 'ยืนยันบันทึกรายการประจำลงบัญชีจริง',
+                message: `ยืนยันการ${actionLabel} "${item.title}" จำนวน ฿${item.amount.toLocaleString()} หรือไม่?`
+            });
+            if (!confirmed) return;
+
+            const satangs = Math.round(item.amount * 100);
+            if (item.type === 'expense') {
+                const ledger = calculateLedgerTotals();
+                if (satangs > ledger.netSatangs) {
+                    showToast('ยอดเงินสะสมสุทธิไม่เพียงพอสำหรับหักรายจ่ายประจำนี้', 'error');
+                    return;
+                }
+            }
+
+            const nowISO = new Date().toISOString().slice(0, 16);
+            const txRecord = {
+                id: (item.type === 'deposit' ? 'sav_rec_' : 'exp_rec_') + Date.now(),
+                type: item.type,
+                amount: satangs / 100,
+                satangs,
+                category: item.type === 'deposit' ? 'เงินออมประจำ' : 'ค่าสาธารณูปโภค/บิล',
+                date: nowISO,
+                note: `[รายการประจำ] ${item.title} ${item.note ? '- ' + item.note : ''}`,
+                updatedAt: new Date().toISOString()
+            };
+
+            // Advance nextDate
+            const nextDt = new Date(item.nextDate);
+            if (item.frequency === 'daily') nextDt.setDate(nextDt.getDate() + 1);
+            else if (item.frequency === 'weekly') nextDt.setDate(nextDt.getDate() + 7);
+            else nextDt.setMonth(nextDt.getMonth() + 1);
+            item.nextDate = nextDt.toISOString().slice(0, 10);
+
+            await dbTransaction('transactions', 'readwrite', (store) => store.put(txRecord));
+            await dbTransaction('recurringItems', 'readwrite', (store) => store.put(item));
+
+            state.transactions.unshift(txRecord);
+            await evaluateAIMonthlyMission(false);
+            renderAll();
+            showToast(`ยืนยันบันทึกรายการ "${item.title}" สำเร็จ`, 'success');
+        }
+
+        function renderRecurringList() {
+            const container = document.getElementById('recurringListContainer');
+            const badge = document.getElementById('recurringDueBadge');
+            const dashAlert = document.getElementById('dashboardRecurringAlertBox');
+            if (!container) return;
+
+            const todayStr = new Date().toISOString().slice(0, 10);
+            const dueItems = state.recurringItems.filter(r => r.nextDate <= todayStr);
+
+            if (badge) badge.innerText = `${state.recurringItems.length} รายการ (ถึงกำหนด ${dueItems.length})`;
+
+            if (dashAlert) {
+                if (dueItems.length > 0) {
+                    dashAlert.innerHTML = `
+                        <div class="alert-box alert-gold">
+                            <strong>🔁 มีรายการประจำถึงกำหนด ${dueItems.length} รายการ:</strong>
+                            <div class="mt-2 flex gap-2">
+                                <button onclick="switchTab('recurring')" class="gold-bg-gradient btn-sm w-full">ตรวจสอบและกดยืนยัน</button>
+                            </div>
+                        </div>
+                    `;
+                } else {
+                    dashAlert.innerHTML = '';
+                }
+            }
+
+            if (state.recurringItems.length === 0) {
+                container.innerHTML = '<div class="text-center text-muted p-5">ยังไม่มีรายการการเงินประจำ กรุณาสร้างรายการใหม่ด้านซ้าย</div>';
+                return;
+            }
+
+            const freqLabel = { daily: 'รายวัน', weekly: 'รายสัปดาห์', monthly: 'รายเดือน' };
+            container.innerHTML = '';
+
+            state.recurringItems.forEach(r => {
+                const isDue = r.nextDate <= todayStr;
+                const card = document.createElement('div');
+                card.className = 'sub-card p-4 flex flex-wrap justify-between items-center gap-3';
+                card.innerHTML = `
+                    <div>
+                        <div class="flex items-center gap-2">
+                            <span class="font-bold text-sm">${escapeHtml(r.title)}</span>
+                            <span class="badge ${r.type === 'deposit' ? 'badge-emerald' : 'badge-rose'}">${r.type === 'deposit' ? '+ ออมประจำ' : '- รายจ่ายประจำ'}</span>
+                            <span class="badge badge-cyan">${freqLabel[r.frequency] || r.frequency}</span>
+                            ${isDue ? '<span class="badge badge-gold">⏰ ถึงกำหนดยืนยัน</span>' : ''}
+                        </div>
+                        <div class="text-xs text-muted mt-1">
+                            จำนวน: <strong class="text-primary">฿${r.amount.toLocaleString()}</strong> | รอบถัดไป: ${new Date(r.nextDate).toLocaleDateString('th-TH')}
+                        </div>
+                    </div>
+                    <div class="flex gap-1-5">
+                        <button onclick="executeRecurringWithConfirmation('${r.id}')" class="btn-emerald btn-sm">✔ ยืนยันบันทึก</button>
+                        <button onclick="editRecurring('${r.id}')" class="btn-surface btn-sm">✏️</button>
+                        <button onclick="deleteRecurring('${r.id}')" class="btn-surface btn-sm">🗑️</button>
+                    </div>
+                `;
+                container.appendChild(card);
+            });
+        }
+
+        /* ==========================================================================
+           MODULE 7: NEW v3.1 FEATURE #3 - AI TRANSACTION AUDIT CENTER
+           ========================================================================== */
+        async function runTransactionAudit(manual = false) {
+            const summaryGrid = document.getElementById('auditSummaryGrid');
+            const findingsBox = document.getElementById('auditFindingsBox');
+            if (!summaryGrid || !findingsBox) return;
+
+            const ledger = calculateLedgerTotals();
+            const totalTxCount = state.transactions.length + state.deliveryLogs.length;
+
+            // Check Satang consistency & potential duplicate entries
+            let satangMismatches = 0;
+            state.transactions.forEach(t => {
+                if (typeof t.satangs === 'number' && Math.abs(t.satangs - Math.round(t.amount * 100)) > 0) {
+                    satangMismatches++;
+                }
+            });
+
+            const duplicateCandidates = [];
+            for (let i = 0; i < state.transactions.length; i++) {
+                for (let j = i + 1; j < state.transactions.length; j++) {
+                    const a = state.transactions[i];
+                    const b = state.transactions[j];
+                    if (a.type === b.type && a.amount === b.amount && a.category === b.category && a.date.slice(0, 10) === b.date.slice(0, 10)) {
+                        duplicateCandidates.push(a);
+                    }
+                }
+            }
+
+            const auditStatus = (satangMismatches === 0 && ledger.netSatangs >= 0 && duplicateCandidates.length === 0)
+                ? '<span class="badge badge-emerald">ปกติ (VERIFIED)</span>'
+                : '<span class="badge badge-gold">ต้องตรวจสอบเพิ่มเติม</span>';
+
+            summaryGrid.innerHTML = `
+                <div class="sub-card p-4">
+                    <div class="text-xs text-muted">สถานะบัญชีกลาง Ledger</div>
+                    <div class="mt-1">${auditStatus}</div>
+                </div>
+                <div class="sub-card p-4">
+                    <div class="text-xs text-muted">จำนวนธุรกรรมทั้งหมด</div>
+                    <div class="text-lg font-bold text-primary mt-1">${totalTxCount} รายการ</div>
+                </div>
+                <div class="sub-card p-4">
+                    <div class="text-xs text-muted">ความคลาดเคลื่อน Satang</div>
+                    <div class="text-lg font-bold text-emerald mt-1">${satangMismatches} รายการ</div>
+                </div>
+                <div class="sub-card p-4">
+                    <div class="text-xs text-muted">รายการที่อาจบันทึกซ้ำ</div>
+                    <div class="text-lg font-bold text-gold mt-1">${duplicateCandidates.length} รายการ</div>
+                </div>
+            `;
+
+            let findingsHtml = `
+                <div class="sub-card p-4 text-xs space-y-1">
+                    <div class="font-bold text-cyan">📊 รายงานการตรวจสอบสมการบัญชีกลาง:</div>
+                    <div>เงินออมทั้งหมด (<strong>฿${ledger.totalSavings.toLocaleString(undefined, { minimumFractionDigits: 2 })}</strong>) + รายได้ส่งอาหารสุทธิ (<strong>฿${ledger.totalDeliveryNet.toLocaleString(undefined, { minimumFractionDigits: 2 })}</strong>) - รายจ่ายรวม (<strong>฿${ledger.totalExpenses.toLocaleString(undefined, { minimumFractionDigits: 2 })}</strong>) = <strong class="text-gold">฿${ledger.netBalance.toLocaleString(undefined, { minimumFractionDigits: 2 })}</strong></div>
+                </div>
+            `;
+
+            if (duplicateCandidates.length > 0) {
+                findingsHtml += `<div class="alert-box alert-gold"><strong>⚠️ พบรายการที่อาจบันทึกซ้ำในวันเดียวกัน (${duplicateCandidates.length} รายการ):</strong> โปรดตรวจสอบในหน้าประวัติการออมหรือรายจ่ายด้วยตนเอง ระบบจะไม่ลบข้อมูลโดยอัตโนมัติ</div>`;
+            } else {
+                findingsHtml += `<div class="alert-box alert-emerald">✅ <strong>ผลการตรวจสอบผ่านเกณฑ์:</strong> ไม่พบรายการซ้ำซ้อนหรือข้อผิดพลาดในการคำนวณยอดเงินสะสม</div>`;
+            }
+
+            findingsBox.innerHTML = findingsHtml;
+
+            if (manual) {
+                await recordSystemLog('INFO', 'AuditCenter', `ตรวจสอบบัญชีกลางสำเร็จ (${totalTxCount} รายการ, พบข้อสังเกตซ้ำ ${duplicateCandidates.length} รายการ)`);
+                showToast('ตรวจสอบบัญชีกลางเสร็จสมบูรณ์', 'success');
+            }
+        }
+
+        /* ==========================================================================
+           MODULE 8: AI MONTHLY MISSION & FINANCIAL HEALTH MONITOR
+           ========================================================================== */
+        async function evaluateAIMonthlyMission(forceRecalculate = false) {
             const currentMonthKey = new Date().toISOString().slice(0, 7);
             const currentMonthDeposits = state.transactions.filter(t => t.type === 'deposit' && t.date.startsWith(currentMonthKey));
             const currentSaved = currentMonthDeposits.reduce((s, t) => s + (t.satangs || Math.round(t.amount * 100)), 0) / 100;
@@ -1371,27 +2678,64 @@
                 const totalTrips = state.deliveryLogs.reduce((s, d) => s + (d.trips || 0), 0);
                 const avgHr = totalHours > 0 ? (ledger.totalDeliveryNet / totalHours).toFixed(2) : '0.00';
                 deliveryText = `<div class="text-xs text-cyan mt-1">🛵 <strong>สรุปงานส่งอาหาร:</strong> วิ่งงานรวม ${totalTrips} เที่ยว (${totalHours.toFixed(1)} ชม.) รายได้สุทธิเฉลี่ย ฿${avgHr}/ชม. (ต้นทุนรวม ฿${ledger.totalDeliveryCost.toLocaleString()})</div>`;
-            settingsList.forEach(item => {
-                state.settings[item.key] = item.value;
-            });
-
-            if (state.settings.lastMigratedFrom !== undefined && state.settings.lastMigratedFrom < 6) {
-                await recordSystemLog('MIGRATION', 'VersionGuardian', `อัปเกรดฐานข้อมูลจาก Schema v${state.settings.lastMigratedFrom} สู่ v6 (App v2.9) สำเร็จ ข้อมูลเดิมครบถ้วน`);
-                await dbTransaction('settings', 'readwrite', (store) => store.delete('lastMigratedFrom'));
-                delete state.settings.lastMigratedFrom;
             }
+
+            document.getElementById('aiHealthScore').innerText = `AI Score: ${score}/100`;
+            container.innerHTML = `
+                <div>อัตราการคงเหลือเงินสะสมสุทธิอยู่ที่ <strong>${retentionRate}%</strong> ของรายรับรวมทั้งหมด (฿${totalInflow.toLocaleString(undefined, { minimumFractionDigits: 2 })})</div>
+                ${deliveryText}
+                ${anomalyText}
+            `;
         }
 
-        /* ==========================================================================
-           MODULE 3: FIXED-POINT SATANG LEDGER ENGINE
-           ========================================================================== */
+        function renderSmartAllocation() {
+            const container = document.getElementById('allocationContent');
+            if (!container) return;
+
+            const ledger = calculateLedgerTotals();
+            if (ledger.netBalance <= 0) {
+                container.innerHTML = '<div class="alert-box alert-gold">ยังไม่มียอดเงินสะสมสุทธิเพียงพอสำหรับการจัดสรรแผน กรุณาบันทึกรายการออมหรือรายได้ส่งอาหารก่อน</div>';
+                return;
+            }
+
+            const emergencyAmt = ledger.netBalance * 0.40;
+            const goalAmt = ledger.netBalance * 0.35;
+            const expenseLimitAmt = ledger.netBalance * 0.25;
+
+            container.innerHTML = `
+                <div class="grid grid-cols-1 md-grid-cols-3 gap-4">
+                    <div class="sub-card p-4">
+                        <div class="text-xs text-muted">1. เงินสำรองฉุกเฉินแนะนำ (40%)</div>
+                        <div class="text-xl font-bold text-emerald mt-1">฿${emergencyAmt.toLocaleString(undefined, { minimumFractionDigits: 2 })}</div>
+                        <div class="text-xs text-muted mt-1">เพื่อความมั่นคงและรองรับเหตุฉุกเฉิน</div>
+                    </div>
+                    <div class="sub-card p-4">
+                        <div class="text-xs text-muted">2. จัดสรรเพื่อเป้าหมายการออม (35%)</div>
+                        <div class="text-xl font-bold text-gold mt-1">฿${goalAmt.toLocaleString(undefined, { minimumFractionDigits: 2 })}</div>
+                        <div class="text-xs text-muted mt-1">นำไปวางแผนในเมนูเป้าหมายหลายรายการ</div>
+                    </div>
+                    <div class="sub-card p-4">
+                        <div class="text-xs text-muted">3. กรอบวงเงินค่าใช้จ่ายที่ปลอดภัย (25%)</div>
+                        <div class="text-xl font-bold text-cyan mt-1">฿${expenseLimitAmt.toLocaleString(undefined, { minimumFractionDigits: 2 })}</div>
+                        <div class="text-xs text-muted mt-1">ช่วยควบคุมไม่ให้รายจ่ายเกินกำลัง</div>
+                    </div>
+                </div>
+                <div class="alert-box alert-cyan">
+                    <strong>ที่มาของการคำนวณ:</strong> คำนวณจากยอดเงินสะสมสุทธิจริงปัจจุบัน ฿${ledger.netBalance.toLocaleString(undefined, { minimumFractionDigits: 2 })} ตามหลักสมดุลกระแสเงินสด 40/35/25 (ระบบไม่ได้โอนหรือล็อกเงินจริง)
+                </div>
+            `;
+        }
+
         function renderAll() {
             renderStats();
             renderSavingsTable();
             renderDeliveryTable();
             renderExpenseTable();
+            renderRecurringList();
             renderGoalsList();
             renderFinancialCalendar();
+            renderFinancialForecast();
+            runTransactionAudit(false);
             renderSmartExpenseDetector();
             renderSmartAllocation();
             renderSettingsView();
@@ -1401,7 +2745,7 @@
         }
 
         /* ==========================================================================
-           MODULE 6B: AI MULTI-GOAL SAVINGS PLANNER (v2.9 NEW)
+           MODULE 9: MULTI-GOAL PLANNER, CALENDAR & SMART EXPENSE DETECTOR
            ========================================================================== */
         async function handleSaveGoal(e) {
             e.preventDefault();
@@ -1422,15 +2766,7 @@
                 return;
             }
 
-            const goalObj = {
-                id,
-                title,
-                targetAmount,
-                deadline,
-                allocatedAmount,
-                updatedAt: new Date().toISOString()
-            };
-
+            const goalObj = { id, title, targetAmount, deadline, allocatedAmount, updatedAt: new Date().toISOString() };
             await dbTransaction('goals', 'readwrite', (store) => store.put(goalObj));
             const idx = state.goals.findIndex(g => g.id === id);
             if (idx >= 0) state.goals[idx] = goalObj;
@@ -1453,7 +2789,11 @@
         }
 
         async function deleteGoal(id) {
-            if (!confirm('ยืนยันการลบเป้าหมายการออมนี้? (ยอดเงินสะสมจริงจะไม่ได้รับผลกระทบ)')) return;
+            const confirmed = await showCustomDialog({
+                title: 'ลบเป้าหมายการออม',
+                message: 'ยืนยันการลบเป้าหมายการออมนี้? (ยอดเงินสะสมจริงจะไม่ได้รับผลกระทบ)'
+            });
+            if (!confirmed) return;
             await dbTransaction('goals', 'readwrite', (store) => store.delete(id));
             state.goals = state.goals.filter(g => g.id !== id);
             renderGoalsList();
@@ -1480,7 +2820,6 @@
                 return;
             }
 
-            // Compute genuine daily saving velocity
             const deposits = state.transactions.filter(t => t.type === 'deposit');
             const totalSaved = deposits.reduce((s, t) => s + t.amount, 0);
             const activeDays = Math.max(1, new Set(deposits.map(t => t.date.slice(0, 10))).size);
@@ -1534,9 +2873,6 @@
             });
         }
 
-        /* ==========================================================================
-           MODULE 6C: AI FINANCIAL CALENDAR & DAILY REMINDER (v2.9 NEW)
-           ========================================================================== */
         function changeCalendarMonth(delta) {
             calendarViewDate.setMonth(calendarViewDate.getMonth() + delta);
             renderFinancialCalendar();
@@ -1648,9 +2984,6 @@
             `;
         }
 
-        /* ==========================================================================
-           MODULE 6D: AI SMART EXPENSE DETECTOR (v2.9 NEW)
-           ========================================================================== */
         function renderSmartExpenseDetector() {
             const container = document.getElementById('expenseDetectorContainer');
             if (!container) return;
@@ -1664,17 +2997,14 @@
             const totalExp = expenses.reduce((s, e) => s + e.amount, 0);
             const avgExp = totalExp / expenses.length;
 
-            // 1. Category breakdown
             const catMap = {};
             expenses.forEach(e => {
                 catMap[e.category] = (catMap[e.category] || 0) + e.amount;
             });
             const topCatEntry = Object.entries(catMap).sort((a, b) => b[1] - a[1])[0];
 
-            // 2. High expense outliers (> 2.2x average)
             const highOutliers = expenses.filter(e => e.amount > avgExp * 2.2 && expenses.length > 2);
 
-            // 3. Potential duplicate detection (same amount + same category on same date)
             const duplicates = [];
             for (let i = 0; i < expenses.length; i++) {
                 for (let j = i + 1; j < expenses.length; j++) {
@@ -1728,8 +3058,374 @@
         }
 
         /* ==========================================================================
-           MODULE 11: AI MENU DRAWER & UI CONTROLS
+           MODULE 10: SELF-CONTAINED HTML5 CANVAS ANALYTICS CHARTS
            ========================================================================== */
+        function renderAnalyticsCharts() {
+            drawCashflowBarChart();
+            drawCategoryChart();
+        }
+
+        function drawCashflowBarChart() {
+            const canvas = document.getElementById('cashflowTrendCanvas');
+            if (!canvas || canvas.offsetParent === null) return;
+            const dpr = window.devicePixelRatio || 1;
+            const rect = canvas.parentElement.getBoundingClientRect();
+            canvas.width = rect.width * dpr;
+            canvas.height = rect.height * dpr;
+            const ctx = canvas.getContext('2d');
+            ctx.scale(dpr, dpr);
+
+            const w = rect.width;
+            const h = rect.height;
+            ctx.clearRect(0, 0, w, h);
+
+            const ledger = calculateLedgerTotals();
+            const items = [
+                { label: 'เงินออมรวม', val: ledger.totalSavings, color: '#10b981' },
+                { label: 'ส่งอาหารสุทธิ', val: ledger.totalDeliveryNet, color: '#06b6d4' },
+                { label: 'รายจ่ายรวม', val: ledger.totalExpenses, color: '#f43f5e' },
+                { label: 'สะสมสุทธิ', val: ledger.netBalance, color: '#f59e0b' }
+            ];
+
+            const maxVal = Math.max(100, ...items.map(i => i.val));
+            const padX = 36;
+            const padY = 34;
+            const chartH = h - padY * 2;
+            const barWidth = Math.min(54, (w - padX * 2) / (items.length * 1.8));
+            const step = (w - padX * 2) / items.length;
+
+            items.forEach((it, idx) => {
+                const bh = (it.val / maxVal) * chartH;
+                const x = padX + idx * step + (step - barWidth) / 2;
+                const y = h - padY - bh;
+
+                ctx.fillStyle = it.color;
+                ctx.beginPath();
+                ctx.roundRect(x, y, barWidth, Math.max(4, bh), 6);
+                ctx.fill();
+
+                ctx.fillStyle = '#94a3b8';
+                ctx.font = '11px sans-serif';
+                ctx.textAlign = 'center';
+                ctx.fillText(it.label, x + barWidth / 2, h - 12);
+
+                ctx.fillStyle = '#f1f5f9';
+                ctx.font = 'bold 11px sans-serif';
+                ctx.fillText('฿' + Math.round(it.val).toLocaleString(), x + barWidth / 2, y - 6);
+            });
+        }
+
+        function drawCategoryChart() {
+            const canvas = document.getElementById('categoryDistributionCanvas');
+            if (!canvas || canvas.offsetParent === null) return;
+            const dpr = window.devicePixelRatio || 1;
+            const rect = canvas.parentElement.getBoundingClientRect();
+            canvas.width = rect.width * dpr;
+            canvas.height = rect.height * dpr;
+            const ctx = canvas.getContext('2d');
+            ctx.scale(dpr, dpr);
+
+            const w = rect.width;
+            const h = rect.height;
+            ctx.clearRect(0, 0, w, h);
+
+            const catTotals = {};
+            state.transactions.forEach(t => {
+                catTotals[t.category] = (catTotals[t.category] || 0) + t.amount;
+            });
+            if (state.deliveryLogs.length > 0) {
+                catTotals['ส่งอาหารสุทธิ'] = state.deliveryLogs.reduce((s, d) => s + d.netIncome, 0);
+            }
+
+            const entries = Object.entries(catTotals).sort((a, b) => b[1] - a[1]).slice(0, 6);
+            if (entries.length === 0) {
+                ctx.fillStyle = '#94a3b8';
+                ctx.font = '13px sans-serif';
+                ctx.textAlign = 'center';
+                ctx.fillText('ยังไม่มีข้อมูลธุรกรรมสำหรับแสดงกราฟสัดส่วน', w / 2, h / 2);
+                return;
+            }
+
+            const maxVal = Math.max(...entries.map(e => e[1]));
+            const palette = ['#f59e0b', '#10b981', '#06b6d4', '#f43f5e', '#a855f7', '#3b82f6'];
+            const rowH = Math.min(34, (h - 24) / entries.length);
+
+            entries.forEach(([cat, val], idx) => {
+                const y = 16 + idx * rowH;
+                const barMaxW = w - 180;
+                const bw = Math.max(6, (val / maxVal) * barMaxW);
+
+                ctx.fillStyle = '#cbd5e1';
+                ctx.font = '11px sans-serif';
+                ctx.textAlign = 'left';
+                ctx.fillText(cat.slice(0, 16), 12, y + 14);
+
+                ctx.fillStyle = palette[idx % palette.length];
+                ctx.beginPath();
+                ctx.roundRect(125, y + 3, bw, 14, 4);
+                ctx.fill();
+
+                ctx.fillStyle = '#f1f5f9';
+                ctx.font = 'bold 11px sans-serif';
+                ctx.fillText('฿' + Math.round(val).toLocaleString(), 132 + bw, y + 14);
+            });
+        }
+
+        /* ==========================================================================
+           MODULE 11: WEB CRYPTO PIN 4-DIGIT SECURITY & JSON BACKUP
+           ========================================================================== */
+        async function hashPinWithSalt(pin, saltHex) {
+            const enc = new TextEncoder();
+            const keyMaterial = await crypto.subtle.importKey('raw', enc.encode(pin), 'PBKDF2', false, ['deriveBits']);
+            const saltBytes = new Uint8Array(saltHex.match(/.{1,2}/g).map(b => parseInt(b, 16)));
+            const derived = await crypto.subtle.deriveBits(
+                { name: 'PBKDF2', salt: saltBytes, iterations: 100000, hash: 'SHA-256' },
+                keyMaterial,
+                256
+            );
+            return Array.from(new Uint8Array(derived)).map(b => b.toString(16).padStart(2, '0')).join('');
+        }
+
+        async function handleSetupPin() {
+            if (state.settings.isPinSet) {
+                showToast('รหัส PIN ถูกตั้งค่าไว้แล้ว (ตั้งค่าเริ่มต้นได้เพียงครั้งเดียว)', 'error');
+                return;
+            }
+            const pin = document.getElementById('setupPinInput').value.trim();
+            if (!/^\d{4}$/.test(pin)) {
+                showToast('กรุณากรอกรหัส PIN เป็นตัวเลข 4 หลักเท่านั้น', 'error');
+                return;
+            }
+
+            const saltArr = crypto.getRandomValues(new Uint8Array(16));
+            const saltHex = Array.from(saltArr).map(b => b.toString(16).padStart(2, '0')).join('');
+            const hashHex = await hashPinWithSalt(pin, saltHex);
+
+            const recArr = crypto.getRandomValues(new Uint8Array(6));
+            const recoveryKey = 'SAV-' + Array.from(recArr).map(b => b.toString(16).padStart(2, '0')).join('').toUpperCase();
+
+            state.settings.pinHash = hashHex;
+            state.settings.pinSalt = saltHex;
+            state.settings.recoveryKey = recoveryKey;
+            state.settings.isPinSet = true;
+
+            await dbTransaction('settings', 'readwrite', (store) => {
+                store.put({ key: 'pinHash', value: hashHex });
+                store.put({ key: 'pinSalt', value: saltHex });
+                store.put({ key: 'recoveryKey', value: recoveryKey });
+                store.put({ key: 'isPinSet', value: true });
+            });
+
+            document.getElementById('setupPinInput').value = '';
+            renderSettingsView();
+            showToast('ตั้งค่ารหัส PIN 4 หลักสำเร็จ โปรดจดบันทึกรหัสกู้คืนความปลอดภัย', 'success');
+        }
+
+        function renderSettingsView() {
+            const box = document.getElementById('pinStatusBox');
+            const setupSec = document.getElementById('pinSetupSection');
+            const recBox = document.getElementById('recoveryKeyBox');
+            const lockBtn = document.getElementById('lockAppBtn');
+            if (!box) return;
+
+            if (state.settings.isPinSet) {
+                box.innerHTML = `<div class="text-emerald font-bold">● เปิดใช้งานระบบป้องกัน PIN 4 หลักแล้ว (PBKDF2-SHA256)</div>`;
+                setupSec.classList.add('hidden');
+                lockBtn.classList.remove('hidden');
+                if (state.settings.recoveryKey) {
+                    recBox.classList.remove('hidden');
+                    document.getElementById('recoveryKeyDisplay').innerText = state.settings.recoveryKey;
+                }
+            } else {
+                box.innerHTML = `<div class="text-gold font-bold">○ ยังไม่ได้ตั้งค่ารหัส PIN 4 หลัก (สามารถตั้งค่าได้ด้านล่าง)</div>`;
+                setupSec.classList.remove('hidden');
+                recBox.classList.add('hidden');
+                lockBtn.classList.add('hidden');
+            }
+        }
+
+        function checkSecurityLockState() {
+            if (state.settings.isPinSet) {
+                lockApplication();
+            }
+            resetIdleTimer();
+        }
+
+        function lockApplication() {
+            if (!state.settings.isPinSet) return;
+            state.currentPinInput = '';
+            updatePinDots();
+            document.getElementById('pinErrorMsg').innerText = '';
+            document.getElementById('pinLockModal').classList.remove('hidden');
+        }
+
+        function updatePinDots() {
+            const dots = document.querySelectorAll('#pinLockModal .pin-dot');
+            dots.forEach((d, idx) => {
+                if (idx < state.currentPinInput.length) d.classList.add('filled');
+                else d.classList.remove('filled');
+            });
+        }
+
+        async function pressPinKey(digit) {
+            if (Date.now() < state.lockoutUntil) {
+                const secLeft = Math.ceil((state.lockoutUntil - Date.now()) / 1000);
+                document.getElementById('pinErrorMsg').innerText = `กรอกผิดเกินกำหนด โปรดรอ ${secLeft} วินาที`;
+                return;
+            }
+            if (state.currentPinInput.length >= 4) return;
+            state.currentPinInput += digit;
+            updatePinDots();
+
+            if (state.currentPinInput.length === 4) {
+                const hashed = await hashPinWithSalt(state.currentPinInput, state.settings.pinSalt);
+                if (hashed === state.settings.pinHash) {
+                    state.pinAttempts = 0;
+                    state.currentPinInput = '';
+                    document.getElementById('pinLockModal').classList.add('hidden');
+                    resetIdleTimer();
+                } else {
+                    state.pinAttempts++;
+                    state.currentPinInput = '';
+                    updatePinDots();
+                    if (state.pinAttempts >= 5) {
+                        state.lockoutUntil = Date.now() + 30000;
+                        document.getElementById('pinErrorMsg').innerText = 'กรอกผิดครบ 5 ครั้ง ระบบหน่วงเวลา 30 วินาที';
+                    } else {
+                        document.getElementById('pinErrorMsg').innerText = `รหัส PIN ไม่ถูกต้อง (ครั้งที่ ${state.pinAttempts}/5)`;
+                    }
+                }
+            }
+        }
+
+        function deletePinDigit() {
+            state.currentPinInput = state.currentPinInput.slice(0, -1);
+            updatePinDots();
+        }
+
+        function clearPin() {
+            state.currentPinInput = '';
+            updatePinDots();
+        }
+
+        async function promptPinRecovery() {
+            const code = await showCustomDialog({
+                title: 'ปลดล็อกด้วยรหัสกู้คืนความปลอดภัย',
+                message: 'กรอกรหัสกู้คืนความปลอดภัย (ขึ้นต้นด้วย SAV-...) เพื่อปลดล็อกหน้าจอโดยไม่สูญเสียข้อมูล:',
+                showInput: true,
+                placeholder: 'SAV-XXXXXXXXXXXX'
+            });
+            if (!code) return;
+            if (state.settings.recoveryKey && code.trim().toUpperCase() === state.settings.recoveryKey.toUpperCase()) {
+                state.pinAttempts = 0;
+                state.lockoutUntil = 0;
+                document.getElementById('pinLockModal').classList.add('hidden');
+                showToast('ปลดล็อกด้วยรหัสกู้คืนสำเร็จ', 'success');
+            } else {
+                showToast('รหัสกู้คืนไม่ถูกต้อง', 'error');
+            }
+        }
+
+        function resetIdleTimer() {
+            clearTimeout(idleTimer);
+            if (state.settings.isPinSet) {
+                idleTimer = setTimeout(lockApplication, IDLE_LOCK_MS);
+            }
+        }
+
+        ['click', 'keydown', 'touchstart'].forEach(evt => {
+            document.addEventListener(evt, resetIdleTimer, { passive: true });
+        });
+
+        function exportBackupJSON() {
+            const payload = {
+                app: 'AI AUTOMATIC SAVINGS 2026',
+                version: APP_VERSION,
+                exportedAt: new Date().toISOString(),
+                data: {
+                    transactions: state.transactions,
+                    deliveryLogs: state.deliveryLogs,
+                    goals: state.goals,
+                    recurringItems: state.recurringItems,
+                    missionState: state.missionState
+                }
+            };
+            const blob = new Blob([JSON.stringify(payload, null, 2)], { type: 'application/json' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `ai-savings-v3.1-backup-${new Date().toISOString().slice(0, 10)}.json`;
+            a.click();
+            URL.revokeObjectURL(url);
+            showToast('ดาวน์โหลดไฟล์สำรองข้อมูล v3.1 สำเร็จ', 'success');
+        }
+
+        async function importBackupJSON(event) {
+            const file = event.target.files[0];
+            if (!file) return;
+            try {
+                const text = await file.text();
+                const parsed = JSON.parse(text);
+                if (!parsed || !parsed.data || !Array.isArray(parsed.data.transactions)) {
+                    throw new Error('โครงสร้างไฟล์สำรองไม่ถูกต้อง');
+                }
+
+                const confirmed = await showCustomDialog({
+                    title: 'ยืนยันการนำเข้าข้อมูลสำรอง',
+                    message: `พบธุรกรรม ${parsed.data.transactions.length} รายการ และส่งอาหาร ${(parsed.data.deliveryLogs || []).length} รายการ ต้องการเขียนทับข้อมูลปัจจุบันหรือไม่?`
+                });
+                if (!confirmed) return;
+
+                await dbTransaction('transactions', 'readwrite', (store) => {
+                    store.clear();
+                    parsed.data.transactions.forEach(t => store.put(t));
+                });
+                await dbTransaction('deliveryLogs', 'readwrite', (store) => {
+                    store.clear();
+                    (parsed.data.deliveryLogs || []).forEach(d => store.put(d));
+                });
+                if (Array.isArray(parsed.data.goals)) {
+                    await dbTransaction('goals', 'readwrite', (store) => {
+                        store.clear();
+                        parsed.data.goals.forEach(g => store.put(g));
+                    });
+                }
+                if (Array.isArray(parsed.data.recurringItems)) {
+                    await dbTransaction('recurringItems', 'readwrite', (store) => {
+                        store.clear();
+                        parsed.data.recurringItems.forEach(r => store.put(r));
+                    });
+                }
+
+                await loadAllData();
+                await evaluateAIMonthlyMission(false);
+                renderAll();
+                showToast('กู้คืนข้อมูลจากไฟล์สำรองสำเร็จ', 'success');
+            } catch (err) {
+                showToast('ไม่สามารถนำเข้าไฟล์ได้: ' + err.message, 'error');
+            } finally {
+                event.target.value = '';
+            }
+        }
+
+        /* ==========================================================================
+           MODULE 12: AI MENU DRAWER, TABS & THEME CONTROLS
+           ========================================================================== */
+        function setDefaultDatetimes() {
+            const now = new Date();
+            const localISO = new Date(now.getTime() - now.getTimezoneOffset() * 60000).toISOString().slice(0, 16);
+            const todayDate = localISO.slice(0, 10);
+
+            ['savingsDatetime', 'expenseDatetime'].forEach(id => {
+                const el = document.getElementById(id);
+                if (el && !el.value) el.value = localISO;
+            });
+            ['deliveryWorkDate', 'recurringNextDate'].forEach(id => {
+                const el = document.getElementById(id);
+                if (el && !el.value) el.value = todayDate;
+            });
+        }
+
         function toggleAiMenuDrawer() {
             const drawer = document.getElementById('aiMenuDrawer');
             const backdrop = document.getElementById('drawerBackdrop');
@@ -1747,25 +3443,32 @@
         }
 
         document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape') {
-                closeAiMenuDrawer();
-            }
+            if (e.key === 'Escape') closeAiMenuDrawer();
         });
 
         function switchTab(tabName) {
-            const views = ['savings', 'delivery', 'expense', 'goals', 'calendar', 'detector', 'allocation', 'mission', 'analytics', 'health', 'settings'];
+            const views = [
+                'dashboard', 'savings', 'expense', 'delivery',
+                'recurring', 'mission', 'goals', 'calendar',
+                'forecast', 'audit', 'analysis', 'analytics',
+                'backup', 'settings', 'health'
+            ];
             const labels = {
+                dashboard: 'Dashboard ภาพรวม',
                 savings: 'บันทึกการออม',
-                delivery: 'รายได้ส่งอาหาร',
                 expense: 'บันทึกรายจ่าย',
+                delivery: 'รายได้ส่งอาหาร',
+                recurring: 'รายการการเงินประจำ',
+                mission: 'ภารกิจออมรายเดือน',
                 goals: 'เป้าหมายการออมหลายรายการ',
                 calendar: 'ปฏิทินการเงิน AI',
-                detector: 'AI ตรวจจับรายจ่ายอัจฉริยะ',
-                allocation: 'AI จัดสรรเงิน',
-                mission: 'ภารกิจการออมประจำเดือน',
-                analytics: 'กราฟ & รายงาน',
-                health: 'สุขภาพระบบ & Audit Log',
-                settings: 'PIN & สำรองข้อมูล'
+                forecast: 'AI Forecast & Risk Alert',
+                audit: 'Transaction Audit Center',
+                analysis: 'AI Financial Analysis',
+                analytics: 'กราฟและรายงาน',
+                backup: 'ระบบสำรองข้อมูล',
+                settings: 'ตั้งค่า & PIN 4 หลัก',
+                health: 'System Health'
             };
 
             views.forEach(v => {
@@ -1781,15 +3484,20 @@
             if (targetBtn) targetBtn.classList.add('active');
 
             const modLabel = document.getElementById('aiActiveModuleLabel');
-            if (modLabel) modLabel.innerText = 'โมดูล: ' + (labels[tabName] || tabName);
+            if (modLabel) modLabel.innerText = 'หน้า: ' + (labels[tabName] || tabName);
 
             closeAiMenuDrawer();
 
             if (tabName === 'analytics') setTimeout(renderAnalyticsCharts, 40);
-            if (tabName === 'allocation') renderSmartAllocation();
+            if (tabName === 'analysis') {
+                renderSmartExpenseDetector();
+                renderSmartAllocation();
+            }
+            if (tabName === 'forecast') renderFinancialForecast();
+            if (tabName === 'recurring') renderRecurringList();
+            if (tabName === 'audit') runTransactionAudit(false);
             if (tabName === 'goals') renderGoalsList();
             if (tabName === 'calendar') renderFinancialCalendar();
-            if (tabName === 'detector') renderSmartExpenseDetector();
             if (tabName === 'health') runFullSystemDiagnostics(false);
         }
 
@@ -1857,7 +3565,7 @@
                 checkDailySavingsReminder();
                 setInterval(checkDailySavingsReminder, 60000);
             } catch (err) {
-                showToast('เกิดข้อผิดพลาดในการเริ่มต้นระบบ v2.9: ' + err.message, 'error');
+                showToast('เกิดข้อผิดพลาดในการเริ่มต้นระบบ v3.1: ' + err.message, 'error');
             }
         });
     </script>
