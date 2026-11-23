@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>AI AUTOMATIC SAVINGS 2026 v2.8 — Aurora Ultimate Edition</title>
+    <title>AI AUTOMATIC SAVINGS 2026 v3.2 — Aurora Quantum Edition</title>
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Google Fonts: Inter & Prompt -->
@@ -216,7 +216,7 @@
             
             <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs font-medium mb-5">
                 <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
-                DAILY FACE AUTHENTICATION v2.8
+                DAILY FACE AUTHENTICATION v3.2
             </div>
 
             <!-- Biometric Line Icon -->
@@ -264,7 +264,7 @@
 
             <div class="mt-6 pt-4 border-t border-slate-800/80 flex items-center justify-between text-[11px] text-slate-500">
                 <span>AI AUTOMATIC SAVINGS 2026</span>
-                <span class="font-mono text-emerald-400">v2.8 • Zero-PIN</span>
+                <span class="font-mono text-emerald-400">v3.2 • Zero-PIN</span>
             </div>
         </div>
     </div>
@@ -337,7 +337,7 @@
                     <div>
                         <div class="flex items-center gap-2">
                             <span class="font-bold text-sm md:text-base tracking-tight text-white">AURORA SAVINGS</span>
-                            <span class="px-1.5 py-0.5 text-[10px] font-mono rounded bg-blue-500/15 text-blue-400 border border-blue-500/30">v2.8</span>
+                            <span class="px-1.5 py-0.5 text-[10px] font-mono rounded bg-emerald-500/15 text-emerald-400 border border-emerald-500/30">v3.2</span>
                         </div>
                         <p class="text-[11px] text-slate-400 flex items-center gap-1.5">
                             <span id="header-health-dot" class="w-2 h-2 rounded-full bg-emerald-400"></span>
@@ -419,7 +419,7 @@
         <div class="p-4 border-b border-slate-800 flex items-center justify-between bg-violet-950/30 rounded-t-3xl">
             <div class="flex items-center gap-2">
                 <span class="w-2.5 h-2.5 rounded-full bg-violet-400 animate-pulse"></span>
-                <h4 class="font-bold text-sm text-white">Aurora Local AI Assistant</h4>
+                <h4 class="font-bold text-sm text-white">Aurora Local AI Assistant v3.2</h4>
             </div>
             <button onclick="AppUI.toggleAIChat()" class="text-slate-400 hover:text-white">
                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
@@ -427,7 +427,7 @@
         </div>
         <div id="ai-chat-messages" class="p-4 overflow-y-auto space-y-3 text-xs flex-1 min-h-[220px]">
             <div class="p-3 rounded-2xl bg-slate-800/80 text-slate-200 leading-relaxed">
-                สวัสดีครับ! ผมคือ <strong>Aurora Local Intelligence Engine v2.8</strong> ทำงานแบบออฟไลน์ 100% บนอุปกรณ์ของคุณ สามารถถามสรุปยอดออม รายจ่าย สถานะ Face Authentication หรือวิธีสำรองข้อมูลได้เลยครับ
+                สวัสดีครับ! ผมคือ <strong>Aurora Quantum Local Intelligence Engine v3.2</strong> ทำงานแบบออฟไลน์ 100% บนอุปกรณ์ของคุณ สามารถถามสรุปยอดออม รายจ่าย เป้าหมายย่อย (Savings Jars) คะแนนสุขภาพการเงิน หรือสถานะระบบได้เลยครับ
             </div>
         </div>
         <div class="p-3 border-t border-slate-800 flex gap-2">
@@ -444,7 +444,7 @@
         <div class="max-w-3xl mx-auto">
             <div class="w-12 h-1.5 bg-slate-700 rounded-full mx-auto mb-5"></div>
             <div class="flex items-center justify-between mb-4">
-                <h3 class="text-base font-bold aurora-text-gradient">AURORA AI MORE MENU v2.8</h3>
+                <h3 class="text-base font-bold aurora-text-gradient">AURORA AI MORE MENU v3.2</h3>
                 <span class="text-[11px] text-slate-400">เลือกโมดูลระบบ</span>
             </div>
             <div id="aurora-more-grid" class="grid grid-cols-2 sm:grid-cols-3 gap-3">
@@ -468,9 +468,9 @@
      */
     const APP_CONFIG = Object.freeze({
         APP_NAME: 'AI AUTOMATIC SAVINGS 2026',
-        APP_VERSION: '2.8', // String display version
+        APP_VERSION: '3.2', // String display version upgraded to 3.2
         DB_NAME: 'AI_Automatic_Savings_2026_DB',
-        DB_SCHEMA_VERSION: 4, // Strictly Integer Migration Version (NEVER 2.8)
+        DB_SCHEMA_VERSION: 5, // Strictly Integer Migration Version (v2.8 was 4 -> v3.2 is 5)
         DEFAULT_AUTO_UPDATE_COUNTDOWN: 120
     });
 
@@ -609,6 +609,12 @@
                         db.createObjectStore('security_vault', { keyPath: 'key' });
                     }
 
+                    // 5. NEW v3.2: Multi-Goal Savings Jars Store (กระปุกออมแยกเป้าหมาย)
+                    if (!db.objectStoreNames.contains('savings_jars')) {
+                        const jarStore = db.createObjectStore('savings_jars', { keyPath: 'id' });
+                        jarStore.createIndex('createdAt', 'createdAt', { unique: false });
+                    }
+
                     // Safe Migration Cleanup: Purge any legacy PIN keys without touching financial stores
                     if (db.objectStoreNames.contains('settings_data')) {
                         const settingsStore = tx.objectStore('settings_data');
@@ -719,6 +725,19 @@
             localStorage.setItem('aurora_v28_last_monotonic_ts', String(now));
             return true;
         }
+
+        // BUG FIX v3.2: Midnight Rollover Watchdog (Auto-locks if day changes while app is open)
+        setInterval(() => {
+            try {
+                const raw = localStorage.getItem(SESSION_STORAGE_KEY);
+                if (!raw) return;
+                const session = JSON.parse(raw);
+                if (session.date && session.date !== getTodayDateString() && !session.manuallyLocked) {
+                    SystemRecoveryEngine.logError('Low', 'DailyRollover', 'เปลี่ยนวันใหม่แล้ว ระบบล็อกหน้าจอเพื่อยืนยันใบหน้าประจำวัน', true);
+                    lockSession();
+                }
+            } catch {}
+        }, 60000);
 
         async function checkDailySession() {
             const timeOk = await validateTimeIntegrity();
@@ -992,6 +1011,7 @@
         async function computeLedgerSummary() {
             const txs = await DatabaseManager.getAll('transactions');
             const deliveries = await DatabaseManager.getAll('delivery_records');
+            const jars = await DatabaseManager.getAll('savings_jars');
 
             // Sort chronologically
             txs.sort((a, b) => new Date(a.timestamp) - new Date(b.timestamp));
@@ -1008,18 +1028,19 @@
 
             for (const tx of txs) {
                 const amt = Number(tx.amount) || 0;
+                // BUG FIX v3.2: Ensure reversed transactions do NOT double-count or distort summary totals
                 if (tx.type === 'saving') {
                     totalSavingsBalance += amt;
-                    totalSavedOnly += amt;
-                    if (tx.date === todayStr) todaySavings += amt;
+                    if (!tx.reversed) totalSavedOnly += amt;
+                    if (tx.date === todayStr && !tx.reversed) todaySavings += amt;
                 } else if (tx.type === 'delivery_import') {
                     totalSavingsBalance += amt;
-                    totalDeliveryImported += amt;
-                    if (tx.date === todayStr) todaySavings += amt;
+                    if (!tx.reversed) totalDeliveryImported += amt;
+                    if (tx.date === todayStr && !tx.reversed) todaySavings += amt;
                 } else if (tx.type === 'expense') {
                     totalSavingsBalance -= amt;
-                    totalExpenses += amt;
-                    if (tx.date === todayStr) todayExpenses += amt;
+                    if (!tx.reversed) totalExpenses += amt;
+                    if (tx.date === todayStr && !tx.reversed) todayExpenses += amt;
                 } else if (tx.type === 'reverse') {
                     totalSavingsBalance += amt; // amt carries signed reversal delta
                 }
@@ -1040,6 +1061,10 @@
                 }
             }
 
+            // NEW v3.2: Calculate allocated vs unallocated savings in Jars
+            const totalAllocatedInJars = jars.reduce((sum, j) => sum + (Number(j.currentAmount) || 0), 0);
+            const unallocatedSavings = Math.max(0, Number((totalSavingsBalance - totalAllocatedInJars).toFixed(2)));
+
             return {
                 totalSavingsBalance: Number(totalSavingsBalance.toFixed(2)),
                 totalSavedOnly: Number(totalSavedOnly.toFixed(2)),
@@ -1051,6 +1076,9 @@
                 todaySavings: Number(todaySavings.toFixed(2)),
                 todayExpenses: Number(todayExpenses.toFixed(2)),
                 todayDeliveryNet: Number(todayDeliveryNet.toFixed(2)),
+                jars: jars.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt)),
+                totalAllocatedInJars: Number(totalAllocatedInJars.toFixed(2)),
+                unallocatedSavings,
                 transactions: txs.reverse(), // Latest first for UI
                 deliveries: deliveries.reverse()
             };
@@ -1221,7 +1249,7 @@
                 const store = idbTx.objectStore('transactions');
                 store.put(target);
                 store.add({
-                    id: 'REV-' + Date.now(),
+                    id: 'REV-' + Date.now() + '-' + crypto.getRandomValues(new Uint32Array(1))[0].toString(16).toUpperCase(),
                     type: 'reverse',
                     amount: reverseDelta,
                     category: 'ย้อนรายการ (Reverse)',
@@ -1236,13 +1264,62 @@
             });
         }
 
+        // NEW v3.2: Savings Jars Management (Sub-Goal Allocation without altering total ledger balance)
+        async function createSavingsJar({ name, targetAmount }) {
+            const cleanName = String(name || '').trim();
+            const numTarget = Number(targetAmount);
+            if (!cleanName) throw new Error('กรุณาระบุชื่อกระปุกเป้าหมาย');
+            if (isNaN(numTarget) || numTarget <= 0) throw new Error('เป้าหมายต้องมากกว่า 0 บาท');
+
+            const db = await DatabaseManager.openDB();
+            const jar = {
+                id: 'JAR-' + Date.now() + '-' + Math.random().toString(36).substr(2, 4).toUpperCase(),
+                name: cleanName,
+                targetAmount: Number(numTarget.toFixed(2)),
+                currentAmount: 0,
+                createdAt: new Date().toISOString()
+            };
+
+            await new Promise((resolve, reject) => {
+                const tx = db.transaction(['savings_jars'], 'readwrite');
+                tx.objectStore('savings_jars').add(jar);
+                tx.oncomplete = () => resolve(true);
+                tx.onerror = () => reject(tx.error);
+            });
+            return jar;
+        }
+
+        async function allocateToJar(jarId, amount) {
+            const numAmt = Number(amount);
+            if (isNaN(numAmt) || numAmt <= 0) throw new Error('จำนวนเงินจัดสรรต้องมากกว่า 0 บาท');
+
+            const summary = await computeLedgerSummary();
+            if (summary.unallocatedSavings < numAmt) {
+                throw new Error(`ยอดเงินออมอิสระที่ยังไม่จัดสรรไม่เพียงพอ (คงเหลือ ฿${summary.unallocatedSavings.toLocaleString()})`);
+            }
+
+            const jar = summary.jars.find(j => j.id === jarId);
+            if (!jar) throw new Error('ไม่พบกระปุกเป้าหมายที่เลือก');
+
+            jar.currentAmount = Number((jar.currentAmount + numAmt).toFixed(2));
+            const db = await DatabaseManager.openDB();
+            await new Promise((resolve, reject) => {
+                const tx = db.transaction(['savings_jars'], 'readwrite');
+                tx.objectStore('savings_jars').put(jar);
+                tx.oncomplete = () => resolve(true);
+                tx.onerror = () => reject(tx.error);
+            });
+        }
+
         return {
             isBusy,
             computeLedgerSummary,
             recordTransaction,
             recordDeliveryTrip,
             importPendingDeliveryToSavings,
-            reverseTransaction
+            reverseTransaction,
+            createSavingsJar,
+            allocateToJar
         };
     })();
 
@@ -1338,8 +1415,24 @@
                 }
             }
 
+            // NEW v3.2: Financial Health Score (0 - 100) & 30-Day Wealth Forecast
+            let healthScore = 50;
+            if (summary.totalSavingsBalance > 0) healthScore += 15;
+            if (streak >= 3) healthScore += 10;
+            if (streak >= 14) healthScore += 10;
+            if (missionPercent >= 50) healthScore += 10;
+            if (budgetUsedPercent <= 80 && budgetConfig.monthlyLimit > 0) healthScore += 10;
+            if (budgetUsedPercent >= 100) healthScore -= 15;
+            healthScore = Math.max(0, Math.min(100, healthScore));
+
+            const avgDailyNetSave = savingDatesSet.size > 0
+                ? Number(((summary.totalSavedOnly + summary.totalDeliveryImported) / savingDatesSet.size).toFixed(2))
+                : 0;
+            const projected30Days = Number((summary.totalSavingsBalance + (avgDailyNetSave * 30)).toFixed(2));
+
             // 4. Local AI Insights & Recommendations (Rule-based Heuristics)
             const insights = [];
+            insights.push(`คะแนนสุขภาพทางการเงิน (AI Health Score v3.2): ${healthScore}/100 คะแนน — คาดการณ์ยอดออมในอีก 30 วันข้างหน้า ฿${projected30Days.toLocaleString()}`);
             if (summary.unimportedDeliveryNet > 0) {
                 insights.push(`คุณมีรายได้สุทธิจากการส่งอาหารค้างนำเข้า ฿${summary.unimportedDeliveryNet.toLocaleString()} สามารถกดนำเข้ายอดออมสะสมได้ทันที`);
             }
@@ -1360,6 +1453,7 @@
                 mission: { ...mission, monthlySaved, missionPercent, missionRemaining, daysLeft, requiredPerDay },
                 budget: { ...budgetConfig, monthlyExpense, budgetUsedPercent, budgetRemaining, budgetAlertLevel, categorySpend, topExpenseCategory, topExpenseAmount },
                 streak: { days: streak, rank: saverRank, totalActiveDays: savingDatesSet.size },
+                quantumMetrics: { healthScore, avgDailyNetSave, projected30Days },
                 insights
             };
         }
@@ -1398,14 +1492,14 @@
             });
             if (!isBalanceValid) overallStatus = 'Error';
 
-            // 3. Zero-PIN & Face Auth Check
-            const hasLegacyPin = Boolean(localStorage.getItem('pin') || localStorage.getItem('user_pin'));
-            const cred = await DatabaseManager.getByKey('security_vault', 'webauthn_credential');
+            // 2.1 NEW v3.2: Savings Jars Allocation Integrity Check
+            const jarsValid = summary.totalAllocatedInJars <= summary.totalSavingsBalance;
             checks.push({
-                name: 'Daily Face Authentication v2.8',
-                status: (!hasLegacyPin && cred) ? 'Healthy' : 'Warning',
-                detail: (!hasLegacyPin && cred) ? 'เปิดใช้งาน WebAuthn Biometric สมบูรณ์ (Zero-PIN Verified)' : 'ยังไม่ได้ลงทะเบียนใบหน้ากับอุปกรณ์นี้'
+                name: 'Savings Jars Allocation Guard',
+                status: jarsValid ? 'Healthy' : 'Warning',
+                detail: jarsValid ? `จัดสรรในกระปุกเป้าหมาย ฿${summary.totalAllocatedInJars.toLocaleString()} / คงเหลืออิสระ ฿${summary.unallocatedSavings.toLocaleString()}` : 'ยอดจัดสรรในกระปุกเกินยอดเงินออมรวม (อาจเกิดจากการย้อนรายการ)'
             });
+            if (!jarsValid && overallStatus === 'Healthy') overallStatus = 'Warning';
             if (hasLegacyPin && overallStatus === 'Healthy') overallStatus = 'Warning';
 
             // 4. Backup Status Check
@@ -1450,27 +1544,28 @@
             const transactions = await DatabaseManager.getAll('transactions');
             const delivery_records = await DatabaseManager.getAll('delivery_records');
             const settings_data = await DatabaseManager.getAll('settings_data');
+            const savings_jars = await DatabaseManager.getAll('savings_jars');
 
             const payload = {
                 app: APP_CONFIG.APP_NAME,
                 version: APP_CONFIG.APP_VERSION,
                 schemaVersion: APP_CONFIG.DB_SCHEMA_VERSION,
                 exportedAt: new Date().toISOString(),
-                data: { transactions, delivery_records, settings_data }
+                data: { transactions, delivery_records, settings_data, savings_jars }
             };
 
             const blob = new Blob([JSON.stringify(payload, null, 2)], { type: 'application/json' });
             const url = URL.createObjectURL(blob);
             const a = document.createElement('a');
             a.href = url;
-            a.download = `aurora-savings-v2.8-backup-${FaceAuthModule.getTodayDateString()}.json`;
+            a.download = `aurora-savings-v3.2-backup-${FaceAuthModule.getTodayDateString()}.json`;
             document.body.appendChild(a);
             a.click();
             document.body.removeChild(a);
             URL.revokeObjectURL(url);
 
             localStorage.setItem('aurora_v28_last_backup_at', new Date().toISOString());
-            AppUI.showToast('ส่งออกไฟล์ Backup JSON เรียบร้อยแล้ว', 'success');
+            AppUI.showToast('ส่งออกไฟล์ Backup JSON v3.2 เรียบร้อยแล้ว', 'success');
             AppController.refreshCurrentView();
         }
 
@@ -1489,13 +1584,15 @@
 
                 const db = await DatabaseManager.openDB();
                 await new Promise((resolve, reject) => {
-                    const tx = db.transaction(['transactions', 'delivery_records', 'settings_data'], 'readwrite');
+                    const tx = db.transaction(['transactions', 'delivery_records', 'settings_data', 'savings_jars'], 'readwrite');
                     tx.objectStore('transactions').clear();
                     tx.objectStore('delivery_records').clear();
                     tx.objectStore('settings_data').clear();
+                    tx.objectStore('savings_jars').clear();
 
                     parsed.data.transactions.forEach(item => tx.objectStore('transactions').put(item));
                     (parsed.data.delivery_records || []).forEach(item => tx.objectStore('delivery_records').put(item));
+                    (parsed.data.savings_jars || []).forEach(item => tx.objectStore('savings_jars').put(item));
                     (parsed.data.settings_data || []).forEach(item => {
                         // Never restore legacy PIN fields
                         if (!['user_pin', 'pin_hash', 'security_pin'].includes(item.key)) {
@@ -1507,7 +1604,7 @@
                     tx.onerror = () => reject(tx.error);
                 });
 
-                AppUI.showToast('กู้คืนข้อมูลจากไฟล์ JSON สำเร็จครบถ้วน', 'success');
+                AppUI.showToast('กู้คืนข้อมูลจากไฟล์ JSON สำเร็จครบถ้วน (รองรับไฟล์เก่า v2.x และ v3.2)', 'success');
                 AppController.refreshCurrentView();
             } catch (err) {
                 SystemRecoveryEngine.logError('High', 'BackupRestore', err.message, true, err);
@@ -1716,7 +1813,11 @@
             let reply = '';
 
             if (q.includes('pin') || q.includes('รหัส')) {
-                reply = 'ระบบ PIN 4 หลักถูกยกเลิกอย่างถาวรใน Version 2.8 แล้วครับ เพื่อความปลอดภัยสูงสุด ระบบใช้ Daily Face Authentication (WebAuthn) และ Recovery Key แทน';
+                reply = 'ระบบ PIN 4 หลักถูกยกเลิกอย่างถาวรแล้วครับ ระบบใช้ Daily Face Authentication (WebAuthn) และ Recovery Key แทน';
+            } else if (q.includes('คะแนน') || q.includes('สุขภาพ') || q.includes('score')) {
+                reply = `คะแนนสุขภาพการเงินของคุณใน Version 3.2 คือ ${aiData.quantumMetrics.healthScore}/100 คะแนน และคาดการณ์ยอดออมในอีก 30 วันข้างหน้าประมาณ ฿${aiData.quantumMetrics.projected30Days.toLocaleString()}`;
+            } else if (q.includes('กระปุก') || q.includes('เป้าหมายย่อย') || q.includes('jar')) {
+                reply = `คุณมีกระปุกออมเป้าหมายทั้งหมด ${aiData.summary.jars.length} รายการ จัดสรรเงินไปแล้ว ฿${aiData.summary.totalAllocatedInJars.toLocaleString()} และเหลือยอดออมอิสระ ฿${aiData.summary.unallocatedSavings.toLocaleString()}`;
             } else if (q.includes('ออม') || q.includes('ยอด') || q.includes('เท่าไหร่')) {
                 reply = `ยอดเงินออมสะสมปัจจุบันของคุณคือ ฿${aiData.summary.totalSavingsBalance.toLocaleString()} (ออมวันนี้ ฿${aiData.summary.todaySavings.toLocaleString()}) และมี Streak ต่อเนื่อง ${aiData.streak.days} วัน (${aiData.streak.rank})`;
             } else if (q.includes('จ่าย') || q.includes('งบ')) {
@@ -1763,6 +1864,7 @@
         ];
 
         const MORE_ITEMS = [
+            { id: 'savings-jars', label: 'Savings Jars 3.2', desc: 'กระปุกออมแยกเป้าหมาย', icon: '<path stroke-linecap="round" stroke-linejoin="round" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"/>' },
             { id: 'ai-intelligence', label: 'AI Intelligence', desc: 'วิเคราะห์การเงินเชิงลึก', icon: '<path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/>' },
             { id: 'monthly-mission', label: 'Monthly Mission', desc: 'ภารกิจออมรายเดือน', icon: '<path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z"/>' },
             { id: 'smart-budget', label: 'Smart Budget', desc: 'ควบคุมงบประมาณ', icon: '<path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>' },
@@ -1893,6 +1995,7 @@
                     case 'savings': container.innerHTML = renderSavingsView(aiData); break;
                     case 'expenses': container.innerHTML = renderExpensesView(aiData); break;
                     case 'reports': container.innerHTML = renderReportsView(aiData); break;
+                    case 'savings-jars': container.innerHTML = renderSavingsJarsView(aiData); break;
                     case 'ai-intelligence': container.innerHTML = renderAIIntelligenceView(aiData); break;
                     case 'monthly-mission': container.innerHTML = renderMissionView(aiData); break;
                     case 'smart-budget': container.innerHTML = renderBudgetView(aiData); break;
@@ -1931,15 +2034,15 @@
                         <div>
                             <span class="text-xs text-slate-400 font-medium">ยอดเงินออมสะสมสุทธิ (Net Savings Balance)</span>
                             <h2 class="text-3xl sm:text-4xl font-bold text-white mt-1 tracking-tight">฿${s.totalSavingsBalance.toLocaleString('th-TH', { minimumFractionDigits: 2 })}</h2>
-                            <div class="flex flex-wrap items-center gap-3 mt-3 text-xs">
+                            <div class="flex flex-wrap items-center gap-2.5 mt-3 text-xs">
                                 <span class="px-2.5 py-1 rounded-lg bg-emerald-500/15 text-emerald-400 border border-emerald-500/20">
                                     ออมวันนี้: +฿${s.todaySavings.toLocaleString()}
                                 </span>
                                 <span class="px-2.5 py-1 rounded-lg bg-rose-500/15 text-rose-400 border border-rose-500/20">
                                     รายจ่ายวันนี้: -฿${s.todayExpenses.toLocaleString()}
                                 </span>
-                                <span class="px-2.5 py-1 rounded-lg bg-blue-500/15 text-blue-400 border border-blue-500/20">
-                                    ส่งอาหารวันนี้: ฿${s.todayDeliveryNet.toLocaleString()}
+                                <span class="px-2.5 py-1 rounded-lg bg-violet-500/15 text-violet-300 border border-violet-500/25">
+                                    AI Health Score: ${ai.quantumMetrics.healthScore}/100
                                 </span>
                             </div>
                         </div>
@@ -1958,18 +2061,22 @@
                     </div>
 
                     <!-- Smart Quick Actions Row -->
-                    <div class="grid grid-cols-3 gap-2.5 mt-6 pt-5 border-t border-slate-800/80">
-                        <button onclick="QuickActionModule.openModal('saving')" class="py-3 px-3 rounded-2xl bg-emerald-500/15 hover:bg-emerald-500/25 border border-emerald-500/30 text-emerald-300 text-xs font-semibold flex flex-col sm:flex-row items-center justify-center gap-1.5 transition">
+                    <div class="grid grid-cols-2 sm:grid-cols-4 gap-2.5 mt-6 pt-5 border-t border-slate-800/80">
+                        <button onclick="QuickActionModule.openModal('saving')" class="py-3 px-3 rounded-2xl bg-emerald-500/15 hover:bg-emerald-500/25 border border-emerald-500/30 text-emerald-300 text-xs font-semibold flex items-center justify-center gap-1.5 transition">
                             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
                             <span>ออมเงินด่วน</span>
                         </button>
-                        <button onclick="QuickActionModule.openModal('expense')" class="py-3 px-3 rounded-2xl bg-rose-500/15 hover:bg-rose-500/25 border border-rose-500/30 text-rose-300 text-xs font-semibold flex flex-col sm:flex-row items-center justify-center gap-1.5 transition">
+                        <button onclick="QuickActionModule.openModal('expense')" class="py-3 px-3 rounded-2xl bg-rose-500/15 hover:bg-rose-500/25 border border-rose-500/30 text-rose-300 text-xs font-semibold flex items-center justify-center gap-1.5 transition">
                             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 12H4"/></svg>
                             <span>รายจ่ายด่วน</span>
                         </button>
-                        <button onclick="QuickActionModule.openModal('delivery')" class="py-3 px-3 rounded-2xl bg-blue-500/15 hover:bg-blue-500/25 border border-blue-500/30 text-blue-300 text-xs font-semibold flex flex-col sm:flex-row items-center justify-center gap-1.5 transition">
+                        <button onclick="QuickActionModule.openModal('delivery')" class="py-3 px-3 rounded-2xl bg-blue-500/15 hover:bg-blue-500/25 border border-blue-500/30 text-blue-300 text-xs font-semibold flex items-center justify-center gap-1.5 transition">
                             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
                             <span>รายได้ส่งอาหาร</span>
+                        </button>
+                        <button onclick="AppController.navigateTo('savings-jars')" class="py-3 px-3 rounded-2xl bg-violet-500/15 hover:bg-violet-500/25 border border-violet-500/30 text-violet-300 text-xs font-semibold flex items-center justify-center gap-1.5 transition">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"/></svg>
+                            <span>กระปุกเป้าหมาย</span>
                         </button>
                     </div>
                 </section>
@@ -2126,103 +2233,103 @@
                             `).join('')}
                         </div>
                     `}
+        // --- NEW VIEW v3.2: SAVINGS JARS (MULTI-GOAL BUCKETS) ---
+        function renderSavingsJarsView(ai) {
+            const s = ai.summary;
+            return `
+                <div class="aurora-glass rounded-3xl p-6 space-y-5">
+                    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+                        <div>
+                            <h2 class="text-lg font-bold text-white">Savings Jars 3.2 (กระปุกออมแยกเป้าหมาย)</h2>
+                            <p class="text-xs text-slate-400">จัดสรรยอดเงินออมสะสมที่มีอยู่เข้าสู่เป้าหมายย่อย โดยไม่กระทบยอดรวมใน Ledger</p>
+                        </div>
+                        <div class="px-3.5 py-2 rounded-2xl bg-emerald-500/10 border border-emerald-500/30 text-xs">
+                            <span class="text-slate-400">ยอดออมอิสระรอจัดสรร:</span>
+                            <strong class="text-emerald-400 ml-1">฿${s.unallocatedSavings.toLocaleString()}</strong>
+                        </div>
+                    </div>
+
+                    <form onsubmit="AppController.handleCreateJar(event)" class="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-3 border-t border-slate-800">
+                        <input type="text" id="jar-name-input" placeholder="ชื่อเป้าหมาย เช่น กองทุนฉุกเฉิน, ซื้อทอง" required class="px-3.5 py-2.5 rounded-xl bg-slate-900 border border-slate-700 text-xs text-white">
+                        <input type="number" step="0.01" min="1" id="jar-target-input" placeholder="เป้าหมาย (บาท)" required class="px-3.5 py-2.5 rounded-xl bg-slate-900 border border-slate-700 text-xs text-white">
+                        <button type="submit" class="py-2.5 px-4 rounded-xl aurora-btn-primary text-xs font-semibold">+ สร้างกระปุกเป้าหมาย</button>
+                    </form>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 pt-2">
+                        ${s.jars.length === 0 ? '<p class="text-xs text-slate-500 col-span-2 text-center py-6">ยังไม่มีกระปุกเป้าหมาย สร้างกระปุกแรกของคุณได้เลย</p>' : s.jars.map(jar => {
+                            const pct = jar.targetAmount > 0 ? Math.min(100, Number(((jar.currentAmount / jar.targetAmount) * 100).toFixed(1))) : 0;
+                            return `
+                                <div class="p-4 rounded-2xl bg-slate-900/90 border border-slate-800 space-y-3">
+                                    <div class="flex justify-between items-start">
+                                        <div>
+                                            <h4 class="text-sm font-bold text-white">${jar.name}</h4>
+                                            <p class="text-[11px] text-slate-400">สะสมแล้ว ฿${jar.currentAmount.toLocaleString()} / ฿${jar.targetAmount.toLocaleString()}</p>
+                                        </div>
+                                        <span class="text-xs font-bold text-emerald-400">${pct}%</span>
+                                    </div>
+                                    <div class="w-full h-2 bg-slate-800 rounded-full overflow-hidden">
+                                        <div class="h-full bg-gradient-to-r from-emerald-500 to-violet-500" style="width:${pct}%"></div>
+                                    </div>
+                                    <div class="flex gap-2">
+                                        <input type="number" step="0.01" min="1" id="alloc-input-${jar.id}" placeholder="จำนวนเงินจัดสรร" class="flex-1 px-3 py-1.5 rounded-lg bg-slate-950 border border-slate-700 text-xs text-white">
+                                        <button onclick="AppController.handleAllocateJar('${jar.id}')" class="px-3 py-1.5 rounded-lg bg-blue-600 hover:bg-blue-500 text-white text-xs font-medium">เติมกระปุก</button>
+                                    </div>
+                                </div>
+                            `;
+                        }).join('')}
+                    </div>
                 </div>
             `;
         }
 
-        async function importDelivery(id) {
+        async function handleCreateJar(e) {
+            e.preventDefault();
             try {
-                await TransactionEngine.importPendingDeliveryToSavings(id);
-                AppUI.showToast('นำรายได้สุทธิเข้าสู่ยอดออมสะสมสำเร็จ!', 'success');
+                const name = document.getElementById('jar-name-input').value;
+                const targetAmount = document.getElementById('jar-target-input').value;
+                await TransactionEngine.createSavingsJar({ name, targetAmount });
+                AppUI.showToast('สร้างกระปุกเป้าหมายสำเร็จ!', 'success');
                 refreshCurrentView();
             } catch (err) {
                 AppUI.showToast(err.message, 'error');
             }
         }
 
-        // --- VIEW 3: EXPENSES ---
-        function renderExpensesView(ai) {
-            const expenses = ai.summary.transactions.filter(t => t.type === 'expense');
-            return `
-                <div class="aurora-glass rounded-3xl p-6">
-                    <div class="flex items-center justify-between mb-4">
-                        <div>
-                            <h2 class="text-lg font-bold text-white">ระบบบันทึกรายจ่าย (Balance Guard)</h2>
-                            <p class="text-xs text-slate-400">ตรวจสอบยอดคงเหลือก่อนหักเงินทุกครั้ง ห้ามยอดเงินออมติดลบ</p>
-                        </div>
-                        <button onclick="QuickActionModule.openModal('expense')" class="px-4 py-2.5 rounded-2xl bg-rose-600 hover:bg-rose-500 text-white text-xs font-semibold">+ บันทึกรายจ่าย</button>
-                    </div>
-                    <div class="p-4 rounded-2xl bg-slate-900 border border-slate-800 mb-5 flex justify-between items-center">
-                        <span class="text-xs text-slate-400">รายจ่ายสะสมทั้งหมด</span>
-                        <span class="text-xl font-bold text-rose-400">฿${ai.summary.totalExpenses.toLocaleString()}</span>
-                    </div>
-                    ${renderTransactionList(expenses)}
-                </div>
-            `;
-        }
-
-        // --- VIEW 4: REPORTS & ANALYTICS ---
-        function renderReportsView(ai) {
-            const s = ai.summary;
-            return `
-                <div class="aurora-glass rounded-3xl p-6 space-y-5">
-                    <div class="flex items-center justify-between">
-                        <div>
-                            <h2 class="text-lg font-bold text-white">Reports & Analytics</h2>
-                            <p class="text-xs text-slate-400">รายงานสรุปผลทางการเงินจากข้อมูลจริงในฐานข้อมูล</p>
-                        </div>
-                        <button onclick="BackupManager.exportBackupJSON()" class="px-4 py-2 rounded-xl bg-blue-600 hover:bg-blue-500 text-white text-xs font-semibold">ส่งออก JSON</button>
-                    </div>
-
-                    <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
-                        <div class="p-4 rounded-2xl bg-slate-900 border border-slate-800">
-                            <div class="text-[11px] text-slate-400">เงินออมล้วน</div>
-                            <div class="text-base font-bold text-emerald-400 mt-1">฿${s.totalSavedOnly.toLocaleString()}</div>
-                        </div>
-                        <div class="p-4 rounded-2xl bg-slate-900 border border-slate-800">
-                            <div class="text-[11px] text-slate-400">ส่งอาหารนำเข้า</div>
-                            <div class="text-base font-bold text-blue-400 mt-1">฿${s.totalDeliveryImported.toLocaleString()}</div>
-                        </div>
-                        <div class="p-4 rounded-2xl bg-slate-900 border border-slate-800">
-                            <div class="text-[11px] text-slate-400">รายจ่ายรวม</div>
-                            <div class="text-base font-bold text-rose-400 mt-1">฿${s.totalExpenses.toLocaleString()}</div>
-                        </div>
-                        <div class="p-4 rounded-2xl bg-slate-900 border border-slate-800">
-                            <div class="text-[11px] text-slate-400">จำนวนธุรกรรม</div>
-                            <div class="text-base font-bold text-white mt-1">${s.transactions.length} รายการ</div>
-                        </div>
-                    </div>
-
-                    <!-- Visual Bar Comparison -->
-                    <div class="p-5 rounded-2xl bg-slate-900/90 border border-slate-800 space-y-4">
-                        <h4 class="text-xs font-bold text-slate-300">สัดส่วนรายรับออม เทียบกับ รายจ่ายสะสม</h4>
-                        ${(() => {
-                            const totalIn = s.totalSavedOnly + s.totalDeliveryImported;
-                            const maxVal = Math.max(totalIn, s.totalExpenses, 1);
-                            const inPct = Math.round((totalIn / maxVal) * 100);
-                            const outPct = Math.round((s.totalExpenses / maxVal) * 100);
-                            return `
-                                <div>
-                                    <div class="flex justify-between text-xs mb-1"><span class="text-emerald-400">รายรับเข้าออมรวม</span><span>฿${totalIn.toLocaleString()}</span></div>
-                                    <div class="w-full h-3 bg-slate-800 rounded-full overflow-hidden"><div class="h-full bg-emerald-500" style="width:${inPct}%"></div></div>
-                                </div>
-                                <div>
-                                    <div class="flex justify-between text-xs mb-1"><span class="text-rose-400">รายจ่ายรวม</span><span>฿${s.totalExpenses.toLocaleString()}</span></div>
-                                    <div class="w-full h-3 bg-slate-800 rounded-full overflow-hidden"><div class="h-full bg-rose-500" style="width:${outPct}%"></div></div>
-                                </div>
-                            `;
-                        })()}
-                    </div>
-                </div>
-            `;
+        async function handleAllocateJar(jarId) {
+            try {
+                const input = document.getElementById(`alloc-input-${jarId}`);
+                await TransactionEngine.allocateToJar(jarId, input.value);
+                AppUI.showToast('จัดสรรเงินเข้ากระปุกเป้าหมายเรียบร้อยแล้ว', 'success');
+                refreshCurrentView();
+            } catch (err) {
+                AppUI.showToast(err.message, 'error');
+            }
         }
 
         // --- VIEW 5: AI INTELLIGENCE ---
         function renderAIIntelligenceView(ai) {
             return `
-                <div class="aurora-glass rounded-3xl p-6 space-y-4">
-                    <h2 class="text-lg font-bold aurora-text-gradient">AI Financial Intelligence Engine (Offline Local Rules)</h2>
-                    <p class="text-xs text-slate-400">ประมวลผลจากธุรกรรมจริงภายในเครื่อง 100% ไม่ส่งข้อมูลออกภายนอก</p>
+                <div class="aurora-glass rounded-3xl p-6 space-y-5">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <h2 class="text-lg font-bold aurora-text-gradient">AI Quantum Financial Intelligence v3.2</h2>
+                            <p class="text-xs text-slate-400">ประมวลผลจากธุรกรรมจริงภายในเครื่อง 100% ไม่ส่งข้อมูลออกภายนอก</p>
+                        </div>
+                        <div class="px-3.5 py-2 rounded-2xl bg-violet-500/15 border border-violet-500/30 text-right">
+                            <div class="text-[10px] text-violet-300">FINANCIAL HEALTH</div>
+                            <div class="text-base font-bold text-white">${ai.quantumMetrics.healthScore} / 100</div>
+                        </div>
+                    </div>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                        <div class="p-4 rounded-2xl bg-slate-900 border border-slate-800">
+                            <div class="text-[11px] text-slate-400">อัตราการออมเฉลี่ยต่อวันที่ทำรายการ</div>
+                            <div class="text-lg font-bold text-emerald-400 mt-1">฿${ai.quantumMetrics.avgDailyNetSave.toLocaleString()} / วัน</div>
+                        </div>
+                        <div class="p-4 rounded-2xl bg-slate-900 border border-slate-800">
+                            <div class="text-[11px] text-slate-400">คาดการณ์ยอดออมสะสมใน 30 วันข้างหน้า</div>
+                            <div class="text-lg font-bold text-blue-400 mt-1">฿${ai.quantumMetrics.projected30Days.toLocaleString()}</div>
+                        </div>
+                    </div>
                     <div class="space-y-3">
                         ${ai.insights.map(msg => `
                             <div class="p-4 rounded-2xl bg-slate-900/90 border border-violet-500/30 text-xs text-slate-200 leading-relaxed">${msg}</div>
@@ -2602,9 +2709,10 @@
                     clearInterval(clearCountdownTimer);
                     const db = await DatabaseManager.openDB();
                     await new Promise((resolve) => {
-                        const tx = db.transaction(['transactions', 'delivery_records'], 'readwrite');
+                        const tx = db.transaction(['transactions', 'delivery_records', 'savings_jars'], 'readwrite');
                         tx.objectStore('transactions').clear();
                         tx.objectStore('delivery_records').clear();
+                        tx.objectStore('savings_jars').clear();
                         tx.oncomplete = () => resolve(true);
                     });
                     AppUI.showToast('ล้างข้อมูลการเงินทั้งหมดเรียบร้อยแล้ว', 'warning');
@@ -2631,6 +2739,8 @@
             refreshCurrentView,
             handleReverseTx,
             importDelivery,
+            handleCreateJar,
+            handleAllocateJar,
             saveMissionSettings,
             saveBudgetLimit,
             updateSimulation,
